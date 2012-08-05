@@ -28,6 +28,7 @@ import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
@@ -48,8 +49,12 @@ import org.slizardo.madcommander.components.filelisting.model.NameComparator;
 import org.slizardo.madcommander.components.filelisting.model.SizeComparator;
 import org.slizardo.madcommander.util.actions.InputMapUtil;
 
-
 public class FileListingTable extends JTable implements Runnable, FocusListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1317659226807828074L;
 
 	private FileListing fileListing;
 
@@ -76,9 +81,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		model = new FileListingModel();
 		setModel(model);
 
-		getTableHeader().setUpdateTableInRealTime(true);
-
-		addFocusListener(this);
+		// getTableHeader().setUpdateTableInRealTime(true);
+		// addFocusListener(this);
 
 		this.fileListing = fileListing;
 
@@ -104,7 +108,7 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		ActionMap actionMap = getActionMap();
 
 		FileOpsFactory fops = FileOpsFactory.getInstance();
-		
+
 		InputMapUtil.putAction(this, new SelectDriveAction());
 		InputMapUtil.putAction(this, fops.getViewAction());
 		InputMapUtil.putAction(this, fops.getEditAction());
@@ -122,6 +126,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		this.filter = filter;
 	}
 
+	static int a = 0;
+
 	public void refresh() {
 		try {
 			SwingUtilities.invokeLater(this);
@@ -138,8 +144,6 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 			dir = new File(System.getProperty("user.dir"));
 		}
 		fileListing.pathLabel.setText(dir.getAbsolutePath());
-		// TODO boolean showHiddens =
-		// ConfigWrapper.getBooleanProperty("show.hiddens");
 
 		fileListing.summaryLabel.clearTotals();
 		File[] files = dir.listFiles(filter);
@@ -204,8 +208,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 	public void focusLost(FocusEvent event) {
 	}
 
-	public ArrayList<File> getSelectedFiles() {
-		ArrayList<File> selectedFiles = new ArrayList<File>();
+	public List<File> getSelectedFiles() {
+		List<File> selectedFiles = new ArrayList<File>();
 		int[] selectedRows = getSelectedRows();
 		for (int selectedRow : selectedRows) {
 			selectedFiles.add(model.getRow(selectedRow).getFile());
@@ -224,7 +228,7 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 			} else { // DnDConstants.ACTION_MOVE:
 				cursor = DragSource.DefaultMoveDrop;
 			}
-			ArrayList<File> selectedFiles = getSelectedFiles();
+			List<File> selectedFiles = getSelectedFiles();
 			if (selectedFiles.size() > 0) {
 				dragSource.startDrag(event, cursor, dndCommand, this);
 			}

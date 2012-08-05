@@ -26,6 +26,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 public abstract class AbstractGroupDialog extends JDialog implements
 		ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7833199314557405992L;
+
 	private JComboBox type;
 
 	private JTextField searchPattern;

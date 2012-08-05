@@ -11,6 +11,11 @@ import org.slizardo.madcommander.controller.Controller;
 
 public class SelectGroupDialog extends AbstractGroupDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8402206622370638785L;
+
 	public SelectGroupDialog() {
 		super("Select group");
 	}

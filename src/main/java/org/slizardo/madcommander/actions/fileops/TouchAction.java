@@ -9,7 +9,7 @@ package org.slizardo.madcommander.actions.fileops;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 
@@ -20,8 +20,12 @@ import org.slizardo.madcommander.resources.languages.Translator;
 import org.slizardo.madcommander.util.gui.DialogFactory;
 import org.slizardo.madcommander.util.io.FileOperations;
 
-
 public class TouchAction extends AbstractAction {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2847060359677737655L;
 
 	public TouchAction() {
 		super(Translator.text("Touch"), IconFactory.newIcon("touch.gif"));
@@ -29,7 +33,7 @@ public class TouchAction extends AbstractAction {
 
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = MainGUI.app.getSource();
-		ArrayList<File> selectedFiles = listing.getSelectedFiles();
+		List<File> selectedFiles = listing.getSelectedFiles();
 		for (File file : selectedFiles) {
 			if (FileOperations.touch(file) == false) {
 				DialogFactory.showErrorMessage(listing.getParent(), "File \""

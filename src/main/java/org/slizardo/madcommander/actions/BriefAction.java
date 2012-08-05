@@ -19,6 +19,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class BriefAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 963345464924990261L;
+
 	public BriefAction() {
 		super(Translator.text("Brief"), IconFactory.newIcon("icon_brief.gif"));
 	}

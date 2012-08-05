@@ -19,6 +19,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class FullAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5935640263312602725L;
+
 	public FullAction() {
 		super(Translator.text("Full"), IconFactory.newIcon("icon_full.gif"));
 	}

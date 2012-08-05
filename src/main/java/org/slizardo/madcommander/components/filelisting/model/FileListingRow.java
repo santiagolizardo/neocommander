@@ -10,13 +10,14 @@ package org.slizardo.madcommander.components.filelisting.model;
 import java.io.File;
 import java.util.Date;
 
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.slizardo.madcommander.util.FormatSingleton;
 import org.slizardo.madcommander.util.io.FileUtil;
 
 public class FileListingRow {
+
+	private static final boolean SHOW_BYTES = true;
 
 	public File file;
 
@@ -43,7 +44,7 @@ public class FileListingRow {
 			return "<DIR>";
 		}
 
-		if (true) {
+		if (SHOW_BYTES) {
 			return FileUtils.byteCountToDisplaySize(file.length());
 		} else {
 			return FormatSingleton.getSimpleDecimalFormat().format(

@@ -8,13 +8,17 @@
 package org.slizardo.madcommander.dialogs.progressive;
 
 import java.io.File;
-import java.util.ArrayList;
-
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.slizardo.madcommander.util.gui.DialogFactory;
 
 public class CopyProgressDialog extends AbstractProgressDialog {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4051353584577931986L;
 
 	public void run() {
 		if (srcPath.equals(dstPath)) {
@@ -24,7 +28,7 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 			return;
 		}
 
-		ArrayList<File> selectedFiles = src.getSelectedFiles();
+		List<File> selectedFiles = src.getSelectedFiles();
 		int numFiles = selectedFiles.size();
 		myProcess.totalProgress = 0;
 		for (int i = 0; i < selectedFiles.size(); i++) {
@@ -43,7 +47,7 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 			try {
 				File fileSrc = new File(fullSrc);
 				File fileDst = new File(fullDst);
-				
+
 				if (fileSrc.isDirectory())
 					FileUtils.copyDirectory(fileSrc, fileDst);
 				else
@@ -51,7 +55,7 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 
 				myProcess.currentProgress = 100;
 				myProcess.totalProgress = (i * 100) / numFiles;
-				
+
 				if (myProcess.cancel) {
 					logger.info("Cancel copying.");
 					return;

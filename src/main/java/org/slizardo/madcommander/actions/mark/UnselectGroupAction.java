@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class UnselectGroupAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4612806607228003645L;
+
 	public UnselectGroupAction() {
 		super(Translator.text("Unselect_group..."), IconFactory.newIcon("pencil_delete.png"));
 	}

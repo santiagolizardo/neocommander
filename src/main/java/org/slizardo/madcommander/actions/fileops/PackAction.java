@@ -21,6 +21,11 @@ import org.slizardo.madcommander.util.gui.DialogFactory;
 
 public class PackAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4020899583847293332L;
+
 	public PackAction() {
 		super(Translator.text("Pack..."), IconFactory.newIcon("box.png"));
 	}

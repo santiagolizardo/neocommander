@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class UnselectAllAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6152445946994801060L;
+
 	public UnselectAllAction() {
 		super(Translator.text("Unselect_all"));
 	}

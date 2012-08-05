@@ -14,6 +14,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class LocalizedLabel extends JLabel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 834947778773364181L;
+
 	public LocalizedLabel(String text) {
 		super(text);
 	}

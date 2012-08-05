@@ -10,6 +10,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class EqualizePanelsAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5924873313089489091L;
+
 	public EqualizePanelsAction() {
 		super(Translator.text("Target_equal_to_source"));
 	}

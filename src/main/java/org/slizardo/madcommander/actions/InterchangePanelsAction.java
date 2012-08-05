@@ -15,6 +15,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class InterchangePanelsAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2374316824230143289L;
+
 	public InterchangePanelsAction() {
 		super(Translator.text("Interchange_panels"));
 

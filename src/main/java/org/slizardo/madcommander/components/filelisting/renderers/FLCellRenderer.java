@@ -16,6 +16,10 @@ import org.slizardo.madcommander.resources.images.IconFactory;
 
 public class FLCellRenderer extends DefaultTableCellRenderer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8224673036449358242L;
 	private Format format;
 
 	public FLCellRenderer(Format format) {

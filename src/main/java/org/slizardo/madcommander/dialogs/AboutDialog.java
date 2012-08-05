@@ -27,6 +27,11 @@ import org.slizardo.madcommander.resources.images.IconFactory;
 
 public class AboutDialog extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1558869937506126714L;
+
 	private JLabel iconLabel;
 
 	private JTextArea text;

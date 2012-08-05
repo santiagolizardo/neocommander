@@ -16,13 +16,14 @@ import javax.swing.JMenu;
 
 import org.slizardo.madcommander.MadCommander;
 import org.slizardo.madcommander.components.localized.LocalizedCheckBoxMenuItem;
-import org.slizardo.madcommander.config.ConfigWrapper;
-import org.slizardo.madcommander.config.Configurable;
 import org.slizardo.madcommander.resources.languages.Translator;
 
+public class ConfigurationMenu extends JMenu implements ActionListener {
 
-public class ConfigurationMenu extends JMenu implements ActionListener,
-		Configurable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4098318863664780142L;
 
 	private MadCommander app;
 
@@ -44,15 +45,19 @@ public class ConfigurationMenu extends JMenu implements ActionListener,
 
 		basicToolbar = new LocalizedCheckBoxMenuItem("Basic_toolbar");
 		basicToolbar.addActionListener(this);
+		basicToolbar.setSelected(true);
 
 		drivesToolbar = new LocalizedCheckBoxMenuItem("Drives_toolbar");
 		drivesToolbar.addActionListener(this);
+		drivesToolbar.setSelected(true);
 
 		executePanel = new LocalizedCheckBoxMenuItem("Execute_panel");
 		executePanel.addActionListener(this);
+		executePanel.setSelected(true);
 
 		shortcutsPanel = new LocalizedCheckBoxMenuItem("Shortcuts_panel");
 		shortcutsPanel.addActionListener(this);
+		shortcutsPanel.setSelected(true);
 
 		show.add(basicToolbar);
 		show.add(drivesToolbar);
@@ -89,27 +94,5 @@ public class ConfigurationMenu extends JMenu implements ActionListener,
 				app.removeShortcutsPanel();
 			}
 		}
-	}
-
-	public void loadProperties() {
-		basicToolbar.setSelected(ConfigWrapper
-				.getBooleanProperty("show.basic.toolbar"));
-		drivesToolbar.setSelected(ConfigWrapper
-				.getBooleanProperty("show.drives.toolbar"));
-		executePanel.setSelected(ConfigWrapper
-				.getBooleanProperty("show.execute.panel"));
-		shortcutsPanel.setSelected(ConfigWrapper
-				.getBooleanProperty("show.shortcuts.panel"));
-	}
-
-	public void saveProperties() {
-		ConfigWrapper.setBooleanProperty("show.basic.toolbar", basicToolbar
-				.isSelected());
-		ConfigWrapper.setBooleanProperty("show.drives.toolbar", drivesToolbar
-				.isSelected());
-		ConfigWrapper.setBooleanProperty("show.execute.panel", executePanel
-				.isSelected());
-		ConfigWrapper.setBooleanProperty("show.shortcuts.panel", shortcutsPanel
-				.isSelected());
 	}
 }

@@ -10,7 +10,7 @@ package org.slizardo.madcommander.dialogs.progressive;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.jar.JarOutputStream;
 import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
@@ -19,7 +19,6 @@ import java.util.zip.ZipOutputStream;
 import org.slizardo.madcommander.MainGUI;
 import org.slizardo.madcommander.components.filelisting.FileListing;
 import org.slizardo.madcommander.controller.PackTypes;
-
 
 public class PackProgressDialog extends AbstractProgressDialog {
 
@@ -39,7 +38,7 @@ public class PackProgressDialog extends AbstractProgressDialog {
 	public void run() {
 		FileListing listing = MainGUI.app.getSource();
 		final String currentPath = listing.getPath() + File.separator;
-		ArrayList<File> files = listing.getSelectedFiles();
+		List<File> files = listing.getSelectedFiles();
 
 		switch (type) {
 		case ZIP:
@@ -54,8 +53,7 @@ public class PackProgressDialog extends AbstractProgressDialog {
 		}
 	}
 
-	private void createZIP(String currentPath, String fullName,
-			ArrayList<File> files) {
+	private void createZIP(String currentPath, String fullName, List<File> files) {
 		try {
 			FileOutputStream fos = new FileOutputStream(fullName);
 			ZipOutputStream zos = new ZipOutputStream(fos);
@@ -98,8 +96,7 @@ public class PackProgressDialog extends AbstractProgressDialog {
 		MainGUI.app.getSource().refreshFiles();
 	}
 
-	private void createJAR(String currentPath, String fullName,
-			ArrayList<File> files) {
+	private void createJAR(String currentPath, String fullName, List<File> files) {
 		try {
 			FileOutputStream fos = new FileOutputStream(fullName);
 			JarOutputStream jos = new JarOutputStream(fos);
@@ -142,7 +139,7 @@ public class PackProgressDialog extends AbstractProgressDialog {
 	}
 
 	private void createGZIP(String currentPath, String fullName,
-			ArrayList<File> files) {
+			List<File> files) {
 		try {
 			FileOutputStream fos = new FileOutputStream(fullName);
 			GZIPOutputStream gos = new GZIPOutputStream(fos);

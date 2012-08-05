@@ -16,9 +16,12 @@ import javax.swing.table.TableCellRenderer;
 
 import org.slizardo.madcommander.resources.images.IconFactory;
 
-
 public class SpecialHeaderRender extends JLabel implements TableCellRenderer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4282579332132643029L;
 	private FileListingHeader header;
 
 	public SpecialHeaderRender(FileListingHeader header) {
@@ -29,7 +32,6 @@ public class SpecialHeaderRender extends JLabel implements TableCellRenderer {
 			boolean isSelected, boolean hasFocus, int rowIndex, int colIndex) {
 		SelectableColumnHeader columnHeader = (SelectableColumnHeader) value;
 		setText(columnHeader.getText());
-		// setBorder(UIManager.getBorder("TableHeader.cellBorder"));
 		setBorder(BorderFactory.createEtchedBorder());
 		setHorizontalAlignment(JLabel.CENTER);
 		if (columnHeader.isActive()) {

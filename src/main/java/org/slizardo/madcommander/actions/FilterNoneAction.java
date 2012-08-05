@@ -17,6 +17,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class FilterNoneAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1396404929925611587L;
+
 	public FilterNoneAction() {
 		super(Translator.text("Filter_none"));
 	}

@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class MarkMenu extends JMenu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 753419026893214433L;
+
 	public MarkMenu() {
 		super(Translator.text("Mark"));
 		setMnemonic(KeyEvent.VK_M);

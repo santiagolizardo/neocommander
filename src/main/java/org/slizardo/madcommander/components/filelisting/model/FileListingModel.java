@@ -21,6 +21,11 @@ import org.slizardo.madcommander.components.filelisting.FileListing.Format;
 
 public class FileListingModel extends AbstractTableModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4319295349667507036L;
+
 	public boolean isRoot;
 
 	private int columnCount;

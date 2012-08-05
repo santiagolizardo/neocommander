@@ -11,17 +11,16 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import org.slizardo.madcommander.config.ConfigWrapper;
-
-
 public class Translator {
 
 	private static Logger logger = Logger.getLogger(Translator.class.getName());
 
 	private static Properties properties;
 
-	public static void init() {
-		String locale = ConfigWrapper.getProperty("app.locale");
+	public static void init(String locale) {
+		if (locale == null) {
+			throw new IllegalArgumentException("Parameter \"locale\" is null.");
+		}
 		properties = new Properties();
 
 		try {

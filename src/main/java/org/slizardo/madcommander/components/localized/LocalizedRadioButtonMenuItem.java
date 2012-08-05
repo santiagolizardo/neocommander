@@ -14,6 +14,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class LocalizedRadioButtonMenuItem extends JRadioButtonMenuItem {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8249523894693631489L;
+
 	public LocalizedRadioButtonMenuItem(String label) {
 		super(label);
 	}

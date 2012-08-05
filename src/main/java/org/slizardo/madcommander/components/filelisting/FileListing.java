@@ -13,7 +13,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.File;
 import java.io.FileFilter;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,16 +32,15 @@ import org.slizardo.madcommander.components.filelisting.model.FileListingColumn;
 import org.slizardo.madcommander.components.filelisting.model.FileListingModel;
 import org.slizardo.madcommander.components.filelisting.model.FileListingRow;
 import org.slizardo.madcommander.components.filelisting.renderers.FLCellRenderer;
-import org.slizardo.madcommander.config.ConfigWrapper;
 import org.slizardo.madcommander.util.gui.DialogFactory;
 import org.slizardo.madcommander.util.gui.SwingUtil;
-
 
 public class FileListing extends JPanel {
 
 	private static final long serialVersionUID = -796592552883729956L;
 
-	private static Logger logger = Logger.getLogger("FileListing");
+	private static final Logger LOGGER = Logger.getLogger(FileListing.class
+			.getName());
 
 	public enum Position {
 		Left, Right
@@ -87,8 +86,6 @@ public class FileListing extends JPanel {
 		cellRenderer = new FLCellRenderer(format);
 
 		updateColumnRenderers();
-
-		loadProperties();
 
 		pathLabel = new PathLabel();
 
@@ -143,11 +140,18 @@ public class FileListing extends JPanel {
 	}
 
 	public void setPath(String path) {
-		currentPath = new File(path);
-		refreshFiles();
+		File newPath = new File(path);
+		if (newPath.exists()) {
+			currentPath = newPath;
+			refreshFiles();
+		}
 	}
 
 	public String getPath() {
+		if (currentPath == null) {
+			currentPath = new File(".");
+			LOGGER.warning("currentPath is null");
+		}
 		return currentPath.getAbsolutePath();
 	}
 
@@ -203,17 +207,8 @@ public class FileListing extends JPanel {
 		return table.getSelectedRowCount();
 	}
 
-	public ArrayList<File> getSelectedFiles() {
+	public List<File> getSelectedFiles() {
 		return table.getSelectedFiles();
-	}
-
-	public void loadProperties() {
-		String path = ConfigWrapper.getProperty("current.path." + id);
-		currentPath = new File(path);
-	}
-
-	public void saveProperties() {
-		ConfigWrapper.setProperty("current.path." + id, getPath());
 	}
 
 	public void setFilter(FileFilter filter) {
@@ -297,8 +292,8 @@ public class FileListing extends JPanel {
 			if (dir.isDirectory()) {
 				if (dir.listFiles() == null) {
 					SwingUtil.beep();
-					DialogFactory
-							.showErrorMessage(MainGUI.app, "Access forbidden");
+					DialogFactory.showErrorMessage(MainGUI.app,
+							"Access forbidden");
 				} else {
 					currentPath = dir;
 					historical.add(dir.getParentFile().getAbsolutePath());
@@ -308,7 +303,7 @@ public class FileListing extends JPanel {
 				buffer.append("Executing [ ");
 				buffer.append(dir.getAbsolutePath());
 				buffer.append(" ]");
-				logger.info(buffer.toString());
+				LOGGER.info(buffer.toString());
 				try {
 					Desktop desktop = Desktop.getDesktop();
 					desktop.open(dir);
@@ -361,19 +356,20 @@ public class FileListing extends JPanel {
 
 	public void selectLastEntry() {
 		if (table.getRowCount() > 0)
-			table.setRowSelectionInterval(table.getRowCount() - 1, table
-					.getRowCount() - 1);
+			table.setRowSelectionInterval(table.getRowCount() - 1,
+					table.getRowCount() - 1);
 	}
 
 	static int i = 0;
-	
+
 	public void focusByString(String pattern) {
-		if(pattern == null) return;
+		if (pattern == null)
+			return;
 		FileListingModel model = (FileListingModel) table.getModel();
 		int rowCount = model.getRowCount();
-		
+
 		pattern = pattern.toLowerCase();
-		for ( ; i < rowCount; i++) {
+		for (; i < rowCount; i++) {
 			FileListingRow row = model.getRow(i);
 			if (row.getName().toLowerCase().startsWith(pattern))
 				break;
@@ -385,4 +381,3 @@ public class FileListing extends JPanel {
 			i = 0;
 	}
 }
-

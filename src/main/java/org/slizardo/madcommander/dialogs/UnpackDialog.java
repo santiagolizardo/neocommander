@@ -39,6 +39,10 @@ import org.slizardo.madcommander.util.io.FileUtil;
 
 public class UnpackDialog extends JDialog implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5451158938079680268L;
 	private JButton ok;
 	private JButton browse;
     private JLabel fileText;

@@ -17,6 +17,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class ReversedOrderItem extends JCheckBoxMenuItem {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5744823152452602062L;
+
 	public ReversedOrderItem() {
 		super(Translator.text("Reversed_order"));
 	}

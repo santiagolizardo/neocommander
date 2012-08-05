@@ -8,39 +8,41 @@
 package org.slizardo.madcommander.dialogs.progressive;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.slizardo.madcommander.util.gui.DialogFactory;
 import org.slizardo.madcommander.util.io.FileOperations;
 
-
 public class DeleteProgressDialog extends AbstractProgressDialog {
 
-	private ArrayList<File> selectedFiles;
-	
-	public void setSelectedFiles(ArrayList<File> selectedFiles) {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1031712739175885827L;
+	private List<File> selectedFiles;
+
+	public void setSelectedFiles(List<File> selectedFiles) {
 		this.selectedFiles = selectedFiles;
 	}
-	
+
 	public void run() {
 		for (int i = 0; i < selectedFiles.size(); i++) {
 			File file = selectedFiles.get(i);
 			myProcess.currentFile = file.getName();
 			myProcess.currentProgress = 0;
- 			myProcess.totalProgress = (int) ((i * 100) / selectedFiles.size());
+			myProcess.totalProgress = (int) ((i * 100) / selectedFiles.size());
 			StringBuffer buffer = new StringBuffer();
-            buffer.append("Deleting [ ");
-            buffer.append(file.getName());
-            buffer.append(" ]");
+			buffer.append("Deleting [ ");
+			buffer.append(file.getName());
+			buffer.append(" ]");
 			logger.info(buffer.toString());
 			if (FileOperations.delete(file) == false) {
 				StringBuffer errorBuffer = new StringBuffer();
 				errorBuffer.append("File ");
 				errorBuffer.append(file.getAbsoluteFile());
 				errorBuffer.append(" cannot be deleted!");
-                final String errorString = errorBuffer.toString();
-				DialogFactory.showErrorMessage(src.getParent(),
-						errorString);
+				final String errorString = errorBuffer.toString();
+				DialogFactory.showErrorMessage(src.getParent(), errorString);
 				logger.severe(errorString);
 			}
 			myProcess.currentProgress = 100;

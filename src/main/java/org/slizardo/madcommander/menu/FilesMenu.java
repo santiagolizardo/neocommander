@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -28,8 +28,12 @@ import org.slizardo.madcommander.resources.images.IconFactory;
 import org.slizardo.madcommander.resources.languages.Translator;
 import org.slizardo.madcommander.util.gui.DialogFactory;
 
-
 public class FilesMenu extends JMenu implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3242803672077641559L;
 
 	private LocalizedMenuItem changeAttributes;
 
@@ -79,7 +83,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog();
 			changeAttributesDialog.setVisible(true);
 		} else if (source == unpack) {
-			ArrayList<File> list = MainGUI.app.getSource().getSelectedFiles();
+			List<File> list = MainGUI.app.getSource().getSelectedFiles();
 			if (list.size() == 1) {
 				File file = list.get(0);
 				StringBuffer buffer = new StringBuffer();
@@ -98,8 +102,16 @@ public class FilesMenu extends JMenu implements ActionListener {
 		} else if (source == quit) {
 			MainGUI.app.quit();
 		} else if (source == compareByContent) {
-			File file1 = MainGUI.app.getSource().getSelectedFiles().get(0);
-			File file2 = MainGUI.app.getDestiny().getSelectedFiles().get(0);
+			List<File> files1 = MainGUI.app.getSource().getSelectedFiles();
+			List<File> files2 = MainGUI.app.getDestiny().getSelectedFiles();
+			if (files1.size() == 0 || files2.size() == 0) {
+				DialogFactory
+						.showInformationMessage(MainGUI.app,
+								"Please select a file on each panel first to compare their contents.");
+				return;
+			}
+			File file1 = files1.get(0);
+			File file2 = files2.get(0);
 			try {
 				if (FileUtils.contentEquals(file1, file2) == true) {
 					DialogFactory.showInformationMessage(MainGUI.app,

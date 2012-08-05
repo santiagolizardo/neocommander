@@ -20,6 +20,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class SelectAllAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4495200194919712150L;
+
 	public SelectAllAction() {
 		super(Translator.text("Select_all"));
 		

@@ -19,6 +19,11 @@ import javax.swing.SpringLayout;
 
 public class AdvancedTab extends JPanel implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2068980899563559757L;
+
 	private JCheckBox fileSize;
 
 	private JComboBox conditionList;

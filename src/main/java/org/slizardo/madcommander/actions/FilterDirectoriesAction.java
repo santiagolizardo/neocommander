@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class FilterDirectoriesAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4224205274635164359L;
+
 	public FilterDirectoriesAction() {
 		super(Translator.text("Filter_directories"));
 	}

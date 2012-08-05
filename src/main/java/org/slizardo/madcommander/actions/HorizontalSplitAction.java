@@ -20,6 +20,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class HorizontalSplitAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2941630640706613242L;
+
 	public HorizontalSplitAction() {
 		super(Translator.text("Horizontal_split"), IconFactory
 				.newIcon("horizontal_split.png"));

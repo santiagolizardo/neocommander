@@ -24,6 +24,10 @@ import org.slizardo.madcommander.util.gui.DialogFactory;
 
 public class SelectDrivePopup extends JPopupMenu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4959814209723911694L;
 	private static final Icon DRIVE_ICON = IconFactory.newIcon("drive.gif");
 
 	public SelectDrivePopup() {
@@ -38,6 +42,10 @@ public class SelectDrivePopup extends JPopupMenu {
 
 	private class FileButton extends JMenuItem implements ActionListener {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -694233547831994294L;
 		private File drive;
 		private String absolutePath;
 

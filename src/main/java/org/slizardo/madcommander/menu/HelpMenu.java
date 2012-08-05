@@ -27,6 +27,11 @@ import org.slizardo.madcommander.util.UpdateManager;
 
 public class HelpMenu extends JMenu implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8893380914412785609L;
+
 	private JMenuItem helpIndex;
 
 	private LocalizedMenuItem keyboard;

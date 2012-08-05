@@ -17,6 +17,10 @@ import org.slizardo.madcommander.components.filelisting.FileListing.Position;
 
 public class FileListingTabbed extends JTabbedPane {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6010265431790349455L;
 	private Position panelID;
 
 	public FileListingTabbed(Position panelID) {

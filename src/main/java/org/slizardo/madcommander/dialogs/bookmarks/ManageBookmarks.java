@@ -29,6 +29,10 @@ import org.slizardo.madcommander.util.gui.DialogFactory;
 
 public class ManageBookmarks extends JDialog implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2436015514011489788L;
 	private JList list;
 	private JScrollPane scroll;
 

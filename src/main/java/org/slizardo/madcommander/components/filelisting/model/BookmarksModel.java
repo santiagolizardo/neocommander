@@ -7,27 +7,36 @@
  */
 package org.slizardo.madcommander.components.filelisting.model;
 
-import javax.swing.AbstractListModel;
+import java.util.List;
 
-import org.slizardo.madcommander.MainGUI;
+import javax.swing.AbstractListModel;
 
 
 public class BookmarksModel extends AbstractListModel {
 
-	public BookmarksModel() {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7176387701702459011L;
+
+	private List<String> bookmarks;
+	
+	public BookmarksModel(List<String> bookmarks) {
 		super();
+		
+		this.bookmarks = bookmarks;
 	}
 	
 	public Object getElementAt(int index) {
-		return MainGUI.app.mainMenu.bookmarksMenu.bookmarks.get(index);
+		return bookmarks.get(index);
 	}
 
 	public int getSize() {
-		return MainGUI.app.mainMenu.bookmarksMenu.bookmarks.size();
+		return bookmarks.size();
 	}
 	
 	public void addBookmark(String bookmark) {
-		MainGUI.app.mainMenu.bookmarksMenu.addBookmark(bookmark);
+		//MainGUI.app.mainMenu.bookmarksMenu.addBookmark(bookmark);
 		fireIntervalAdded(bookmark, getSize()-1, 1);
 	}
 }

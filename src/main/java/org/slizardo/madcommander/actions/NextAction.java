@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class NextAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2403279687627821070L;
+
 	public NextAction() {
 		super(Translator.text("Next"), IconFactory.newIcon("next.gif"));
         

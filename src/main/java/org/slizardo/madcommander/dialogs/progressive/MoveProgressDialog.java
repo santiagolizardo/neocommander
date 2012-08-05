@@ -8,21 +8,25 @@
 package org.slizardo.madcommander.dialogs.progressive;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.slizardo.madcommander.util.gui.DialogFactory;
 
-
 public class MoveProgressDialog extends AbstractProgressDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6456147166253912620L;
+
 	public void run() {
-        if (srcPath.equals(dstPath)) {
-            DialogFactory.showErrorMessage(src.getParent(),
-                    "You cannot move a file to itself!");
-            return;
-        }        
-        
-		ArrayList<File> selectedFiles = src.getSelectedFiles();
+		if (srcPath.equals(dstPath)) {
+			DialogFactory.showErrorMessage(src.getParent(),
+					"You cannot move a file to itself!");
+			return;
+		}
+
+		List<File> selectedFiles = src.getSelectedFiles();
 
 		for (int i = 0; i < selectedFiles.size(); i++) {
 			myProcess.currentFile = selectedFiles.get(i).getName();

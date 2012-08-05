@@ -21,6 +21,11 @@ import org.slizardo.madcommander.actions.fileops.FileOpsFactory;
 
 public class ShortcutsPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6490973152006379145L;
+
 	private static final Border BUTTON_BORDER = new SoftBevelBorder(
 			SoftBevelBorder.RAISED);
 
@@ -68,6 +73,11 @@ public class ShortcutsPanel extends JPanel {
 	}
 
 	private class Button extends JButton {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -409157035363687532L;
 
 		public Button(Action action) {
 			super(action);

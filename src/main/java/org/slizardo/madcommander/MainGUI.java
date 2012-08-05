@@ -20,12 +20,9 @@ package org.slizardo.madcommander;
 
 import javax.swing.SwingUtilities;
 
-import org.slizardo.madcommander.config.ConfigWrapper;
 import org.slizardo.madcommander.resources.languages.Translator;
 import org.slizardo.madcommander.services.LoggingServices;
-import org.slizardo.madcommander.util.LockManager;
 import org.slizardo.madcommander.util.gui.SwingUtil;
-
 
 /**
  * Application entry point.
@@ -46,29 +43,31 @@ public class MainGUI {
 		}
 
 		try {
-			ConfigWrapper.init();
-			Translator.init();
 
-			LockManager.check();
+			String locale = "en_US";
+			Translator.init(locale);
 
-			String lookAndFeel = ConfigWrapper.getProperty("app.lookandfeel");
+			//LockManager.check();
+
+			String lookAndFeel = "system";
 			if ("system".equals(lookAndFeel))
 				SwingUtil.setSystemLookAndFeel();
 			else
 				SwingUtil.setCrossPlatformLookAndFeel();
+
+			app = new MadCommander();
+			app.init();
 
 			/*
 			 * We put the main frame in the event-dispatching thread
 			 */
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
-					app = new MadCommander();
-					app.init();
 					app.setVisible(true);
 				}
 			});
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }

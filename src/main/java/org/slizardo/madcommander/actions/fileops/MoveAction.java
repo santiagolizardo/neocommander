@@ -19,6 +19,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class MoveAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3679234847107716636L;
+
 	public MoveAction() {
 		super(Translator.text("Move"), IconFactory.newIcon("F6.gif"));
 		

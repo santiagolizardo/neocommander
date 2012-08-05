@@ -23,6 +23,11 @@ import org.slizardo.madcommander.menu.ShowMenu;
 
 public class MainMenu extends JMenuBar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8070437809650388843L;
+
 	public ConfigurationMenu configurationMenu;
 
 	public BookmarksMenu bookmarksMenu;

@@ -19,6 +19,11 @@ import org.slizardo.madcommander.resources.images.IconFactory;
 
 public class FileRenderer extends JLabel implements ListCellRenderer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1487522844646855287L;
+
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean selected, boolean cellHasFocus) {
 		String fileName = value.toString();
 		File file = new File(fileName); 

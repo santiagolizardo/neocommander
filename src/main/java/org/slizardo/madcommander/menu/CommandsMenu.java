@@ -22,6 +22,10 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class CommandsMenu extends JMenu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9047001930044127824L;
 	private JMenuItem search;
 	private JMenuItem gotoUserDir;
 	private JMenuItem gotoPrevious;

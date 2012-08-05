@@ -20,6 +20,11 @@ import org.slizardo.madcommander.dialogs.SelectDrivePopup;
 
 public class SelectDriveAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5388378675835343628L;
+
 	public SelectDriveAction() {
 		super("SelectDriveAction");
 		

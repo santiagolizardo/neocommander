@@ -12,9 +12,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.slizardo.madcommander.MadCommander;
-import org.slizardo.madcommander.config.ConfigWrapper;
 import org.slizardo.madcommander.util.gui.DialogFactory;
-
 
 /**
  * Controls if the application can run multiple instances at the same time.
@@ -24,21 +22,20 @@ import org.slizardo.madcommander.util.gui.DialogFactory;
  */
 public final class LockManager {
 
-	private static Logger logger = Logger
-			.getLogger(LockManager.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(LockManager.class
+			.getName());
 
 	private LockManager() {
 	}
 
 	public static void check() throws IOException {
-		boolean allowInstances = ConfigWrapper
-				.getBooleanProperty("allow.instances");
+		boolean allowInstances = false;
 
 		if (!allowInstances) {
 			String tempDir = System.getProperty("java.io.tmpdir");
-			String lockPath = tempDir.concat(File.separator).concat(
-					MadCommander.APP_NAME).concat(".lock");
-			logger.info(lockPath);
+			String lockPath = tempDir.concat(File.separator)
+					.concat(MadCommander.APP_NAME).concat(".lock");
+			LOGGER.info(lockPath);
 
 			File lock = new File(lockPath);
 			if (lock.exists()) {

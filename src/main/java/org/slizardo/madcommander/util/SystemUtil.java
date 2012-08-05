@@ -22,6 +22,7 @@ public class SystemUtil {
 		args[0] = "cmd.exe";
 		args[1] = "/C";
 		args[2] = command;
+
 		try {
 			runtime.exec(args);
 		} catch (Exception e) {

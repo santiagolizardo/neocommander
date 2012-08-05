@@ -17,6 +17,11 @@ import org.slizardo.madcommander.actions.fileops.TouchAction;
 
 public class PopupMenu extends JPopupMenu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7953562218031804003L;
+
 	public PopupMenu() {
 		super();
 

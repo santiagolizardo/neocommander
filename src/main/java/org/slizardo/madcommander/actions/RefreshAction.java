@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class RefreshAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3329520213155594135L;
+
 	public RefreshAction() {
 		super(Translator.text("Refresh"), IconFactory.newIcon("refresh.gif"));
 	}

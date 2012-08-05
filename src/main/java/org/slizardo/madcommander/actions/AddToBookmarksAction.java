@@ -16,13 +16,17 @@ import org.slizardo.madcommander.MainGUI;
 import org.slizardo.madcommander.resources.images.IconFactory;
 import org.slizardo.madcommander.resources.languages.Translator;
 
-
 class AddToBookmarksAction extends AbstractAction {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6038164265710205238L;
 
 	public AddToBookmarksAction() {
 		super(Translator.text("Add_to_bookmarks"), IconFactory
 				.newIcon("add_to_bookmarks.png"));
-		
+
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl B"));
 	}
 

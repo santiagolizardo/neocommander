@@ -28,13 +28,16 @@ import org.slizardo.madcommander.actions.HorizontalSplitAction;
 import org.slizardo.madcommander.actions.RefreshAction;
 import org.slizardo.madcommander.components.filelisting.filters.FilterCustom;
 import org.slizardo.madcommander.components.localized.LocalizedRadioButtonMenuItem;
-import org.slizardo.madcommander.config.ConfigWrapper;
 import org.slizardo.madcommander.menu.items.ReversedOrderItem;
 import org.slizardo.madcommander.resources.languages.Translator;
 import org.slizardo.madcommander.util.gui.DialogFactory;
 
-
 public class ShowMenu extends JMenu implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8123523245285098209L;
 
 	private JRadioButtonMenuItem brief;
 
@@ -68,7 +71,8 @@ public class ShowMenu extends JMenu implements ActionListener {
 
 		horizontalSplit = new JCheckBoxMenuItem(new HorizontalSplitAction());
 		horizontalSplit.addActionListener(this);
-		if (ConfigWrapper.getIntProperty("panels.orientation") == JSplitPane.HORIZONTAL_SPLIT) {
+		int panelsOrientation = JSplitPane.HORIZONTAL_SPLIT;
+		if (panelsOrientation == JSplitPane.HORIZONTAL_SPLIT) {
 			horizontalSplit.setSelected(false);
 		} else {
 			horizontalSplit.setSelected(true);
@@ -76,7 +80,8 @@ public class ShowMenu extends JMenu implements ActionListener {
 
 		filterNone = new JRadioButtonMenuItem(new FilterNoneAction());
 		filterNone.setSelected(true);
-		filterDirectories = new JRadioButtonMenuItem(new FilterDirectoriesAction());
+		filterDirectories = new JRadioButtonMenuItem(
+				new FilterDirectoriesAction());
 		filterHiddens = new JRadioButtonMenuItem(new FilterHiddensAction());
 		filterCustom = new LocalizedRadioButtonMenuItem("Filter_custom...");
 		filterCustom.addActionListener(this);
@@ -108,10 +113,11 @@ public class ShowMenu extends JMenu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
 		if (source == reversedOrder) {
-			MainGUI.app.getSource().setReversedOrder(reversedOrder.isSelected());
+			MainGUI.app.getSource()
+					.setReversedOrder(reversedOrder.isSelected());
 		} else if (source == filterCustom) {
-			String pattern = DialogFactory
-					.showInputDialog(MainGUI.app, "Pattern:");
+			String pattern = DialogFactory.showInputDialog(MainGUI.app,
+					"Pattern:");
 			if (pattern == null)
 				return;
 			MainGUI.app.getSource().setFilter(new FilterCustom(pattern));

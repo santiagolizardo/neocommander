@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class HomeAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 337608857452610788L;
+
 	public HomeAction() {
 		super(Translator.text("Go_to_user_dir"), IconFactory
 				.newIcon("home.gif"));

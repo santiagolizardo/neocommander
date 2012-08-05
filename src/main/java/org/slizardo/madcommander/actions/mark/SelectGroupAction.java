@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class SelectGroupAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1662191719198242841L;
+
 	public SelectGroupAction() {
 		super(Translator.text("Select_group..."), IconFactory.newIcon("pencil_add.png"));
 	}

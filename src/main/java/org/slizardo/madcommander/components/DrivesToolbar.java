@@ -24,6 +24,10 @@ import org.slizardo.madcommander.util.gui.DialogFactory;
 
 public class DrivesToolbar extends JToolBar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4975350309638036942L;
 	private static final Icon DRIVE_ICON = IconFactory.newIcon("drive.gif");
 
 	public DrivesToolbar() {
@@ -40,6 +44,10 @@ public class DrivesToolbar extends JToolBar {
 
 	private class FileButton extends JButton implements ActionListener {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -8679110634791181972L;
 		private File drive;
 		private String absolutePath;
 

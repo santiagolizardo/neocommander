@@ -19,6 +19,11 @@ import org.slizardo.madcommander.util.SystemUtil;
 
 public class LinkLabel extends JLabel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8488272749111338872L;
+
 	public LinkLabel(String url) {
 		super();
 

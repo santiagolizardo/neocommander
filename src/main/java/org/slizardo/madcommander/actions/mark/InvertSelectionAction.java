@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class InvertSelectionAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2060474525811836981L;
+
 	public InvertSelectionAction() {
 		super(Translator.text("Invert_selection"));
 	}

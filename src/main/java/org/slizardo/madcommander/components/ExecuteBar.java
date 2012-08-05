@@ -18,11 +18,14 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import org.slizardo.madcommander.components.localized.LocalizedLabel;
-import org.slizardo.madcommander.config.ConfigWrapper;
 import org.slizardo.madcommander.util.SystemUtil;
 
-
 public class ExecuteBar extends JPanel implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2866538203429884941L;
 
 	private JComboBox commands;
 
@@ -52,23 +55,6 @@ public class ExecuteBar extends JPanel implements ActionListener {
 			model.addElement(text);
 			SystemUtil.execute(this, text);
 		}
-	}
-
-	public void loadProperties() {
-		String[] commandsHistory = ConfigWrapper
-				.getProperties("commands.history");
-		for (String command : commandsHistory) {
-			model.addElement(command);
-		}
-	}
-
-	public void saveProperties() {
-		String[] commandsHistory = new String[model.getSize()];
-		for (byte i = 0; i < commandsHistory.length; i++) {
-			commandsHistory[i] = model.getElementAt(i).toString();
-		}
-
-		ConfigWrapper.setProperties("commands.history", commandsHistory);
 	}
 
 	private void defineLayout() {

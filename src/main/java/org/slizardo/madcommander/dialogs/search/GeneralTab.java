@@ -21,6 +21,11 @@ import org.slizardo.madcommander.components.localized.LocalizedLabel;
 
 public class GeneralTab extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8599436433134195796L;
+
 	private JLabel labelSearchFor;
 
 	private JTextField searchFor;

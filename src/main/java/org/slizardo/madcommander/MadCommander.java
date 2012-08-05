@@ -37,21 +37,20 @@ import org.slizardo.madcommander.components.MainMenu;
 import org.slizardo.madcommander.components.Panels;
 import org.slizardo.madcommander.components.ShortcutsPanel;
 import org.slizardo.madcommander.components.filelisting.FileListing;
-import org.slizardo.madcommander.components.filelisting.FileListingTabbed;
 import org.slizardo.madcommander.components.filelisting.FileListing.Position;
+import org.slizardo.madcommander.components.filelisting.FileListingTabbed;
 import org.slizardo.madcommander.components.filelisting.model.BookmarksModel;
-import org.slizardo.madcommander.config.ConfigWrapper;
 import org.slizardo.madcommander.resources.images.IconFactory;
-
 
 @SuppressWarnings("serial")
 public class MadCommander extends JFrame {
 
 	public final static String APP_NAME = "MadCommander";
-	public final static String APP_VERSION = "1.2";
+	public final static String APP_VERSION = "1.4";
 	public final static String APP_URL = "http://sourceforge.net/projects/madcommander";
-	
-	private static Logger logger = Logger.getLogger("Main");
+
+	private static final Logger LOGGER = Logger.getLogger(MadCommander.class
+			.getName());
 
 	public BasicToolbar basicToolbar;
 
@@ -79,7 +78,7 @@ public class MadCommander extends JFrame {
 	public MadCommander() {
 		super();
 
-		setTitle(APP_NAME.concat(" ").concat(APP_VERSION));
+		setTitle(APP_NAME + APP_VERSION);
 		setIconImage(IconFactory.newIcon("icon.gif").getImage());
 
 		currentPanel = Position.Left;
@@ -96,33 +95,19 @@ public class MadCommander extends JFrame {
 			}
 		});
 
-		bookmarksModel = new BookmarksModel();
-
 		defineLayout();
 	}
 
 	public void init() {
 		mainMenu = new MainMenu();
+		bookmarksModel = new BookmarksModel(mainMenu.bookmarksMenu.bookmarks);
 		setJMenuBar(mainMenu);
 
-		setSize(ConfigWrapper.getIntProperty("app.width"), ConfigWrapper
-				.getIntProperty("app.height"));
-		setLocation(ConfigWrapper.getIntProperty("app.x"), ConfigWrapper
-				.getIntProperty("app.y"));
-
-		mainMenu.bookmarksMenu.loadProperties();
 		panels.loadProperties();
 
-		mainMenu.configurationMenu.loadProperties();
-	}
+		setSize(640, 480);
+		setLocation(80, 80);
 
-	public void saveProperties() {
-		ConfigWrapper.setIntProperty("app.width", getWidth());
-		ConfigWrapper.setIntProperty("app.height", getHeight());
-		ConfigWrapper.setIntProperty("app.x", getX());
-		ConfigWrapper.setIntProperty("app.y", getY());
-
-		mainMenu.configurationMenu.saveProperties();
 	}
 
 	private final void defineLayout() {
@@ -130,15 +115,11 @@ public class MadCommander extends JFrame {
 		container = new JPanel();
 		container.setLayout(new GridBagLayout());
 
-		if (ConfigWrapper.getBooleanProperty("show.basic.toolbar"))
-			addBasicToolbar(false);
-		if (ConfigWrapper.getBooleanProperty("show.drives.toolbar"))
-			addDrivesToolbar(false);
+		addBasicToolbar(false);
+		addDrivesToolbar(false);
 		addPanels();
-		if (ConfigWrapper.getBooleanProperty("show.execute.panel"))
-			addExecutePanel(false);
-		if (ConfigWrapper.getBooleanProperty("show.shortcuts.panel"))
-			addShortcutsPanel(false);
+		addExecutePanel(false);
+		addShortcutsPanel(false);
 
 		contentPane.add(container);
 
@@ -259,14 +240,7 @@ public class MadCommander extends JFrame {
 	public void quit() {
 		setVisible(false);
 
-		saveProperties();
-		try {
-			ConfigWrapper.save();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-
-		logger.info("Stoping main...");
+		LOGGER.info("Stoping main...");
 
 		dispose();
 	}

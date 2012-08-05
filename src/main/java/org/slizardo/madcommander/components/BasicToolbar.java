@@ -30,6 +30,11 @@ import org.slizardo.madcommander.resources.images.IconFactory;
 
 public class BasicToolbar extends JToolBar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2081100107934692827L;
+
 	public BasicToolbar() {
 		super();
 

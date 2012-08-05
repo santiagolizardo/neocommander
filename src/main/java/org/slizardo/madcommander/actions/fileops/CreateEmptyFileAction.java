@@ -14,6 +14,10 @@ import org.slizardo.madcommander.util.gui.DialogFactory;
 
 public class CreateEmptyFileAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8545331012599545142L;
 	private MadCommander mc;
 
 	public CreateEmptyFileAction(MadCommander mc) {

@@ -19,6 +19,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 class CopyAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9188948997680927042L;
+
 	public CopyAction() {
 		super(Translator.text("Copy"), IconFactory.newIcon("F5.gif"));
 		

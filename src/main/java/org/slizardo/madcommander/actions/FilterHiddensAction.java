@@ -18,6 +18,11 @@ import org.slizardo.madcommander.resources.languages.Translator;
 
 public class FilterHiddensAction extends AbstractAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6269733626952310453L;
+
 	public FilterHiddensAction() {
 		super(Translator.text("Filter_hiddens"));
 	}

@@ -13,10 +13,14 @@ import java.awt.event.ComponentEvent;
 import javax.swing.JSplitPane;
 
 import org.slizardo.madcommander.MainGUI;
-import org.slizardo.madcommander.config.ConfigWrapper;
 
 
 public class Panels extends JSplitPane {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 284991976741039153L;
 
 	public Panels() {
 		super();
@@ -28,7 +32,8 @@ public class Panels extends JSplitPane {
 	}
 
 	public void loadProperties() {
-		changeOrientation(ConfigWrapper.getIntProperty("panels.orientation"));
+//		changeOrientation(ConfigWrapper.getInstance().getIntProperty("panels.orientation"));
+		changeOrientation(JSplitPane.HORIZONTAL_SPLIT);
 	}
 
 	public void changeOrientation(int orientation) {
