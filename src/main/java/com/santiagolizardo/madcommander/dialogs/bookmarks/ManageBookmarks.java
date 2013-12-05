@@ -21,18 +21,19 @@ import javax.swing.SpringLayout;
 import com.santiagolizardo.madcommander.MainGUI;
 import com.santiagolizardo.madcommander.components.filelisting.model.BookmarksModel;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
+import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 
-public class ManageBookmarks extends JDialog implements ActionListener {
+public class ManageBookmarks extends AbstractDialog implements ActionListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2436015514011489788L;
-	private JList list;
+	private JList<String> list;
 	private JScrollPane scroll;
 
 	private JTextField bookmark;
@@ -47,7 +48,7 @@ public class ManageBookmarks extends JDialog implements ActionListener {
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
-		list = new JList(MainGUI.app.bookmarksModel);
+		list = new JList<String>(MainGUI.app.bookmarksModel);
 		scroll = new JScrollPane(list);
 		
 		bookmark = new JTextField(30);

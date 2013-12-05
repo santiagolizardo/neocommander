@@ -19,10 +19,11 @@ import javax.swing.SpringLayout;
 
 import com.santiagolizardo.madcommander.MainGUI;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
+import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.CalendarUtil;
 
-public class ChangeAttributesDialog extends JDialog implements ActionListener {
+public class ChangeAttributesDialog extends AbstractDialog implements ActionListener {
 
 	private static final long serialVersionUID = -2519143127010077700L;
 

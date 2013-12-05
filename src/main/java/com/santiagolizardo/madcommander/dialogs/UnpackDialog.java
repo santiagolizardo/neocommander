@@ -36,7 +36,7 @@ import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileUtil;
 
 
-public class UnpackDialog extends JDialog implements ActionListener {
+public class UnpackDialog extends AbstractDialog implements ActionListener {
 
 	/**
 	 * 

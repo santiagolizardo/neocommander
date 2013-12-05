@@ -22,7 +22,7 @@ import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 
-public abstract class AbstractGroupDialog extends JDialog implements
+public abstract class AbstractGroupDialog extends AbstractDialog implements
 		ActionListener {
 
 	/**
@@ -30,7 +30,7 @@ public abstract class AbstractGroupDialog extends JDialog implements
 	 */
 	private static final long serialVersionUID = 7833199314557405992L;
 
-	private JComboBox type;
+	private JComboBox<String> type;
 
 	private JTextField searchPattern;
 
@@ -54,7 +54,7 @@ public abstract class AbstractGroupDialog extends JDialog implements
 
 		String[] types = new String[] { "Contains", "Starts with", "Ends with",
 				"Is" };
-		type = new JComboBox(types);
+		type = new JComboBox<String>(types);
 
 		searchPattern = new JTextField(17);
 		searchPattern.setText(".txt");

@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 
 import org.apache.commons.io.FileUtils;
 
-public class HelpDialog extends JDialog {
+public class HelpDialog extends AbstractDialog {
 
 	private static final long serialVersionUID = 3552941757519747207L;
 

@@ -31,7 +31,7 @@ import com.santiagolizardo.madcommander.controller.PackTypes;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 
-public class PackDialog extends JDialog implements ActionListener {
+public class PackDialog extends AbstractDialog implements ActionListener {
 
 	private static final long serialVersionUID = -3805898808819160470L;
 

@@ -17,7 +17,6 @@ import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.HelpAction;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.AboutDialog;
-import com.santiagolizardo.madcommander.dialogs.HelpDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.SystemUtil;
@@ -33,8 +32,6 @@ public class HelpMenu extends JMenu implements ActionListener {
 
 	private JMenuItem helpIndex;
 
-	private LocalizedMenuItem keyboard;
-
 	private LocalizedMenuItem visitJavaCommanderWebSite;
 
 	private LocalizedMenuItem checkForUpdate;
@@ -46,9 +43,6 @@ public class HelpMenu extends JMenu implements ActionListener {
 		setMnemonic(KeyEvent.VK_H);
 
 		helpIndex = new JMenuItem(new HelpAction());
-
-		keyboard = new LocalizedMenuItem("Keyboard");
-		keyboard.addActionListener(this);
 
 		visitJavaCommanderWebSite = new LocalizedMenuItem(
 				"Visit_MadCommander_web_site");
@@ -63,7 +57,6 @@ public class HelpMenu extends JMenu implements ActionListener {
 		aboutJavaCommander.addActionListener(this);
 
 		add(helpIndex);
-		add(keyboard);
 		add(visitJavaCommanderWebSite);
 		addSeparator();
 		add(checkForUpdate);
@@ -72,10 +65,8 @@ public class HelpMenu extends JMenu implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
-		if (source == keyboard) {
-			HelpDialog helpDialog = new HelpDialog("help/keyboard.txt");
-			helpDialog.setVisible(true);
-		} else if (source == visitJavaCommanderWebSite) {
+
+		if (source == visitJavaCommanderWebSite) {
 			SystemUtil.browse(this, MadCommander.APP_URL);
 		} else if (source == checkForUpdate) {
 			UpdateManager.checkForUpdate();

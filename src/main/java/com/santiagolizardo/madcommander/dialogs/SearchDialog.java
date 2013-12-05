@@ -43,8 +43,7 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileUtil;
 
-
-public class SearchDialog extends JDialog implements ActionListener {
+public class SearchDialog extends AbstractDialog implements ActionListener {
 
 	private static final long serialVersionUID = -6936490579285517802L;
 
@@ -56,13 +55,13 @@ public class SearchDialog extends JDialog implements ActionListener {
 
 	private JButton cancel;
 
-	private DefaultListModel results;
+	private DefaultListModel<String> results;
 
-	private JList resultsList;
+	private JList<String> resultsList;
 
 	public SearchDialog() {
 		super();
-		
+
 		setTitle("Find files");
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -72,12 +71,11 @@ public class SearchDialog extends JDialog implements ActionListener {
 		generalTab = new GeneralTab();
 		advancedTab = new AdvancedTab();
 
-		results = new DefaultListModel();
-		resultsList = new JList(results);
-		resultsList.setCellRenderer(new ListCellRenderer() {
+		results = new DefaultListModel<String>();
+		resultsList = new JList<String>(results);
+		resultsList.setCellRenderer(new ListCellRenderer<String>() {
 			public Component getListCellRendererComponent(JList arg0,
-					Object object, int arg2, boolean selected, boolean arg4) {
-				String fileName = object.toString();
+					String fileName, int arg2, boolean selected, boolean arg4) {
 				File file = new File(fileName);
 				Icon icon = IconFactory.getIconForFile(file);
 				JLabel label = new JLabel(fileName);
@@ -146,7 +144,8 @@ public class SearchDialog extends JDialog implements ActionListener {
 		searchFiles(results, params);
 	}
 
-	private void searchFiles(DefaultListModel model, final SearchParams params) {
+	private void searchFiles(DefaultListModel<String> model,
+			final SearchParams params) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				File dir = new File(params.getSearchIn());
@@ -192,8 +191,9 @@ public class SearchDialog extends JDialog implements ActionListener {
 						}
 					}
 				} else {
-					DialogFactory.showErrorMessage(MainGUI.app, "El directorio '"
-							+ params.getSearchIn() + "' no existe.");
+					DialogFactory.showErrorMessage(MainGUI.app,
+							"El directorio '" + params.getSearchIn()
+									+ "' no existe.");
 				}
 			}
 		});

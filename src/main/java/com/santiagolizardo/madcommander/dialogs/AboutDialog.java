@@ -9,37 +9,27 @@ package com.santiagolizardo.madcommander.dialogs;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.LinkLabel;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 
+public class AboutDialog extends AbstractDialog {
 
-public class AboutDialog extends JDialog {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1558869937506126714L;
 
 	private JTextArea text;
 
 	private JLabel webSite;
 
-	private JButton ok;
-
 	public AboutDialog() {
 		super();
 
 		setTitle(MadCommander.APP_NAME);
-		setSize(270, 300);
+		setSize(420, 200);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
@@ -59,13 +49,6 @@ public class AboutDialog extends JDialog {
 		text.setBackground(webSite.getBackground());
 		text.setFont(webSite.getFont());
 
-		ok = new LocalizedButton("Ok");
-		ok.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				dispose();
-			};
-		});
-
 		defineLayout();
 	}
 
@@ -84,10 +67,5 @@ public class AboutDialog extends JDialog {
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		c.gridheight = 2;
 		add(webSite, c);
-
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridheight = 3;
-		c.fill = GridBagConstraints.NONE;
-		add(ok, c);
 	}
 }

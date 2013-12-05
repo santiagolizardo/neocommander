@@ -45,7 +45,7 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 public class MadCommander extends JFrame {
 
 	public final static String APP_NAME = "MadCommander";
-	public final static String APP_VERSION = "1.4.1";
+	public final static String APP_VERSION = "1.4.2";
 	public final static String APP_URL = "http://sourceforge.net/projects/madcommander";
 
 	private static final Logger LOGGER = Logger.getLogger(MadCommander.class

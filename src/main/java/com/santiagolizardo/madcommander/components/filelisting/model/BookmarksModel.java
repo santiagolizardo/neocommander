@@ -11,7 +11,7 @@ import java.util.List;
 import javax.swing.AbstractListModel;
 
 
-public class BookmarksModel extends AbstractListModel {
+public class BookmarksModel extends AbstractListModel<String> {
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class BookmarksModel extends AbstractListModel {
 		this.bookmarks = bookmarks;
 	}
 	
-	public Object getElementAt(int index) {
+	public String getElementAt(int index) {
 		return bookmarks.get(index);
 	}
 
