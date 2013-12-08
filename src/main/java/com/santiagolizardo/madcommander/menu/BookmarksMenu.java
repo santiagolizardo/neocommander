@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -33,10 +34,14 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 	private JMenuItem addBookmark;
 
 	private JMenuItem manageBookmarks;
+	
+	private JFrame mainWindow;
 
-	public BookmarksMenu() {
+	public BookmarksMenu(JFrame mainWindow) {
 		super(Translator._("Bookmarks"));
 
+		this.mainWindow = mainWindow;
+		
 		addBookmark = new JMenuItem(
 				GeneralActionFactory.getAddToBookmarksAction());
 		manageBookmarks = new LocalizedMenuItem("Manage_bookmarks");
@@ -64,7 +69,7 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
 		if (source == manageBookmarks) {
-			ManageBookmarks manageBookmarks = new ManageBookmarks();
+			ManageBookmarks manageBookmarks = new ManageBookmarks(mainWindow);
 			manageBookmarks.setVisible(true);
 		} else {
 			String path = ((JMenuItem) source).getText();

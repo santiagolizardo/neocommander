@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
@@ -46,11 +47,15 @@ public class FilesMenu extends JMenu implements ActionListener {
 	private JMenuItem print;
 
 	private LocalizedMenuItem quit;
+	
+	private JFrame mainWindow;
 
-	public FilesMenu() {
+	public FilesMenu(JFrame mainWindow) {
 		super(Translator._("Files"));
 		setMnemonic(KeyEvent.VK_F);
 
+		this.mainWindow = mainWindow;
+		
 		changeAttributes = new LocalizedMenuItem("Change_attributes...");
 		changeAttributes.addActionListener(this);
 		pack = new JMenuItem(new PackAction());
@@ -80,7 +85,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
 		if (source == changeAttributes) {
-			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog();
+			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog(mainWindow);
 			changeAttributesDialog.setVisible(true);
 		} else if (source == unpack) {
 			List<File> list = MainGUI.app.getSource().getSelectedFiles();

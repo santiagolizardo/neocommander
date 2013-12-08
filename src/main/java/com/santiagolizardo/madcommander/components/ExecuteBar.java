@@ -26,18 +26,18 @@ public class ExecuteBar extends JPanel implements ActionListener {
 	 */
 	private static final long serialVersionUID = 2866538203429884941L;
 
-	private JComboBox commands;
+	private JComboBox<String> commands;
 
 	private JLabel currentPath;
 
-	private DefaultComboBoxModel model;
+	private DefaultComboBoxModel<String> model;
 
 	public ExecuteBar() {
 		super();
 
-		model = new DefaultComboBoxModel();
+		model = new DefaultComboBoxModel<String>();
 
-		commands = new JComboBox(model);
+		commands = new JComboBox<String>(model);
 		commands.setEditable(true);
 		commands.addActionListener(this);
 

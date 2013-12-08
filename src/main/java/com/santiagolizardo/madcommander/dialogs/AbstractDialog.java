@@ -11,6 +11,8 @@ import javax.swing.KeyStroke;
 
 public abstract class AbstractDialog extends JDialog {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected JRootPane createRootPane() {
 		JRootPane rootPane = super.createRootPane();

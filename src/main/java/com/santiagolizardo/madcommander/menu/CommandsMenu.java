@@ -8,6 +8,7 @@ package com.santiagolizardo.madcommander.menu;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -32,11 +33,11 @@ public class CommandsMenu extends JMenu {
 	private JMenuItem interchangePanels;
 	private JMenuItem targetEqualSource;
 
-	public CommandsMenu() {
+	public CommandsMenu(JFrame mainWindow) {
 		super(Translator._("Commands"));
 		setMnemonic(KeyEvent.VK_C);
 
-		search = new JMenuItem(new SearchAction());
+		search = new JMenuItem(new SearchAction(mainWindow));
 
 		gotoUserDir = new JMenuItem(new HomeAction());
 

@@ -7,6 +7,7 @@
 package com.santiagolizardo.madcommander.actions.mark;
 
 import javax.swing.Action;
+import javax.swing.JFrame;
 
 public class MarkActionsFactory {
 
@@ -17,14 +18,14 @@ public class MarkActionsFactory {
 	private static UnselectAllAction unselectAllAction;
 	private static InvertSelectionAction invertSelectionAction;
 	
-	public static Action getSelectGroupAction() {
-		if(selectGroupAction == null) selectGroupAction = new SelectGroupAction();
+	public static Action getSelectGroupAction(JFrame mainWindow) {
+		if(selectGroupAction == null) selectGroupAction = new SelectGroupAction(mainWindow);
 		
 		return selectGroupAction;
 	}
 	
-	public static Action getUnselectGroupAction() {
-		if(unselectGroupAction == null) unselectGroupAction = new UnselectGroupAction();
+	public static Action getUnselectGroupAction(JFrame mainWindow) {
+		if(unselectGroupAction == null) unselectGroupAction = new UnselectGroupAction(mainWindow);
 		
 		return unselectGroupAction;
 	}

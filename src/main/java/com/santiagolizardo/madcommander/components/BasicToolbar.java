@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JToolBar;
@@ -34,7 +35,7 @@ public class BasicToolbar extends JToolBar {
 	 */
 	private static final long serialVersionUID = 2081100107934692827L;
 
-	public BasicToolbar() {
+	public BasicToolbar(JFrame mainWindow) {
 		super();
 
 		setRollover(true);
@@ -61,9 +62,9 @@ public class BasicToolbar extends JToolBar {
 		group.add(filterDirectories);
 		group.add(filterHiddens);
 
-		JButton find = new JButton(new SearchAction());
+		JButton find = new JButton(new SearchAction(mainWindow));
 
-        JButton help = new JButton(new HelpAction());
+        JButton help = new JButton(new HelpAction(mainWindow));
 
 		final JButton filters = new JButton("Filter", IconFactory.newIcon("filter.gif"));
 		filters.addActionListener(new ActionListener() {

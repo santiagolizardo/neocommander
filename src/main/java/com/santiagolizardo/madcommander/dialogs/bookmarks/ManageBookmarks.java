@@ -13,6 +13,7 @@ import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -41,7 +42,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 	private JButton add;
 	private JButton remove;
 	
-	public ManageBookmarks() {
+	public ManageBookmarks(JFrame mainWindow) {
 		super();
 
 		setTitle(Translator._("Manage_bookmarks"));
@@ -61,7 +62,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 		remove.setIcon(IconFactory.newIcon("delete.png"));
 		
 		defineLayout();		
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(mainWindow);
 	}
 
 	public void actionPerformed(ActionEvent event) {

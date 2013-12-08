@@ -98,7 +98,7 @@ public class MadCommander extends JFrame {
 	}
 
 	public void init() {
-		mainMenu = new MainMenu();
+		mainMenu = new MainMenu(this);
 		bookmarksModel = new BookmarksModel(mainMenu.bookmarksMenu.bookmarks);
 		setJMenuBar(mainMenu);
 
@@ -126,7 +126,7 @@ public class MadCommander extends JFrame {
 	}
 
 	public void addBasicToolbar(boolean validate) {
-		basicToolbar = new BasicToolbar();
+		basicToolbar = new BasicToolbar(this);
 		contentPane.add(basicToolbar, BorderLayout.NORTH);
 		if (validate) {
 			contentPane.validate();

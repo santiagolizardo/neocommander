@@ -9,6 +9,7 @@ package com.santiagolizardo.madcommander.actions;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
 import com.santiagolizardo.madcommander.dialogs.HelpDialog;
@@ -20,14 +21,18 @@ public class HelpAction extends AbstractAction {
 
 	private static final long serialVersionUID = 8937302173564528682L;
 
-	public HelpAction() {
+	private JFrame mainWindow;
+	
+	public HelpAction(JFrame mainWindow) {
 		super(Translator._("Help"), IconFactory.newIcon("help.png"));
 
+		this.mainWindow = mainWindow;
+		
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F1"));
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		HelpDialog dialog = new HelpDialog("HELP.txt");
+		HelpDialog dialog = new HelpDialog(mainWindow, "HELP.txt");
 		dialog.setVisible(true);
 	}
 }

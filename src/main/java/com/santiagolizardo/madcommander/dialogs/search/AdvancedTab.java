@@ -25,11 +25,11 @@ public class AdvancedTab extends JPanel implements ActionListener {
 
 	private JCheckBox fileSize;
 
-	private JComboBox conditionList;
+	private JComboBox<String> conditionList;
 
 	private JTextField size;
 
-	private JComboBox measureList;
+	private JComboBox<String> measureList;
 
 	public AdvancedTab() {
 		super();
@@ -40,7 +40,7 @@ public class AdvancedTab extends JPanel implements ActionListener {
 		conditions.add("Equal");
 		conditions.add("Less");
 		conditions.add("More");
-		conditionList = new JComboBox(conditions);
+		conditionList = new JComboBox<String>(conditions);
 		conditionList.setEnabled(false);
 		size = new JTextField(20);
 		size.setEnabled(false);
@@ -48,7 +48,7 @@ public class AdvancedTab extends JPanel implements ActionListener {
 		measures.add("bytes");
 		measures.add("kbytes");
 		measures.add("mbytes");
-		measureList = new JComboBox(measures);
+		measureList = new JComboBox<String>(measures);
 		measureList.setEnabled(false);
 
 		defineLayout();

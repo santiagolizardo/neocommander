@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
 import com.santiagolizardo.madcommander.dialogs.SearchDialog;
@@ -21,15 +22,19 @@ public class SearchAction extends AbstractAction {
 
 	private static final long serialVersionUID = -1957915845327720772L;
 
-	public SearchAction() {
+	private JFrame mainWindow;
+	
+	public SearchAction(JFrame mainWindow) {
 		super(Translator._("Search..."), IconFactory.newIcon("find.gif"));
 
+		this.mainWindow = mainWindow;
+		
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F7,
 				KeyEvent.ALT_MASK));
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		SearchDialog searchDialog = new SearchDialog();
+		SearchDialog searchDialog = new SearchDialog(mainWindow);
 		searchDialog.setVisible(true);
 	}
 }

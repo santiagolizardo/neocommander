@@ -32,8 +32,8 @@ public class DeleteDialog extends JDialog {
 
 	private JLabel label;
 
-	private DefaultListModel model;
-	private JList list;
+	private DefaultListModel<File> model;
+	private JList<File> list;
 	private JScrollPane scroll;
 
 	private JButton ok;
@@ -53,8 +53,8 @@ public class DeleteDialog extends JDialog {
 
 		label = new JLabel(
 				"Do you really want to delete the selected files/directories?");
-		model = new DefaultListModel();
-		list = new JList(model);
+		model = new DefaultListModel<File>();
+		list = new JList<File>(model);
 		list.setCellRenderer(new FileRenderer());
 
 		scroll = new JScrollPane(list);
@@ -92,7 +92,7 @@ public class DeleteDialog extends JDialog {
 
 	public List<File> getSelectedFiles() {
 		List<File> selectedFiles = new ArrayList<File>();
-		for (Object value : list.getSelectedValues()) {
+		for (File value : list.getSelectedValuesList()) {
 			selectedFiles.add(new File(value.toString()));
 		}
 		return selectedFiles;

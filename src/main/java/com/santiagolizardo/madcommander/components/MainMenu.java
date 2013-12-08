@@ -31,25 +31,25 @@ public class MainMenu extends JMenuBar {
 
 	public BookmarksMenu bookmarksMenu;
 
-	public MainMenu() {
+	public MainMenu(MadCommander mainWindow) {
 		super();
 
 		MadCommander app = MainGUI.app;
 
-		FilesMenu filesMenu = new FilesMenu();
+		FilesMenu filesMenu = new FilesMenu(mainWindow);
 		add(filesMenu);
-		MarkMenu markMenu = new MarkMenu();
+		MarkMenu markMenu = new MarkMenu(mainWindow);
 		add(markMenu);
-		CommandsMenu commandsMenu = new CommandsMenu();
+		CommandsMenu commandsMenu = new CommandsMenu(mainWindow);
 		add(commandsMenu);
-		ShowMenu showMenu = new ShowMenu();
+		ShowMenu showMenu = new ShowMenu(mainWindow);
 		add(showMenu);
 		configurationMenu = new ConfigurationMenu(app);
 		add(configurationMenu);
-		bookmarksMenu = new BookmarksMenu();
+		bookmarksMenu = new BookmarksMenu(mainWindow);
 		add(bookmarksMenu);
 		add(Box.createHorizontalGlue());
-		HelpMenu helpMenu = new HelpMenu();
+		HelpMenu helpMenu = new HelpMenu(mainWindow);
 		add(helpMenu);
 	}
 }

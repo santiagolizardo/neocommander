@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
@@ -25,7 +26,7 @@ public class AboutDialog extends AbstractDialog {
 
 	private JLabel webSite;
 
-	public AboutDialog() {
+	public AboutDialog(JFrame mainWindow) {
 		super();
 
 		setTitle(MadCommander.APP_NAME);
@@ -34,7 +35,7 @@ public class AboutDialog extends AbstractDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setFocusable(true);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(mainWindow);
 
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(MadCommander.APP_NAME).append(" v").append(

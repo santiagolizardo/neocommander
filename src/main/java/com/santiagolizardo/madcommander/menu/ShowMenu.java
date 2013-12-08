@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
@@ -56,7 +57,7 @@ public class ShowMenu extends JMenu implements ActionListener {
 
 	private JRadioButtonMenuItem filterCustom;
 
-	public ShowMenu() {
+	public ShowMenu(JFrame mainWindow) {
 		super(Translator._("Show"));
 		setMnemonic(KeyEvent.VK_S);
 

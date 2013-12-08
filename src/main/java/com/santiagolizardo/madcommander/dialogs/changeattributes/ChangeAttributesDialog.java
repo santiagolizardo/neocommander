@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 
 import com.santiagolizardo.madcommander.MainGUI;
@@ -36,7 +37,7 @@ public class ChangeAttributesDialog extends AbstractDialog implements ActionList
 	private JButton ok;
 	private JButton cancel;
 
-	public ChangeAttributesDialog() {
+	public ChangeAttributesDialog(JFrame mainWindow) {
 		super();
 
 		setTitle(Translator._("Change_attributes..."));
@@ -54,7 +55,7 @@ public class ChangeAttributesDialog extends AbstractDialog implements ActionList
 
 		defineLayout();
 		setSize(240, 350);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(mainWindow);
 	}
 
 	public void actionPerformed(ActionEvent event) {

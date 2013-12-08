@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -38,11 +39,15 @@ public class HelpMenu extends JMenu implements ActionListener {
 
 	private LocalizedMenuItem aboutJavaCommander;
 
-	public HelpMenu() {
+	private JFrame mainWindow;
+	
+	public HelpMenu(JFrame mainWindow) {
 		super(Translator._("Help"));
 		setMnemonic(KeyEvent.VK_H);
+		
+		this.mainWindow = mainWindow;
 
-		helpIndex = new JMenuItem(new HelpAction());
+		helpIndex = new JMenuItem(new HelpAction(mainWindow));
 
 		visitJavaCommanderWebSite = new LocalizedMenuItem(
 				"Visit_MadCommander_web_site");
@@ -71,7 +76,7 @@ public class HelpMenu extends JMenu implements ActionListener {
 		} else if (source == checkForUpdate) {
 			UpdateManager.checkForUpdate();
 		} else if (source == aboutJavaCommander) {
-			AboutDialog aboutDialog = new AboutDialog();
+			AboutDialog aboutDialog = new AboutDialog(mainWindow);
 			aboutDialog.setVisible(true);
 		}
 	}

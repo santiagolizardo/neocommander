@@ -46,8 +46,8 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
 	private JButton browse;
     private JLabel fileText;
     private JTextField unpackOn;
-    private DefaultListModel model;
-    private JList list;
+    private DefaultListModel<String> model;
+    private JList<String> list;
     private JScrollPane scroll;
     
     private String fileName;
@@ -86,8 +86,8 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
         	}
         });
         
-        model = new DefaultListModel();
-        list = new JList(model);
+        model = new DefaultListModel<String>();
+        list = new JList<String>(model);
         scroll = new JScrollPane(list);
         Dimension scrollSize = new Dimension(350, 70);
         scroll.setMinimumSize(scrollSize);
@@ -100,6 +100,7 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
         		ZipEntry entry = (ZipEntry)e.nextElement();
         		model.addElement(entry.getName());
         	}
+        	zipFile.close();
         } catch (IOException io) {
         	io.printStackTrace();
         }

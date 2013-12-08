@@ -8,6 +8,7 @@ package com.santiagolizardo.madcommander.menu;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -22,12 +23,12 @@ public class MarkMenu extends JMenu {
 	 */
 	private static final long serialVersionUID = 753419026893214433L;
 
-	public MarkMenu() {
+	public MarkMenu(JFrame mainWindow) {
 		super(Translator._("Mark"));
 		setMnemonic(KeyEvent.VK_M);
 
-		JMenuItem selectGroup = new JMenuItem(MarkActionsFactory.getSelectGroupAction());
-		JMenuItem unselectGroup = new JMenuItem(MarkActionsFactory.getUnselectGroupAction());
+		JMenuItem selectGroup = new JMenuItem(MarkActionsFactory.getSelectGroupAction(mainWindow));
+		JMenuItem unselectGroup = new JMenuItem(MarkActionsFactory.getUnselectGroupAction(mainWindow));
 		JMenuItem selectAll = new JMenuItem(MarkActionsFactory.getSelectAllAction());
 		JMenuItem unselectAll = new JMenuItem(MarkActionsFactory.getUnselectAllAction());
 		JMenuItem invertSelection = new JMenuItem(MarkActionsFactory.getInvertSelectionAction());

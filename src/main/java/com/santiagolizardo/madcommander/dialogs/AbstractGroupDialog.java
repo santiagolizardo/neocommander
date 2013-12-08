@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -44,7 +45,7 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 
 	private JPanel buttonsPanel;
 
-	public AbstractGroupDialog(String title) {
+	public AbstractGroupDialog(String title, JFrame mainWindow) {
 		super();
 
 		setTitle(title);
@@ -81,7 +82,7 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 		buttonsPanel.add(cancel, BorderLayout.EAST);
 
 		defineLayout();
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(mainWindow);
 	}
 
 	public void actionPerformed(ActionEvent event) {

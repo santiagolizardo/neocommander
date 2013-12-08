@@ -25,6 +25,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -59,7 +60,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 
 	private JList<String> resultsList;
 
-	public SearchDialog() {
+	public SearchDialog(JFrame mainWindow) {
 		super();
 
 		setTitle("Find files");
@@ -111,7 +112,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 		cancel.addActionListener(this);
 
 		defineLayout();
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(mainWindow);
 	}
 
 	public void actionPerformed(ActionEvent event) {

@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -22,7 +23,7 @@ public class HelpDialog extends AbstractDialog {
 
 	private static final long serialVersionUID = 3552941757519747207L;
 
-	public HelpDialog(String helpFile) {
+	public HelpDialog(JFrame mainWindow, String helpFile) {
 		setTitle("MadCommander - Help");
 		setModal(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -50,6 +51,6 @@ public class HelpDialog extends AbstractDialog {
 
 		add(scrollPane);
 		pack();
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(mainWindow);
 	}
 }
