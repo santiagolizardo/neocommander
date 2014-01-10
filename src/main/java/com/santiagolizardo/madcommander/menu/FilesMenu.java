@@ -12,14 +12,13 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import org.apache.commons.io.FileUtils;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.fileops.PackAction;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
@@ -48,20 +47,20 @@ public class FilesMenu extends JMenu implements ActionListener {
 
 	private LocalizedMenuItem quit;
 	
-	private JFrame mainWindow;
-
-	public FilesMenu(JFrame mainWindow) {
+	private MadCommander mainWindow;
+	
+	public FilesMenu(MadCommander mainWindow) {
 		super(Translator._("Files"));
 		setMnemonic(KeyEvent.VK_F);
 
 		this.mainWindow = mainWindow;
 		
-		changeAttributes = new LocalizedMenuItem("Change_attributes...");
+		changeAttributes = new LocalizedMenuItem("Change attributes...");
 		changeAttributes.addActionListener(this);
-		pack = new JMenuItem(new PackAction());
+		pack = new JMenuItem(new PackAction(mainWindow));
 		unpack = new LocalizedMenuItem("Unpack...");
 		unpack.addActionListener(this);
-		compareByContent = new LocalizedMenuItem("Compare_by_content...");
+		compareByContent = new LocalizedMenuItem("Compare by content...");
 		compareByContent.addActionListener(this);
 
 		print = new JMenuItem(Translator._("Print file list..."));
@@ -82,36 +81,36 @@ public class FilesMenu extends JMenu implements ActionListener {
 		add(quit);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
 		if (source == changeAttributes) {
 			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog(mainWindow);
 			changeAttributesDialog.setVisible(true);
 		} else if (source == unpack) {
-			List<File> list = MainGUI.app.getSource().getSelectedFiles();
+			List<File> list = mainWindow.getSource().getSelectedFiles();
 			if (list.size() == 1) {
 				File file = list.get(0);
 				StringBuffer buffer = new StringBuffer();
-				buffer.append(MainGUI.app.getSource().getPath());
+				buffer.append(mainWindow.getSource().getPath());
 				buffer.append(File.separator);
 				buffer.append(file.getName());
 				UnpackDialog unpackDialog = new UnpackDialog(buffer.toString());
 				unpackDialog.setVisible(true);
 			} else {
-				DialogFactory.showErrorMessage(MainGUI.app,
+				DialogFactory.showErrorMessage(mainWindow,
 						"Only pick one file to unpack at time.");
 			}
 		} else if (source == print) {
-			FileListing listing = MainGUI.app.getSource();
+			FileListing listing = mainWindow.getSource();
 			listing.print();
 		} else if (source == quit) {
-			MainGUI.app.quit();
+			mainWindow.quit();
 		} else if (source == compareByContent) {
-			List<File> files1 = MainGUI.app.getSource().getSelectedFiles();
-			List<File> files2 = MainGUI.app.getDestiny().getSelectedFiles();
+			List<File> files1 = mainWindow.getSource().getSelectedFiles();
+			List<File> files2 = mainWindow.getDestiny().getSelectedFiles();
 			if (files1.size() == 0 || files2.size() == 0) {
 				DialogFactory
-						.showInformationMessage(MainGUI.app,
+						.showInformationMessage(mainWindow,
 								"Please select a file on each panel first to compare their contents.");
 				return;
 			}
@@ -119,13 +118,13 @@ public class FilesMenu extends JMenu implements ActionListener {
 			File file2 = files2.get(0);
 			try {
 				if (FileUtils.contentEquals(file1, file2) == true) {
-					DialogFactory.showInformationMessage(MainGUI.app,
+					DialogFactory.showInformationMessage(mainWindow,
 							"The content of the files is identical.");
 				} else
-					DialogFactory.showInformationMessage(MainGUI.app,
+					DialogFactory.showInformationMessage(mainWindow,
 							"The content of the files is not the same.");
 			} catch (Exception e) {
-				DialogFactory.showErrorMessage(MainGUI.app,
+				DialogFactory.showErrorMessage(mainWindow,
 						"Could not compare the contents of the files.");
 			}
 		}

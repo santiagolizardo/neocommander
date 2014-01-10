@@ -11,8 +11,7 @@ import java.awt.event.ComponentEvent;
 
 import javax.swing.JSplitPane;
 
-import com.santiagolizardo.madcommander.MainGUI;
-
+import com.santiagolizardo.madcommander.MadCommander;
 
 public class Panels extends JSplitPane {
 
@@ -21,8 +20,12 @@ public class Panels extends JSplitPane {
 	 */
 	private static final long serialVersionUID = 284991976741039153L;
 
-	public Panels() {
+	private MadCommander mainWindow;
+
+	public Panels(MadCommander mainWindow) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		setFocusable(false);
 		setMinimumSize(new Dimension(400, 320));
@@ -31,19 +34,19 @@ public class Panels extends JSplitPane {
 	}
 
 	public void loadProperties() {
-//		changeOrientation(ConfigWrapper.getInstance().getIntProperty("panels.orientation"));
+		// changeOrientation(ConfigWrapper.getInstance().getIntProperty("panels.orientation"));
 		changeOrientation(JSplitPane.HORIZONTAL_SPLIT);
 	}
 
 	public void changeOrientation(int orientation) {
 		if (orientation == JSplitPane.HORIZONTAL_SPLIT) {
 			setDividerLocation(getWidth() / 2);
-			setLeftComponent(MainGUI.app.leftTabs);
-			setRightComponent(MainGUI.app.rightTabs);
+			setLeftComponent(mainWindow.leftTabs);
+			setRightComponent(mainWindow.rightTabs);
 		} else { // JSplitPane.VERTICAL_SPLIT:
 			setDividerLocation(getHeight() / 2);
-			setTopComponent(MainGUI.app.leftTabs);
-			setBottomComponent(MainGUI.app.rightTabs);
+			setTopComponent(mainWindow.leftTabs);
+			setBottomComponent(mainWindow.rightTabs);
 		}
 
 		setOrientation(orientation);

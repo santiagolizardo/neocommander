@@ -9,6 +9,7 @@ package com.santiagolizardo.madcommander.dialogs.progressive;
 import java.io.File;
 import java.util.List;
 
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 public class MoveProgressDialog extends AbstractProgressDialog {
@@ -17,6 +18,10 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 6456147166253912620L;
+
+	public MoveProgressDialog(MadCommander mainWindow) {
+		super(mainWindow);
+	}
 
 	public void run() {
 		if (srcPath.equals(dstPath)) {

@@ -9,6 +9,7 @@ package com.santiagolizardo.madcommander.dialogs.progressive;
 import java.io.File;
 import java.util.List;
 
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileOperations;
 
@@ -19,6 +20,10 @@ public class DeleteProgressDialog extends AbstractProgressDialog {
 	 */
 	private static final long serialVersionUID = -1031712739175885827L;
 	private List<File> selectedFiles;
+
+	public DeleteProgressDialog(MadCommander mainWindow) {
+		super(mainWindow);
+	}
 
 	public void setSelectedFiles(List<File> selectedFiles) {
 		this.selectedFiles = selectedFiles;

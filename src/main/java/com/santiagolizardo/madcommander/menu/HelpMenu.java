@@ -50,15 +50,15 @@ public class HelpMenu extends JMenu implements ActionListener {
 		helpIndex = new JMenuItem(new HelpAction(mainWindow));
 
 		visitJavaCommanderWebSite = new LocalizedMenuItem(
-				"Visit_MadCommander_web_site");
+				"Visit project website");
 		visitJavaCommanderWebSite.addActionListener(this);
 		visitJavaCommanderWebSite.setIcon(IconFactory.newIcon("link.png"));
 
-		checkForUpdate = new LocalizedMenuItem("Check_for_update...");
+		checkForUpdate = new LocalizedMenuItem("Check for updates...");
 		checkForUpdate.setIcon(IconFactory.newIcon("check.png"));
 		checkForUpdate.addActionListener(this);
 
-		aboutJavaCommander = new LocalizedMenuItem("About_MadCommander");
+		aboutJavaCommander = new LocalizedMenuItem("About this software");
 		aboutJavaCommander.addActionListener(this);
 
 		add(helpIndex);
@@ -68,8 +68,8 @@ public class HelpMenu extends JMenu implements ActionListener {
 		add(aboutJavaCommander);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
 
 		if (source == visitJavaCommanderWebSite) {
 			SystemUtil.browse(this, MadCommander.APP_URL);

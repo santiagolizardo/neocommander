@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -28,15 +28,18 @@ class CreateDirAction extends AbstractAction {
 
 	private static final Logger LOGGER = Logger.getLogger(CreateDirAction.class
 			.getName());
+	private MadCommander mainWindow;
 
-	public CreateDirAction() {
+	public CreateDirAction(MadCommander mainWindow) {
 		super(Translator._("Create_dir"), IconFactory.newIcon("F7.gif"));
+
+		this.mainWindow = mainWindow;
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F7"));
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		FileListing listing = MainGUI.app.getSource();
+		FileListing listing = mainWindow.getSource();
 		String name = DialogFactory.showInputDialog(listing.getParent(),
 				"Directory name:");
 

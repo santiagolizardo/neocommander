@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 public class CopyProgressDialog extends AbstractProgressDialog {
@@ -19,6 +20,10 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 4051353584577931986L;
+
+	public CopyProgressDialog(MadCommander madCommander) {
+		super(madCommander);
+	}
 
 	public void run() {
 		if (srcPath.equals(dstPath)) {

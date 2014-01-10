@@ -36,7 +36,7 @@ import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.SelectDriveAction;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 import com.santiagolizardo.madcommander.components.filelisting.model.AttributesComparator;
@@ -67,8 +67,13 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 	private boolean first;
 
-	public FileListingTable(FileListing fileListing) {
+	private MadCommander mainWindow;
+
+	public FileListingTable(final MadCommander mainWindow,
+			FileListing fileListing) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		first = true;
 
@@ -85,8 +90,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 		this.fileListing = fileListing;
 
-		FLKeyListener myKeyListener = new FLKeyListener();
-		FLMouseListener myMouseListener = new FLMouseListener();
+		FLKeyListener myKeyListener = new FLKeyListener(mainWindow);
+		FLMouseListener myMouseListener = new FLMouseListener(mainWindow);
 
 		addKeyListener(myKeyListener);
 		addMouseListener(myMouseListener);
@@ -106,9 +111,9 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		InputMap inputMap = getInputMap();
 		ActionMap actionMap = getActionMap();
 
-		FileOpsFactory fops = FileOpsFactory.getInstance();
+		FileOpsFactory fops = FileOpsFactory.getInstance(mainWindow);
 
-		InputMapUtil.putAction(this, new SelectDriveAction());
+		InputMapUtil.putAction(this, new SelectDriveAction(mainWindow));
 		InputMapUtil.putAction(this, fops.getViewAction());
 		InputMapUtil.putAction(this, fops.getEditAction());
 		InputMapUtil.putAction(this, fops.getCopyAction());
@@ -200,8 +205,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 	}
 
 	public void focusGained(FocusEvent event) {
-		MainGUI.app.currentPanel = fileListing.id;
-		MainGUI.app.getSource().historical.updateActions();
+		mainWindow.currentPanel = fileListing.id;
+		mainWindow.getSource().historical.updateActions();
 	}
 
 	public void focusLost(FocusEvent event) {

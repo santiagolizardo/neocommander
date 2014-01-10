@@ -12,13 +12,12 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSplitPane;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.BriefAction;
 import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
 import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
@@ -57,19 +56,23 @@ public class ShowMenu extends JMenu implements ActionListener {
 
 	private JRadioButtonMenuItem filterCustom;
 
-	public ShowMenu(JFrame mainWindow) {
+	private MadCommander mainWindow;
+
+	public ShowMenu(MadCommander mainWindow) {
 		super(Translator._("Show"));
 		setMnemonic(KeyEvent.VK_S);
 
-		brief = new JRadioButtonMenuItem(new BriefAction());
-		full = new JRadioButtonMenuItem(new FullAction());
+		this.mainWindow = mainWindow;
+
+		brief = new JRadioButtonMenuItem(new BriefAction(mainWindow));
+		full = new JRadioButtonMenuItem(new FullAction(mainWindow));
 		full.setSelected(true);
 
 		ButtonGroup group = new ButtonGroup();
 		group.add(brief);
 		group.add(full);
 
-		horizontalSplit = new JCheckBoxMenuItem(new HorizontalSplitAction());
+		horizontalSplit = new JCheckBoxMenuItem(new HorizontalSplitAction(mainWindow));
 		horizontalSplit.addActionListener(this);
 		int panelsOrientation = JSplitPane.HORIZONTAL_SPLIT;
 		if (panelsOrientation == JSplitPane.HORIZONTAL_SPLIT) {
@@ -78,12 +81,13 @@ public class ShowMenu extends JMenu implements ActionListener {
 			horizontalSplit.setSelected(true);
 		}
 
-		filterNone = new JRadioButtonMenuItem(new FilterNoneAction());
+		filterNone = new JRadioButtonMenuItem(new FilterNoneAction(mainWindow));
 		filterNone.setSelected(true);
 		filterDirectories = new JRadioButtonMenuItem(
-				new FilterDirectoriesAction());
-		filterHiddens = new JRadioButtonMenuItem(new FilterHiddensAction());
-		filterCustom = new LocalizedRadioButtonMenuItem("Filter_custom...");
+				new FilterDirectoriesAction(mainWindow));
+		filterHiddens = new JRadioButtonMenuItem(new FilterHiddensAction(
+				mainWindow));
+		filterCustom = new LocalizedRadioButtonMenuItem("Filter custom...");
 		filterCustom.addActionListener(this);
 
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -92,7 +96,7 @@ public class ShowMenu extends JMenu implements ActionListener {
 		buttonGroup.add(filterHiddens);
 		buttonGroup.add(filterCustom);
 
-		reversedOrder = new ReversedOrderItem();
+		reversedOrder = new ReversedOrderItem(mainWindow);
 		reversedOrder.addActionListener(this);
 
 		refresh = new JMenuItem(new RefreshAction());
@@ -113,15 +117,14 @@ public class ShowMenu extends JMenu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
 		if (source == reversedOrder) {
-			MainGUI.app.getSource()
-					.setReversedOrder(reversedOrder.isSelected());
+			mainWindow.getSource().setReversedOrder(reversedOrder.isSelected());
 		} else if (source == filterCustom) {
-			String pattern = DialogFactory.showInputDialog(MainGUI.app,
+			String pattern = DialogFactory.showInputDialog(mainWindow,
 					"Pattern:");
 			if (pattern == null)
 				return;
-			MainGUI.app.getSource().setFilter(new FilterCustom(pattern));
-			MainGUI.app.getSource().refreshFiles();
+			mainWindow.getSource().setFilter(new FilterCustom(pattern));
+			mainWindow.getSource().refreshFiles();
 		}
 	}
 }

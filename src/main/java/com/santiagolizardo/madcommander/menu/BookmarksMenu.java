@@ -11,11 +11,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.GeneralActionFactory;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.bookmarks.ManageBookmarks;
@@ -34,17 +33,17 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 	private JMenuItem addBookmark;
 
 	private JMenuItem manageBookmarks;
-	
-	private JFrame mainWindow;
 
-	public BookmarksMenu(JFrame mainWindow) {
+	private MadCommander mainWindow;
+
+	public BookmarksMenu(MadCommander mainWindow) {
 		super(Translator._("Bookmarks"));
 
 		this.mainWindow = mainWindow;
-		
+
 		addBookmark = new JMenuItem(
-				GeneralActionFactory.getAddToBookmarksAction());
-		manageBookmarks = new LocalizedMenuItem("Manage_bookmarks");
+				GeneralActionFactory.getAddToBookmarksAction(mainWindow));
+		manageBookmarks = new LocalizedMenuItem("Manage bookmarks");
 		manageBookmarks.setIcon(IconFactory.newIcon("manage_bookmarks.png"));
 		manageBookmarks.addActionListener(this);
 
@@ -66,14 +65,14 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 		}
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
 		if (source == manageBookmarks) {
 			ManageBookmarks manageBookmarks = new ManageBookmarks(mainWindow);
 			manageBookmarks.setVisible(true);
 		} else {
 			String path = ((JMenuItem) source).getText();
-			MainGUI.app.getSource().setPath(path);
+			mainWindow.getSource().setPath(path);
 		}
 	}
 }

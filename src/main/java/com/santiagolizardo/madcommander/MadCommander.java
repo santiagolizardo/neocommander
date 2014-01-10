@@ -36,8 +36,8 @@ import com.santiagolizardo.madcommander.components.MainMenu;
 import com.santiagolizardo.madcommander.components.Panels;
 import com.santiagolizardo.madcommander.components.ShortcutsPanel;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
-import com.santiagolizardo.madcommander.components.filelisting.FileListingTabbed;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
+import com.santiagolizardo.madcommander.components.filelisting.FileListingTabbed;
 import com.santiagolizardo.madcommander.components.filelisting.model.BookmarksModel;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
@@ -82,10 +82,10 @@ public class MadCommander extends JFrame {
 
 		currentPanel = Position.Left;
 
-		leftTabs = new FileListingTabbed(Position.Left);
-		rightTabs = new FileListingTabbed(Position.Right);
+		leftTabs = new FileListingTabbed(this, Position.Left);
+		rightTabs = new FileListingTabbed(this, Position.Right);
 
-		panels = new Panels();
+		panels = new Panels(this);
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent event) {
@@ -140,7 +140,7 @@ public class MadCommander extends JFrame {
 	}
 
 	public void addDrivesToolbar(boolean validate) {
-		driveToolbar = new DrivesToolbar();
+		driveToolbar = new DrivesToolbar(this);
 		contentPane.add(driveToolbar, BorderLayout.SOUTH);
 		if (validate) {
 			contentPane.validate();
@@ -205,7 +205,7 @@ public class MadCommander extends JFrame {
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		// y
 		c.gridheight = 3;
-		shortcutsPanel = new ShortcutsPanel();
+		shortcutsPanel = new ShortcutsPanel(this);
 		container.add(shortcutsPanel, c);
 		if (validate) {
 			container.validate();

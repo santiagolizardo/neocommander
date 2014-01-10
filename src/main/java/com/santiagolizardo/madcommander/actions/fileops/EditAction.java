@@ -14,7 +14,7 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -26,15 +26,16 @@ class EditAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = -982849699897975067L;
+	private MadCommander mainWindow;
 
-	public EditAction() {
+	public EditAction(MadCommander mainWindow) {
 		super(Translator._("Edit"), IconFactory.newIcon("F4.gif"));
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F4"));
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		FileListing listing = MainGUI.app.getSource();
+		FileListing listing = mainWindow.getSource();
 		List<File> files = listing.getSelectedFiles();
 		if (files.size() == 1) {
 			File file = files.get(0);

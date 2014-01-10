@@ -28,11 +28,6 @@ import com.santiagolizardo.madcommander.util.gui.SwingUtil;
  */
 public class MainGUI {
 
-	/*
-	 * This public static member can be acceded anywhere of application
-	 */
-	public static MadCommander app;
-
 	public static void main(String[] args) {
 
 		try {
@@ -53,7 +48,7 @@ public class MainGUI {
 			public void run() {
 				SwingUtil.setSystemLookAndFeel();
 
-				app = new MadCommander();
+				MadCommander app = new MadCommander();
 				app.init();
 				app.setVisible(true);
 			}

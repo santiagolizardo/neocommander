@@ -15,16 +15,16 @@ import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.CalendarUtil;
 
-public class ChangeAttributesDialog extends AbstractDialog implements ActionListener {
+public class ChangeAttributesDialog extends AbstractDialog implements
+		ActionListener {
 
 	private static final long serialVersionUID = -2519143127010077700L;
 
@@ -34,13 +34,17 @@ public class ChangeAttributesDialog extends AbstractDialog implements ActionList
 	private AttributesPanel attributesPanel;
 	private DateTimePanel dateTimePanel;
 
-	private JButton ok;
-	private JButton cancel;
+	private JButton okButton;
+	private JButton cancelButton;
 
-	public ChangeAttributesDialog(JFrame mainWindow) {
+	private MadCommander mainWindow;
+
+	public ChangeAttributesDialog(MadCommander mainWindow) {
 		super();
 
-		setTitle(Translator._("Change_attributes..."));
+		this.mainWindow = mainWindow;
+
+		setTitle(Translator._("Change attributes..."));
 		setResizable(false);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -48,20 +52,22 @@ public class ChangeAttributesDialog extends AbstractDialog implements ActionList
 		attributesPanel = new AttributesPanel();
 		dateTimePanel = new DateTimePanel();
 
-		ok = new LocalizedButton("Ok");
-		ok.addActionListener(this);
-		cancel = new LocalizedButton("Cancel");
-		cancel.addActionListener(this);
+		okButton = new LocalizedButton("Ok");
+		okButton.addActionListener(this);
+		getRootPane().setDefaultButton(okButton);
+
+		cancelButton = new LocalizedButton("Cancel");
+		cancelButton.addActionListener(this);
 
 		defineLayout();
 		setSize(240, 350);
 		setLocationRelativeTo(mainWindow);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
-		if (source == ok) {
-			List<File> selectedFiles = MainGUI.app.getSource()
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
+		if (source == okButton) {
+			List<File> selectedFiles = mainWindow.getSource()
 					.getSelectedFiles();
 			File file = selectedFiles.get(0);
 			if (attributesPanel.isReadOnly()) {
@@ -74,9 +80,9 @@ public class ChangeAttributesDialog extends AbstractDialog implements ActionList
 			if (file.setLastModified(dateTime) == false) {
 				LOGGER.severe("error setting last modified property");
 			}
-			MainGUI.app.getSource().refreshFiles();
+			mainWindow.getSource().refreshFiles();
 			dispose();
-		} else if (source == cancel) {
+		} else if (source == cancelButton) {
 			dispose();
 		}
 	}
@@ -95,23 +101,23 @@ public class ChangeAttributesDialog extends AbstractDialog implements ActionList
 		layout.putConstraint(SpringLayout.NORTH, dateTimePanel, 5,
 				SpringLayout.SOUTH, attributesPanel);
 
-		layout.putConstraint(SpringLayout.WEST, ok, 5, SpringLayout.WEST,
+		layout.putConstraint(SpringLayout.WEST, okButton, 5, SpringLayout.WEST,
 				contentPane);
-		layout.putConstraint(SpringLayout.NORTH, ok, 5, SpringLayout.SOUTH,
-				dateTimePanel);
+		layout.putConstraint(SpringLayout.NORTH, okButton, 5,
+				SpringLayout.SOUTH, dateTimePanel);
 
-		layout.putConstraint(SpringLayout.WEST, cancel, 5, SpringLayout.EAST,
-				ok);
-		layout.putConstraint(SpringLayout.NORTH, cancel, 5, SpringLayout.SOUTH,
-				dateTimePanel);
+		layout.putConstraint(SpringLayout.WEST, cancelButton, 5,
+				SpringLayout.EAST, okButton);
+		layout.putConstraint(SpringLayout.NORTH, cancelButton, 5,
+				SpringLayout.SOUTH, dateTimePanel);
 
 		contentPane.setLayout(layout);
 
 		contentPane.add(attributesPanel);
 		contentPane.add(dateTimePanel);
 
-		contentPane.add(ok);
-		contentPane.add(cancel);
+		contentPane.add(okButton);
+		contentPane.add(cancelButton);
 
 		pack();
 	}

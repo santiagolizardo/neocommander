@@ -12,10 +12,9 @@ import javax.swing.AbstractAction;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JSplitPane;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
-
 
 public class HorizontalSplitAction extends AbstractAction {
 
@@ -24,9 +23,13 @@ public class HorizontalSplitAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 2941630640706613242L;
 
-	public HorizontalSplitAction() {
-		super(Translator._("Horizontal_split"), IconFactory
+	private MadCommander mainWindow;
+
+	public HorizontalSplitAction(MadCommander mainWindow) {
+		super(Translator._("Horizontal split"), IconFactory
 				.newIcon("horizontal_split.png"));
+
+		this.mainWindow = mainWindow;
 	}
 
 	public void actionPerformed(ActionEvent event) {
@@ -34,6 +37,6 @@ public class HorizontalSplitAction extends AbstractAction {
 				.getSource();
 		int orientation = (horizontalSplit.isSelected() ? JSplitPane.VERTICAL_SPLIT
 				: JSplitPane.HORIZONTAL_SPLIT);
-		MainGUI.app.panels.changeOrientation(orientation);
+		mainWindow.panels.changeOrientation(orientation);
 	}
 }

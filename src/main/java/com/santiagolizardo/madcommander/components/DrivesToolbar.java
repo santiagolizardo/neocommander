@@ -14,12 +14,11 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
-
 
 public class DrivesToolbar extends JToolBar {
 
@@ -29,8 +28,12 @@ public class DrivesToolbar extends JToolBar {
 	private static final long serialVersionUID = 4975350309638036942L;
 	private static final Icon DRIVE_ICON = IconFactory.newIcon("drive.gif");
 
-	public DrivesToolbar() {
+	private MadCommander mainWindow;
+
+	public DrivesToolbar(MadCommander mainWindow) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		setRollover(true);
 
@@ -61,13 +64,14 @@ public class DrivesToolbar extends JToolBar {
 			addActionListener(this);
 		}
 
-		public void actionPerformed(ActionEvent event) {
-			if(drive.canRead()) {
-				FileListing listing = MainGUI.app.getSource();
+		public void actionPerformed(ActionEvent ev) {
+			if (drive.canRead()) {
+				FileListing listing = mainWindow.getSource();
 				listing.setPath(absolutePath);
 				listing.refreshFiles();
 			} else {
-				DialogFactory.showErrorMessage(MainGUI.app, Translator._("Device_not_available"));
+				DialogFactory.showErrorMessage(mainWindow,
+						Translator._("Device not available"));
 			}
 		}
 	}

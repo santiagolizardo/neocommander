@@ -35,9 +35,8 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 
 	private JTextField searchPattern;
 
-	private JButton ok;
-
-	private JButton cancel;
+	private JButton okButton;
+	private JButton cancelButton;
 
 	private JCheckBox caseSensitive;
 
@@ -60,13 +59,14 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 		searchPattern = new JTextField(17);
 		searchPattern.setText(".txt");
 
-		ok = new LocalizedButton("Ok");
-		ok.addActionListener(this);
+		okButton = new LocalizedButton("Ok");
+		okButton.addActionListener(this);
+		getRootPane().setDefaultButton(okButton);
 
-		cancel = new LocalizedButton("Cancel");
-		cancel.addActionListener(this);
+		cancelButton = new LocalizedButton("Cancel");
+		cancelButton.addActionListener(this);
 
-		caseSensitive = new JCheckBox(Translator._("Case_sensitive"));
+		caseSensitive = new JCheckBox(Translator._("Case sensitive"));
 
 		mainPanel = new JPanel();
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(7, 7, 7, 7));
@@ -78,8 +78,8 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 		buttonsPanel = new JPanel();
 		buttonsPanel.setBorder(BorderFactory.createEmptyBorder(7, 7, 7, 7));
 		buttonsPanel.setLayout(new BorderLayout());
-		buttonsPanel.add(ok, BorderLayout.WEST);
-		buttonsPanel.add(cancel, BorderLayout.EAST);
+		buttonsPanel.add(okButton, BorderLayout.WEST);
+		buttonsPanel.add(cancelButton, BorderLayout.EAST);
 
 		defineLayout();
 		setLocationRelativeTo(mainWindow);
@@ -87,7 +87,7 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
-		if (source == ok) {
+		if (source == okButton) {
 			applyPattern(type.getSelectedItem().toString(), searchPattern
 					.getText(), caseSensitive.isSelected());
 			dispose();

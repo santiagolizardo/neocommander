@@ -10,7 +10,6 @@ import javax.swing.Box;
 import javax.swing.JMenuBar;
 
 import com.santiagolizardo.madcommander.MadCommander;
-import com.santiagolizardo.madcommander.MainGUI;
 import com.santiagolizardo.madcommander.menu.BookmarksMenu;
 import com.santiagolizardo.madcommander.menu.CommandsMenu;
 import com.santiagolizardo.madcommander.menu.ConfigurationMenu;
@@ -18,7 +17,6 @@ import com.santiagolizardo.madcommander.menu.FilesMenu;
 import com.santiagolizardo.madcommander.menu.HelpMenu;
 import com.santiagolizardo.madcommander.menu.MarkMenu;
 import com.santiagolizardo.madcommander.menu.ShowMenu;
-
 
 public class MainMenu extends JMenuBar {
 
@@ -34,8 +32,6 @@ public class MainMenu extends JMenuBar {
 	public MainMenu(MadCommander mainWindow) {
 		super();
 
-		MadCommander app = MainGUI.app;
-
 		FilesMenu filesMenu = new FilesMenu(mainWindow);
 		add(filesMenu);
 		MarkMenu markMenu = new MarkMenu(mainWindow);
@@ -44,7 +40,7 @@ public class MainMenu extends JMenuBar {
 		add(commandsMenu);
 		ShowMenu showMenu = new ShowMenu(mainWindow);
 		add(showMenu);
-		configurationMenu = new ConfigurationMenu(app);
+		configurationMenu = new ConfigurationMenu(mainWindow);
 		add(configurationMenu);
 		bookmarksMenu = new BookmarksMenu(mainWindow);
 		add(bookmarksMenu);

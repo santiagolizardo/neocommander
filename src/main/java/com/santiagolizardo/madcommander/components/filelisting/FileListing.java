@@ -24,7 +24,7 @@ import javax.swing.ToolTipManager;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.PathLabel;
 import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingColumn;
@@ -68,16 +68,20 @@ public class FileListing extends JPanel {
 
 	private File currentPath;
 
-	public FileListing(Position id) {
+	private MadCommander mainWindow;
+
+	public FileListing(final MadCommander mainWindow, Position id) {
 		super();
 
 		this.id = id;
 
+		this.mainWindow = mainWindow;
+
 		currentPath = new File(System.getProperty("user.dir"));
 
-		historical = new Historical();
+		historical = new Historical(mainWindow);
 
-		table = new FileListingTable(this);
+		table = new FileListingTable(mainWindow, this);
 		header = new FileListingHeader(table);
 
 		format = Format.Full;
@@ -291,7 +295,7 @@ public class FileListing extends JPanel {
 			if (dir.isDirectory()) {
 				if (dir.listFiles() == null) {
 					SwingUtil.beep();
-					DialogFactory.showErrorMessage(MainGUI.app,
+					DialogFactory.showErrorMessage(mainWindow,
 							"Access forbidden");
 				} else {
 					currentPath = dir;

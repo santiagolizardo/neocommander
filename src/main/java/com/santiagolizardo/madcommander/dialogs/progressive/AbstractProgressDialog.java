@@ -19,11 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
-
 
 public abstract class AbstractProgressDialog extends JDialog implements
 		Runnable, ActionListener {
@@ -53,8 +52,12 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 	private JPanel panel;
 
-	public AbstractProgressDialog() {
+	private MadCommander mainWindow;
+
+	public AbstractProgressDialog(MadCommander mainWindow) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		setTitle("MadCommander");
 		setModal(true);
@@ -78,8 +81,8 @@ public abstract class AbstractProgressDialog extends JDialog implements
 		panel.add(new LocalizedLabel("Total progress:"));
 		panel.add(totalBar);
 
-		src = MainGUI.app.getSource();
-		dst = MainGUI.app.getDestiny();
+		src = mainWindow.getSource();
+		dst = mainWindow.getDestiny();
 
 		srcPath = src.getPath();
 		dstPath = dst.getPath();
@@ -109,8 +112,8 @@ public abstract class AbstractProgressDialog extends JDialog implements
 					}
 				}
 
-				MainGUI.app.getSource().refreshFiles();
-				MainGUI.app.getDestiny().refreshFiles();
+				mainWindow.getSource().refreshFiles();
+				mainWindow.getDestiny().refreshFiles();
 
 				dispose();
 			}

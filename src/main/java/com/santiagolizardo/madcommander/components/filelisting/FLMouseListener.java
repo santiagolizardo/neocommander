@@ -9,23 +9,26 @@ package com.santiagolizardo.madcommander.components.filelisting;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.santiagolizardo.madcommander.controller.Controller;
-
+import com.santiagolizardo.madcommander.MadCommander;
 
 public class FLMouseListener extends MouseAdapter {
 
 	private PopupMenu popupMenu;
 
-	public FLMouseListener() {
+	private MadCommander mainWindow;
+
+	public FLMouseListener(final MadCommander mainWindow) {
 		super();
 
-		popupMenu = new PopupMenu();
+		this.mainWindow = mainWindow;
+
+		popupMenu = new PopupMenu(mainWindow);
 	}
 
 	public void mouseClicked(MouseEvent event) {
 		if (event.getButton() == MouseEvent.BUTTON1
 				&& event.getClickCount() == 2) {
-			Controller.execute();
+			mainWindow.getSource().execute();
 		}
 	}
 

@@ -15,7 +15,7 @@ import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.controller.PackTypes;
 
@@ -27,15 +27,20 @@ public class PackProgressDialog extends AbstractProgressDialog {
 
 	private PackTypes type;
 
-	public PackProgressDialog(String fileName, PackTypes type) {
-		super();
+	private MadCommander mainWindow;
+
+	public PackProgressDialog(MadCommander mainWindow, String fileName,
+			PackTypes type) {
+		super(mainWindow);
+
+		this.mainWindow = mainWindow;
 
 		this.fileName = fileName;
 		this.type = type;
 	}
 
 	public void run() {
-		FileListing listing = MainGUI.app.getSource();
+		FileListing listing = mainWindow.getSource();
 		final String currentPath = listing.getPath() + File.separator;
 		List<File> files = listing.getSelectedFiles();
 
@@ -92,7 +97,7 @@ public class PackProgressDialog extends AbstractProgressDialog {
 
 		myProcess.totalProgress = 100;
 
-		MainGUI.app.getSource().refreshFiles();
+		mainWindow.getSource().refreshFiles();
 	}
 
 	private void createJAR(String currentPath, String fullName, List<File> files) {
@@ -134,7 +139,7 @@ public class PackProgressDialog extends AbstractProgressDialog {
 
 		myProcess.totalProgress = 100;
 
-		MainGUI.app.getSource().refreshFiles();
+		mainWindow.getSource().refreshFiles();
 	}
 
 	private void createGZIP(String currentPath, String fullName,
@@ -177,6 +182,6 @@ public class PackProgressDialog extends AbstractProgressDialog {
 
 		myProcess.totalProgress = 100;
 
-		MainGUI.app.getSource().refreshFiles();
+		mainWindow.getSource().refreshFiles();
 	}
 }

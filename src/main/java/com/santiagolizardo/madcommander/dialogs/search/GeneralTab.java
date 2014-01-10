@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
 
 
@@ -37,9 +37,13 @@ public class GeneralTab extends JPanel {
 
 	private JCheckBox recursive;
 
-	public GeneralTab() {
+	private MadCommander mainWindow;
+	
+	public GeneralTab(MadCommander mainWindow) {
 		super();
 
+		this.mainWindow = mainWindow;
+		
 		Dimension panelSize = new Dimension(400, 100);
 		setMinimumSize(panelSize);
 		setPreferredSize(panelSize);
@@ -65,7 +69,7 @@ public class GeneralTab extends JPanel {
 		searchFor = new JTextField(20);
 		labelSearchIn = new LocalizedLabel("Search_in");
 		searchIn = new JTextField(40);
-		searchIn.setText(MainGUI.app.getSource().getPath());
+		searchIn.setText(mainWindow.getSource().getPath());
 
 		labelRecursive = new LocalizedLabel("Recursive");
 		recursive = new JCheckBox();

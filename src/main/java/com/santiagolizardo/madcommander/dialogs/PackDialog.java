@@ -23,13 +23,12 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
-import com.santiagolizardo.madcommander.controller.Controller;
 import com.santiagolizardo.madcommander.controller.PackTypes;
+import com.santiagolizardo.madcommander.dialogs.progressive.PackProgressDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
-
 
 public class PackDialog extends AbstractDialog implements ActionListener {
 
@@ -49,8 +48,12 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 
 	private JPanel panel;
 
-	public PackDialog() {
+	private MadCommander mainWindow;
+
+	public PackDialog(MadCommander mainWindow) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		setTitle(Translator._("Pack..."));
 
@@ -58,7 +61,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-		final String path = MainGUI.app.getSource().getPath();
+		final String path = mainWindow.getSource().getPath();
 
 		fileName = new JTextField(20);
 		fileName.setText(path + File.separator + "archive");
@@ -113,7 +116,10 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		else
 			type = PackTypes.GZIP;
 
-		Controller.compress(fileName.getText(), type);
+		PackProgressDialog progressDialog = new PackProgressDialog(mainWindow,
+				fileName.getText(), type);
+		progressDialog.begin();
+
 		dispose();
 	}
 
@@ -150,7 +156,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		c.gridheight = 4;
 		c.insets = new Insets(5, 5, 5, 5);
 		add(compress, c);
-		
+
 		pack();
 	}
 }

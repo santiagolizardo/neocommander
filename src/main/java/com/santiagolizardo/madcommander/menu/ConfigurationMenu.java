@@ -42,19 +42,19 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 
 		show = new JMenu(Translator._("Show"));
 
-		basicToolbar = new LocalizedCheckBoxMenuItem("Basic_toolbar");
+		basicToolbar = new LocalizedCheckBoxMenuItem("Basic toolbar");
 		basicToolbar.addActionListener(this);
 		basicToolbar.setSelected(true);
 
-		drivesToolbar = new LocalizedCheckBoxMenuItem("Drives_toolbar");
+		drivesToolbar = new LocalizedCheckBoxMenuItem("Drives toolbar");
 		drivesToolbar.addActionListener(this);
 		drivesToolbar.setSelected(true);
 
-		executePanel = new LocalizedCheckBoxMenuItem("Execute_panel");
+		executePanel = new LocalizedCheckBoxMenuItem("Execute panel");
 		executePanel.addActionListener(this);
 		executePanel.setSelected(true);
 
-		shortcutsPanel = new LocalizedCheckBoxMenuItem("Shortcuts_panel");
+		shortcutsPanel = new LocalizedCheckBoxMenuItem("Shortcuts panel");
 		shortcutsPanel.addActionListener(this);
 		shortcutsPanel.setSelected(true);
 
@@ -66,8 +66,8 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 		add(show);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
 		if (source == basicToolbar) {
 			if (basicToolbar.isSelected()) {
 				app.addBasicToolbar(true);

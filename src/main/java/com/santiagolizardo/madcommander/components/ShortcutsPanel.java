@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 
 
@@ -40,10 +41,10 @@ public class ShortcutsPanel extends JPanel {
 
 	private JButton delete;
 
-	public ShortcutsPanel() {
+	public ShortcutsPanel(MadCommander mainWindow) {
 		super();
 
-		FileOpsFactory fops = FileOpsFactory.getInstance();
+		FileOpsFactory fops = FileOpsFactory.getInstance(mainWindow);
 		
 		view = new Button(fops.getViewAction());
 		edit = new Button(fops.getEditAction());

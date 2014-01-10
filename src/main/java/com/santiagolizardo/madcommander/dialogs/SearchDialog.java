@@ -25,7 +25,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -35,7 +34,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingUtilities;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.search.AdvancedTab;
 import com.santiagolizardo.madcommander.dialogs.search.GeneralTab;
@@ -52,16 +51,19 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 
 	private AdvancedTab advancedTab;
 
-	private JButton search;
-
-	private JButton cancel;
+	private JButton searchButton;
+	private JButton cancelButton;
 
 	private DefaultListModel<String> results;
 
 	private JList<String> resultsList;
 
-	public SearchDialog(JFrame mainWindow) {
+	private MadCommander mainWindow;
+
+	public SearchDialog(MadCommander mainWindow) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		setTitle("Find files");
 		setModal(true);
@@ -69,7 +71,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 		setResizable(true);
 		setAlwaysOnTop(true);
 
-		generalTab = new GeneralTab();
+		generalTab = new GeneralTab(mainWindow);
 		advancedTab = new AdvancedTab();
 
 		results = new DefaultListModel<String>();
@@ -99,17 +101,21 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 								selected));
 						String dirPart = FileUtil.extractDirPart(new File(
 								selected));
-						MainGUI.app.getSource().setPath(dirPart);
-						MainGUI.app.getSource().focusOnFile(filePart);
+						SearchDialog.this.mainWindow.getSource().setPath(
+								dirPart);
+						SearchDialog.this.mainWindow.getSource().focusOnFile(
+								filePart);
 					}
 				}
 			}
 		});
 
-		search = new LocalizedButton("Search");
-		search.addActionListener(this);
-		cancel = new LocalizedButton("Cancel");
-		cancel.addActionListener(this);
+		searchButton = new LocalizedButton("Search");
+		searchButton.addActionListener(this);
+		getRootPane().setDefaultButton(searchButton);
+
+		cancelButton = new LocalizedButton("Cancel");
+		cancelButton.addActionListener(this);
 
 		defineLayout();
 		setLocationRelativeTo(mainWindow);
@@ -117,9 +123,9 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
-		if (source == search) {
+		if (source == searchButton) {
 			search();
-		} else if (source == cancel) {
+		} else if (source == cancelButton) {
 			dispose();
 		}
 	}
@@ -192,7 +198,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 						}
 					}
 				} else {
-					DialogFactory.showErrorMessage(MainGUI.app,
+					DialogFactory.showErrorMessage(mainWindow,
 							"El directorio '" + params.getSearchIn()
 									+ "' no existe.");
 				}
@@ -210,8 +216,8 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 		Dimension boxSize = new Dimension(80, 100);
 		box.setMinimumSize(boxSize);
 		box.setPreferredSize(boxSize);
-		box.add(search);
-		box.add(cancel);
+		box.add(searchButton);
+		box.add(cancelButton);
 
 		JScrollPane scrollPane = new JScrollPane(resultsList);
 		scrollPane.setBorder(BorderFactory.createTitledBorder(" Results "));

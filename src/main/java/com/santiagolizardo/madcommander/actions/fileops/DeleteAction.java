@@ -13,7 +13,7 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MainGUI;
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.dialogs.delete.DeleteDialog;
 import com.santiagolizardo.madcommander.dialogs.progressive.DeleteProgressDialog;
@@ -26,15 +26,18 @@ class DeleteAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 5996615163711698788L;
+	private MadCommander mainWindow;
 
-	public DeleteAction() {
+	public DeleteAction(MadCommander mainWindow) {
 		super(Translator._("Delete"), IconFactory.newIcon("F8.gif"));
+
+		this.mainWindow = mainWindow;
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F8"));
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		FileListing listing = MainGUI.app.getSource();
+		FileListing listing = mainWindow.getSource();
 
 		List<File> selectedFiles = listing.getSelectedFiles();
 		DeleteDialog dialog = new DeleteDialog();
@@ -44,7 +47,8 @@ class DeleteAction extends AbstractAction {
 		dialog.setVisible(true);
 		if (dialog.getReturnValue() == DeleteDialog.OK) {
 			selectedFiles = dialog.getSelectedFiles();
-			DeleteProgressDialog progressDialog = new DeleteProgressDialog();
+			DeleteProgressDialog progressDialog = new DeleteProgressDialog(
+					mainWindow);
 			progressDialog.setSelectedFiles(selectedFiles);
 			progressDialog.begin();
 		}
