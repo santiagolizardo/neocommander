@@ -8,6 +8,8 @@ package com.santiagolizardo.madcommander.components;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.io.File;
+import java.util.List;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -17,7 +19,6 @@ import javax.swing.border.SoftBevelBorder;
 
 import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
-
 
 public class ShortcutsPanel extends JPanel {
 
@@ -30,22 +31,21 @@ public class ShortcutsPanel extends JPanel {
 			SoftBevelBorder.RAISED);
 
 	private JButton view;
-
 	private JButton edit;
-
 	private JButton copy;
-
 	private JButton move;
-
 	private JButton createDir;
-
 	private JButton delete;
+
+	private MadCommander mainWindow;
 
 	public ShortcutsPanel(MadCommander mainWindow) {
 		super();
 
+		this.mainWindow = mainWindow;
+
 		FileOpsFactory fops = FileOpsFactory.getInstance(mainWindow);
-		
+
 		view = new Button(fops.getViewAction());
 		edit = new Button(fops.getEditAction());
 		copy = new Button(fops.getCopyAction());
@@ -74,9 +74,6 @@ public class ShortcutsPanel extends JPanel {
 
 	private class Button extends JButton {
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = -409157035363687532L;
 
 		public Button(Action action) {
@@ -85,5 +82,17 @@ public class ShortcutsPanel extends JPanel {
 			setBorder(BUTTON_BORDER);
 			setFocusable(false);
 		}
+	}
+
+	public void refreshButtons(List<File> selectedFiles) {
+		int numSelectedFiles = selectedFiles.size();
+		boolean oneFileIsSelected = (1 == numSelectedFiles);
+		boolean manyFilesAreSelected = (numSelectedFiles > 1);
+
+		view.setEnabled(oneFileIsSelected);
+		edit.setEnabled(oneFileIsSelected);
+		copy.setEnabled(manyFilesAreSelected);
+		move.setEnabled(manyFilesAreSelected);
+		delete.setEnabled(manyFilesAreSelected);
 	}
 }

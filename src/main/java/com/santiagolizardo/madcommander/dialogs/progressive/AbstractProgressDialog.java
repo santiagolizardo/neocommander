@@ -82,7 +82,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 		panel.add(totalBar);
 
 		src = mainWindow.getSource();
-		dst = mainWindow.getDestiny();
+		dst = mainWindow.getDestination();
 
 		srcPath = src.getPath();
 		dstPath = dst.getPath();
@@ -113,7 +113,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 				}
 
 				mainWindow.getSource().refreshFiles();
-				mainWindow.getDestiny().refreshFiles();
+				mainWindow.getDestination().refreshFiles();
 
 				dispose();
 			}

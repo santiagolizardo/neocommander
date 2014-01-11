@@ -30,63 +30,56 @@ import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 public class FilesMenu extends JMenu implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3242803672077641559L;
 
-	private LocalizedMenuItem changeAttributes;
-
-	private JMenuItem pack;
-
-	private LocalizedMenuItem unpack;
-
+	private LocalizedMenuItem changeAttributesMenuItem;
+	private JMenuItem packMenuItem;
+	private LocalizedMenuItem unpackMenuItem;
 	private LocalizedMenuItem compareByContent;
+	private JMenuItem printMenuItem;
+	private LocalizedMenuItem quitMenuItem;
 
-	private JMenuItem print;
-
-	private LocalizedMenuItem quit;
-	
 	private MadCommander mainWindow;
-	
+
 	public FilesMenu(MadCommander mainWindow) {
 		super(Translator._("Files"));
 		setMnemonic(KeyEvent.VK_F);
 
 		this.mainWindow = mainWindow;
-		
-		changeAttributes = new LocalizedMenuItem("Change attributes...");
-		changeAttributes.addActionListener(this);
-		pack = new JMenuItem(new PackAction(mainWindow));
-		unpack = new LocalizedMenuItem("Unpack...");
-		unpack.addActionListener(this);
+
+		changeAttributesMenuItem = new LocalizedMenuItem("Change attributes...");
+		changeAttributesMenuItem.addActionListener(this);
+		packMenuItem = new JMenuItem(new PackAction(mainWindow));
+		unpackMenuItem = new LocalizedMenuItem("Unpack...");
+		unpackMenuItem.addActionListener(this);
 		compareByContent = new LocalizedMenuItem("Compare by content...");
 		compareByContent.addActionListener(this);
 
-		print = new JMenuItem(Translator._("Print file list..."));
-		print.setIcon(IconFactory.newIcon("print.png"));
-		print.addActionListener(this);
+		printMenuItem = new JMenuItem(Translator._("Print file list..."));
+		printMenuItem.setIcon(IconFactory.newIcon("print.png"));
+		printMenuItem.addActionListener(this);
 
-		quit = new LocalizedMenuItem("Quit");
-		quit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4,
+		quitMenuItem = new LocalizedMenuItem("Quit");
+		quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4,
 				KeyEvent.ALT_MASK));
-		quit.addActionListener(this);
+		quitMenuItem.addActionListener(this);
 
-		add(changeAttributes);
-		add(pack);
-		add(unpack);
+		add(changeAttributesMenuItem);
+		add(packMenuItem);
+		add(unpackMenuItem);
 		add(compareByContent);
-		add(print);
+		add(printMenuItem);
 		addSeparator();
-		add(quit);
+		add(quitMenuItem);
 	}
 
 	public void actionPerformed(ActionEvent ev) {
 		Object source = ev.getSource();
-		if (source == changeAttributes) {
-			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog(mainWindow);
+		if (source == changeAttributesMenuItem) {
+			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog(
+					mainWindow);
 			changeAttributesDialog.setVisible(true);
-		} else if (source == unpack) {
+		} else if (source == unpackMenuItem) {
 			List<File> list = mainWindow.getSource().getSelectedFiles();
 			if (list.size() == 1) {
 				File file = list.get(0);
@@ -100,14 +93,14 @@ public class FilesMenu extends JMenu implements ActionListener {
 				DialogFactory.showErrorMessage(mainWindow,
 						"Only pick one file to unpack at time.");
 			}
-		} else if (source == print) {
+		} else if (source == printMenuItem) {
 			FileListing listing = mainWindow.getSource();
 			listing.print();
-		} else if (source == quit) {
+		} else if (source == quitMenuItem) {
 			mainWindow.quit();
 		} else if (source == compareByContent) {
 			List<File> files1 = mainWindow.getSource().getSelectedFiles();
-			List<File> files2 = mainWindow.getDestiny().getSelectedFiles();
+			List<File> files2 = mainWindow.getDestination().getSelectedFiles();
 			if (files1.size() == 0 || files2.size() == 0) {
 				DialogFactory
 						.showInformationMessage(mainWindow,
@@ -128,5 +121,12 @@ public class FilesMenu extends JMenu implements ActionListener {
 						"Could not compare the contents of the files.");
 			}
 		}
+	}
+
+	public void refreshButtons(List<File> selectedFiles) {
+		changeAttributesMenuItem.setEnabled(1 == selectedFiles.size());
+		packMenuItem.setEnabled(selectedFiles.size() > 0);
+		unpackMenuItem.setEnabled(1 == selectedFiles.size()
+				&& selectedFiles.get(0).isFile());
 	}
 }

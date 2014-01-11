@@ -6,9 +6,9 @@
  */
 package com.santiagolizardo.madcommander.menu.items;
 
-import java.awt.Graphics;
-
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -22,15 +22,17 @@ public class ReversedOrderItem extends JCheckBoxMenuItem {
 
 	private MadCommander mainWindow;
 
-	public ReversedOrderItem(MadCommander mainWindow) {
+	public ReversedOrderItem(final MadCommander mainWindow) {
 		super(Translator._("Reversed order"));
 
 		this.mainWindow = mainWindow;
-	}
 
-	public void paint(Graphics g) {
-		super.paint(g);
+		addChangeListener(new ChangeListener() {
 
-		setSelected(mainWindow.getSource().isReversedOrder());
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				mainWindow.getSource().setReversedOrder(isSelected());
+			}
+		});
 	}
 }

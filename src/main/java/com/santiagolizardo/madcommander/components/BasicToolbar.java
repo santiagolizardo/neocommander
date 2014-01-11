@@ -21,7 +21,6 @@ import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
 import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
 import com.santiagolizardo.madcommander.actions.FilterNoneAction;
 import com.santiagolizardo.madcommander.actions.FullAction;
-import com.santiagolizardo.madcommander.actions.HelpAction;
 import com.santiagolizardo.madcommander.actions.HistoricalActions;
 import com.santiagolizardo.madcommander.actions.RefreshAction;
 import com.santiagolizardo.madcommander.actions.SearchAction;
@@ -67,8 +66,6 @@ public class BasicToolbar extends JToolBar {
 
 		JButton find = new JButton(new SearchAction(mainWindow));
 
-		JButton help = new JButton(new HelpAction(mainWindow));
-
 		final JButton filters = new JButton("Filter",
 				IconFactory.newIcon("filter.gif"));
 		filters.addActionListener(new ActionListener() {
@@ -87,7 +84,5 @@ public class BasicToolbar extends JToolBar {
 		addSeparator();
 		add(find);
 		add(filters);
-		addSeparator();
-		add(help);
 	}
 }

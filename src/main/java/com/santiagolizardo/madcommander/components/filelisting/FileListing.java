@@ -97,7 +97,7 @@ public class FileListing extends JPanel {
 		scroll = new JScrollPane(table);
 		scroll.getViewport().setBackground(Color.WHITE);
 
-		SelectionListener listener = new SelectionListener(table, summaryLabel);
+		SelectionListener listener = new SelectionListener(mainWindow, table, summaryLabel);
 		table.getSelectionModel().addListSelectionListener(listener);
 
 		setBorder(BorderFactory.createBevelBorder(10));

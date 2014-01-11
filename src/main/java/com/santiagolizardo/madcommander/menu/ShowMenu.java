@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSplitPane;
 
@@ -24,7 +23,6 @@ import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
 import com.santiagolizardo.madcommander.actions.FilterNoneAction;
 import com.santiagolizardo.madcommander.actions.FullAction;
 import com.santiagolizardo.madcommander.actions.HorizontalSplitAction;
-import com.santiagolizardo.madcommander.actions.RefreshAction;
 import com.santiagolizardo.madcommander.components.filelisting.filters.FilterCustom;
 import com.santiagolizardo.madcommander.components.localized.LocalizedRadioButtonMenuItem;
 import com.santiagolizardo.madcommander.menu.items.ReversedOrderItem;
@@ -45,8 +43,6 @@ public class ShowMenu extends JMenu implements ActionListener {
 	private JCheckBoxMenuItem horizontalSplit;
 
 	private JCheckBoxMenuItem reversedOrder;
-
-	private JMenuItem refresh;
 
 	private JRadioButtonMenuItem filterNone;
 
@@ -72,7 +68,8 @@ public class ShowMenu extends JMenu implements ActionListener {
 		group.add(brief);
 		group.add(full);
 
-		horizontalSplit = new JCheckBoxMenuItem(new HorizontalSplitAction(mainWindow));
+		horizontalSplit = new JCheckBoxMenuItem(new HorizontalSplitAction(
+				mainWindow));
 		horizontalSplit.addActionListener(this);
 		int panelsOrientation = JSplitPane.HORIZONTAL_SPLIT;
 		if (panelsOrientation == JSplitPane.HORIZONTAL_SPLIT) {
@@ -97,9 +94,6 @@ public class ShowMenu extends JMenu implements ActionListener {
 		buttonGroup.add(filterCustom);
 
 		reversedOrder = new ReversedOrderItem(mainWindow);
-		reversedOrder.addActionListener(this);
-
-		refresh = new JMenuItem(new RefreshAction());
 
 		add(brief);
 		add(full);
@@ -111,14 +105,11 @@ public class ShowMenu extends JMenu implements ActionListener {
 		add(filterCustom);
 		addSeparator();
 		add(reversedOrder);
-		add(refresh);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
-		if (source == reversedOrder) {
-			mainWindow.getSource().setReversedOrder(reversedOrder.isSelected());
-		} else if (source == filterCustom) {
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
+		if (source == filterCustom) {
 			String pattern = DialogFactory.showInputDialog(mainWindow,
 					"Pattern:");
 			if (pattern == null)

@@ -32,11 +32,6 @@ public class Translator {
 
 	public static String _(String text) {
 		String property = properties.getProperty(text);
-		if (property == null) {
-			logger.warning("Translation " + text + " does not exist.");
-			property = text;
-		}
-
-		return property;
+		return (property == null ? text : property);
 	}
 }

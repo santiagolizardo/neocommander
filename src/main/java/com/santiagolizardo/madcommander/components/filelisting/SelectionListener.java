@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.santiagolizardo.madcommander.MadCommander;
 import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingModel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingRow;
@@ -20,13 +21,19 @@ public class SelectionListener implements ListSelectionListener {
 	private JTable table;
 
 	private SummaryPanel summaryLabel;
+	
+	private MadCommander mainWindow;
 
-	public SelectionListener(JTable table, SummaryPanel summaryLabel) {
+	public SelectionListener(MadCommander mainWindow, JTable table, SummaryPanel summaryLabel) {
 		this.table = table;
 		this.summaryLabel = summaryLabel;
+		
+		this.mainWindow = mainWindow;
 	}
 
-	public void valueChanged(ListSelectionEvent event) {
+	public void valueChanged(ListSelectionEvent ev) {
+		mainWindow.refreshButtons();
+		
 		FileListingModel model = (FileListingModel) table.getModel();
 		summaryLabel.clearCounts();
 		int[] selectedRows = table.getSelectedRows();

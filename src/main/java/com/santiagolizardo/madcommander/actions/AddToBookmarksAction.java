@@ -35,6 +35,6 @@ class AddToBookmarksAction extends AbstractAction {
 
 	public void actionPerformed(ActionEvent ev) {
 		String path = mainWindow.getSource().getPath();
-		mainWindow.mainMenu.bookmarksMenu.addBookmark(path);
+		mainWindow.getMainMenu().getBookmarksMenu().addBookmark(path);
 	}
 }

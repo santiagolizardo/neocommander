@@ -23,6 +23,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.swing.JFrame;
@@ -45,34 +47,33 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 public class MadCommander extends JFrame {
 
 	public final static String APP_NAME = "MadCommander";
-	public final static String APP_VERSION = "1.4.2";
+	public final static String APP_VERSION = "1.4.3";
 	public final static String APP_URL = "http://sourceforge.net/projects/madcommander";
 
 	private static final Logger LOGGER = Logger.getLogger(MadCommander.class
 			.getName());
 
-	public BasicToolbar basicToolbar;
+	private BasicToolbar basicToolbar;
 
-	public DrivesToolbar driveToolbar;
+	private DrivesToolbar driveToolbar;
 
-	public JPanel shortcutsPanel;
+	private ShortcutsPanel shortcutsPanel;
+	private JPanel executePanel;
 
-	public JPanel executePanel;
-
-	public Panels panels;
+	private Panels panels;
 
 	public Position currentPanel;
 
 	public Container contentPane;
 
-	public Container container;
+	private Container container;
 
-	public MainMenu mainMenu;
+	private MainMenu mainMenu;
 
 	public FileListingTabbed leftTabs;
 	public FileListingTabbed rightTabs;
 
-	public BookmarksModel bookmarksModel;
+	private BookmarksModel bookmarksModel;
 
 	public MadCommander() {
 		super();
@@ -99,8 +100,11 @@ public class MadCommander extends JFrame {
 
 	public void init() {
 		mainMenu = new MainMenu(this);
-		bookmarksModel = new BookmarksModel(mainMenu.bookmarksMenu.bookmarks);
+		bookmarksModel = new BookmarksModel(
+				mainMenu.getBookmarksMenu().bookmarks);
 		setJMenuBar(mainMenu);
+
+		refreshButtons();
 
 		panels.loadProperties();
 
@@ -123,6 +127,13 @@ public class MadCommander extends JFrame {
 		contentPane.add(container);
 
 		pack();
+	}
+
+	public void refreshButtons() {
+		List<File> selectedFiles = getSource().getSelectedFiles();
+
+		mainMenu.refreshButtons(selectedFiles);
+		shortcutsPanel.refreshButtons(selectedFiles);
 	}
 
 	public void addBasicToolbar(boolean validate) {
@@ -223,7 +234,7 @@ public class MadCommander extends JFrame {
 				: getCurrentTab(rightTabs));
 	}
 
-	public FileListing getDestiny() {
+	public FileListing getDestination() {
 		return (currentPanel == Position.Right ? getCurrentTab(leftTabs)
 				: getCurrentTab(rightTabs));
 	}
@@ -242,5 +253,17 @@ public class MadCommander extends JFrame {
 		LOGGER.info("Stoping main...");
 
 		dispose();
+	}
+
+	public void changeOrientation(int orientation) {
+		panels.changeOrientation(orientation);
+	}
+
+	public MainMenu getMainMenu() {
+		return mainMenu;
+	}
+
+	public BookmarksModel getBookmarksModel() {
+		return bookmarksModel;
 	}
 }

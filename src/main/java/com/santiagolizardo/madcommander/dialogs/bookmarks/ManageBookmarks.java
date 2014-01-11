@@ -47,7 +47,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-		list = new JList<String>(mainWindow.bookmarksModel);
+		list = new JList<String>(mainWindow.getBookmarksModel());
 		scroll = new JScrollPane(list);
 
 		bookmark = new JTextField(30);

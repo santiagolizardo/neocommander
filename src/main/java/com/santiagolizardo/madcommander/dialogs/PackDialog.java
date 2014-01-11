@@ -44,7 +44,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 
 	private JRadioButton gzip;
 
-	private JButton compress;
+	private JButton compressButton;
 
 	private JPanel panel;
 
@@ -148,14 +148,15 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		c.gridheight = 3;
 		add(panel, c);
 
-		compress = new LocalizedButton("Compress");
-		compress.addActionListener(this);
+		compressButton = new LocalizedButton("Compress");
+		compressButton.addActionListener(this);
+		getRootPane().setDefaultButton(compressButton);
 
 		c.fill = GridBagConstraints.NONE;
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		c.gridheight = 4;
 		c.insets = new Insets(5, 5, 5, 5);
-		add(compress, c);
+		add(compressButton, c);
 
 		pack();
 	}

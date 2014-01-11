@@ -23,6 +23,6 @@ public class EqualizePanelsAction extends AbstractAction {
 
 	public void actionPerformed(ActionEvent event) {
 		String srcPath = mainWindow.getSource().getPath();
-		mainWindow.getDestiny().setPath(srcPath);
+		mainWindow.getDestination().setPath(srcPath);
 	}
 }

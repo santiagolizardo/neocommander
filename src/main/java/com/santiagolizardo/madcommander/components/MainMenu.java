@@ -6,6 +6,9 @@
  */
 package com.santiagolizardo.madcommander.components;
 
+import java.io.File;
+import java.util.List;
+
 import javax.swing.Box;
 import javax.swing.JMenuBar;
 
@@ -20,19 +23,18 @@ import com.santiagolizardo.madcommander.menu.ShowMenu;
 
 public class MainMenu extends JMenuBar {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8070437809650388843L;
 
 	public ConfigurationMenu configurationMenu;
 
-	public BookmarksMenu bookmarksMenu;
+	private BookmarksMenu bookmarksMenu;
+
+	private FilesMenu filesMenu;
 
 	public MainMenu(MadCommander mainWindow) {
 		super();
 
-		FilesMenu filesMenu = new FilesMenu(mainWindow);
+		filesMenu = new FilesMenu(mainWindow);
 		add(filesMenu);
 		MarkMenu markMenu = new MarkMenu(mainWindow);
 		add(markMenu);
@@ -47,5 +49,13 @@ public class MainMenu extends JMenuBar {
 		add(Box.createHorizontalGlue());
 		HelpMenu helpMenu = new HelpMenu(mainWindow);
 		add(helpMenu);
+	}
+
+	public void refreshButtons(List<File> selectedFiles) {
+		filesMenu.refreshButtons(selectedFiles);
+	}
+
+	public BookmarksMenu getBookmarksMenu() {
+		return bookmarksMenu;
 	}
 }

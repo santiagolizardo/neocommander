@@ -37,6 +37,6 @@ public class HorizontalSplitAction extends AbstractAction {
 				.getSource();
 		int orientation = (horizontalSplit.isSelected() ? JSplitPane.VERTICAL_SPLIT
 				: JSplitPane.HORIZONTAL_SPLIT);
-		mainWindow.panels.changeOrientation(orientation);
+		mainWindow.changeOrientation(orientation);
 	}
 }
