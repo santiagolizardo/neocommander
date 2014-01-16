@@ -1,57 +1,76 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.santiagolizardo.madcommander</groupId>
-  <artifactId>MadCommander</artifactId>
-  <version>1.4.3</version>
-  <packaging>jar</packaging>
-
-  <name>MadCommander</name>
-  <url>http://sourceforge.net/projects/madcommander</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <build>
-    <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-             </plugin>
-            <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <configuration>
-                <archive>
-                    <manifest>
-              		<mainClass>com.santiagolizardo.madcommander.MainGUI</mainClass>
-                    </manifest>
-                </archive>
-              <descriptorRefs>
-                    <descriptorRef>jar-with-dependencies</descriptorRef>
-              </descriptorRefs>
-            </configuration>
-            </plugin>
-
-    </plugins>
-  </build>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.santiagolizardo.madcommander</groupId>
+	<artifactId>MadCommander</artifactId>
+	<version>1.4.4</version>
+	<packaging>jar</packaging>
+	<name>MadCommander</name>
+	<url>http://sourceforge.net/projects/madcommander</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.googlecode.gettext-commons</groupId>
+				<artifactId>gettext-maven-plugin</artifactId>
+				<version>1.2.4</version>
+				<executions>
+					<execution>
+						<id>convert-po-class</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>dist</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<poDirectory>${project.build.sourceDirectory}/../resources/com/santiagolizardo/madcommander/resources/languages</poDirectory>
+					<targetBundle>com.santiagolizardo.madcommander.resources.languages.Translator</targetBundle>
+					<!--<outputFormat>properties</outputFormat>-->
+					<keywords>-k_</keywords>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.santiagolizardo.madcommander.MainGUI</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
 		</dependency>
-
-  </dependencies>
+		<dependency>
+			<groupId>com.googlecode.gettext-commons</groupId>
+			<artifactId>gettext-commons</artifactId>
+			<version>0.9.8</version>
+		</dependency>
+	</dependencies>
 </project>
