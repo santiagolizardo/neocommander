@@ -65,9 +65,9 @@ public class GeneralTab extends JPanel {
 	}
 
 	private void initComponents() {
-		labelSearchFor = new LocalizedLabel("Search_for");
+		labelSearchFor = new LocalizedLabel("Search for");
 		searchFor = new JTextField(20);
-		labelSearchIn = new LocalizedLabel("Search_in");
+		labelSearchIn = new LocalizedLabel("Search in");
 		searchIn = new JTextField(40);
 		searchIn.setText(mainWindow.getSource().getPath());
 

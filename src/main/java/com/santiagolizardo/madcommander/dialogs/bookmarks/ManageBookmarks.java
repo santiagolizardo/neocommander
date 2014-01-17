@@ -43,7 +43,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 	public ManageBookmarks(MadCommander mainWindow) {
 		super();
 
-		setTitle(Translator._("Manage_bookmarks"));
+		setTitle(Translator._("Manage bookmarks"));
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 

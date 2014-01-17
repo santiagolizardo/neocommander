@@ -36,8 +36,8 @@ public class MainGUI {
 			System.err.println(e.getMessage());
 		}
 
-		String locale = "en_US";
-		Translator.init(locale);
+		String locale = "es";
+		Translator.start(locale);
 
 		// LockManager.check();
 

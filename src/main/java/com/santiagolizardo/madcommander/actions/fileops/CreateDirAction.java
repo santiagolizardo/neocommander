@@ -31,7 +31,7 @@ class CreateDirAction extends AbstractAction {
 	private MadCommander mainWindow;
 
 	public CreateDirAction(MadCommander mainWindow) {
-		super(Translator._("Create_dir"), IconFactory.newIcon("F7.gif"));
+		super(Translator._("Create dir"), IconFactory.newIcon("F7.gif"));
 
 		this.mainWindow = mainWindow;
 

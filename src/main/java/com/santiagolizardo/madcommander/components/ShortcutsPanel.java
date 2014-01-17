@@ -22,20 +22,17 @@ import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 
 public class ShortcutsPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6490973152006379145L;
 
 	private static final Border BUTTON_BORDER = new SoftBevelBorder(
 			SoftBevelBorder.RAISED);
 
-	private JButton view;
-	private JButton edit;
-	private JButton copy;
-	private JButton move;
-	private JButton createDir;
-	private JButton delete;
+	private JButton viewButton;
+	private JButton editButton;
+	private JButton copyButton;
+	private JButton moveButton;
+	private JButton createDirButton;
+	private JButton deleteButton;
 
 	private MadCommander mainWindow;
 
@@ -46,12 +43,12 @@ public class ShortcutsPanel extends JPanel {
 
 		FileOpsFactory fops = FileOpsFactory.getInstance(mainWindow);
 
-		view = new Button(fops.getViewAction());
-		edit = new Button(fops.getEditAction());
-		copy = new Button(fops.getCopyAction());
-		move = new Button(fops.getMoveAction());
-		createDir = new Button(fops.getCreateDirAction());
-		delete = new Button(fops.getDeleteAction());
+		viewButton = new Button(fops.getViewAction());
+		editButton = new Button(fops.getEditAction());
+		copyButton = new Button(fops.getCopyAction());
+		moveButton = new Button(fops.getMoveAction());
+		createDirButton = new Button(fops.getCreateDirAction());
+		deleteButton = new Button(fops.getDeleteAction());
 
 		defineLayout();
 	}
@@ -64,12 +61,12 @@ public class ShortcutsPanel extends JPanel {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1;
 
-		add(view, c);
-		add(edit, c);
-		add(copy, c);
-		add(move, c);
-		add(createDir, c);
-		add(delete, c);
+		add(viewButton, c);
+		add(editButton, c);
+		add(copyButton, c);
+		add(moveButton, c);
+		add(createDirButton, c);
+		add(deleteButton, c);
 	}
 
 	private class Button extends JButton {
@@ -89,10 +86,10 @@ public class ShortcutsPanel extends JPanel {
 		boolean oneFileIsSelected = (1 == numSelectedFiles);
 		boolean manyFilesAreSelected = (numSelectedFiles > 1);
 
-		view.setEnabled(oneFileIsSelected);
-		edit.setEnabled(oneFileIsSelected);
-		copy.setEnabled(manyFilesAreSelected);
-		move.setEnabled(manyFilesAreSelected);
-		delete.setEnabled(manyFilesAreSelected);
+		viewButton.setEnabled(oneFileIsSelected);
+		editButton.setEnabled(oneFileIsSelected);
+		copyButton.setEnabled(manyFilesAreSelected);
+		moveButton.setEnabled(manyFilesAreSelected);
+		deleteButton.setEnabled(manyFilesAreSelected);
 	}
 }

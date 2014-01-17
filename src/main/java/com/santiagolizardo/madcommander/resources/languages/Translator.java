@@ -6,32 +6,39 @@
  */
 package com.santiagolizardo.madcommander.resources.languages;
 
-import java.io.IOException;
-import java.util.Properties;
+import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.logging.Logger;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public class Translator {
 
-	private static Logger logger = Logger.getLogger(Translator.class.getName());
+	private static final Logger logger = Logger.getLogger(Translator.class
+			.getName());
 
-	private static Properties properties;
+	private static I18n i18n;
 
-	public static void init(String locale) {
-		if (locale == null) {
-			throw new IllegalArgumentException("Parameter \"locale\" is null.");
-		}
-		properties = new Properties();
+	public static void start(String language) {
+		Locale locale = new Locale(language);
 
 		try {
-			properties.load(Translator.class.getResourceAsStream("messages_"
-					+ locale + ".properties"));
-		} catch (IOException io) {
-			logger.warning(io.getMessage());
+			i18n = I18nFactory.getI18n(Translator.class, locale);
+		} catch (MissingResourceException mre) {
+			logger.warning(mre.getMessage());
 		}
 	}
 
-	public static String _(String text) {
-		String property = properties.getProperty(text);
-		return (property == null ? text : property);
+	public static String _(String key) {
+		if (null == i18n)
+			return key;
+
+		try {
+			return i18n.tr(key);
+		} catch (MissingResourceException mre) {
+			logger.warning("Missing translation: " + key);
+			return key;
+		}
 	}
 }

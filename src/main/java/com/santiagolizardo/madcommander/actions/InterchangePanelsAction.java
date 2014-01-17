@@ -13,15 +13,12 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class InterchangePanelsAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2374316824230143289L;
 
 	private MadCommander mainWindow;
 
 	public InterchangePanelsAction(MadCommander mainWindow) {
-		super(Translator._("Interchange_panels"));
+		super(Translator._("Interchange panels"));
 
 		this.mainWindow = mainWindow;
 
