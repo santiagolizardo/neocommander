@@ -33,8 +33,10 @@ class AddToBookmarksAction extends AbstractAction {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl B"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		String path = mainWindow.getSource().getPath();
-		mainWindow.getMainMenu().getBookmarksMenu().addBookmark(path);
+		mainWindow.getConfigData().getBookmarks().add(path);
+		mainWindow.getMainMenu().getBookmarksMenu().refreshList();
 	}
 }

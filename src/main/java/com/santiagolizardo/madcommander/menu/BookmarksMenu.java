@@ -1,15 +1,12 @@
 /**
- * MadCommander
- * http://www.madcommander.com/
- * 
+ * MadCommander http://www.madcommander.com/
+ *
  * @author slizardo
  */
 package com.santiagolizardo.madcommander.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -23,16 +20,10 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class BookmarksMenu extends JMenu implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8222925585381513984L;
 
-	public List<String> bookmarks;
-
-	private JMenuItem addBookmark;
-
-	private JMenuItem manageBookmarks;
+	private JMenuItem addBookmarkMenuItem;
+	private JMenuItem manageBookmarksMenuItem;
 
 	private MadCommander mainWindow;
 
@@ -41,38 +32,52 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 
 		this.mainWindow = mainWindow;
 
-		addBookmark = new JMenuItem(
+		addBookmarkMenuItem = new JMenuItem(
 				GeneralActionFactory.getAddToBookmarksAction(mainWindow));
-		manageBookmarks = new LocalizedMenuItem("Manage bookmarks");
-		manageBookmarks.setIcon(IconFactory.newIcon("manage_bookmarks.png"));
-		manageBookmarks.addActionListener(this);
+		manageBookmarksMenuItem = new LocalizedMenuItem("Manage bookmarks");
+		manageBookmarksMenuItem.setIcon(IconFactory.newIcon("manage_bookmarks.png"));
+		manageBookmarksMenuItem.addActionListener(this);
 
-		bookmarks = new ArrayList<String>();
-
-		add(addBookmark);
-		add(manageBookmarks);
+		add(addBookmarkMenuItem);
+		add(manageBookmarksMenuItem);
+		
+		refreshList();
 	}
 
-	public void addBookmark(String bookmark) {
-		if (!bookmarks.contains(bookmark)) {
-			JMenuItem item = new JMenuItem(bookmark);
-			item.addActionListener(this);
-			if (bookmarks.size() == 0) {
-				addSeparator();
-			}
-			add(item);
-			bookmarks.add(bookmark);
-		}
-	}
-
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		Object source = ev.getSource();
-		if (source == manageBookmarks) {
+		if (source == manageBookmarksMenuItem) {
 			ManageBookmarks manageBookmarks = new ManageBookmarks(mainWindow);
 			manageBookmarks.setVisible(true);
 		} else {
 			String path = ((JMenuItem) source).getText();
 			mainWindow.getSource().setPath(path);
 		}
+	}
+
+	public void refreshList() {
+		// Remove all previous entries.
+		int numMenuItems = getMenuComponentCount();
+		if( numMenuItems > 2 ) {
+			for( int i = numMenuItems - 1; i > 1; i--) {
+				remove(i);
+			}
+		}
+		
+		if (mainWindow.getConfigData().getBookmarks().isEmpty()) {
+			return;
+		}
+
+		addSeparator();
+		for (String bookmark : mainWindow.getConfigData().getBookmarks()) {
+			addBookmarkItem(bookmark);
+		}
+	}
+
+	private void addBookmarkItem(String bookmark) {
+		JMenuItem item = new JMenuItem(bookmark);
+		item.addActionListener(this);
+		add(item);
 	}
 }

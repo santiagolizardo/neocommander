@@ -1,123 +1,132 @@
 /**
- * MadCommander
- * http://www.madcommander.com/
- * 
+ * MadCommander http://www.madcommander.com/
+ *
  * @author slizardo
  */
 package com.santiagolizardo.madcommander.dialogs.bookmarks;
 
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-
 import com.santiagolizardo.madcommander.MadCommander;
-import com.santiagolizardo.madcommander.components.filelisting.model.BookmarksModel;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class ManageBookmarks extends AbstractDialog implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2436015514011489788L;
-	private JList<String> list;
+
+	private MadCommander mainWindow;
+
+	private JTextField bookmarkTextField;
+
+	private JButton addButton;
+	private JButton removeButton;
+
+	private DefaultListModel<String> bookmarksModel;
+	private JList<String> bookmarkList;
 	private JScrollPane scroll;
-
-	private JTextField bookmark;
-
-	private JButton add;
-	private JButton remove;
 
 	public ManageBookmarks(MadCommander mainWindow) {
 		super();
+
+		this.mainWindow = mainWindow;
 
 		setTitle(Translator._("Manage bookmarks"));
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-		list = new JList<String>(mainWindow.getBookmarksModel());
-		scroll = new JScrollPane(list);
+		bookmarksModel = new DefaultListModel<>();
+		bookmarkList = new JList<>(bookmarksModel);
+		Dimension listDim = new Dimension(320, 140);
+		bookmarkList.setMinimumSize(listDim);
+		bookmarkList.setPreferredSize(listDim);
+		bookmarkList.getSelectionModel().addListSelectionListener(
+				new ListSelectionListener() {
 
-		bookmark = new JTextField(30);
+					@Override
+					public void valueChanged(ListSelectionEvent ev) {
+						removeButton.setEnabled(bookmarkList.getSelectedValuesList()
+								.size() == 1);
+					}
+				});
+		refreshList();
 
-		add = new LocalizedButton("Add");
-		add.addActionListener(this);
-		add.setIcon(IconFactory.newIcon("add.png"));
-		remove = new LocalizedButton("Remove");
-		remove.addActionListener(this);
-		remove.setIcon(IconFactory.newIcon("delete.png"));
+		scroll = new JScrollPane(bookmarkList);
+
+		bookmarkTextField = new JTextField(30);
+
+		addButton = new LocalizedButton("Add");
+		addButton.addActionListener(this);
+		addButton.setIcon(IconFactory.newIcon("add.png"));
+		getRootPane().setDefaultButton(addButton);
+
+		removeButton = new LocalizedButton("Remove");
+		removeButton.setEnabled(false);
+		removeButton.addActionListener(this);
+		removeButton.setIcon(IconFactory.newIcon("delete.png"));
 
 		defineLayout();
 		setLocationRelativeTo(mainWindow);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		Object source = event.getSource();
-		BookmarksModel bookmarksModel = (BookmarksModel) list.getModel();
-		if (source == add) {
-			String bookmarkName = bookmark.getText();
+	@Override
+	public void actionPerformed(ActionEvent ev) {
+		Object source = ev.getSource();
+		String bookmarkName = bookmarkTextField.getText();
+		if (source == addButton) {
 			File file = new File(bookmarkName);
 			if (file.exists()) {
-				bookmarksModel.addBookmark(bookmarkName);
-				bookmark.setText("");
+				mainWindow.getConfigData().getBookmarks().add(bookmarkName);
+				bookmarkTextField.setText("");
+				refreshList();
 			} else {
 				DialogFactory.showErrorMessage(this,
-						"Directory does not exists.");
+						Translator._("The directory does not exist."));
 			}
-		} else if (source == remove) {
-
+		} else if (source == removeButton) {
+			mainWindow.getConfigData().getBookmarks().remove(bookmarkList.getSelectedIndex());
+			refreshList();
 		}
 	}
 
+	private void refreshList() {
+		bookmarksModel.clear();
+		for (String bookmark : mainWindow.getConfigData().getBookmarks()) {
+			bookmarksModel.addElement(bookmark);
+		}
+
+		mainWindow.getMainMenu().getBookmarksMenu().refreshList();
+	}
+
 	private void defineLayout() {
-		Container contentPane = getContentPane();
-		SpringLayout layout = new SpringLayout();
+		JPanel topPanel = new JPanel();
+		topPanel.add(bookmarkTextField);
+		topPanel.add(addButton);
 
-		layout.putConstraint(SpringLayout.WEST, bookmark, 5, SpringLayout.WEST,
-				contentPane);
-		layout.putConstraint(SpringLayout.NORTH, bookmark, 5,
-				SpringLayout.NORTH, contentPane);
-
-		layout.putConstraint(SpringLayout.WEST, add, 5, SpringLayout.EAST,
-				bookmark);
-		layout.putConstraint(SpringLayout.NORTH, add, 5, SpringLayout.NORTH,
-				contentPane);
-		layout.putConstraint(SpringLayout.EAST, add, 0, SpringLayout.EAST,
-				scroll);
-
-		layout.putConstraint(SpringLayout.EAST, remove, 0, SpringLayout.EAST,
-				add);
-		layout.putConstraint(SpringLayout.NORTH, remove, 5, SpringLayout.SOUTH,
-				add);
-
-		layout.putConstraint(SpringLayout.WEST, scroll, 5, SpringLayout.WEST,
-				contentPane);
-		layout.putConstraint(SpringLayout.NORTH, scroll, 5, SpringLayout.SOUTH,
-				remove);
-		layout.putConstraint(SpringLayout.SOUTH, contentPane, 5,
-				SpringLayout.SOUTH, scroll);
-		layout.putConstraint(SpringLayout.EAST, contentPane, 5,
-				SpringLayout.EAST, scroll);
-
-		setLayout(layout);
-
-		add(bookmark);
-		add(scroll);
-		add(add);
-		add(remove);
+		add(topPanel, BorderLayout.NORTH);
+		add(scroll, BorderLayout.CENTER);
+		add(removeButton, BorderLayout.SOUTH);
 
 		pack();
+
+		bookmarkTextField.requestFocusInWindow();
 	}
 }

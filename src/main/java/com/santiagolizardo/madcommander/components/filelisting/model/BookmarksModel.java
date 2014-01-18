@@ -34,8 +34,7 @@ public class BookmarksModel extends AbstractListModel<String> {
 		return bookmarks.size();
 	}
 	
-	public void addBookmark(String bookmark) {
-		//MainGUI.app.mainMenu.bookmarksMenu.addBookmark(bookmark);
-		fireIntervalAdded(bookmark, getSize()-1, 1);
+	public List<String> getBookmarks() {
+		return bookmarks;
 	}
 }

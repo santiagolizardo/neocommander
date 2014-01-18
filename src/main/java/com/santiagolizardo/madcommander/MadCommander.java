@@ -40,7 +40,8 @@ import com.santiagolizardo.madcommander.components.ShortcutsPanel;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 import com.santiagolizardo.madcommander.components.filelisting.FileListingTabbed;
-import com.santiagolizardo.madcommander.components.filelisting.model.BookmarksModel;
+import com.santiagolizardo.madcommander.config.ConfigData;
+import com.santiagolizardo.madcommander.config.ConfigHandler;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
 @SuppressWarnings("serial")
@@ -73,7 +74,7 @@ public class MadCommander extends JFrame {
 	public FileListingTabbed leftTabs;
 	public FileListingTabbed rightTabs;
 
-	private BookmarksModel bookmarksModel;
+	private ConfigData configData;
 
 	public MadCommander() {
 		super();
@@ -89,8 +90,9 @@ public class MadCommander extends JFrame {
 		panels = new Panels(this);
 
 		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent event) {
-				super.windowClosing(event);
+			@Override
+			public void windowClosing(WindowEvent ev) {
+				super.windowClosing(ev);
 				quit();
 			}
 		});
@@ -100,8 +102,6 @@ public class MadCommander extends JFrame {
 
 	public void init() {
 		mainMenu = new MainMenu(this);
-		bookmarksModel = new BookmarksModel(
-				mainMenu.getBookmarksMenu().bookmarks);
 		setJMenuBar(mainMenu);
 
 		refreshButtons();
@@ -250,9 +250,12 @@ public class MadCommander extends JFrame {
 	public void quit() {
 		setVisible(false);
 
+		ConfigHandler configHandler = new ConfigHandler();
+		configHandler.save(configData);
+		
 		LOGGER.info("Stoping main...");
-
-		dispose();
+	
+	dispose();
 	}
 
 	public void changeOrientation(int orientation) {
@@ -263,7 +266,11 @@ public class MadCommander extends JFrame {
 		return mainMenu;
 	}
 
-	public BookmarksModel getBookmarksModel() {
-		return bookmarksModel;
+	public void setConfigData(ConfigData configData) {
+		this.configData = configData;
+	}
+
+	public ConfigData getConfigData() {
+		return configData;
 	}
 }

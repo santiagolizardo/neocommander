@@ -19,9 +19,12 @@ package com.santiagolizardo.madcommander;
 
 import javax.swing.SwingUtilities;
 
+import com.santiagolizardo.madcommander.config.ConfigData;
+import com.santiagolizardo.madcommander.config.ConfigHandler;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.services.LoggingServices;
 import com.santiagolizardo.madcommander.util.gui.SwingUtil;
+import java.io.IOException;
 
 /**
  * Application entry point.
@@ -32,23 +35,27 @@ public class MainGUI {
 
 		try {
 			LoggingServices.init();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
 
-		String locale = "es";
-		Translator.start(locale);
+		ConfigHandler configHandler = new ConfigHandler();
+		final ConfigData configData = configHandler.read();
 
+		Translator.start(configData.getLanguage());
+		
 		// LockManager.check();
 
 		/*
 		 * We put the main frame in the event-dispatching thread
 		 */
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				SwingUtil.setSystemLookAndFeel();
 
 				MadCommander app = new MadCommander();
+				app.setConfigData(configData);
 				app.init();
 				app.setVisible(true);
 			}
