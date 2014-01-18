@@ -1,4 +1,4 @@
-#: com/santiagolizardo/madcommander/menu/BookmarksMenu.java:40
+#: com/santiagolizardo/madcommander/menu/BookmarksMenu.java:31
 msgid "Bookmarks"
 msgstr ""
 
@@ -36,8 +36,12 @@ msgstr ""
 msgid "Mark"
 msgstr ""
 
-#: com/santiagolizardo/madcommander/dialogs/bookmarks/ManageBookmarks.java:46
+#: com/santiagolizardo/madcommander/dialogs/bookmarks/ManageBookmarks.java:52
 msgid "Manage bookmarks"
+msgstr ""
+
+#: com/santiagolizardo/madcommander/dialogs/bookmarks/ManageBookmarks.java:102
+msgid "The directory does not exist."
 msgstr ""
 
 #: com/santiagolizardo/madcommander/dialogs/SelectGroupDialog.java:23

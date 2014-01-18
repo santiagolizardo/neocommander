@@ -22,6 +22,10 @@ public class ListsUtils {
 	}
 
 	public static List<String> explode(String separator, String string) {
+		if (string.isEmpty()) {
+			return new ArrayList<>();
+		}
+		
 		return new ArrayList<>(Arrays.asList(string.split(separator)));
 	}
 }

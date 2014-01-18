@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-17 21:23+0000\n"
+"POT-Creation-Date: 2014-01-18 17:52+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Santiago Lizardo <santiago.lizardo@gmail.com>\n"
 "Language-Team: \n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: com/santiagolizardo/madcommander/menu/BookmarksMenu.java:40
+#: com/santiagolizardo/madcommander/menu/BookmarksMenu.java:31
 msgid "Bookmarks"
 msgstr ""
 
@@ -50,8 +50,12 @@ msgstr ""
 msgid "Mark"
 msgstr ""
 
-#: com/santiagolizardo/madcommander/dialogs/bookmarks/ManageBookmarks.java:46
+#: com/santiagolizardo/madcommander/dialogs/bookmarks/ManageBookmarks.java:52
 msgid "Manage bookmarks"
+msgstr ""
+
+#: com/santiagolizardo/madcommander/dialogs/bookmarks/ManageBookmarks.java:102
+msgid "The directory does not exist."
 msgstr ""
 
 #: com/santiagolizardo/madcommander/dialogs/SelectGroupDialog.java:23

@@ -1,18 +1,17 @@
 /**
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
+ * MadCommander is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or any later version.
  *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MadCommander is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- * or the MadCommander website <http://sourceforge.net/projects/madcommander>. 
- * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>
+ * or the MadCommander website <http://sourceforge.net/projects/madcommander>.
+ *
  * @author slizardo
  */
 package com.santiagolizardo.madcommander;
@@ -108,9 +107,8 @@ public class MadCommander extends JFrame {
 
 		panels.loadProperties();
 
-		setSize(640, 480);
-		setLocation(80, 80);
-
+		setSize(configData.getWindowSize());
+		setLocation(configData.getWindowPosition());
 	}
 
 	private final void defineLayout() {
@@ -125,8 +123,6 @@ public class MadCommander extends JFrame {
 		addShortcutsPanel(false);
 
 		contentPane.add(container);
-
-		pack();
 	}
 
 	public void refreshButtons() {
@@ -250,12 +246,15 @@ public class MadCommander extends JFrame {
 	public void quit() {
 		setVisible(false);
 
+		configData.setWindowSize(getSize());
+		configData.setWindowPosition(getLocation());
+
 		ConfigHandler configHandler = new ConfigHandler();
 		configHandler.save(configData);
-		
+
 		LOGGER.info("Stoping main...");
-	
-	dispose();
+
+		dispose();
 	}
 
 	public void changeOrientation(int orientation) {
