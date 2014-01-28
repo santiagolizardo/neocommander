@@ -1,8 +1,10 @@
 /**
+ * This file is part of MadCommander, a file manager with two panels.
+ *
  * MadCommander is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
- * any later version.
+ * (at your option) any later version.
  *
  * MadCommander is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -10,10 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- * or the MadCommander website <http://sourceforge.net/projects/madcommander>. 
- * 
- * @author slizardo
+ * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander;
 
@@ -29,7 +28,7 @@ import java.io.IOException;
 /**
  * Application entry point.
  */
-public class MainGUI {
+public class MainWindow {
 
 	public static void main(String[] args) {
 
