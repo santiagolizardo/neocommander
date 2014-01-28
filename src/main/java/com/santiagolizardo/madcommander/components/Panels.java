@@ -21,7 +21,7 @@ import java.awt.event.ComponentEvent;
 
 import javax.swing.JSplitPane;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class Panels extends JSplitPane {
 
@@ -30,9 +30,9 @@ public class Panels extends JSplitPane {
 	 */
 	private static final long serialVersionUID = 284991976741039153L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public Panels(MadCommander mainWindow) {
+	public Panels(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;
@@ -62,6 +62,7 @@ public class Panels extends JSplitPane {
 		setOrientation(orientation);
 	}
 
+	@Override
 	protected void processComponentEvent(ComponentEvent event) {
 		if (event.getID() == ComponentEvent.COMPONENT_RESIZED) {
 			setDividerLocation(getParent().getWidth() / 2);

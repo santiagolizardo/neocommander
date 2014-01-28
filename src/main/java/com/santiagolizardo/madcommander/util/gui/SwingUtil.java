@@ -17,11 +17,14 @@
 package com.santiagolizardo.madcommander.util.gui;
 
 import java.awt.Toolkit;
+import java.util.logging.Logger;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class SwingUtil {
+	
+	private static final Logger logger = Logger.getLogger(SwingUtil.class.getName());
 
 	private static Toolkit toolkit;
 
@@ -44,14 +47,8 @@ public class SwingUtil {
 	private static void setLookAndFeel(String className) {
 		try {
 			UIManager.setLookAndFeel(className);
-		} catch (ClassNotFoundException cnf) {
-			cnf.printStackTrace();
-		} catch (UnsupportedLookAndFeelException ulaf) {
-			ulaf.printStackTrace();
-		} catch (IllegalAccessException ia) {
-			ia.printStackTrace();
-		} catch (InstantiationException i) {
-			i.printStackTrace();
+		} catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException cnf) {
+			logger.warning(cnf.getMessage());
 		}
 	}
 }

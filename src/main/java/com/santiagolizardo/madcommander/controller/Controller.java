@@ -16,16 +16,16 @@
  */
 package com.santiagolizardo.madcommander.controller;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class Controller {
 
-	public static void selectGroup(MadCommander mainWindow, String type,
+	public static void selectGroup(MainWindow mainWindow, String type,
 			String searchPattern, boolean caseSensitive) {
 		mainWindow.getSource().selectGroup(type, searchPattern, caseSensitive);
 	}
 
-	public static void unselectGroup(MadCommander mainWindow, String type,
+	public static void unselectGroup(MainWindow mainWindow, String type,
 			String searchPattern, boolean caseSensitive) {
 		mainWindow.getSource()
 				.unselectGroup(type, searchPattern, caseSensitive);

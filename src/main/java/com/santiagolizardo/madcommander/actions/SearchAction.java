@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.SearchDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -31,9 +31,9 @@ public class SearchAction extends AbstractAction {
 
 	private static final long serialVersionUID = -1957915845327720772L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public SearchAction(MadCommander mainWindow) {
+	public SearchAction(MainWindow mainWindow) {
 		super(Translator._("Search..."), IconFactory.newIcon("find.gif"));
 
 		this.mainWindow = mainWindow;
@@ -42,6 +42,7 @@ public class SearchAction extends AbstractAction {
 				KeyStroke.getKeyStroke(KeyEvent.VK_F7, KeyEvent.ALT_MASK));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		SearchDialog searchDialog = new SearchDialog(mainWindow);
 		searchDialog.setVisible(true);

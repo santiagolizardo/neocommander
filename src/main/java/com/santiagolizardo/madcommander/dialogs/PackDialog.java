@@ -33,7 +33,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
 import com.santiagolizardo.madcommander.controller.PackTypes;
@@ -58,9 +58,9 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 
 	private JPanel panel;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public PackDialog(MadCommander mainWindow) {
+	public PackDialog(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

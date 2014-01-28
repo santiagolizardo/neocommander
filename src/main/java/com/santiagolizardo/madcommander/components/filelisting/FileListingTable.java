@@ -46,7 +46,7 @@ import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.SelectDriveAction;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 import com.santiagolizardo.madcommander.components.filelisting.model.AttributesComparator;
@@ -77,9 +77,9 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 	private boolean first;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FileListingTable(final MadCommander mainWindow,
+	public FileListingTable(final MainWindow mainWindow,
 			FileListing fileListing) {
 		super();
 

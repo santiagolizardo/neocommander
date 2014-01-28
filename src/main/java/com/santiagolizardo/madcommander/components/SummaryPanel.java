@@ -68,7 +68,7 @@ public class SummaryPanel extends JPanel {
 	}
 
 	public void update() {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
         
         buffer.setLength(0);
 		buffer.append(FileUtils.byteCountToDisplaySize(sizeCount)).append(" / ");

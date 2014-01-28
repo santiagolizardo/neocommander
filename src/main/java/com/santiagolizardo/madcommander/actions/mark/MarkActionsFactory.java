@@ -18,7 +18,7 @@ package com.santiagolizardo.madcommander.actions.mark;
 
 import javax.swing.Action;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class MarkActionsFactory {
 
@@ -29,35 +29,35 @@ public class MarkActionsFactory {
 	private static UnselectAllAction unselectAllAction;
 	private static InvertSelectionAction invertSelectionAction;
 
-	public static Action getSelectGroupAction(MadCommander mainWindow) {
+	public static Action getSelectGroupAction(MainWindow mainWindow) {
 		if (selectGroupAction == null)
 			selectGroupAction = new SelectGroupAction(mainWindow);
 
 		return selectGroupAction;
 	}
 
-	public static Action getUnselectGroupAction(MadCommander mainWindow) {
+	public static Action getUnselectGroupAction(MainWindow mainWindow) {
 		if (unselectGroupAction == null)
 			unselectGroupAction = new UnselectGroupAction(mainWindow);
 
 		return unselectGroupAction;
 	}
 
-	public static Action getSelectAllAction(MadCommander mainWindow) {
+	public static Action getSelectAllAction(MainWindow mainWindow) {
 		if (selectAllAction == null)
 			selectAllAction = new SelectAllAction(mainWindow);
 
 		return selectAllAction;
 	}
 
-	public static Action getUnselectAllAction(MadCommander mainWindow) {
+	public static Action getUnselectAllAction(MainWindow mainWindow) {
 		if (unselectAllAction == null)
 			unselectAllAction = new UnselectAllAction(mainWindow);
 
 		return unselectAllAction;
 	}
 
-	public static Action getInvertSelectionAction(MadCommander mainWindow) {
+	public static Action getInvertSelectionAction(MainWindow mainWindow) {
 		if (invertSelectionAction == null)
 			invertSelectionAction = new InvertSelectionAction(mainWindow);
 

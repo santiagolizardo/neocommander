@@ -29,8 +29,7 @@ public class TreeUtil {
 		File[] files = file.listFiles();
 		if (files == null)
 			return;
-		for (int i = 0; i < files.length; i++) {
-			File dir = files[i];
+		for (File dir : files) {
 			if (dir.isDirectory()) {
 				DefaultMutableTreeNode dirNode = new DefaultMutableTreeNode(dir
 						.getName());

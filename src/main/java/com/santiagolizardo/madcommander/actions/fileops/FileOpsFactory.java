@@ -18,13 +18,13 @@ package com.santiagolizardo.madcommander.actions.fileops;
 
 import javax.swing.Action;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class FileOpsFactory {
 
 	private static FileOpsFactory singleton;
 
-	public static FileOpsFactory getInstance(MadCommander mainWindow) {
+	public static FileOpsFactory getInstance(MainWindow mainWindow) {
 		if (singleton == null) {
 			singleton = new FileOpsFactory(mainWindow);
 		}
@@ -42,9 +42,9 @@ public class FileOpsFactory {
 
 	private Action createEmptyFileAction;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FileOpsFactory(MadCommander mainWindow) {
+	public FileOpsFactory(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 	}
 

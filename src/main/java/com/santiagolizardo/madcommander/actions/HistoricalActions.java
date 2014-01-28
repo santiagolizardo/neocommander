@@ -18,21 +18,21 @@ package com.santiagolizardo.madcommander.actions;
 
 import javax.swing.Action;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class HistoricalActions {
 
 	private static PreviousAction previousAction;
 	private static NextAction nextAction;
 
-	public static Action getPreviousAction(MadCommander mainWindow) {
+	public static Action getPreviousAction(MainWindow mainWindow) {
 		if (previousAction == null)
 			previousAction = new PreviousAction(mainWindow);
 
 		return previousAction;
 	}
 
-	public static Action getNextAction(MadCommander mainWindow) {
+	public static Action getNextAction(MainWindow mainWindow) {
 		if (nextAction == null)
 			nextAction = new NextAction(mainWindow);
 

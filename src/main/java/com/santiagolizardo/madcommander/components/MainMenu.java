@@ -22,7 +22,7 @@ import java.util.List;
 import javax.swing.Box;
 import javax.swing.JMenuBar;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.menu.BookmarksMenu;
 import com.santiagolizardo.madcommander.menu.CommandsMenu;
 import com.santiagolizardo.madcommander.menu.ConfigurationMenu;
@@ -41,7 +41,7 @@ public class MainMenu extends JMenuBar {
 
 	private FilesMenu filesMenu;
 
-	public MainMenu(MadCommander mainWindow) {
+	public MainMenu(MainWindow mainWindow) {
 		super();
 
 		filesMenu = new FilesMenu(mainWindow);

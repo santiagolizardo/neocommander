@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
@@ -32,9 +32,9 @@ class AddToBookmarksAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 6038164265710205238L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public AddToBookmarksAction(MadCommander mainWindow) {
+	public AddToBookmarksAction(MainWindow mainWindow) {
 		super(Translator._("Add to bookmarks"), IconFactory
 				.newIcon("add_to_bookmarks.png"));
 

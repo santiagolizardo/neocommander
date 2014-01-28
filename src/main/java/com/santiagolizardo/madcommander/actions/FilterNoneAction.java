@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class FilterNoneAction extends AbstractAction {
@@ -30,14 +30,15 @@ public class FilterNoneAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -1396404929925611587L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FilterNoneAction(MadCommander mainWindow) {
+	public FilterNoneAction(MainWindow mainWindow) {
 		super(Translator._("Filter none"));
 
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		mainWindow.getSource().setFilter(null);
 		mainWindow.getSource().refreshFiles();

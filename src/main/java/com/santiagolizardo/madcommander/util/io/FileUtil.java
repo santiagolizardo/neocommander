@@ -58,7 +58,7 @@ public class FileUtil {
 	 * @return
 	 */
 	public static String getAttributes(File file) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		buffer.append(file.canRead() && file.canWrite() == false ? "r" : "-");
 		buffer.append("a");

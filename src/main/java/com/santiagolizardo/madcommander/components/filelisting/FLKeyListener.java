@@ -19,15 +19,15 @@ package com.santiagolizardo.madcommander.components.filelisting;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 import com.santiagolizardo.madcommander.menu.BookmarksPopup;
 
 public class FLKeyListener extends KeyAdapter {
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FLKeyListener(MadCommander mainWindow) {
+	public FLKeyListener(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 	}
 

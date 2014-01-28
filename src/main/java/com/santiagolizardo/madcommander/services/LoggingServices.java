@@ -22,19 +22,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.LogManager;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class LoggingServices {
 
 	public static void init() throws IOException {
 
-		InputStream fis = null;
+		InputStream fis;
 
 		File file = new File("logging.properties");
 		if (file.exists()) {
 			fis = new FileInputStream(file);
 		} else {
-			fis = MadCommander.class
+			fis = MainWindow.class
 					.getResourceAsStream("default-logging.properties");
 		}
 

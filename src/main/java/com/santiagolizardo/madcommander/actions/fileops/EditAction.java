@@ -24,11 +24,12 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.io.IOException;
 
 class EditAction extends AbstractAction {
 
@@ -36,14 +37,15 @@ class EditAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = -982849699897975067L;
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public EditAction(MadCommander mainWindow) {
+	public EditAction(MainWindow mainWindow) {
 		super(Translator._("Edit"), IconFactory.newIcon("F4.gif"));
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F4"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = mainWindow.getSource();
 		List<File> files = listing.getSelectedFiles();
@@ -54,7 +56,7 @@ class EditAction extends AbstractAction {
 				try {
 					Desktop desktop = Desktop.getDesktop();
 					desktop.edit(file);
-				} catch (Exception e) {
+				} catch (IOException e) {
 					DialogFactory.showErrorMessage(listing.getParent(),
 							e.getMessage());
 				}

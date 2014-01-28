@@ -21,6 +21,8 @@ import java.awt.Desktop;
 import java.net.URI;
 
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 
 public class SystemUtil {
@@ -34,7 +36,7 @@ public class SystemUtil {
 
 		try {
 			runtime.exec(args);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			DialogFactory.showErrorMessage(component, e.getMessage());
 		}
 	}
@@ -44,7 +46,7 @@ public class SystemUtil {
 
 		try {
 			desktop.browse(new URI(address));
-		} catch (Exception e) {
+		} catch (URISyntaxException | IOException e) {
 			System.err.println(e.getMessage());
 		}
 	}

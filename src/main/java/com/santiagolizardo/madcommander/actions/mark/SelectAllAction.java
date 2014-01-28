@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
@@ -33,9 +33,9 @@ class SelectAllAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 4495200194919712150L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public SelectAllAction(MadCommander mainWindow) {
+	public SelectAllAction(MainWindow mainWindow) {
 		super(Translator._("Select all"));
 
 		this.mainWindow = mainWindow;
@@ -44,6 +44,7 @@ class SelectAllAction extends AbstractAction {
 				KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.ALT_MASK));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = mainWindow.getSource();
 		listing.selectAll();

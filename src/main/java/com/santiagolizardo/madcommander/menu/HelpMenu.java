@@ -24,7 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.HelpAction;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.AboutDialog;
@@ -78,11 +78,12 @@ public class HelpMenu extends JMenu implements ActionListener {
 		add(aboutJavaCommander);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		Object source = ev.getSource();
 
 		if (source == visitJavaCommanderWebSite) {
-			SystemUtil.browse(this, MadCommander.APP_URL);
+			SystemUtil.browse(this, MainWindow.APP_URL);
 		} else if (source == checkForUpdate) {
 			UpdateManager.checkForUpdate();
 		} else if (source == aboutJavaCommander) {

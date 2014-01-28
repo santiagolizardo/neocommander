@@ -20,7 +20,7 @@ import java.io.File;
 
 import javax.swing.JTabbedPane;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 
 public class FileListingTabbed extends JTabbedPane {
@@ -31,9 +31,9 @@ public class FileListingTabbed extends JTabbedPane {
 	private static final long serialVersionUID = 6010265431790349455L;
 	private Position panelID;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FileListingTabbed(MadCommander mainWindow, Position panelID) {
+	public FileListingTabbed(MainWindow mainWindow, Position panelID) {
 		super();
 
 		this.panelID = panelID;

@@ -34,7 +34,7 @@ import javax.swing.ToolTipManager;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.PathLabel;
 import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingColumn;
@@ -43,6 +43,7 @@ import com.santiagolizardo.madcommander.components.filelisting.model.FileListing
 import com.santiagolizardo.madcommander.components.filelisting.renderers.FLCellRenderer;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.gui.SwingUtil;
+import java.io.IOException;
 
 public class FileListing extends JPanel {
 
@@ -78,9 +79,9 @@ public class FileListing extends JPanel {
 
 	private File currentPath;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FileListing(final MadCommander mainWindow, Position id) {
+	public FileListing(final MainWindow mainWindow, Position id) {
 		super();
 
 		this.id = id;
@@ -230,7 +231,7 @@ public class FileListing extends JPanel {
 
 	public void selectGroup(String type, String searchPattern,
 			boolean caseSensitive) {
-		StringBuffer reBuffer = new StringBuffer();
+		StringBuilder reBuffer = new StringBuilder();
 		if ("Contains".equals(type)) {
 			reBuffer.append(".*").append(searchPattern).append(".*");
 		} else if ("Starts with".equals(type)) {
@@ -257,7 +258,7 @@ public class FileListing extends JPanel {
 
 	public void unselectGroup(String type, String searchPattern,
 			boolean caseSensitive) {
-		StringBuffer reBuffer = new StringBuffer();
+		StringBuilder reBuffer = new StringBuilder();
 		if ("Contains".equals(type)) {
 			reBuffer.append(".*").append(searchPattern).append(".*");
 		} else if ("Starts with".equals(type)) {
@@ -312,7 +313,7 @@ public class FileListing extends JPanel {
 					historical.add(dir.getParentFile().getAbsolutePath());
 				}
 			} else {
-				StringBuffer buffer = new StringBuffer();
+				StringBuilder buffer = new StringBuilder();
 				buffer.append("Executing [ ");
 				buffer.append(dir.getAbsolutePath());
 				buffer.append(" ]");
@@ -320,7 +321,7 @@ public class FileListing extends JPanel {
 				try {
 					Desktop desktop = Desktop.getDesktop();
 					desktop.open(dir);
-				} catch (Exception e) {
+				} catch (IOException e) {
 					DialogFactory.showErrorMessage(getParent(), e.getMessage());
 				}
 			}

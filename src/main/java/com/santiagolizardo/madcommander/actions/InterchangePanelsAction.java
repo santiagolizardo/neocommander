@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -31,9 +31,9 @@ public class InterchangePanelsAction extends AbstractAction {
 
 	private static final long serialVersionUID = 2374316824230143289L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public InterchangePanelsAction(MadCommander mainWindow) {
+	public InterchangePanelsAction(MainWindow mainWindow) {
 		super(Translator._("Interchange panels"));
 
 		this.mainWindow = mainWindow;
@@ -43,6 +43,7 @@ public class InterchangePanelsAction extends AbstractAction {
 		putValue(AbstractAction.SMALL_ICON, IconFactory.newIcon("swap.png"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing sourceListing = mainWindow
 				.getCurrentTab(mainWindow.leftTabs);

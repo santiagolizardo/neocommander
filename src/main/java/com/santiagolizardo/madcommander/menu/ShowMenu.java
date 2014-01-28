@@ -26,7 +26,7 @@ import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSplitPane;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.BriefAction;
 import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
 import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
@@ -62,9 +62,9 @@ public class ShowMenu extends JMenu implements ActionListener {
 
 	private JRadioButtonMenuItem filterCustom;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public ShowMenu(MadCommander mainWindow) {
+	public ShowMenu(MainWindow mainWindow) {
 		super(Translator._("Show"));
 		setMnemonic(KeyEvent.VK_S);
 
@@ -117,6 +117,7 @@ public class ShowMenu extends JMenu implements ActionListener {
 		add(reversedOrder);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		Object source = ev.getSource();
 		if (source == filterCustom) {

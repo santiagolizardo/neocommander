@@ -24,11 +24,12 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.io.IOException;
 
 class ViewAction extends AbstractAction {
 
@@ -37,9 +38,9 @@ class ViewAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 3940664656256749257L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public ViewAction(MadCommander mainWindow) {
+	public ViewAction(MainWindow mainWindow) {
 		super(Translator._("View"), IconFactory.newIcon("F3.gif"));
 
 		this.mainWindow = mainWindow;
@@ -47,6 +48,7 @@ class ViewAction extends AbstractAction {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F3"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		FileListing listing = mainWindow.getSource();
 		List<File> files = listing.getSelectedFiles();
@@ -55,7 +57,7 @@ class ViewAction extends AbstractAction {
 			try {
 				Desktop desktop = Desktop.getDesktop();
 				desktop.open(file);
-			} catch (Exception d) {
+			} catch (IOException d) {
 				DialogFactory.showErrorMessage(mainWindow,
 						d.getLocalizedMessage());
 			}

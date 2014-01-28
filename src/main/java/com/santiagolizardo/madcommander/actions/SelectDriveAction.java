@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.dialogs.SelectDrivePopup;
 
@@ -33,9 +33,9 @@ public class SelectDriveAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -5388378675835343628L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public SelectDriveAction(MadCommander mainWindow) {
+	public SelectDriveAction(MainWindow mainWindow) {
 		super("SelectDriveAction");
 
 		this.mainWindow = mainWindow;
@@ -44,6 +44,7 @@ public class SelectDriveAction extends AbstractAction {
 				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_MASK));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing fileListing = mainWindow.getSource();
 		SelectDrivePopup popup = new SelectDrivePopup(mainWindow);

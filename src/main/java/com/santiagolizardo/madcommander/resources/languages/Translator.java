@@ -18,6 +18,7 @@ package com.santiagolizardo.madcommander.resources.languages;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.xnap.commons.i18n.I18n;
@@ -47,7 +48,7 @@ public class Translator {
 		try {
 			return i18n.tr(key);
 		} catch (MissingResourceException mre) {
-			logger.warning("Missing translation: " + key);
+			logger.log(Level.WARNING, "Missing translation: {0}", key);
 			return key;
 		}
 	}

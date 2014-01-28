@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -31,14 +31,15 @@ public class BriefAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 963345464924990261L;
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public BriefAction(MadCommander mainWindow) {
+	public BriefAction(MainWindow mainWindow) {
 		super(Translator._("Brief"), IconFactory.newIcon("icon_brief.gif"));
 
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (!mainWindow.getSource().getFormat().equals(Format.Brief))
 			mainWindow.getSource().setFormat(Format.Brief);

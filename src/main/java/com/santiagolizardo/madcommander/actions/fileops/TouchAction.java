@@ -22,7 +22,7 @@ import java.util.List;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -36,14 +36,15 @@ public class TouchAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -2847060359677737655L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public TouchAction(MadCommander mainWindow) {
+	public TouchAction(MainWindow mainWindow) {
 		super(Translator._("Touch"), IconFactory.newIcon("touch.gif"));
 
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = mainWindow.getSource();
 		List<File> selectedFiles = listing.getSelectedFiles();

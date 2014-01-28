@@ -16,7 +16,7 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.controller.Controller;
 
 public class UnselectGroupDialog extends AbstractGroupDialog {
@@ -26,9 +26,9 @@ public class UnselectGroupDialog extends AbstractGroupDialog {
 	 */
 	private static final long serialVersionUID = 2101906785456634573L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public UnselectGroupDialog(MadCommander mainWindow) {
+	public UnselectGroupDialog(MainWindow mainWindow) {
 		super("Unselect group", mainWindow);
 
 		this.mainWindow = mainWindow;

@@ -41,6 +41,7 @@ public class HelpAction extends AbstractAction {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F1"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		HelpDialog dialog = new HelpDialog(mainWindow, "HELP.txt");
 		dialog.setVisible(true);

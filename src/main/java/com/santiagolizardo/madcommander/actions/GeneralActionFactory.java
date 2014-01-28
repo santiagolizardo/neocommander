@@ -18,11 +18,11 @@ package com.santiagolizardo.madcommander.actions;
 
 import javax.swing.Action;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 
 public class GeneralActionFactory {
 
-	public static Action getAddToBookmarksAction(MadCommander mainWindow) {
+	public static Action getAddToBookmarksAction(MainWindow mainWindow) {
 		if (GeneralActionFactory.addToBookmarksAction == null)
 			GeneralActionFactory.addToBookmarksAction = new AddToBookmarksAction(
 					mainWindow);

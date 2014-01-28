@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
 
 
@@ -47,9 +47,9 @@ public class GeneralTab extends JPanel {
 
 	private JCheckBox recursive;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 	
-	public GeneralTab(MadCommander mainWindow) {
+	public GeneralTab(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

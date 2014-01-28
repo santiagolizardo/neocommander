@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class EqualizePanelsAction extends AbstractAction {
@@ -29,14 +29,15 @@ public class EqualizePanelsAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = -5924873313089489091L;
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public EqualizePanelsAction(MadCommander mainWindow) {
+	public EqualizePanelsAction(MainWindow mainWindow) {
 		super(Translator._("Target equal to source"));
 
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		String srcPath = mainWindow.getSource().getPath();
 		mainWindow.getDestination().setPath(srcPath);

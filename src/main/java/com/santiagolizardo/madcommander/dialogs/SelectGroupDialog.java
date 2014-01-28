@@ -16,20 +16,17 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.controller.Controller;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class SelectGroupDialog extends AbstractGroupDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8402206622370638785L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public SelectGroupDialog(MadCommander mainWindow) {
+	public SelectGroupDialog(MainWindow mainWindow) {
 		super(Translator._("Select group"), mainWindow);
 
 		this.mainWindow = mainWindow;

@@ -17,6 +17,7 @@
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class MyProcess {
@@ -34,7 +35,7 @@ public class MyProcess {
 
 	protected String dstPath;
 
-	protected ArrayList<String> files;
+	protected List<String> files;
 
 	public boolean cancel;
 

@@ -45,9 +45,9 @@ public class ExecuteBar extends JPanel implements ActionListener {
 	public ExecuteBar() {
 		super();
 
-		model = new DefaultComboBoxModel<String>();
+		model = new DefaultComboBoxModel<>();
 
-		commands = new JComboBox<String>(model);
+		commands = new JComboBox<>(model);
 		commands.setEditable(true);
 		commands.addActionListener(this);
 
@@ -56,6 +56,7 @@ public class ExecuteBar extends JPanel implements ActionListener {
 		defineLayout();
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
 		if ("comboBoxChanged".equals(command)) {

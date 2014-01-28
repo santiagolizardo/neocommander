@@ -24,7 +24,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -38,9 +38,9 @@ public class DrivesToolbar extends JToolBar {
 	private static final long serialVersionUID = 4975350309638036942L;
 	private static final Icon DRIVE_ICON = IconFactory.newIcon("drive.gif");
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public DrivesToolbar(MadCommander mainWindow) {
+	public DrivesToolbar(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

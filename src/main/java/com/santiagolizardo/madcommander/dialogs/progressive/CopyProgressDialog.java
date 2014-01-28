@@ -21,8 +21,9 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.io.IOException;
 
 public class CopyProgressDialog extends AbstractProgressDialog {
 
@@ -31,10 +32,11 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 	 */
 	private static final long serialVersionUID = 4051353584577931986L;
 
-	public CopyProgressDialog(MadCommander madCommander) {
+	public CopyProgressDialog(MainWindow madCommander) {
 		super(madCommander);
 	}
 
+	@Override
 	public void run() {
 		if (srcPath.equals(dstPath)) {
 			DialogFactory.showErrorMessage(src.getParent(),
@@ -52,7 +54,8 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 			currentFileLabel.setText("Current file: " + myProcess.currentFile);
 			String fullSrc = srcPath + File.separator + myProcess.currentFile;
 			String fullDst = dstPath + File.separator + myProcess.currentFile;
-			StringBuffer buffer = new StringBuffer();
+			
+			StringBuilder buffer = new StringBuilder();
 			buffer.append("Copying [ ");
 			buffer.append(fullSrc);
 			buffer.append(" => ");
@@ -75,7 +78,7 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 					logger.info("Cancel copying.");
 					return;
 				}
-			} catch (Exception e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}

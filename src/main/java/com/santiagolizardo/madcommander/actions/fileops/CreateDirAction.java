@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -38,9 +38,9 @@ class CreateDirAction extends AbstractAction {
 
 	private static final Logger LOGGER = Logger.getLogger(CreateDirAction.class
 			.getName());
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public CreateDirAction(MadCommander mainWindow) {
+	public CreateDirAction(MainWindow mainWindow) {
 		super(Translator._("Create dir"), IconFactory.newIcon("F7.gif"));
 
 		this.mainWindow = mainWindow;
@@ -48,6 +48,7 @@ class CreateDirAction extends AbstractAction {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F7"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = mainWindow.getSource();
 		String name = DialogFactory.showInputDialog(listing.getParent(),
@@ -68,7 +69,7 @@ class CreateDirAction extends AbstractAction {
 		buffer.append(" ]");
 		LOGGER.info(buffer.toString());
 		if (file.mkdir() == false) {
-			StringBuffer errorBuffer = new StringBuffer();
+			StringBuilder errorBuffer = new StringBuilder();
 			errorBuffer.append("Directory '");
 			errorBuffer.append(name);
 			errorBuffer.append("' could not be created!");

@@ -27,7 +27,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -47,9 +47,9 @@ public class ChangeAttributesDialog extends AbstractDialog implements
 	private JButton okButton;
 	private JButton cancelButton;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public ChangeAttributesDialog(MadCommander mainWindow) {
+	public ChangeAttributesDialog(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

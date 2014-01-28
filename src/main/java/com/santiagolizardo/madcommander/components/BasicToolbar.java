@@ -25,7 +25,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JToolBar;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.BriefAction;
 import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
 import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
@@ -43,7 +43,7 @@ public class BasicToolbar extends JToolBar {
 	 */
 	private static final long serialVersionUID = 2081100107934692827L;
 
-	public BasicToolbar(MadCommander mainWindow) {
+	public BasicToolbar(MainWindow mainWindow) {
 		super();
 
 		setRollover(true);
@@ -79,6 +79,7 @@ public class BasicToolbar extends JToolBar {
 		final JButton filters = new JButton("Filter",
 				IconFactory.newIcon("filter.gif"));
 		filters.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				popup.show(filters, 0, filters.getY() + filters.getHeight() + 1);
 			}

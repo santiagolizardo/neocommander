@@ -28,7 +28,7 @@ import javax.swing.KeyStroke;
 
 import org.apache.commons.io.FileUtils;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.fileops.PackAction;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
@@ -37,6 +37,7 @@ import com.santiagolizardo.madcommander.dialogs.changeattributes.ChangeAttribute
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.io.IOException;
 
 public class FilesMenu extends JMenu implements ActionListener {
 
@@ -49,9 +50,9 @@ public class FilesMenu extends JMenu implements ActionListener {
 	private JMenuItem printMenuItem;
 	private LocalizedMenuItem quitMenuItem;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public FilesMenu(MadCommander mainWindow) {
+	public FilesMenu(MainWindow mainWindow) {
 		super(Translator._("Files"));
 		setMnemonic(KeyEvent.VK_F);
 
@@ -83,6 +84,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 		add(quitMenuItem);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		Object source = ev.getSource();
 		if (source == changeAttributesMenuItem) {
@@ -93,7 +95,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 			List<File> list = mainWindow.getSource().getSelectedFiles();
 			if (list.size() == 1) {
 				File file = list.get(0);
-				StringBuffer buffer = new StringBuffer();
+				StringBuilder buffer = new StringBuilder();
 				buffer.append(mainWindow.getSource().getPath());
 				buffer.append(File.separator);
 				buffer.append(file.getName());
@@ -111,7 +113,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 		} else if (source == compareByContent) {
 			List<File> files1 = mainWindow.getSource().getSelectedFiles();
 			List<File> files2 = mainWindow.getDestination().getSelectedFiles();
-			if (files1.size() == 0 || files2.size() == 0) {
+			if (files1.isEmpty() || files2.isEmpty()) {
 				DialogFactory
 						.showInformationMessage(mainWindow,
 								"Please select a file on each panel first to compare their contents.");
@@ -126,7 +128,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 				} else
 					DialogFactory.showInformationMessage(mainWindow,
 							"The content of the files is not the same.");
-			} catch (Exception e) {
+			} catch (IOException e) {
 				DialogFactory.showErrorMessage(mainWindow,
 						"Could not compare the contents of the files.");
 			}

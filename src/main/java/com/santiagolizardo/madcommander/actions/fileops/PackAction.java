@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.dialogs.PackDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
@@ -34,14 +34,15 @@ public class PackAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -4020899583847293332L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public PackAction(MadCommander mainWindow) {
+	public PackAction(MainWindow mainWindow) {
 		super(Translator._("Pack..."), IconFactory.newIcon("box.png"));
 
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing fileListing = mainWindow.getSource();
 		if (fileListing.getNumberOfSelectedRows() == 0) {

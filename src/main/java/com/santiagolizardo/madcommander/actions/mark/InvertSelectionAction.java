@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
@@ -31,14 +31,15 @@ class InvertSelectionAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -2060474525811836981L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public InvertSelectionAction(MadCommander mainWindow) {
+	public InvertSelectionAction(MainWindow mainWindow) {
 		super(Translator._("Invert selection"));
 
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = mainWindow.getSource();
 		listing.invertSelection();

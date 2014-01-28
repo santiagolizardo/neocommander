@@ -16,7 +16,7 @@
  */
 package com.santiagolizardo.madcommander.dialogs.bookmarks;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
@@ -44,7 +44,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 
 	private static final long serialVersionUID = 2436015514011489788L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
 	private JTextField bookmarkTextField;
 
@@ -55,7 +55,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 	private JList<String> bookmarkList;
 	private JScrollPane scroll;
 
-	public ManageBookmarks(MadCommander mainWindow) {
+	public ManageBookmarks(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

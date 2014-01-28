@@ -19,7 +19,7 @@ package com.santiagolizardo.madcommander.components.filelisting;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.HistoricalActions;
 
 public class Historical {
@@ -27,9 +27,9 @@ public class Historical {
 	private ArrayList<String> history;
 	private ListIterator<String> iterator;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public Historical(MadCommander mainWindow) {
+	public Historical(MainWindow mainWindow) {
 		history = new ArrayList<String>();
 		iterator = history.listIterator();
 

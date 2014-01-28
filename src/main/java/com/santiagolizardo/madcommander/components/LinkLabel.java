@@ -46,6 +46,7 @@ public class LinkLabel extends JLabel {
 		setCursor(hand);
 
 		addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseEntered(MouseEvent event) {
 				setCursor(hand);
 			}

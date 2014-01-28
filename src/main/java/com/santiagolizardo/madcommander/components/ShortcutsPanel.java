@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 
 public class ShortcutsPanel extends JPanel {
@@ -44,9 +44,9 @@ public class ShortcutsPanel extends JPanel {
 	private JButton createDirButton;
 	private JButton deleteButton;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public ShortcutsPanel(MadCommander mainWindow) {
+	public ShortcutsPanel(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

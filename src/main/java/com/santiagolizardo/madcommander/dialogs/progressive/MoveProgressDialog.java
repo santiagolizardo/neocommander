@@ -19,7 +19,7 @@ package com.santiagolizardo.madcommander.dialogs.progressive;
 import java.io.File;
 import java.util.List;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 public class MoveProgressDialog extends AbstractProgressDialog {
@@ -29,10 +29,11 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 	 */
 	private static final long serialVersionUID = 6456147166253912620L;
 
-	public MoveProgressDialog(MadCommander mainWindow) {
+	public MoveProgressDialog(MainWindow mainWindow) {
 		super(mainWindow);
 	}
 
+	@Override
 	public void run() {
 		if (srcPath.equals(dstPath)) {
 			DialogFactory.showErrorMessage(src.getParent(),
@@ -50,7 +51,8 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 			String fullDst = dstPath + File.separator + myProcess.currentFile;
 			File srcFile = new File(fullSrc);
 			File dstFile = new File(fullDst);
-			StringBuffer buffer = new StringBuffer();
+			
+			StringBuilder buffer = new StringBuilder();
 			buffer.append("Moving [ ");
 			buffer.append(fullSrc);
 			buffer.append(" => ");

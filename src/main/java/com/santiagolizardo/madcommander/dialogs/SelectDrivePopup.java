@@ -24,7 +24,7 @@ import javax.swing.Icon;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -38,7 +38,7 @@ public class SelectDrivePopup extends JPopupMenu {
 	private static final long serialVersionUID = -4959814209723911694L;
 	private static final Icon DRIVE_ICON = IconFactory.newIcon("drive.gif");
 
-	public SelectDrivePopup(MadCommander mainWindow) {
+	public SelectDrivePopup(MainWindow mainWindow) {
 		super();
 
 		File[] drives = File.listRoots();
@@ -57,9 +57,9 @@ public class SelectDrivePopup extends JPopupMenu {
 		private File drive;
 		private String absolutePath;
 
-		private MadCommander mainWindow;
+		private MainWindow mainWindow;
 
-		public FileButton(MadCommander mainWindow, File drive) {
+		public FileButton(MainWindow mainWindow, File drive) {
 			super();
 
 			this.mainWindow = mainWindow;

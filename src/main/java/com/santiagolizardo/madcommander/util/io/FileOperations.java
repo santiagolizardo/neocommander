@@ -18,11 +18,15 @@ package com.santiagolizardo.madcommander.util.io;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
 
 public class FileOperations {
+	
+	private static final Logger logger = Logger.getLogger(FileOperations.class.getName());
 
 	public static boolean touch(File file) {
 		long currentTime = System.currentTimeMillis();
@@ -55,8 +59,8 @@ public class FileOperations {
 			fos.close();
 
 			return true;
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
+		} catch (IOException e) {
+			logger.warning(e.getMessage());
 			return false;
 		}
 	}

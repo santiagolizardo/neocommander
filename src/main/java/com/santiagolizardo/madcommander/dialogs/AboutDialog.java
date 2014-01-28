@@ -25,7 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.LinkLabel;
 
 public class AboutDialog extends AbstractDialog {
@@ -39,7 +39,7 @@ public class AboutDialog extends AbstractDialog {
 	public AboutDialog(JFrame mainWindow) {
 		super();
 
-		setTitle(MadCommander.APP_NAME);
+		setTitle(MainWindow.APP_NAME);
 		setSize(420, 200);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -48,14 +48,14 @@ public class AboutDialog extends AbstractDialog {
 		setLocationRelativeTo(mainWindow);
 
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(MadCommander.APP_NAME).append(" v").append(
-				MadCommander.APP_VERSION).append("\n");
+		buffer.append(MainWindow.APP_NAME).append(" v").append(
+				MainWindow.APP_VERSION).append("\n");
 		buffer.append("Written by Santiago Lizardo Oscares\nhttp://www.santiagolizardo.com\n");
 		text = new JTextArea();
 		text.setEditable(false);
 		text.setText(buffer.toString());
 
-		webSite = new LinkLabel(MadCommander.APP_URL);
+		webSite = new LinkLabel(MainWindow.APP_URL);
 
 		text.setBackground(webSite.getBackground());
 		text.setFont(webSite.getFont());

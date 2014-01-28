@@ -20,7 +20,7 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class ReversedOrderItem extends JCheckBoxMenuItem {
@@ -30,9 +30,9 @@ public class ReversedOrderItem extends JCheckBoxMenuItem {
 	 */
 	private static final long serialVersionUID = 5744823152452602062L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public ReversedOrderItem(final MadCommander mainWindow) {
+	public ReversedOrderItem(final MainWindow mainWindow) {
 		super(Translator._("Reversed order"));
 
 		this.mainWindow = mainWindow;

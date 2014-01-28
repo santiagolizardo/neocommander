@@ -20,8 +20,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import java.io.IOException;
 
 
 public final class UpdateManager extends Thread {
@@ -48,9 +49,9 @@ public final class UpdateManager extends Thread {
 			int serverVersion = Integer.valueOf(version.replaceAll("\\.", ""))
 					.intValue();
 			int currentVersion = Integer.valueOf(
-					MadCommander.APP_VERSION.replaceAll("\\.", "")).intValue();
+					MainWindow.APP_VERSION.replaceAll("\\.", "")).intValue();
 			if (serverVersion > currentVersion) {
-				StringBuffer text = new StringBuffer();
+				StringBuilder text = new StringBuilder();
 				text.append("New version \"");
 				text.append(version);
 				text
@@ -63,7 +64,7 @@ public final class UpdateManager extends Thread {
 						"There are no updates availables.");
 			}
 
-		} catch (Exception e) {
+		} catch (IOException | NumberFormatException e) {
 			DialogFactory.showErrorMessage(null, e.getMessage());
 		}
 

@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
@@ -31,9 +31,9 @@ class PreviousAction extends AbstractAction {
 	 */
 	private static final long serialVersionUID = -3600368513651492859L;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public PreviousAction(MadCommander mainWindow) {
+	public PreviousAction(MainWindow mainWindow) {
 		super(Translator._("Previous"), IconFactory.newIcon("prev.gif"));
 
 		this.mainWindow = mainWindow;
@@ -41,6 +41,7 @@ class PreviousAction extends AbstractAction {
 		setEnabled(false);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		String previous = mainWindow.getSource().historical.getPrevious();
 		mainWindow.getSource().setPath(previous);

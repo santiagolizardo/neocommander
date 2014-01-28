@@ -29,7 +29,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
@@ -62,9 +62,9 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 	private JPanel panel;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public AbstractProgressDialog(MadCommander mainWindow) {
+	public AbstractProgressDialog(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;
@@ -118,7 +118,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 						break;
 					try {
 						Thread.sleep(100);
-					} catch (Exception e) {
+					} catch (InterruptedException e) {
 					}
 				}
 
@@ -133,6 +133,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 		setVisible(true);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source == cancel) {

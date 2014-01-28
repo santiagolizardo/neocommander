@@ -23,18 +23,15 @@ import java.awt.event.KeyEvent;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedCheckBoxMenuItem;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class ConfigurationMenu extends JMenu implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4098318863664780142L;
 
-	private MadCommander app;
+	private MainWindow app;
 
 	private JMenu show;
 
@@ -43,7 +40,7 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 	private JCheckBoxMenuItem executePanel;
 	private JCheckBoxMenuItem shortcutsPanel;
 
-	public ConfigurationMenu(MadCommander app) {
+	public ConfigurationMenu(MainWindow app) {
 		super(Translator._("Configuration"));
 
 		this.app = app;
@@ -76,6 +73,7 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 		add(show);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent ev) {
 		Object source = ev.getSource();
 		if (source == basicToolbar) {

@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 /**
@@ -43,7 +43,7 @@ public final class LockManager {
 		if (!allowInstances) {
 			String tempDir = System.getProperty("java.io.tmpdir");
 			String lockPath = tempDir.concat(File.separator)
-					.concat(MadCommander.APP_NAME).concat(".lock");
+					.concat(MainWindow.APP_NAME).concat(".lock");
 			LOGGER.info(lockPath);
 
 			File lock = new File(lockPath);

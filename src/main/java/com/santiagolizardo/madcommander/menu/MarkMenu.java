@@ -21,7 +21,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.mark.MarkActionsFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
@@ -32,7 +32,7 @@ public class MarkMenu extends JMenu {
 	 */
 	private static final long serialVersionUID = 753419026893214433L;
 
-	public MarkMenu(MadCommander mainWindow) {
+	public MarkMenu(MainWindow mainWindow) {
 		super(Translator._("Mark"));
 		setMnemonic(KeyEvent.VK_M);
 

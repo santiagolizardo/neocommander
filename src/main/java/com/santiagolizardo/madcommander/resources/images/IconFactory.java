@@ -18,12 +18,15 @@ package com.santiagolizardo.madcommander.resources.images;
 
 import java.io.File;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 public class IconFactory {
+	
+	private static final Logger logger = Logger.getLogger(IconFactory.class.getName());
 
 	private static ImageIcon parentIcon;
 	private static JFileChooser chooser;
@@ -33,7 +36,7 @@ public class IconFactory {
 			parentIcon = newIcon("parent_dir.gif");
 			chooser = new JFileChooser();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.warning(e.getMessage());
 		}
 	}
 

@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.GeneralActionFactory;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.bookmarks.ManageBookmarks;
@@ -36,9 +36,9 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 	private JMenuItem addBookmarkMenuItem;
 	private JMenuItem manageBookmarksMenuItem;
 
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public BookmarksMenu(MadCommander mainWindow) {
+	public BookmarksMenu(MainWindow mainWindow) {
 		super(Translator._("Bookmarks"));
 
 		this.mainWindow = mainWindow;

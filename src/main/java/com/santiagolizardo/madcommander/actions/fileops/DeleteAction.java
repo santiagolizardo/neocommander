@@ -23,7 +23,7 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.KeyStroke;
 
-import com.santiagolizardo.madcommander.MadCommander;
+import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.dialogs.delete.DeleteDialog;
 import com.santiagolizardo.madcommander.dialogs.progressive.DeleteProgressDialog;
@@ -36,9 +36,9 @@ class DeleteAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 5996615163711698788L;
-	private MadCommander mainWindow;
+	private MainWindow mainWindow;
 
-	public DeleteAction(MadCommander mainWindow) {
+	public DeleteAction(MainWindow mainWindow) {
 		super(Translator._("Delete"), IconFactory.newIcon("F8.gif"));
 
 		this.mainWindow = mainWindow;
@@ -46,6 +46,7 @@ class DeleteAction extends AbstractAction {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F8"));
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		FileListing listing = mainWindow.getSource();
 
