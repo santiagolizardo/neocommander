@@ -33,12 +33,8 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.SystemUtil;
 import com.santiagolizardo.madcommander.util.UpdateManager;
 
-
 public class HelpMenu extends JMenu implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8893380914412785609L;
 
 	private JMenuItem helpIndex;

@@ -1,82 +1,88 @@
 /**
  * This file is part of MadCommander, a file manager with two panels.
  *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * MadCommander is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
  *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MadCommander is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with
+ * MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.LinkLabel;
+import com.santiagolizardo.madcommander.components.HtmlLabel;
+import com.santiagolizardo.madcommander.resources.ResourcesLoader;
+import com.santiagolizardo.madcommander.resources.images.IconFactory;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+import java.awt.Container;
+import java.awt.Dimension;
+import javax.swing.BoxLayout;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class AboutDialog extends AbstractDialog {
 
-	private static final long serialVersionUID = 1558869937506126714L;
+	private static final long serialVersionUID = -3985858584067350439L;
 
-	private JTextArea text;
+	public AboutDialog(JFrame parentFrame) {
+		super(parentFrame);
 
-	private JLabel webSite;
-
-	public AboutDialog(JFrame mainWindow) {
-		super();
-
-		setTitle(MainWindow.APP_NAME);
-		setSize(420, 200);
+		setTitle("About this application");
 		setModal(true);
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setResizable(false);
-		setFocusable(true);
-		setLocationRelativeTo(mainWindow);
-
-		StringBuffer buffer = new StringBuffer();
-		buffer.append(MainWindow.APP_NAME).append(" v").append(
-				MainWindow.APP_VERSION).append("\n");
-		buffer.append("Written by Santiago Lizardo Oscares\nhttp://www.santiagolizardo.com\n");
-		text = new JTextArea();
-		text.setEditable(false);
-		text.setText(buffer.toString());
-
-		webSite = new LinkLabel(MainWindow.APP_URL);
-
-		text.setBackground(webSite.getBackground());
-		text.setFont(webSite.getFont());
 
 		defineLayout();
 	}
 
 	private void defineLayout() {
-		setLayout(new GridBagLayout());
+		Container container = getContentPane();
+		container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 
-		GridBagConstraints c = new GridBagConstraints();
+		JLabel iconPanel = new JLabel(IconFactory.newIcon("icon.png"));
 
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(5, 5, 5, 5);
+		JPanel leftPanel = new JPanel();
+		leftPanel.setAlignmentY(JPanel.TOP_ALIGNMENT);
+		leftPanel.add(iconPanel);
 
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridheight = 1;
-		add(text, c);
+		container.add(leftPanel);
 
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridheight = 2;
-		add(webSite, c);
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+		String headlineText = String.format("<h1>%s <em>v%s</em></h1>",
+				MainWindow.APP_NAME, MainWindow.APP_VERSION);
+		String infoText = String.format("<p>%s</p>", String.format(
+				Translator._("More info about the project at <a href=\"%s\">%s</a>."),
+				MainWindow.APP_URL, MainWindow.APP_URL_DISPLAY));
+		String creditsText = ResourcesLoader.readResource(AboutDialog.class,
+				"credits.html");
+
+		String content = headlineText.concat(infoText).concat(creditsText);
+		JEditorPane lblCredits = new HtmlLabel(content);
+		lblCredits.setCaretPosition(0);
+
+		JScrollPane scrollPane = new JScrollPane(lblCredits);
+		scrollPane.setPreferredSize(new Dimension(380, 240));
+		scrollPane
+				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+		panel.setAlignmentY(JPanel.TOP_ALIGNMENT);
+		panel.add(scrollPane);
+
+		container.add(panel);
+
+		pack();
+		setLocationRelativeTo(getOwner());
 	}
 }

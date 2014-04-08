@@ -26,15 +26,14 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class RefreshAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3329520213155594135L;
 
 	private MainWindow mainWindow;
 
-	public RefreshAction() {
+	public RefreshAction(MainWindow mainWindow) {
 		super(Translator._("Refresh"), IconFactory.newIcon("refresh.gif"));
+		
+		this.mainWindow = mainWindow;
 	}
 
 	@Override

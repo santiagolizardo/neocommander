@@ -40,7 +40,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
-import javax.swing.SwingUtilities;
 
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
@@ -51,7 +50,6 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.util.GlobUtils;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileUtil;
-import java.nio.file.Files;
 import java.util.regex.Matcher;
 
 public class SearchDialog extends AbstractDialog implements ActionListener {
@@ -72,7 +70,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 	private MainWindow mainWindow;
 
 	public SearchDialog(MainWindow mainWindow) {
-		super();
+		super(mainWindow);
 
 		this.mainWindow = mainWindow;
 

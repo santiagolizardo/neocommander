@@ -25,12 +25,10 @@ import org.apache.commons.io.FileUtils;
 
 public class SummaryPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -16629584712474535L;
-	public int sizeCount;
-	public int sizeTotal;
+	
+	public long sizeCount;
+	public long sizeTotal;
     
     private JLabel sizes;
 

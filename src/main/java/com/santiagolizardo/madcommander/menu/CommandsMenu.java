@@ -56,7 +56,7 @@ public class CommandsMenu extends JMenu {
 		interchangePanelsMenuItem = new JMenuItem(new InterchangePanelsAction(mainWindow));
 		targetEqualSourceMenuItem = new JMenuItem(new EqualizePanelsAction(mainWindow));
 
-		refreshMenuItem = new JMenuItem(new RefreshAction());
+		refreshMenuItem = new JMenuItem(new RefreshAction(mainWindow));
 		
 		add(searchMenuItem);
 		addSeparator();

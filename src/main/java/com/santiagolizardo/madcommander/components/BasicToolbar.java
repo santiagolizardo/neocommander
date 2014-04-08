@@ -38,9 +38,6 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
 public class BasicToolbar extends JToolBar {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2081100107934692827L;
 
 	public BasicToolbar(MainWindow mainWindow) {
@@ -48,7 +45,7 @@ public class BasicToolbar extends JToolBar {
 
 		setRollover(true);
 
-		JButton refresh = new JButton(new RefreshAction());
+		JButton refresh = new JButton(new RefreshAction(mainWindow));
 		JButton brief = new JButton(new BriefAction(mainWindow));
 		JButton full = new JButton(new FullAction(mainWindow));
 
