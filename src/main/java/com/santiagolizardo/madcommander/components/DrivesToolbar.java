@@ -81,7 +81,7 @@ public class DrivesToolbar extends JToolBar {
 				listing.refreshFiles();
 			} else {
 				DialogFactory.showErrorMessage(mainWindow,
-						Translator._("Device not available"));
+						Translator.tr("Device not available"));
 			}
 		}
 	}

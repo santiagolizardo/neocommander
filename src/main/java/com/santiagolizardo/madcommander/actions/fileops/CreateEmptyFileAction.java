@@ -36,7 +36,7 @@ public class CreateEmptyFileAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public CreateEmptyFileAction(MainWindow mc) {
-		super(Translator._("Create empty file..."), IconFactory
+		super(Translator.tr("Create empty file..."), IconFactory
 				.newIcon("page_white.png"));
 
 		this.mainWindow = mc;

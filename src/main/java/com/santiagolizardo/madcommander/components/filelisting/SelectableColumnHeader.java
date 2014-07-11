@@ -34,7 +34,7 @@ public class SelectableColumnHeader {
 	}
 
 	public String getText() {
-		return Translator._(text);
+		return Translator.tr(text);
 	}
 
 	public void setActive(boolean active) {

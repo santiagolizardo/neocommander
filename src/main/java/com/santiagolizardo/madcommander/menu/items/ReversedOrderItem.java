@@ -33,7 +33,7 @@ public class ReversedOrderItem extends JCheckBoxMenuItem {
 	private MainWindow mainWindow;
 
 	public ReversedOrderItem(final MainWindow mainWindow) {
-		super(Translator._("Reversed order"));
+		super(Translator.tr("Reversed order"));
 
 		this.mainWindow = mainWindow;
 

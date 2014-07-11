@@ -65,7 +65,7 @@ public class ShowMenu extends JMenu implements ActionListener {
 	private MainWindow mainWindow;
 
 	public ShowMenu(MainWindow mainWindow) {
-		super(Translator._("Show"));
+		super(Translator.tr("Show"));
 		setMnemonic(KeyEvent.VK_S);
 
 		this.mainWindow = mainWindow;

@@ -33,6 +33,6 @@ public class LocalizedButton extends JButton {
 	}
 
 	public String getText() {
-		return Translator._(super.getText());
+		return Translator.tr(super.getText());
 	}
 }

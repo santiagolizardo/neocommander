@@ -34,7 +34,7 @@ class PreviousAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public PreviousAction(MainWindow mainWindow) {
-		super(Translator._("Previous"), IconFactory.newIcon("prev.gif"));
+		super(Translator.tr("Previous"), IconFactory.newIcon("prev.gif"));
 
 		this.mainWindow = mainWindow;
 

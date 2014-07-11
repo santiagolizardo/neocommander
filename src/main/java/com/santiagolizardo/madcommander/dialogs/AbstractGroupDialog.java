@@ -76,7 +76,7 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 		cancelButton = new LocalizedButton("Cancel");
 		cancelButton.addActionListener(this);
 
-		caseSensitive = new JCheckBox(Translator._("Case sensitive"));
+		caseSensitive = new JCheckBox(Translator.tr("Case sensitive"));
 
 		mainPanel = new JPanel();
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(7, 7, 7, 7));

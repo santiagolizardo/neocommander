@@ -33,6 +33,6 @@ public class LocalizedLabel extends JLabel {
 	}
 
 	public String getText() {
-		return Translator._(super.getText());
+		return Translator.tr(super.getText());
 	}
 }

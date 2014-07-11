@@ -69,7 +69,7 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
 
 		this.fileName = fileName;
 
-		setTitle(Translator._("Unpack..."));
+		setTitle(Translator.tr("Unpack..."));
 
 		okButton = new JButton("Ok");
 		okButton.requestFocus();

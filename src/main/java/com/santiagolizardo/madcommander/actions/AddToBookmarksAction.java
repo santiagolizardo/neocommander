@@ -35,7 +35,7 @@ class AddToBookmarksAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public AddToBookmarksAction(MainWindow mainWindow) {
-		super(Translator._("Add to bookmarks"), IconFactory
+		super(Translator.tr("Add to bookmarks"), IconFactory
 				.newIcon("add_to_bookmarks.png"));
 
 		this.mainWindow = mainWindow;

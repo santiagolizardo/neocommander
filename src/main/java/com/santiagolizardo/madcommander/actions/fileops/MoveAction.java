@@ -36,7 +36,7 @@ class MoveAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public MoveAction(MainWindow mainWindow) {
-		super(Translator._("Move"), IconFactory.newIcon("F6.gif"));
+		super(Translator.tr("Move"), IconFactory.newIcon("F6.gif"));
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F6"));
 

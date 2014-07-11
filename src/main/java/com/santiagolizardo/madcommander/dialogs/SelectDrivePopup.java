@@ -79,7 +79,7 @@ public class SelectDrivePopup extends JPopupMenu {
 				listing.refreshFiles();
 			} else {
 				DialogFactory.showErrorMessage(mainWindow,
-						Translator._("Device_not_available"));
+						Translator.tr("Device_not_available"));
 			}
 		}
 	}

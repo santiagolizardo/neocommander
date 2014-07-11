@@ -34,7 +34,7 @@ class InvertSelectionAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public InvertSelectionAction(MainWindow mainWindow) {
-		super(Translator._("Invert selection"));
+		super(Translator.tr("Invert selection"));
 
 		this.mainWindow = mainWindow;
 	}

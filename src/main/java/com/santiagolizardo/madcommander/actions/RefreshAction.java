@@ -31,7 +31,7 @@ public class RefreshAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public RefreshAction(MainWindow mainWindow) {
-		super(Translator._("Refresh"), IconFactory.newIcon("refresh.gif"));
+		super(Translator.tr("Refresh"), IconFactory.newIcon("refresh.gif"));
 		
 		this.mainWindow = mainWindow;
 	}

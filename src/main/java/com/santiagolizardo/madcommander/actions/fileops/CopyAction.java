@@ -36,7 +36,7 @@ class CopyAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public CopyAction(MainWindow mainWindow) {
-		super(Translator._("Copy"), IconFactory.newIcon("F5.gif"));
+		super(Translator.tr("Copy"), IconFactory.newIcon("F5.gif"));
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F5"));
 

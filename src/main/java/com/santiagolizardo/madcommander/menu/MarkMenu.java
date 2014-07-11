@@ -33,7 +33,7 @@ public class MarkMenu extends JMenu {
 	private static final long serialVersionUID = 753419026893214433L;
 
 	public MarkMenu(MainWindow mainWindow) {
-		super(Translator._("Mark"));
+		super(Translator.tr("Mark"));
 		setMnemonic(KeyEvent.VK_M);
 
 		JMenuItem selectGroup = new JMenuItem(

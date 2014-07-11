@@ -41,7 +41,7 @@ class ViewAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public ViewAction(MainWindow mainWindow) {
-		super(Translator._("View"), IconFactory.newIcon("F3.gif"));
+		super(Translator.tr("View"), IconFactory.newIcon("F3.gif"));
 
 		this.mainWindow = mainWindow;
 

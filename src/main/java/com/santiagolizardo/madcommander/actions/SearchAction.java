@@ -34,7 +34,7 @@ public class SearchAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public SearchAction(MainWindow mainWindow) {
-		super(Translator._("Search..."), IconFactory.newIcon("find.gif"));
+		super(Translator.tr("Search..."), IconFactory.newIcon("find.gif"));
 
 		this.mainWindow = mainWindow;
 

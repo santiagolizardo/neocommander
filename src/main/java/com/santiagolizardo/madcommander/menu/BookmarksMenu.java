@@ -39,7 +39,7 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 	private MainWindow mainWindow;
 
 	public BookmarksMenu(MainWindow mainWindow) {
-		super(Translator._("Bookmarks"));
+		super(Translator.tr("Bookmarks"));
 
 		this.mainWindow = mainWindow;
 

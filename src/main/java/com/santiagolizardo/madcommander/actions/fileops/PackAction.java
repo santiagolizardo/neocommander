@@ -37,7 +37,7 @@ public class PackAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public PackAction(MainWindow mainWindow) {
-		super(Translator._("Pack..."), IconFactory.newIcon("box.png"));
+		super(Translator.tr("Pack..."), IconFactory.newIcon("box.png"));
 
 		this.mainWindow = mainWindow;
 	}

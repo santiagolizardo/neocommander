@@ -39,7 +39,7 @@ class DeleteAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public DeleteAction(MainWindow mainWindow) {
-		super(Translator._("Delete"), IconFactory.newIcon("F8.gif"));
+		super(Translator.tr("Delete"), IconFactory.newIcon("F8.gif"));
 
 		this.mainWindow = mainWindow;
 

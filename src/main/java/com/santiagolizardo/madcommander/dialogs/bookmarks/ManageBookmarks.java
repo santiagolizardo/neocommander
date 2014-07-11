@@ -60,7 +60,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 
 		this.mainWindow = mainWindow;
 
-		setTitle(Translator._("Manage bookmarks"));
+		setTitle(Translator.tr("Manage bookmarks"));
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
@@ -110,7 +110,7 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 				refreshList();
 			} else {
 				DialogFactory.showErrorMessage(this,
-						Translator._("The directory does not exist."));
+						Translator.tr("The directory does not exist."));
 			}
 		} else if (source == removeButton) {
 			mainWindow.getConfigData().getBookmarks().remove(bookmarkList.getSelectedIndex());

@@ -41,13 +41,13 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 	private JCheckBoxMenuItem shortcutsPanel;
 
 	public ConfigurationMenu(MainWindow app) {
-		super(Translator._("Configuration"));
+		super(Translator.tr("Configuration"));
 
 		this.app = app;
 
 		setMnemonic(KeyEvent.VK_C);
 
-		show = new JMenu(Translator._("Show"));
+		show = new JMenu(Translator.tr("Show"));
 
 		basicToolbar = new LocalizedCheckBoxMenuItem("Basic toolbar");
 		basicToolbar.addActionListener(this);

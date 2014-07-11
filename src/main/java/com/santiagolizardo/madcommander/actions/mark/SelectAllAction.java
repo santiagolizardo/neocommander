@@ -36,7 +36,7 @@ class SelectAllAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public SelectAllAction(MainWindow mainWindow) {
-		super(Translator._("Select all"));
+		super(Translator.tr("Select all"));
 
 		this.mainWindow = mainWindow;
 

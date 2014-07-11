@@ -34,7 +34,7 @@ public class HelpAction extends AbstractAction {
 	private JFrame mainWindow;
 	
 	public HelpAction(JFrame mainWindow) {
-		super(Translator._("Help"), IconFactory.newIcon("help.png"));
+		super(Translator.tr("Help"), IconFactory.newIcon("help.png"));
 
 		this.mainWindow = mainWindow;
 		

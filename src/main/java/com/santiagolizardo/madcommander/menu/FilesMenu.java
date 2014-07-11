@@ -53,7 +53,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 	private MainWindow mainWindow;
 
 	public FilesMenu(MainWindow mainWindow) {
-		super(Translator._("Files"));
+		super(Translator.tr("Files"));
 		setMnemonic(KeyEvent.VK_F);
 
 		this.mainWindow = mainWindow;
@@ -66,7 +66,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 		compareByContent = new LocalizedMenuItem("Compare by content...");
 		compareByContent.addActionListener(this);
 
-		printMenuItem = new JMenuItem(Translator._("Print file list..."));
+		printMenuItem = new JMenuItem(Translator.tr("Print file list..."));
 		printMenuItem.setIcon(IconFactory.newIcon("print.png"));
 		printMenuItem.addActionListener(this);
 

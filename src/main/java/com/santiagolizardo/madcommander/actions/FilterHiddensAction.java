@@ -34,7 +34,7 @@ public class FilterHiddensAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public FilterHiddensAction(MainWindow mainWindow) {
-		super(Translator._("Filter hiddens"));
+		super(Translator.tr("Filter hiddens"));
 
 		this.mainWindow = mainWindow;
 	}

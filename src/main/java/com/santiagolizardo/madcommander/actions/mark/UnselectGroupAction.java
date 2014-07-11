@@ -35,7 +35,7 @@ class UnselectGroupAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public UnselectGroupAction(MainWindow mainWindow) {
-		super(Translator._("Unselect group..."), IconFactory
+		super(Translator.tr("Unselect group..."), IconFactory
 				.newIcon("pencil_delete.png"));
 
 		this.mainWindow = mainWindow;

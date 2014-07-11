@@ -65,7 +65,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 
 		this.mainWindow = mainWindow;
 
-		setTitle(Translator._("Pack..."));
+		setTitle(Translator.tr("Pack..."));
 
 		setResizable(false);
 		setModal(true);

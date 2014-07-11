@@ -33,6 +33,6 @@ public class LocalizedRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	public String getText() {
-		return Translator._(super.getText());
+		return Translator.tr(super.getText());
 	}
 }

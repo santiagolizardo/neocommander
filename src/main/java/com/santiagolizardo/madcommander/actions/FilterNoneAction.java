@@ -33,7 +33,7 @@ public class FilterNoneAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public FilterNoneAction(MainWindow mainWindow) {
-		super(Translator._("Filter none"));
+		super(Translator.tr("Filter none"));
 
 		this.mainWindow = mainWindow;
 	}

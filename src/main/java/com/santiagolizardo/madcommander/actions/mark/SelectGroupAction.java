@@ -35,7 +35,7 @@ class SelectGroupAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public SelectGroupAction(MainWindow mainWindow) {
-		super(Translator._("Select group..."), IconFactory
+		super(Translator.tr("Select group..."), IconFactory
 				.newIcon("pencil_add.png"));
 
 		this.mainWindow = mainWindow;

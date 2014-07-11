@@ -39,7 +39,7 @@ public class TouchAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public TouchAction(MainWindow mainWindow) {
-		super(Translator._("Touch"), IconFactory.newIcon("touch.gif"));
+		super(Translator.tr("Touch"), IconFactory.newIcon("touch.gif"));
 
 		this.mainWindow = mainWindow;
 	}

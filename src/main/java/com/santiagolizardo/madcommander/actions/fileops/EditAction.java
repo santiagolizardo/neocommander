@@ -40,7 +40,7 @@ class EditAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public EditAction(MainWindow mainWindow) {
-		super(Translator._("Edit"), IconFactory.newIcon("F4.gif"));
+		super(Translator.tr("Edit"), IconFactory.newIcon("F4.gif"));
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F4"));
 	}

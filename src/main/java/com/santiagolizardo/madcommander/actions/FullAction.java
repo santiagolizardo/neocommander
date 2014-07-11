@@ -35,7 +35,7 @@ public class FullAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public FullAction(MainWindow mainWindow) {
-		super(Translator._("Full"), IconFactory.newIcon("icon_full.gif"));
+		super(Translator.tr("Full"), IconFactory.newIcon("icon_full.gif"));
 
 		this.mainWindow = mainWindow;
 	}

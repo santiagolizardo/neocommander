@@ -54,7 +54,7 @@ public class ChangeAttributesDialog extends AbstractDialog implements
 
 		this.mainWindow = mainWindow;
 
-		setTitle(Translator._("Change attributes..."));
+		setTitle(Translator.tr("Change attributes..."));
 		setResizable(false);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

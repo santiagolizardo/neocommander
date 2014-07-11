@@ -34,7 +34,7 @@ class NextAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public NextAction(MainWindow mainWindow) {
-		super(Translator._("Next"), IconFactory.newIcon("next.gif"));
+		super(Translator.tr("Next"), IconFactory.newIcon("next.gif"));
 
 		setEnabled(false);
 

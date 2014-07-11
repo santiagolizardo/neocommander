@@ -32,7 +32,7 @@ public class EqualizePanelsAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public EqualizePanelsAction(MainWindow mainWindow) {
-		super(Translator._("Target equal to source"));
+		super(Translator.tr("Target equal to source"));
 
 		this.mainWindow = mainWindow;
 	}

@@ -27,7 +27,7 @@ public class SelectGroupDialog extends AbstractGroupDialog {
 	private MainWindow mainWindow;
 
 	public SelectGroupDialog(MainWindow mainWindow) {
-		super(Translator._("Select group"), mainWindow);
+		super(Translator.tr("Select group"), mainWindow);
 
 		this.mainWindow = mainWindow;
 	}

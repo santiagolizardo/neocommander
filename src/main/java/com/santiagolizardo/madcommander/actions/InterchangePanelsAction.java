@@ -34,7 +34,7 @@ public class InterchangePanelsAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public InterchangePanelsAction(MainWindow mainWindow) {
-		super(Translator._("Interchange panels"));
+		super(Translator.tr("Interchange panels"));
 
 		this.mainWindow = mainWindow;
 

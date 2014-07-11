@@ -43,7 +43,7 @@ public class CommandsMenu extends JMenu {
 	private JMenuItem refreshMenuItem;
 
 	public CommandsMenu(MainWindow mainWindow) {
-		super(Translator._("Commands"));
+		super(Translator.tr("Commands"));
 		setMnemonic(KeyEvent.VK_C);
 
 		searchMenuItem = new JMenuItem(new SearchAction(mainWindow));

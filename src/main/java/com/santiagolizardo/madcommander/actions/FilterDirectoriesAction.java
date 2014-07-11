@@ -34,7 +34,7 @@ public class FilterDirectoriesAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public FilterDirectoriesAction(MainWindow mainWindow) {
-		super(Translator._("Filter directories"));
+		super(Translator.tr("Filter directories"));
 
 		this.mainWindow = mainWindow;
 	}

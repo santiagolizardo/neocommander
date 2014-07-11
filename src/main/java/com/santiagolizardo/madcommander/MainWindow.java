@@ -47,9 +47,8 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 public class MainWindow extends JFrame {
 
 	public final static String APP_NAME = "MadCommander";
-	public final static String APP_VERSION = "1.4.6";
-	public final static String APP_URL_DISPLAY = "http://www.santiagolizardo.com/page/madcommander";
-	public final static String APP_URL = APP_URL_DISPLAY + "?utm_source=madcommander&utm_medium=desktop&utm_content=applications-madcommander&utm_campaign=applications";
+	public final static String APP_VERSION = "1.4.7";
+	public final static String APP_URL = "http://sourceforge.net/projects/madcommander/";
 
 	private static final Logger LOGGER = Logger.getLogger(MainWindow.class
 			.getName());
@@ -112,7 +111,7 @@ public class MainWindow extends JFrame {
 		setLocation(configData.getWindowPosition());
 	}
 
-	private final void defineLayout() {
+	private void defineLayout() {
 		contentPane = getContentPane();
 		container = new JPanel();
 		container.setLayout(new GridBagLayout());

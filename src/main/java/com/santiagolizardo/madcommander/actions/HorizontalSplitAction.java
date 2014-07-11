@@ -36,7 +36,7 @@ public class HorizontalSplitAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public HorizontalSplitAction(MainWindow mainWindow) {
-		super(Translator._("Horizontal split"), IconFactory
+		super(Translator.tr("Horizontal split"), IconFactory
 				.newIcon("horizontal_split.png"));
 
 		this.mainWindow = mainWindow;

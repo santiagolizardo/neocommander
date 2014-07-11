@@ -48,7 +48,7 @@ public class HelpMenu extends JMenu implements ActionListener {
 	private JFrame mainWindow;
 	
 	public HelpMenu(JFrame mainWindow) {
-		super(Translator._("Help"));
+		super(Translator.tr("Help"));
 		setMnemonic(KeyEvent.VK_H);
 		
 		this.mainWindow = mainWindow;

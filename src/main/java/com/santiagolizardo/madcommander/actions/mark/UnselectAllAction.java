@@ -34,7 +34,7 @@ class UnselectAllAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public UnselectAllAction(MainWindow mainWindow) {
-		super(Translator._("Unselect all"));
+		super(Translator.tr("Unselect all"));
 
 		this.mainWindow = mainWindow;
 	}

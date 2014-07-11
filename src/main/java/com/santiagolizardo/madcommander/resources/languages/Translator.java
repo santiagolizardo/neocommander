@@ -41,15 +41,27 @@ public class Translator {
 		}
 	}
 
-	public static String _(String key) {
+	public static String tr(String text) {
 		if (null == i18n)
-			return key;
+			return text;
 
 		try {
-			return i18n.tr(key);
+			return i18n.tr(text);
 		} catch (MissingResourceException mre) {
-			logger.log(Level.WARNING, "Missing translation: {0}", key);
-			return key;
+			logger.log(Level.WARNING, "Missing translation: {0}", mre.getKey());
+			return text;
 		}
 	}
+	
+	public static String trn(String text, String pluralText, long number) {
+		if (null == i18n)
+			return text;
+
+		try {
+			return i18n.trn(text, pluralText, number);
+		} catch (MissingResourceException mre) {
+			logger.log(Level.WARNING, "Missing translation: {0}", mre.getKey());
+			return text;
+		}
+	}	
 }

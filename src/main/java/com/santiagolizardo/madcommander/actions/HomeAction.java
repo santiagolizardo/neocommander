@@ -34,7 +34,7 @@ public class HomeAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public HomeAction(MainWindow mainWindow) {
-		super(Translator._("Go to user dir"), IconFactory.newIcon("home.gif"));
+		super(Translator.tr("Go to user dir"), IconFactory.newIcon("home.gif"));
 
 		this.mainWindow = mainWindow;
 	}

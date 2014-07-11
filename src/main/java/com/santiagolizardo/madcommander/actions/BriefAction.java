@@ -34,7 +34,7 @@ public class BriefAction extends AbstractAction {
 	private MainWindow mainWindow;
 
 	public BriefAction(MainWindow mainWindow) {
-		super(Translator._("Brief"), IconFactory.newIcon("icon_brief.gif"));
+		super(Translator.tr("Brief"), IconFactory.newIcon("icon_brief.gif"));
 
 		this.mainWindow = mainWindow;
 	}
