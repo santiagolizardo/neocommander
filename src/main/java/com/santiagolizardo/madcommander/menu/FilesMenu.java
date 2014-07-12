@@ -1,18 +1,18 @@
 /**
  * This file is part of MadCommander, a file manager with two panels.
  *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * MadCommander is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
  *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MadCommander is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with
+ * MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.menu;
 
@@ -125,9 +125,10 @@ public class FilesMenu extends JMenu implements ActionListener {
 				if (FileUtils.contentEquals(file1, file2) == true) {
 					DialogFactory.showInformationMessage(mainWindow,
 							"The content of the files is identical.");
-				} else
+				} else {
 					DialogFactory.showInformationMessage(mainWindow,
 							"The content of the files is not the same.");
+				}
 			} catch (IOException e) {
 				DialogFactory.showErrorMessage(mainWindow,
 						"Could not compare the contents of the files.");
@@ -136,9 +137,12 @@ public class FilesMenu extends JMenu implements ActionListener {
 	}
 
 	public void refreshButtons(List<File> selectedFiles) {
-		changeAttributesMenuItem.setEnabled(1 == selectedFiles.size());
-		packMenuItem.setEnabled(selectedFiles.size() > 0);
-		unpackMenuItem.setEnabled(1 == selectedFiles.size()
+		int numberSelectedFiles = selectedFiles.size();
+		boolean oneFileIsSelected = (numberSelectedFiles == 1);
+		boolean atLeastOneFileIsSelected = (numberSelectedFiles > 0);
+		changeAttributesMenuItem.setEnabled(atLeastOneFileIsSelected);
+		packMenuItem.setEnabled(atLeastOneFileIsSelected);
+		unpackMenuItem.setEnabled(oneFileIsSelected
 				&& selectedFiles.get(0).isFile());
 	}
 }

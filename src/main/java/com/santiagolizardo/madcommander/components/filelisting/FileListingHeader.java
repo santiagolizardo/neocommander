@@ -21,9 +21,9 @@ import java.awt.event.MouseListener;
 
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
+import javax.swing.SwingUtilities;
 
 
 public class FileListingHeader extends JTableHeader implements MouseListener {
@@ -41,9 +41,27 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 	private SelectableColumnHeader[] columns = { new SelectableColumnHeader("Name", true),
 			new SelectableColumnHeader("Ext"), new SelectableColumnHeader("Size"),
 			new SelectableColumnHeader("Date"), new SelectableColumnHeader("Attr") };
+	
+	public FileListingHeader(FileListingTable listingTable) {
+		super(listingTable.getColumnModel());
 
+		listingTable.setTableHeader(this);
+
+		setUpdateTableInRealTime(true);
+		setReorderingAllowed(true);
+		setDefaultRenderer(new SpecialHeaderRender(this));
+
+		addMouseListener(this);
+
+		this.listingTable = listingTable;
+
+		addFullColumns();
+
+		activeColumn = 0;
+		reversedOrder = false;
+	}
+	
 	private void removeColumns() {
-		TableColumnModel columnModel = getColumnModel();
 		int numCols = columnModel.getColumnCount();
 		for (int i = numCols - 1; i >= 0; i--) {
 			columnModel.removeColumn(columnModel.getColumn(i));
@@ -62,28 +80,12 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 		revalidate();
 	}
 
-	public FileListingHeader(FileListingTable listingTable) {
-		super(listingTable.getColumnModel());
-		// super();
-
-		listingTable.setTableHeader(this);
-
-		setUpdateTableInRealTime(true);
-		setReorderingAllowed(true);
-		setDefaultRenderer(new SpecialHeaderRender(this));
-
-		addMouseListener(this);
-
-		this.listingTable = listingTable;
-
-		addFullColumns();
-
-		activeColumn = 0;
-		reversedOrder = false;
-	}
-
+	@Override
 	public void mouseClicked(MouseEvent event) {
-		TableColumnModel columnModel = getColumnModel();
+		if( false == SwingUtilities.isLeftMouseButton(event)) {
+			return;
+		}
+		
 		int currentIndex = columnModel.getColumnIndexAtX(event.getX());
 		int oldIndex = activeColumn;
 
@@ -94,7 +96,7 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 			columns[currentIndex].setActive(true);
 			activeColumn = currentIndex;
 		}
-		repaint();
+
 		listingTable.refresh();
 
 		columnModel.getColumn(oldIndex).setHeaderValue(columns[oldIndex]);
@@ -116,7 +118,6 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 	}
 
 	private void addFullColumns() {
-		TableColumnModel columnModel = getColumnModel();
 		for (byte i = 0; i < columns.length; i++) {
 			TableColumn tableColumn = new TableColumn(i);
 			tableColumn.setHeaderValue(columns[i]);
@@ -129,7 +130,6 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 	}
 
 	private void addBriefColumns() {
-		TableColumnModel columnModel = getColumnModel();
 		for (byte i = 0, x = 0; i < columns.length; i++) {
 			if (i == 2 || i == 3)
 				continue;
@@ -143,15 +143,19 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 		columnModel.getColumn(1).setPreferredWidth(50);				
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent event) {
 	};
 
+	@Override
 	public void mouseExited(MouseEvent event) {
 	};
 
+	@Override
 	public void mousePressed(MouseEvent event) {
 	};
 
+	@Override
 	public void mouseReleased(MouseEvent event) {
 	};
 }

@@ -25,7 +25,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.HelpAction;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.AboutDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
@@ -36,8 +35,6 @@ import com.santiagolizardo.madcommander.util.UpdateManager;
 public class HelpMenu extends JMenu implements ActionListener {
 
 	private static final long serialVersionUID = 8893380914412785609L;
-
-	private JMenuItem helpIndex;
 
 	private LocalizedMenuItem visitJavaCommanderWebSite;
 
@@ -53,8 +50,6 @@ public class HelpMenu extends JMenu implements ActionListener {
 		
 		this.mainWindow = mainWindow;
 
-		helpIndex = new JMenuItem(new HelpAction(mainWindow));
-
 		visitJavaCommanderWebSite = new LocalizedMenuItem(
 				"Visit project website");
 		visitJavaCommanderWebSite.addActionListener(this);
@@ -67,7 +62,6 @@ public class HelpMenu extends JMenu implements ActionListener {
 		aboutJavaCommander = new LocalizedMenuItem("About this software");
 		aboutJavaCommander.addActionListener(this);
 
-		add(helpIndex);
 		add(visitJavaCommanderWebSite);
 		addSeparator();
 		add(checkForUpdate);

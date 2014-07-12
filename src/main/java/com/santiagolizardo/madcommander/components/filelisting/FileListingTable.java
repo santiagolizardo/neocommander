@@ -1,18 +1,18 @@
 /**
  * This file is part of MadCommander, a file manager with two panels.
  *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * MadCommander is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
  *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MadCommander is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with
+ * MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
@@ -57,13 +57,16 @@ import com.santiagolizardo.madcommander.components.filelisting.model.FileListing
 import com.santiagolizardo.madcommander.components.filelisting.model.NameComparator;
 import com.santiagolizardo.madcommander.components.filelisting.model.SizeComparator;
 import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.dnd.InvalidDnDOperationException;
+import java.io.IOException;
+import java.util.logging.Logger;
 
 public class FileListingTable extends JTable implements Runnable, FocusListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1317659226807828074L;
+
+	private static final Logger logger = Logger.getLogger(FileListingTable.class.getName());
 
 	private FileListing fileListing;
 
@@ -94,9 +97,6 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 		model = new FileListingModel();
 		setModel(model);
-
-		// getTableHeader().setUpdateTableInRealTime(true);
-		// addFocusListener(this);
 
 		this.fileListing = fileListing;
 
@@ -146,10 +146,11 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		try {
 			SwingUtilities.invokeLater(this);
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			logger.warning(e.getMessage());
 		}
 	}
 
+	@Override
 	public void run() {
 		model.clear();
 		File dir = new File(fileListing.getPath());
@@ -181,7 +182,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 			} else {
 				int selectedIndex = tabbedPane.getSelectedIndex();
 				if (selectedIndex != -1) {
-					tabbedPane.setTitleAt(selectedIndex, dir.getName());
+					String tabName = (dir.getParent() == null ? dir.getAbsolutePath() : dir.getName());
+					tabbedPane.setTitleAt(selectedIndex, tabName);
 				}
 			}
 			tabbedPane.validate();
@@ -189,21 +191,21 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 		Comparator<FileListingRow> comparator = null;
 		switch (fileListing.getHeader().getActiveColumn()) {
-		case 0:
-			comparator = new NameComparator();
-			break;
-		case 1:
-			comparator = new ExtensionComparator();
-			break;
-		case 2:
-			comparator = new SizeComparator();
-			break;
-		case 3:
-			comparator = new DateComparator();
-			break;
-		case 4:
-			comparator = new AttributesComparator();
-			break;
+			case 0:
+				comparator = new NameComparator();
+				break;
+			case 1:
+				comparator = new ExtensionComparator();
+				break;
+			case 2:
+				comparator = new SizeComparator();
+				break;
+			case 3:
+				comparator = new DateComparator();
+				break;
+			case 4:
+				comparator = new AttributesComparator();
+				break;
 		}
 		Collections.sort(model.data, comparator);
 		if (fileListing.getHeader().isReversedOrder()) {
@@ -214,16 +216,18 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		model.fireTableDataChanged();
 	}
 
+	@Override
 	public void focusGained(FocusEvent event) {
 		mainWindow.currentPanel = fileListing.id;
 		mainWindow.getSource().historical.updateActions();
 	}
 
+	@Override
 	public void focusLost(FocusEvent event) {
 	}
 
 	public List<File> getSelectedFiles() {
-		List<File> selectedFiles = new ArrayList<File>();
+		List<File> selectedFiles = new ArrayList<>();
 		int[] selectedRows = getSelectedRows();
 		for (int selectedRow : selectedRows) {
 			selectedFiles.add(model.getRow(selectedRow).getFile());
@@ -234,9 +238,10 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 	private class DragOut implements DragGestureListener, DragSourceListener {
 
+		@Override
 		public void dragGestureRecognized(DragGestureEvent event) {
 			DndTransport dndCommand = new DndTransport(fileListing.id);
-			Cursor cursor = null;
+			Cursor cursor;
 			if (event.getDragAction() == DnDConstants.ACTION_COPY) {
 				cursor = DragSource.DefaultCopyDrop;
 			} else { // DnDConstants.ACTION_MOVE:
@@ -248,24 +253,30 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 			}
 		}
 
+		@Override
 		public void dragDropEnd(DragSourceDropEvent arg0) {
 		}
 
+		@Override
 		public void dragEnter(DragSourceDragEvent arg0) {
 		}
 
+		@Override
 		public void dragExit(DragSourceEvent arg0) {
 		}
 
+		@Override
 		public void dragOver(DragSourceDragEvent arg0) {
 		}
 
+		@Override
 		public void dropActionChanged(DragSourceDragEvent arg0) {
 		}
 	}
 
 	private class DropIn extends DropTargetAdapter {
 
+		@Override
 		public void drop(DropTargetDropEvent event) {
 			if (event.getSource().equals(this)) {
 				event.rejectDrop();
@@ -289,8 +300,8 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 					} else {
 						// Controller.moveFiles();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
+				} catch (UnsupportedFlavorException | InvalidDnDOperationException | IOException e) {
+					logger.warning(e.getMessage());
 				}
 
 			} else {

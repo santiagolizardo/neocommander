@@ -24,6 +24,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import com.santiagolizardo.madcommander.util.FormatSingleton;
 import com.santiagolizardo.madcommander.util.io.FileUtil;
+import java.util.Objects;
 
 public class FileListingRow {
 
@@ -51,7 +52,7 @@ public class FileListingRow {
 
 	public String getSize() {
 		if (file.isDirectory()) {
-			return "<DIR>";
+			return "";
 		}
 
 		if (SHOW_BYTES) {
@@ -71,12 +72,20 @@ public class FileListingRow {
 		return FileUtil.getHumanizedAttributes(file);
 	}
 
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof FileListingRow) {
 			FileListingRow row = (FileListingRow) o;
 			return (file.equals(row.file));
 		}
 		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 5;
+		hash = 97 * hash + Objects.hashCode(this.file);
+		return hash;
 	}
 
 	public File getFile() {
@@ -87,6 +96,7 @@ public class FileListingRow {
 		this.file = file;
 	}
 
+	@Override
 	public String toString() {
 		return file.getName();
 	}

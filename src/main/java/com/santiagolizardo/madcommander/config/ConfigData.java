@@ -25,6 +25,14 @@ public class ConfigData {
 
 	public static final String DEFAULT_LANGUAGE = "en";
 	
+	/**
+	 * @todo Check if userLanguage is supported by the app.
+	 */
+	private static String getDefaultLanguage() {
+		String userLanguage = System.getProperty("user.language");
+		return ( null == userLanguage ? DEFAULT_LANGUAGE : userLanguage );
+	}
+	
 	private String language;
 	private List<String> bookmarks;
 	
@@ -32,7 +40,7 @@ public class ConfigData {
 	private Point windowPosition;
 	
 	public ConfigData() {
-		language = DEFAULT_LANGUAGE;
+		language = ConfigData.getDefaultLanguage();
 		
 		bookmarks = new ArrayList<>();
 		

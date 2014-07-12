@@ -16,26 +16,27 @@
  */
 package com.santiagolizardo.madcommander.util;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class FormatSingleton {
 
-	private static SimpleDateFormat dateFormat;
+	private static DateFormat dateFormat;
+	private static NumberFormat decimalFormat;
 
-	private static DecimalFormat decimalFormat;
-
-	public static SimpleDateFormat getSimpleDateFormat() {
+	public static DateFormat getSimpleDateFormat() {
 		if (dateFormat == null) {
-			dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+			dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, Locale.getDefault());
 		}
 
 		return dateFormat;
 	}
 
-	public static DecimalFormat getSimpleDecimalFormat() {
+	public static NumberFormat getSimpleDecimalFormat() {
 		if (decimalFormat == null) {
-			decimalFormat = new DecimalFormat("###,###");
+			decimalFormat = DecimalFormat.getNumberInstance(Locale.getDefault());
 		}
 
 		return decimalFormat;

@@ -20,11 +20,12 @@ import java.util.Comparator;
 
 public class NameComparator implements Comparator<FileListingRow> {
 
-	public int compare(FileListingRow arg0, FileListingRow arg1) {
-		FileListingRow rowa = (FileListingRow) arg0;
-		FileListingRow rowb = (FileListingRow) arg1;
+	@Override
+	public int compare(FileListingRow firstRow, FileListingRow secondRow) {
+		String firstName = firstRow.getFile().getName().toLowerCase();
+		String secondName = secondRow.getFile().getName().toLowerCase();
 
-		return rowa.file.getName().compareTo(rowb.file.getName());
+		return firstName.compareTo(secondName);
 	}
 
 }
