@@ -30,6 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
@@ -40,14 +41,12 @@ public class DeleteDialog extends JDialog {
 	 */
 	private static final long serialVersionUID = 384674050228582953L;
 
-	private JLabel label;
-
 	private DefaultListModel<File> model;
 	private JList<File> list;
 	private JScrollPane scroll;
 
-	private JButton ok;
-	private JButton cancel;
+	private JButton okButton;
+	private JButton cancelButton;
 
 	public static final int OK = 1;
 	public static final int CANCEL = 0;
@@ -61,26 +60,24 @@ public class DeleteDialog extends JDialog {
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-		label = new JLabel(
-				"Do you really want to delete the selected files/directories?");
-		model = new DefaultListModel<File>();
-		list = new JList<File>(model);
+		model = new DefaultListModel<>();
+		list = new JList<>(model);
 		list.setCellRenderer(new FileRenderer());
 
 		scroll = new JScrollPane(list);
 
 		returnValue = CANCEL;
 
-		ok = new JButton("Ok");
-		ok.addActionListener(new ActionListener() {
+		okButton = new JButton("Ok");
+		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				returnValue = OK;
 				dispose();
 			}
 		});
 
-		cancel = new JButton("Cancel");
-		cancel.addActionListener(new ActionListener() {
+		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				dispose();
 			}
@@ -91,17 +88,24 @@ public class DeleteDialog extends JDialog {
 
 		addWindowListener(new WindowAdapter() {
 			public void windowActivated(WindowEvent event) {
-				ok.requestFocusInWindow();
+				okButton.requestFocusInWindow();
 			}
 		});
 	}
 
+	@Override
+	public JRootPane getRootPane() {
+		JRootPane rootPane = super.getRootPane();
+		rootPane.setDefaultButton(okButton);
+		return rootPane;
+	}
+	
 	public int getReturnValue() {
 		return returnValue;
 	}
 
 	public List<File> getSelectedFiles() {
-		List<File> selectedFiles = new ArrayList<File>();
+		List<File> selectedFiles = new ArrayList<>();
 		for (File value : list.getSelectedValuesList()) {
 			selectedFiles.add(new File(value.toString()));
 		}
@@ -115,6 +119,9 @@ public class DeleteDialog extends JDialog {
 	}
 
 	private void defineLayout() {
+		JLabel label = new JLabel(
+				"Do you really want to delete the selected files/directories?");
+		
 		Container contentPane = getContentPane();
 
 		SpringLayout layout = new SpringLayout();
@@ -128,26 +135,26 @@ public class DeleteDialog extends JDialog {
 		layout.putConstraint(SpringLayout.NORTH, scroll, 5, SpringLayout.SOUTH,
 				label);
 
-		layout.putConstraint(SpringLayout.WEST, ok, 5, SpringLayout.WEST, this);
-		layout.putConstraint(SpringLayout.NORTH, ok, 5, SpringLayout.SOUTH,
+		layout.putConstraint(SpringLayout.WEST, okButton, 5, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.NORTH, okButton, 5, SpringLayout.SOUTH,
 				scroll);
 
-		layout.putConstraint(SpringLayout.NORTH, cancel, 5, SpringLayout.SOUTH,
+		layout.putConstraint(SpringLayout.NORTH, cancelButton, 5, SpringLayout.SOUTH,
 				scroll);
 
 		layout.putConstraint(SpringLayout.EAST, contentPane, 5,
 				SpringLayout.EAST, scroll);
 		layout.putConstraint(SpringLayout.SOUTH, contentPane, 5,
-				SpringLayout.SOUTH, ok);
-		layout.putConstraint(SpringLayout.EAST, cancel, 0, SpringLayout.EAST,
+				SpringLayout.SOUTH, okButton);
+		layout.putConstraint(SpringLayout.EAST, cancelButton, 0, SpringLayout.EAST,
 				scroll);
 
 		setLayout(layout);
 
 		add(label);
 		add(scroll);
-		add(ok);
-		add(cancel);
+		add(okButton);
+		add(cancelButton);
 
 		pack();
 	}

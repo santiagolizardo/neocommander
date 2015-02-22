@@ -24,19 +24,17 @@ import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 
 public class FileListingTabbed extends JTabbedPane {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 6010265431790349455L;
-	private Position panelID;
+
+	private Position panelPosition;
 
 	private MainWindow mainWindow;
 
-	public FileListingTabbed(MainWindow mainWindow, Position panelID) {
+	public FileListingTabbed(MainWindow mainWindow, Position panelPosition) {
 		super();
 
-		this.panelID = panelID;
+		this.panelPosition = panelPosition;
 
 		this.mainWindow = mainWindow;
 
@@ -44,7 +42,7 @@ public class FileListingTabbed extends JTabbedPane {
 	}
 
 	public void addFileListingTab() {
-		FileListing fileListing = new FileListing(mainWindow, panelID);
+		FileListing fileListing = new FileListing(mainWindow, panelPosition);
 
 		File file = new File(fileListing.getPath());
 		addTab(file.getName(), fileListing);

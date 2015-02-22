@@ -26,7 +26,7 @@ public class SwingUtil {
 	
 	private static final Logger logger = Logger.getLogger(SwingUtil.class.getName());
 
-	private static Toolkit toolkit;
+	private static final Toolkit toolkit;
 
 	static {
 		toolkit = Toolkit.getDefaultToolkit();

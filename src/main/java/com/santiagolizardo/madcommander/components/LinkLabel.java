@@ -25,12 +25,8 @@ import javax.swing.JLabel;
 
 import com.santiagolizardo.madcommander.util.SystemUtil;
 
-
 public class LinkLabel extends JLabel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8488272749111338872L;
 
 	public LinkLabel(String url) {
@@ -47,18 +43,17 @@ public class LinkLabel extends JLabel {
 
 		addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseEntered(MouseEvent event) {
+			public void mouseEntered(MouseEvent ev) {
 				setCursor(hand);
 			}
 
 			@Override
-			public void mouseExited(MouseEvent e) {
-				super.mouseExited(e);
+			public void mouseExited(MouseEvent ev) {
 				setCursor(hand);
 			}
 
-			public void mouseClicked(MouseEvent event) {
-				super.mouseClicked(event);
+			@Override
+			public void mouseClicked(MouseEvent ev) {
 				SystemUtil.browse(getParent(), finalURL);
 			}
 		});

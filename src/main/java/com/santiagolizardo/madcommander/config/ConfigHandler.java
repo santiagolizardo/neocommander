@@ -36,7 +36,7 @@ public class ConfigHandler {
 		Properties props = new Properties();
 		props.setProperty(
 				"bookmarks",
-				ListsUtils.implode(File.pathSeparator,
+				String.join(File.pathSeparator,
 						configData.getBookmarks()));
 		
 		props.setProperty("language", configData.getLanguage());

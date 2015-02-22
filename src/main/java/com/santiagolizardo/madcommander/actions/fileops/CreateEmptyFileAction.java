@@ -35,11 +35,11 @@ public class CreateEmptyFileAction extends AbstractAction {
 	private static final long serialVersionUID = -8545331012599545142L;
 	private MainWindow mainWindow;
 
-	public CreateEmptyFileAction(MainWindow mc) {
+	public CreateEmptyFileAction(MainWindow mainWindow) {
 		super(Translator.tr("Create empty file..."), IconFactory
 				.newIcon("page_white.png"));
 
-		this.mainWindow = mc;
+		this.mainWindow = mainWindow;
 	}
 
 	@Override

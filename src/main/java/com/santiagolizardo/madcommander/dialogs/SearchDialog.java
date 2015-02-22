@@ -114,7 +114,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 								selected));
 						SearchDialog.this.mainWindow.getSource().setPath(
 								dirPart);
-						SearchDialog.this.mainWindow.getSource().focusOnFile(
+						SearchDialog.this.mainWindow.getSource().focusOnFilePath(
 								filePart);
 					}
 				}

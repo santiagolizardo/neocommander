@@ -21,10 +21,11 @@ import java.io.FileFilter;
 
 public class FilterHiddens implements FileFilter {
 
+	@Override
 	public boolean accept(File file) {
 		if (file == null)
 			return false;
 
-		return (file.isHidden());
+		return file.isHidden();
 	}
 }

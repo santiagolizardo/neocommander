@@ -31,13 +31,11 @@ import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 class CreateDirAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7734722213031842205L;
 
 	private static final Logger LOGGER = Logger.getLogger(CreateDirAction.class
 			.getName());
+	
 	private MainWindow mainWindow;
 
 	public CreateDirAction(MainWindow mainWindow) {
@@ -49,10 +47,10 @@ class CreateDirAction extends AbstractAction {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent event) {
+	public void actionPerformed(ActionEvent ev) {
 		FileListing listing = mainWindow.getSource();
 		String name = DialogFactory.showInputDialog(listing.getParent(),
-				"Directory name:");
+				Translator.tr("Directory name:"));
 
 		if (name == null)
 			return;
@@ -63,23 +61,16 @@ class CreateDirAction extends AbstractAction {
 
 		String srcPath = listing.getPath();
 		File file = new File(srcPath + File.separator + name);
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("Creating directory [ ");
-		buffer.append(name);
-		buffer.append(" ]");
-		LOGGER.info(buffer.toString());
+		LOGGER.info(String.format("Creating directory '%s'", name));
 		if (file.mkdir() == false) {
-			StringBuilder errorBuffer = new StringBuilder();
-			errorBuffer.append("Directory '");
-			errorBuffer.append(name);
-			errorBuffer.append("' could not be created!");
-			DialogFactory.showErrorMessage(listing.getParent(),
-					errorBuffer.toString());
-			LOGGER.severe(errorBuffer.toString());
+			String errorMessage = String.format(Translator.tr("Directory '%s' could not be created."), name);
+			DialogFactory.showErrorMessage(listing.getParent(), errorMessage);
+			LOGGER.warning(errorMessage);
 			return;
 		}
 
 		// Refresh the listing only if the creation succeeded.
 		listing.refreshFiles();
+		listing.focusOnFileName(name);
 	}
 }

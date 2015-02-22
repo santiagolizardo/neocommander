@@ -20,12 +20,8 @@ import java.util.List;
 
 import javax.swing.AbstractListModel;
 
-
 public class BookmarksModel extends AbstractListModel<String> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7176387701702459011L;
 
 	private List<String> bookmarks;
@@ -36,10 +32,12 @@ public class BookmarksModel extends AbstractListModel<String> {
 		this.bookmarks = bookmarks;
 	}
 	
+	@Override
 	public String getElementAt(int index) {
 		return bookmarks.get(index);
 	}
 
+	@Override
 	public int getSize() {
 		return bookmarks.size();
 	}

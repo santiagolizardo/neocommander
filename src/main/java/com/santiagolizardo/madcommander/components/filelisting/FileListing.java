@@ -60,7 +60,7 @@ public class FileListing extends JPanel {
 		Brief, Full
 	}
 
-	public Position id;
+	public Position position;
 
 	public Historical historical;
 
@@ -81,10 +81,10 @@ public class FileListing extends JPanel {
 
 	private MainWindow mainWindow;
 
-	public FileListing(final MainWindow mainWindow, Position id) {
+	public FileListing(final MainWindow mainWindow, Position position) {
 		super();
 
-		this.id = id;
+		this.position = position;
 
 		this.mainWindow = mainWindow;
 
@@ -169,14 +169,31 @@ public class FileListing extends JPanel {
 		return currentPath.getAbsolutePath();
 	}
 
-	public void focusOnFile(String fileName) {
+	public void focusOnFilePath(String filePath) {
 		table.clearSelection();
-		for (int i = 0; i < table.getRowCount(); i++) {
+		int rowCount = table.getRowCount();
+		for (int i = 0; i < rowCount; i++) {
 			FileListingColumn column = (FileListingColumn) table.model
 					.getValueAt(i, 0);
 			File file = column.getFile();
-			if (file.getAbsolutePath().equals(fileName)) {
-				table.addRowSelectionInterval(i - 1, i);
+			if (file.getAbsolutePath().equals(filePath)) {
+				table.scrollRectToVisible(table.getCellRect(i, i, true));
+				table.addRowSelectionInterval(i, i);
+				break;
+			}
+		}
+	}
+
+	public void focusOnFileName(String fileName) {
+		table.clearSelection();
+		int rowCount = table.getRowCount();
+		for (int i = 0; i < rowCount; i++) {
+			FileListingColumn column = (FileListingColumn) table.model
+					.getValueAt(i, 0);
+			File file = column.getFile();
+			if (file.getName().equals(fileName)) {
+				table.scrollRectToVisible(table.getCellRect(i, i, true));
+				table.addRowSelectionInterval(i, i);
 				break;
 			}
 		}
@@ -296,9 +313,10 @@ public class FileListing extends JPanel {
 		}
 		String file = table.getModel().getValueAt(row, 0).toString();
 		if ("..".equals(file)) {
+			historical.add(currentPath.getAbsolutePath());
 			currentPath = currentPath.getParentFile();
 		} else {
-			StringBuffer fileName = new StringBuffer();
+			StringBuilder fileName = new StringBuilder();
 			fileName.append(getPath());
 			fileName.append(File.separator);
 			fileName.append(file);
@@ -309,15 +327,11 @@ public class FileListing extends JPanel {
 					DialogFactory.showErrorMessage(mainWindow,
 							"Access forbidden");
 				} else {
+					historical.add(dir.getAbsolutePath());
 					currentPath = dir;
-					historical.add(dir.getParentFile().getAbsolutePath());
 				}
 			} else {
-				StringBuilder buffer = new StringBuilder();
-				buffer.append("Executing [ ");
-				buffer.append(dir.getAbsolutePath());
-				buffer.append(" ]");
-				LOGGER.info(buffer.toString());
+				LOGGER.info(String.format("Executing '%s'", dir.getAbsolutePath()));
 				try {
 					Desktop desktop = Desktop.getDesktop();
 					desktop.open(dir);

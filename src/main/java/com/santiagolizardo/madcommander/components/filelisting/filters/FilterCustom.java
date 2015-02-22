@@ -29,9 +29,11 @@ public class FilterCustom implements FileFilter {
 		this.pattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
 	}
 
+	@Override
 	public boolean accept(File file) {
 		if (file == null)
 			return false;
+		
 		if (file.isDirectory())
 			return true;
 

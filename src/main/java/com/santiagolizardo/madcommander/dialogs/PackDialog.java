@@ -39,6 +39,7 @@ import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
 import com.santiagolizardo.madcommander.controller.PackTypes;
 import com.santiagolizardo.madcommander.dialogs.progressive.PackProgressDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+import java.util.function.Function;
 
 public class PackDialog extends AbstractDialog implements ActionListener {
 
@@ -86,26 +87,20 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 
 		zip = new JRadioButton("ZIP");
 		zip.setSelected(true);
-		zip.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				extension.setText(".zip");
-			}
+		zip.addActionListener((ActionEvent ev) -> {
+			extension.setText(".zip");
 		});
 		group.add(zip);
 
 		jar = new JRadioButton("JAR");
-		jar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				extension.setText(".jar");
-			}
+		jar.addActionListener((ActionEvent ev) -> {
+			extension.setText(".jar");
 		});
 		group.add(jar);
-
+		
 		gzip = new JRadioButton("GZIP");
-		gzip.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				extension.setText(".gzip");
-			}
+		gzip.addActionListener((ActionEvent ev) -> {
+			extension.setText(".gzip");
 		});
 		group.add(gzip);
 
@@ -117,6 +112,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		setLocationRelativeTo(null);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		PackTypes type;
 		if (zip.isSelected())

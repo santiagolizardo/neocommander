@@ -31,6 +31,7 @@ public class FLKeyListener extends KeyAdapter {
 		this.mainWindow = mainWindow;
 	}
 
+	@Override
 	public void keyPressed(KeyEvent event) {
 		final int modifiers = event.getModifiers();
 		final int keyCode = event.getKeyCode();
@@ -82,7 +83,7 @@ public class FLKeyListener extends KeyAdapter {
 				}
 			} else {
 				FileListing fl = mainWindow.getSource();
-				fl.focusByString(String.format("%c", keyCode));
+				fl.focusByString(String.format("%d", keyCode));
 			}
 			break;
 		}

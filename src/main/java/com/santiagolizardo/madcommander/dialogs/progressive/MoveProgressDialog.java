@@ -36,12 +36,12 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 	@Override
 	public void run() {
 		if (srcPath.equals(dstPath)) {
-			DialogFactory.showErrorMessage(src.getParent(),
+			DialogFactory.showErrorMessage(sourceListing.getParent(),
 					"You cannot move a file to itself!");
 			return;
 		}
 
-		List<File> selectedFiles = src.getSelectedFiles();
+		List<File> selectedFiles = sourceListing.getSelectedFiles();
 
 		for (int i = 0; i < selectedFiles.size(); i++) {
 			myProcess.currentFile = selectedFiles.get(i).getName();
@@ -65,7 +65,7 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 			myProcess.currentProgress = 100;
 			if (myProcess.cancel) {
 				logger.info("Cancel moving.");
-				src.refreshFiles();
+				sourceListing.refreshFiles();
 				return;
 			}
 		}

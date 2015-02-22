@@ -20,9 +20,10 @@ import java.util.Comparator;
 
 public class ExtensionComparator implements Comparator<FileListingRow> {
 
-	public int compare(FileListingRow arg0, FileListingRow arg1) {
-		FileListingRow rowa = (FileListingRow) arg0;
-		FileListingRow rowb = (FileListingRow) arg1;
+	@Override
+	public int compare(FileListingRow firstRow, FileListingRow secondRow) {
+		FileListingRow rowa = (FileListingRow) firstRow;
+		FileListingRow rowb = (FileListingRow) secondRow;
 
 		return rowa.getExtension().compareTo(rowb.getExtension());
 	}

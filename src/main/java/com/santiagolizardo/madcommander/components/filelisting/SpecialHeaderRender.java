@@ -27,16 +27,15 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
 public class SpecialHeaderRender extends JLabel implements TableCellRenderer {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4282579332132643029L;
+
 	private FileListingHeader header;
 
 	public SpecialHeaderRender(FileListingHeader header) {
 		this.header = header;
 	}
 
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int rowIndex, int colIndex) {
 		SelectableColumnHeader columnHeader = (SelectableColumnHeader) value;
@@ -44,7 +43,7 @@ public class SpecialHeaderRender extends JLabel implements TableCellRenderer {
 		setBorder(BorderFactory.createEtchedBorder());
 		setHorizontalAlignment(JLabel.CENTER);
 		if (columnHeader.isActive()) {
-			String path = null;
+			String path;
 			if (header.isReversedOrder()) {
 				path = "order_desc.gif";
 			} else {

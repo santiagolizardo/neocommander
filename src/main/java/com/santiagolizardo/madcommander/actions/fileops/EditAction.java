@@ -43,6 +43,8 @@ class EditAction extends AbstractAction {
 		super(Translator.tr("Edit"), IconFactory.newIcon("F4.gif"));
 
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F4"));
+		
+		this.mainWindow = mainWindow;
 	}
 
 	@Override

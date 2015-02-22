@@ -24,9 +24,6 @@ import javax.swing.JLabel;
 
 public class PathLabel extends JLabel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2723429904792232585L;
 
 	public PathLabel() {

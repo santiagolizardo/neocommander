@@ -48,16 +48,13 @@ public class Main {
 		/*
 		 * We put the main frame in the event-dispatching thread
 		 */
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				SwingUtil.setSystemLookAndFeel();
-
-				MainWindow app = new MainWindow();
-				app.setConfigData(configData);
-				app.init();
-				app.setVisible(true);
-			}
+		SwingUtilities.invokeLater(() -> {
+			SwingUtil.setSystemLookAndFeel();
+			
+			MainWindow app = new MainWindow();
+			app.setConfigData(configData);
+			app.init();
+			app.setVisible(true);
 		});
 	}
 }

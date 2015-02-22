@@ -20,15 +20,14 @@ import java.io.File;
 import java.util.List;
 
 import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileOperations;
 
 public class DeleteProgressDialog extends AbstractProgressDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1031712739175885827L;
+
 	private List<File> selectedFiles;
 
 	public DeleteProgressDialog(MainWindow mainWindow) {
@@ -47,30 +46,22 @@ public class DeleteProgressDialog extends AbstractProgressDialog {
 			myProcess.currentProgress = 0;
 			myProcess.totalProgress = (int) ((i * 100) / selectedFiles.size());
 			
-			StringBuilder buffer = new StringBuilder();
-			buffer.append("Deleting [ ");
-			buffer.append(file.getName());
-			buffer.append(" ]");
-			logger.info(buffer.toString());
+			logger.info(String.format("Deleting '%s'", file.getName()));
 			if (FileOperations.delete(file) == false) {
-				StringBuffer errorBuffer = new StringBuffer();
-				errorBuffer.append("File ");
-				errorBuffer.append(file.getAbsoluteFile());
-				errorBuffer.append(" cannot be deleted!");
-				final String errorString = errorBuffer.toString();
-				DialogFactory.showErrorMessage(src.getParent(), errorString);
-				logger.severe(errorString);
+				String errorString = String.format(Translator.tr("File '%s' could not be deleted."), file.getAbsolutePath());
+				DialogFactory.showErrorMessage(sourceListing.getParent(), errorString);
+				logger.warning(errorString);
 			}
 			myProcess.currentProgress = 100;
 			if (myProcess.cancel) {
 				logger.info("Cancel deleting.");
-				src.refreshFiles();
+				sourceListing.refreshFiles();
 				return;
 			}
 		}
 
 		myProcess.totalProgress = 100;
 
-		src.refreshFiles();
+		sourceListing.refreshFiles();
 	}
 }

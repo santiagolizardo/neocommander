@@ -44,13 +44,14 @@ public class FileListingModel extends AbstractTableModel {
 	public List<FileListingRow> data;
 
 	public FileListingModel() {
-		data = new ArrayList<FileListingRow>();
+		data = new ArrayList<>();
 		isRoot = false;
 		columnCount = 0;
 
 		format = Format.Full;
 	}
 
+	@Override
 	public int getRowCount() {
 		return data.size();
 	}
@@ -59,6 +60,7 @@ public class FileListingModel extends AbstractTableModel {
 		this.columnCount = columnCount;
 	}
 
+	@Override
 	public int getColumnCount() {
 		return columnCount;
 	}
@@ -80,6 +82,7 @@ public class FileListingModel extends AbstractTableModel {
 	public void columnSelectionChanged(ListSelectionEvent event) {
 	}
 
+	@Override
 	public synchronized Object getValueAt(int row, int column) {
 		if (row > data.size())
 			throw new IllegalArgumentException("index out of bounds (row)");
@@ -89,7 +92,7 @@ public class FileListingModel extends AbstractTableModel {
 				|| format.equals(Format.Full) & column > 4)
 			throw new IllegalArgumentException("index out of bounds (column)");
 
-		Object value = null;
+		Object value;
 
 		switch (column) {
 		case 0:
@@ -123,10 +126,12 @@ public class FileListingModel extends AbstractTableModel {
 		data.add(row);
 	}
 
+	@Override
 	public Class<FileListingRow> getColumnClass(int arg0) {
 		return FileListingRow.class;
 	}
 
+	@Override
 	public boolean isCellEditable(int row, int column) {
 		int i = (isRoot ? 0 : 1);
 		// the cell is editable

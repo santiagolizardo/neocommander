@@ -143,11 +143,7 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 	static int a = 0;
 
 	public void refresh() {
-		try {
-			SwingUtilities.invokeLater(this);
-		} catch (Exception e) {
-			logger.warning(e.getMessage());
-		}
+		run();
 	}
 
 	@Override
@@ -218,7 +214,7 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 	@Override
 	public void focusGained(FocusEvent event) {
-		mainWindow.currentPanel = fileListing.id;
+		mainWindow.currentPanel = fileListing.position;
 		mainWindow.getSource().historical.updateActions();
 	}
 
@@ -240,7 +236,7 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 		@Override
 		public void dragGestureRecognized(DragGestureEvent event) {
-			DndTransport dndCommand = new DndTransport(fileListing.id);
+			DndTransport dndCommand = new DndTransport(fileListing.position);
 			Cursor cursor;
 			if (event.getDragAction() == DnDConstants.ACTION_COPY) {
 				cursor = DragSource.DefaultCopyDrop;
@@ -287,7 +283,7 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 				try {
 					final String panelID = transferable.getTransferData(
 							DataFlavor.stringFlavor).toString();
-					if (panelID.equals(fileListing.id.toString())) {
+					if (panelID.equals(fileListing.position.toString())) {
 						event.rejectDrop();
 						return;
 					}

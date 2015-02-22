@@ -16,10 +16,12 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import junit.framework.Assert;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class GlobToRegexp {
 
+	@Test
 	public void testConversion()
 	{
 		Assert.assertEquals("^.*\\.txt$", GlobUtils.convertGlobToRegexp("*.txt").toString());

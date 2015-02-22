@@ -39,13 +39,13 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 	@Override
 	public void run() {
 		if (srcPath.equals(dstPath)) {
-			DialogFactory.showErrorMessage(src.getParent(),
+			DialogFactory.showErrorMessage(sourceListing.getParent(),
 					"You cannot copy a file to itself!");
 			dispose();
 			return;
 		}
 
-		List<File> selectedFiles = src.getSelectedFiles();
+		List<File> selectedFiles = sourceListing.getSelectedFiles();
 		int numFiles = selectedFiles.size();
 		myProcess.totalProgress = 0;
 		for (int i = 0; i < selectedFiles.size(); i++) {

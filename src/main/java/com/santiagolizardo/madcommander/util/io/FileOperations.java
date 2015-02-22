@@ -53,10 +53,10 @@ public class FileOperations {
 
 	public static boolean copy(InputStream is, File file) {
 		try {
-			FileOutputStream fos = new FileOutputStream(file);
-			IOUtils.copy(is, fos);
-			is.close();
-			fos.close();
+			try (FileOutputStream fos = new FileOutputStream(file)) {
+				IOUtils.copy(is, fos);
+				is.close();
+			}
 
 			return true;
 		} catch (IOException e) {

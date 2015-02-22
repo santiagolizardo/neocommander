@@ -17,7 +17,6 @@
 package com.santiagolizardo.madcommander.dialogs;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.controller.Controller;
 
 public class UnselectGroupDialog extends AbstractGroupDialog {
 
@@ -36,7 +35,7 @@ public class UnselectGroupDialog extends AbstractGroupDialog {
 
 	protected void applyPattern(String type, String searchPattern,
 			boolean caseSensitive) {
-		Controller
-				.unselectGroup(mainWindow, type, searchPattern, caseSensitive);
+		mainWindow.getSource()
+				.unselectGroup(type, searchPattern, caseSensitive);
 	}
 }

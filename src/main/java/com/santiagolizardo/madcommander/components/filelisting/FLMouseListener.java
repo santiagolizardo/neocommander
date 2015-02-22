@@ -43,16 +43,12 @@ public class FLMouseListener extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent event) {
-		super.mousePressed(event);
-
 		if (event.getButton() == MouseEvent.BUTTON3) {
 			showPopup(event);
 		}
 	}
 
 	public void mouseReleased(MouseEvent event) {
-		super.mouseReleased(event);
-
 		if (event.getButton() == MouseEvent.BUTTON3) {
 			showPopup(event);
 		}

@@ -1,44 +1,43 @@
 /**
  * This file is part of MadCommander, a file manager with two panels.
  *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * MadCommander is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
  *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MadCommander is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with
+ * MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.HistoricalActions;
+import java.util.List;
 
 public class Historical {
 
-	private ArrayList<String> history;
-	private ListIterator<String> iterator;
+	private int position;
+	private List<String> history;
 
 	private MainWindow mainWindow;
 
 	public Historical(MainWindow mainWindow) {
-		history = new ArrayList<String>();
-		iterator = history.listIterator();
-
+		history = new ArrayList<>();
+		position = 0;
 		this.mainWindow = mainWindow;
 	}
 
 	public void updateActions() {
-		boolean previousEnabled = iterator.hasPrevious();
-		boolean nextEnabled = iterator.hasNext();
+		boolean previousEnabled = position > 0;
+		boolean nextEnabled = position < history.size();
 
 		HistoricalActions.getPreviousAction(mainWindow).setEnabled(
 				previousEnabled);
@@ -47,20 +46,23 @@ public class Historical {
 
 	public void add(String path) {
 		history.add(path);
-		iterator = history.listIterator();
-		while (iterator.hasNext())
-			iterator.next();
+		position++;
+
+		if (position != history.size()) {
+			history = history.subList(0, position);
+		}
+
 		updateActions();
 	}
 
 	public String getPrevious() {
-		String previous = iterator.previous();
+		String previous = history.get(--position);
 		updateActions();
 		return previous;
 	}
 
 	public String getNext() {
-		String next = iterator.next();
+		String next = history.get(++position);
 		updateActions();
 		return next;
 	}

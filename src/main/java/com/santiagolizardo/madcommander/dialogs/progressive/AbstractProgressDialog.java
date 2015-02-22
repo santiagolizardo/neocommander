@@ -16,6 +16,7 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
+import com.santiagolizardo.madcommander.Main;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -39,7 +40,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 	private static final long serialVersionUID = -2258800923807602822L;
 
-	protected static Logger logger = Logger
+	protected static final Logger logger = Logger
 			.getLogger(AbstractProgressDialog.class.getName());
 
 	protected JLabel currentFileLabel;
@@ -48,15 +49,15 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 	protected JProgressBar totalBar;
 
-	protected JButton cancel;
+	protected JButton cancelButton;
 
 	protected String srcPath;
 
 	protected String dstPath;
 
-	protected FileListing src;
+	protected FileListing sourceListing;
 
-	protected FileListing dst;
+	protected FileListing destinyListing;
 
 	protected MyProcess myProcess;
 
@@ -69,7 +70,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 		this.mainWindow = mainWindow;
 
-		setTitle("MadCommander");
+		setTitle(MainWindow.APP_NAME);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
@@ -79,8 +80,8 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 		currentFileLabel = new LocalizedLabel("Current file:");
 
-		cancel = new LocalizedButton("Cancel");
-		cancel.addActionListener(this);
+		cancelButton = new LocalizedButton("Cancel");
+		cancelButton.addActionListener(this);
 
 		panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(7, 7, 7, 7));
@@ -91,11 +92,11 @@ public abstract class AbstractProgressDialog extends JDialog implements
 		panel.add(new LocalizedLabel("Total progress:"));
 		panel.add(totalBar);
 
-		src = mainWindow.getSource();
-		dst = mainWindow.getDestination();
+		sourceListing = mainWindow.getSource();
+		destinyListing = mainWindow.getDestination();
 
-		srcPath = src.getPath();
-		dstPath = dst.getPath();
+		srcPath = sourceListing.getPath();
+		dstPath = destinyListing.getPath();
 
 		myProcess = new MyProcess();
 
@@ -136,7 +137,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		if (source == cancel) {
+		if (source == cancelButton) {
 			myProcess.cancel();
 			dispose();
 		}
@@ -144,7 +145,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 	private void defineLayout() {
 		add(panel, BorderLayout.CENTER);
-		add(cancel, BorderLayout.SOUTH);
+		add(cancelButton, BorderLayout.SOUTH);
 
 		pack();
 	}

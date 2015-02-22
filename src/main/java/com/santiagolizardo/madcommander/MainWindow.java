@@ -46,9 +46,9 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
-	public final static String APP_NAME = "MadCommander";
-	public final static String APP_VERSION = "1.4.7";
-	public final static String APP_URL = "http://sourceforge.net/projects/madcommander/";
+	public final static String APP_NAME = "NeoCommander";
+	public final static String APP_VERSION = "1.4.8";
+	public final static String APP_URL = "https://github.com/santiagolizardo/neocommander";
 
 	private static final Logger LOGGER = Logger.getLogger(MainWindow.class
 			.getName());
@@ -129,7 +129,9 @@ public class MainWindow extends JFrame {
 		List<File> selectedFiles = getSource().getSelectedFiles();
 
 		mainMenu.refreshButtons(selectedFiles);
-		shortcutsPanel.refreshButtons(selectedFiles);
+		if( shortcutsPanel != null ) {
+			shortcutsPanel.refreshButtons(selectedFiles);
+		}
 	}
 
 	public void addBasicToolbar(boolean validate) {

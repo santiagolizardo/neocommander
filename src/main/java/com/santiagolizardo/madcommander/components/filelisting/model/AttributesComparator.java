@@ -20,8 +20,8 @@ import java.util.Comparator;
 
 public class AttributesComparator implements Comparator<FileListingRow> {
 
-	public int compare(FileListingRow arg0, FileListingRow arg1) {
+	@Override
+	public int compare(FileListingRow firstRow, FileListingRow secondRow) {
 		return 0;
 	}
-
 }
