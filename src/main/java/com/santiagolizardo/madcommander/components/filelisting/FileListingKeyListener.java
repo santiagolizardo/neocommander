@@ -23,11 +23,11 @@ import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 import com.santiagolizardo.madcommander.menu.BookmarksPopup;
 
-public class FLKeyListener extends KeyAdapter {
+public class FileListingKeyListener extends KeyAdapter {
 
 	private MainWindow mainWindow;
 
-	public FLKeyListener(MainWindow mainWindow) {
+	public FileListingKeyListener(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
 	}
 

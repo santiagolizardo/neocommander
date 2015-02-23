@@ -44,7 +44,6 @@ import javax.swing.InputMap;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
 
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.SelectDriveAction;
@@ -100,18 +99,20 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 
 		this.fileListing = fileListing;
 
-		FLKeyListener myKeyListener = new FLKeyListener(mainWindow);
-		FLMouseListener myMouseListener = new FLMouseListener(mainWindow);
+		FileListingKeyListener myKeyListener = new FileListingKeyListener(mainWindow);
+		FileListingMouseListener myMouseListener = new FileListingMouseListener(mainWindow);
 
 		addKeyListener(myKeyListener);
 		addMouseListener(myMouseListener);
 
-		DragOut dragOut = new DragOut();
 		dragSource = new DragSource();
+
+		DragOut dragOut = new DragOut(dragSource, fileListing, this);
+
 		dragSource.createDefaultDragGestureRecognizer(this,
 				DnDConstants.ACTION_COPY_OR_MOVE, dragOut);
 
-		DropIn dropIn = new DropIn();
+		DropIn dropIn = new DropIn(fileListing);
 		dropTarget = new DropTarget(this, dropIn);
 
 		defineKeyBindings();
@@ -230,79 +231,5 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 		}
 
 		return selectedFiles;
-	}
-
-	private class DragOut implements DragGestureListener, DragSourceListener {
-
-		@Override
-		public void dragGestureRecognized(DragGestureEvent event) {
-			DndTransport dndCommand = new DndTransport(fileListing.position);
-			Cursor cursor;
-			if (event.getDragAction() == DnDConstants.ACTION_COPY) {
-				cursor = DragSource.DefaultCopyDrop;
-			} else { // DnDConstants.ACTION_MOVE:
-				cursor = DragSource.DefaultMoveDrop;
-			}
-			List<File> selectedFiles = getSelectedFiles();
-			if (selectedFiles.size() > 0) {
-				dragSource.startDrag(event, cursor, dndCommand, this);
-			}
-		}
-
-		@Override
-		public void dragDropEnd(DragSourceDropEvent arg0) {
-		}
-
-		@Override
-		public void dragEnter(DragSourceDragEvent arg0) {
-		}
-
-		@Override
-		public void dragExit(DragSourceEvent arg0) {
-		}
-
-		@Override
-		public void dragOver(DragSourceDragEvent arg0) {
-		}
-
-		@Override
-		public void dropActionChanged(DragSourceDragEvent arg0) {
-		}
-	}
-
-	private class DropIn extends DropTargetAdapter {
-
-		@Override
-		public void drop(DropTargetDropEvent event) {
-			if (event.getSource().equals(this)) {
-				event.rejectDrop();
-				return;
-			}
-			Transferable transferable = event.getTransferable();
-			if (transferable.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-				try {
-					final String panelID = transferable.getTransferData(
-							DataFlavor.stringFlavor).toString();
-					if (panelID.equals(fileListing.position.toString())) {
-						event.rejectDrop();
-						return;
-					}
-					event.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
-
-					final int action = event.getDropAction();
-					event.getDropTargetContext().dropComplete(true);
-					if (action == DnDConstants.ACTION_COPY) {
-						// Controller.copyFiles();
-					} else {
-						// Controller.moveFiles();
-					}
-				} catch (UnsupportedFlavorException | InvalidDnDOperationException | IOException e) {
-					logger.warning(e.getMessage());
-				}
-
-			} else {
-				event.rejectDrop();
-			}
-		}
 	}
 }

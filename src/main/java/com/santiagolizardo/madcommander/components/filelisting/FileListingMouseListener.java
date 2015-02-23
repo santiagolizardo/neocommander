@@ -21,13 +21,13 @@ import java.awt.event.MouseEvent;
 
 import com.santiagolizardo.madcommander.MainWindow;
 
-public class FLMouseListener extends MouseAdapter {
+public class FileListingMouseListener extends MouseAdapter {
 
 	private PopupMenu popupMenu;
 
 	private MainWindow mainWindow;
 
-	public FLMouseListener(final MainWindow mainWindow) {
+	public FileListingMouseListener(final MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;

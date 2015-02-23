@@ -30,13 +30,13 @@ import com.santiagolizardo.madcommander.components.filelisting.model.FileListing
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
 
-public class FLCellRenderer extends DefaultTableCellRenderer {
+public class FileListingCellRenderer extends DefaultTableCellRenderer {
 
 	private static final long serialVersionUID = 8224673036449358242L;
 
 	private Format format;
 
-	public FLCellRenderer(Format format) {
+	public FileListingCellRenderer(Format format) {
 		super();
 
 		this.format = format;

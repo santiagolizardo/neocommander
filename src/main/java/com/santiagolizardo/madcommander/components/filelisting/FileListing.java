@@ -40,7 +40,7 @@ import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingColumn;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingModel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingRow;
-import com.santiagolizardo.madcommander.components.filelisting.renderers.FLCellRenderer;
+import com.santiagolizardo.madcommander.components.filelisting.renderers.FileListingCellRenderer;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.gui.SwingUtil;
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class FileListing extends JPanel {
 	private FileListingHeader header;
 
 	private FileListingTable table;
-	private FLCellRenderer cellRenderer;
+	private FileListingCellRenderer cellRenderer;
 
 	private File currentPath;
 
@@ -97,7 +97,7 @@ public class FileListing extends JPanel {
 
 		format = Format.Full;
 
-		cellRenderer = new FLCellRenderer(format);
+		cellRenderer = new FileListingCellRenderer(format);
 
 		updateColumnRenderers();
 
