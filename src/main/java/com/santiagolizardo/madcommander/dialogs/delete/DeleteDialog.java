@@ -16,9 +16,11 @@
  */
 package com.santiagolizardo.madcommander.dialogs.delete;
 
+import com.santiagolizardo.madcommander.resources.languages.Translator;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -27,18 +29,17 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 import javax.swing.SpringLayout;
 
 public class DeleteDialog extends JDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 384674050228582953L;
 
 	private DefaultListModel<File> model;
@@ -56,7 +57,7 @@ public class DeleteDialog extends JDialog {
 	public DeleteDialog() {
 		super();
 
-		setTitle("Delete files/directories");
+		setTitle(Translator.tr("Delete files/directories"));
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
@@ -69,24 +70,21 @@ public class DeleteDialog extends JDialog {
 		returnValue = CANCEL;
 
 		okButton = new JButton("Ok");
-		okButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				returnValue = OK;
-				dispose();
-			}
+		okButton.addActionListener((ActionEvent ev) -> {
+			returnValue = OK;
+			dispose();
 		});
 
 		cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				dispose();
-			}
+		cancelButton.addActionListener((ActionEvent ev) -> {
+			dispose();
 		});
 
 		defineLayout();
 		setLocationRelativeTo(null);
 
 		addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowActivated(WindowEvent event) {
 				okButton.requestFocusInWindow();
 			}
@@ -95,9 +93,14 @@ public class DeleteDialog extends JDialog {
 
 	@Override
 	public JRootPane getRootPane() {
-		JRootPane rootPane = super.getRootPane();
-		rootPane.setDefaultButton(okButton);
-		return rootPane;
+		JRootPane superRootPane = super.getRootPane();
+		superRootPane.registerKeyboardAction((ActionEvent ev) -> {
+			setVisible(false);
+			dispose();
+		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+				JComponent.WHEN_IN_FOCUSED_WINDOW);
+		superRootPane.setDefaultButton(okButton);
+		return superRootPane;
 	}
 	
 	public int getReturnValue() {
@@ -119,8 +122,8 @@ public class DeleteDialog extends JDialog {
 	}
 
 	private void defineLayout() {
-		JLabel label = new JLabel(
-				"Do you really want to delete the selected files/directories?");
+		JLabel label = new JLabel(Translator.tr(
+				"Do you really want to delete the selected files/directories?"));
 		
 		Container contentPane = getContentPane();
 

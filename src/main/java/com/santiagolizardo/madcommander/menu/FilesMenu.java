@@ -34,6 +34,7 @@ import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.UnpackDialog;
 import com.santiagolizardo.madcommander.dialogs.changeattributes.ChangeAttributesDialog;
+import com.santiagolizardo.madcommander.dialogs.changeattributes.ChangeModificationDateTimeDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
@@ -44,6 +45,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 	private static final long serialVersionUID = -3242803672077641559L;
 
 	private LocalizedMenuItem changeAttributesMenuItem;
+	private JMenuItem changeModificationDatetimeMenuItem;
 	private JMenuItem packMenuItem;
 	private LocalizedMenuItem unpackMenuItem;
 	private LocalizedMenuItem compareByContent;
@@ -60,6 +62,10 @@ public class FilesMenu extends JMenu implements ActionListener {
 
 		changeAttributesMenuItem = new LocalizedMenuItem("Change attributes...");
 		changeAttributesMenuItem.addActionListener(this);
+		
+		changeModificationDatetimeMenuItem = new JMenuItem(Translator.tr("Change modification date and time..."));
+		changeModificationDatetimeMenuItem.addActionListener(this);
+		
 		packMenuItem = new JMenuItem(new PackAction(mainWindow));
 		unpackMenuItem = new LocalizedMenuItem("Unpack...");
 		unpackMenuItem.addActionListener(this);
@@ -76,6 +82,8 @@ public class FilesMenu extends JMenu implements ActionListener {
 		quitMenuItem.addActionListener(this);
 
 		add(changeAttributesMenuItem);
+		add(changeModificationDatetimeMenuItem);
+		addSeparator();
 		add(packMenuItem);
 		add(unpackMenuItem);
 		add(compareByContent);
@@ -91,6 +99,10 @@ public class FilesMenu extends JMenu implements ActionListener {
 			ChangeAttributesDialog changeAttributesDialog = new ChangeAttributesDialog(
 					mainWindow);
 			changeAttributesDialog.setVisible(true);
+		} else if ( source == changeModificationDatetimeMenuItem ) {
+			ChangeModificationDateTimeDialog dialog = new ChangeModificationDateTimeDialog(
+					mainWindow);
+			dialog.setVisible(true);			
 		} else if (source == unpackMenuItem) {
 			List<File> list = mainWindow.getSource().getSelectedFiles();
 			if (list.size() == 1) {

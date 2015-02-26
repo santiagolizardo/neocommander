@@ -47,10 +47,8 @@ import com.santiagolizardo.madcommander.util.io.FileUtil;
 
 public class UnpackDialog extends AbstractDialog implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5451158938079680268L;
+	
 	private JButton okButton;
 	private JButton browse;
 	private JLabel fileText;
@@ -96,21 +94,21 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
 			}
 		});
 
-		model = new DefaultListModel<String>();
-		list = new JList<String>(model);
+		model = new DefaultListModel<>();
+		list = new JList<>(model);
 		scroll = new JScrollPane(list);
 		Dimension scrollSize = new Dimension(350, 70);
 		scroll.setMinimumSize(scrollSize);
 		scroll.setPreferredSize(scrollSize);
 
 		try {
-			ZipFile zipFile = new ZipFile(fileName);
-			Enumeration<?> e = zipFile.entries();
-			while (e.hasMoreElements()) {
-				ZipEntry entry = (ZipEntry) e.nextElement();
-				model.addElement(entry.getName());
+			try (ZipFile zipFile = new ZipFile(fileName)) {
+				Enumeration<?> e = zipFile.entries();
+				while (e.hasMoreElements()) {
+					ZipEntry entry = (ZipEntry) e.nextElement();
+					model.addElement(entry.getName());
+				}
 			}
-			zipFile.close();
 		} catch (IOException io) {
 			io.printStackTrace();
 		}
@@ -122,6 +120,7 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
 		setLocationRelativeTo(null);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		File file = new File(unpackOn.getText());
 		if (!file.isDirectory()) {

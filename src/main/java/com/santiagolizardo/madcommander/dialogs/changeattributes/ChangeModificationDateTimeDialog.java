@@ -31,20 +31,25 @@ import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+import com.santiagolizardo.madcommander.util.CalendarUtil;
+import java.util.logging.Level;
 
-public class ChangeAttributesDialog extends AbstractDialog implements
+public class ChangeModificationDateTimeDialog extends AbstractDialog implements
 		ActionListener {
 
 	private static final long serialVersionUID = -2519143127010077700L;
 
-	private AttributesPanel attributesPanel;
+	private static final Logger LOGGER = Logger
+			.getLogger(ChangeModificationDateTimeDialog.class.getName());
+
+	private DateTimePanel dateTimePanel;
 
 	private JButton okButton;
 	private JButton cancelButton;
 
 	private MainWindow mainWindow;
 
-	public ChangeAttributesDialog(MainWindow mainWindow) {
+	public ChangeModificationDateTimeDialog(MainWindow mainWindow) {
 		super();
 
 		this.mainWindow = mainWindow;
@@ -54,7 +59,7 @@ public class ChangeAttributesDialog extends AbstractDialog implements
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-		attributesPanel = new AttributesPanel();
+		dateTimePanel = new DateTimePanel();
 
 		okButton = new LocalizedButton("Ok");
 		okButton.addActionListener(this);
@@ -75,13 +80,13 @@ public class ChangeAttributesDialog extends AbstractDialog implements
 			List<File> selectedFiles = mainWindow.getSource()
 					.getSelectedFiles();
 
-			for (File file : selectedFiles) {
-				file.setReadable(attributesPanel.isReadPermissionSelected());
-				file.setWritable(attributesPanel.isWritePermissionSelected());
-				file.setExecutable(attributesPanel.isExecutePermissionSelected());
+			String date = dateTimePanel.getDate();
+			String time = dateTimePanel.getTime();
+			long dateTime = CalendarUtil.convertDateTime(date, time);
 
-				if (attributesPanel.isReadOnlyPermissionSelected() ){
-					file.setReadOnly();
+			for (File file : selectedFiles) {
+				if (file.setLastModified(dateTime) == false) {
+					LOGGER.log(Level.WARNING, "Error setting last modified property to file: {0}", file.getName());
 				}
 			}
 			mainWindow.getSource().refreshFiles();
@@ -95,24 +100,25 @@ public class ChangeAttributesDialog extends AbstractDialog implements
 		Container contentPane = getContentPane();
 
 		SpringLayout layout = new SpringLayout();
-		layout.putConstraint(SpringLayout.WEST, attributesPanel, 5,
+
+		layout.putConstraint(SpringLayout.WEST, dateTimePanel, 5,
 				SpringLayout.WEST, contentPane);
-		layout.putConstraint(SpringLayout.NORTH, attributesPanel, 5,
+		layout.putConstraint(SpringLayout.NORTH, dateTimePanel, 5,
 				SpringLayout.NORTH, contentPane);
 
 		layout.putConstraint(SpringLayout.WEST, okButton, 5, SpringLayout.WEST,
 				contentPane);
 		layout.putConstraint(SpringLayout.NORTH, okButton, 5,
-				SpringLayout.SOUTH, attributesPanel);
+				SpringLayout.SOUTH, dateTimePanel);
 
 		layout.putConstraint(SpringLayout.WEST, cancelButton, 5,
 				SpringLayout.EAST, okButton);
 		layout.putConstraint(SpringLayout.NORTH, cancelButton, 5,
-				SpringLayout.SOUTH, attributesPanel);
+				SpringLayout.SOUTH, dateTimePanel);
 
 		contentPane.setLayout(layout);
 
-		contentPane.add(attributesPanel);
+		contentPane.add(dateTimePanel);
 
 		contentPane.add(okButton);
 		contentPane.add(cancelButton);
