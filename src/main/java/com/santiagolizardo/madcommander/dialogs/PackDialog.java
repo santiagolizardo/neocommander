@@ -36,7 +36,7 @@ import javax.swing.JTextField;
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
-import com.santiagolizardo.madcommander.controller.PackTypes;
+import com.santiagolizardo.madcommander.util.PackTypes;
 import com.santiagolizardo.madcommander.dialogs.progressive.PackProgressDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import java.util.function.Function;

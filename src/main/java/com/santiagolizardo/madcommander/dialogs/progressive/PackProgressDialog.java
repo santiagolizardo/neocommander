@@ -27,7 +27,7 @@ import java.util.zip.ZipOutputStream;
 
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
-import com.santiagolizardo.madcommander.controller.PackTypes;
+import com.santiagolizardo.madcommander.util.PackTypes;
 
 public class PackProgressDialog extends AbstractProgressDialog {
 

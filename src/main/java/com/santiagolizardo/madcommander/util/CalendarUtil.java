@@ -26,9 +26,9 @@ public class CalendarUtil {
         if(date != null) {
             String[] dates = date.split("/");
         
-            int day = Integer.valueOf(dates[0]).intValue();
-            int month = Integer.valueOf(dates[1]).intValue()-1;
-            int year = Integer.valueOf(dates[2]).intValue();
+            int day = Integer.valueOf(dates[0]);
+            int month = Integer.valueOf(dates[1])-1;
+            int year = Integer.valueOf(dates[2]);
         
             calendar.set(Calendar.DATE, day);
             calendar.set(Calendar.MONTH, month);
@@ -38,8 +38,8 @@ public class CalendarUtil {
         if(time != null) {
             String[] times = time.split(":");
 
-            int hour = Integer.valueOf(times[0]).intValue();
-            int minutes = Integer.valueOf(times[1]).intValue();
+            int hour = Integer.valueOf(times[0]);
+            int minutes = Integer.valueOf(times[1]);
                
             calendar.set(Calendar.HOUR_OF_DAY, hour);
             calendar.set(Calendar.MINUTE, minutes);

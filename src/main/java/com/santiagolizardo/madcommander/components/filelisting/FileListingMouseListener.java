@@ -35,6 +35,7 @@ public class FileListingMouseListener extends MouseAdapter {
 		popupMenu = new PopupMenu(mainWindow);
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent event) {
 		if (event.getButton() == MouseEvent.BUTTON1
 				&& event.getClickCount() == 2) {
@@ -42,12 +43,14 @@ public class FileListingMouseListener extends MouseAdapter {
 		}
 	}
 
+	@Override
 	public void mousePressed(MouseEvent event) {
 		if (event.getButton() == MouseEvent.BUTTON3) {
 			showPopup(event);
 		}
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent event) {
 		if (event.getButton() == MouseEvent.BUTTON3) {
 			showPopup(event);

@@ -107,7 +107,7 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 				if (event.getClickCount() == 2) {
 					int selectedIndex = resultsList.getSelectedIndex();
 					if (selectedIndex != -1) {
-						String selected = results.get(selectedIndex).toString();
+						String selected = results.get(selectedIndex);
 						String filePart = FileUtil.extractFilePart(new File(
 								selected));
 						String dirPart = FileUtil.extractDirPart(new File(

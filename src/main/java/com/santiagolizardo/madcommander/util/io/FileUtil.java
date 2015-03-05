@@ -17,11 +17,20 @@
 package com.santiagolizardo.madcommander.util.io;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Utilities for work with files.
  */
 public class FileUtil {
+	
+	private static final Logger logger = Logger.getLogger(FileUtil.class.getName());
 
 	public static final String LINE_SEP = System.getProperty("line.separator");
 
@@ -52,36 +61,19 @@ public class FileUtil {
 	}
 
 	/**
-	 * Returns the attributes for the file passed as parameter, as a string.
-	 * 
-	 * @param file
-	 * @return
-	 */
-	public static String getAttributes(File file) {
-		StringBuilder buffer = new StringBuilder();
-
-		buffer.append(file.canRead() && file.canWrite() == false ? "r" : "-");
-		buffer.append("a");
-		buffer.append(file.isHidden() ? "h" : "-");
-		buffer.append("-");
-
-		return buffer.toString();
-	}
-
-	/**
 	 * Returns the humanized attributes for the file passed as parameter, as a string.
 	 * 
 	 * @param file
 	 * @return
 	 */
 	public static String getHumanizedAttributes(File file) {
-		String att = "";
-		if (file.canRead())
-			att += "r ";
-		if (file.canWrite())
-			att += "w ";
-		if (file.canExecute())
-			att += "e ";
-		return att;
+      Set<PosixFilePermission> set;
+		try {
+			set = Files.getPosixFilePermissions(file.toPath());
+		  return PosixFilePermissions.toString(set);
+		} catch (IOException ex) {
+			logger.log(Level.WARNING, null, ex);
+			return "";
+		}
 	}
 }
