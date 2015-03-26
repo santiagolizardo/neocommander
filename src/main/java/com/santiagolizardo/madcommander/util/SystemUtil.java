@@ -26,7 +26,21 @@ import java.net.URISyntaxException;
 
 
 public class SystemUtil {
-
+	
+	public static Os getOs() {
+		String osName = System.getProperty("os.name").toLowerCase();
+		if(osName.contains("windows")) {
+			return Os.Windows;
+		}
+		if(osName.contains("linux")) {
+			return Os.Linux;
+		}
+		if(osName.contains("osx")) {
+			return Os.Osx;
+		}
+		return null;
+	}
+	
 	public static void execute(Component component, String command) {
 		Runtime runtime = Runtime.getRuntime();
 		String[] args = new String[3];

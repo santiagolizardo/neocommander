@@ -47,7 +47,7 @@ import com.santiagolizardo.madcommander.components.filelisting.model.SizeCompara
 import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
 import java.util.logging.Logger;
 
-public class FileListingTable extends JTable implements Runnable, FocusListener {
+public class FileListingTable extends JTable implements Runnable {
 
 	private static final long serialVersionUID = 1317659226807828074L;
 
@@ -200,15 +200,13 @@ public class FileListingTable extends JTable implements Runnable, FocusListener 
 	}
 
 	@Override
-	public void focusGained(FocusEvent event) {
+	public void requestFocus() {
+		super.requestFocus();
+
 		mainWindow.currentPanel = fileListing.position;
 		mainWindow.getSource().historical.updateActions();
 	}
-
-	@Override
-	public void focusLost(FocusEvent event) {
-	}
-
+	
 	public List<File> getSelectedFiles() {
 		List<File> selectedFiles = new ArrayList<>();
 		int[] selectedRows = getSelectedRows();

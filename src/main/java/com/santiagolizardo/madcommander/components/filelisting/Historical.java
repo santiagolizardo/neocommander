@@ -62,8 +62,11 @@ public class Historical {
 	}
 
 	public String getNext() {
-		String next = history.get(++position);
-		updateActions();
+		String next = null;
+		if (position + 1 < history.size()) {
+			history.get(++position);
+			updateActions();
+		}
 		return next;
 	}
 }
