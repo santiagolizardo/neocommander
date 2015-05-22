@@ -34,12 +34,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
-import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
 import com.santiagolizardo.madcommander.util.PackTypes;
 import com.santiagolizardo.madcommander.dialogs.progressive.PackProgressDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
-import java.util.function.Function;
 
 public class PackDialog extends AbstractDialog implements ActionListener {
 
@@ -137,7 +134,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = GridBagConstraints.REMAINDER;
 		c.gridheight = 1;
-		add(new LocalizedLabel("Filename:"), c);
+		add(new JLabel(Translator.tr("Filename:")), c);
 
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
@@ -154,7 +151,7 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 		c.gridheight = 3;
 		add(panel, c);
 
-		compressButton = new LocalizedButton("Compress");
+		compressButton = new JButton(Translator.tr("Compress"));
 		compressButton.addActionListener(this);
 		getRootPane().setDefaultButton(compressButton);
 

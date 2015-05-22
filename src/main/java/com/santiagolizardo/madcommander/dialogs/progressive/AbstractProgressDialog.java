@@ -16,7 +16,6 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
-import com.santiagolizardo.madcommander.Main;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -32,8 +31,7 @@ import javax.swing.JProgressBar;
 
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
-import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public abstract class AbstractProgressDialog extends JDialog implements
 		Runnable, ActionListener {
@@ -78,18 +76,18 @@ public abstract class AbstractProgressDialog extends JDialog implements
 		currentBar = new JProgressBar(0, 100);
 		totalBar = new JProgressBar(0, 100);
 
-		currentFileLabel = new LocalizedLabel("Current file:");
+		currentFileLabel = new JLabel(Translator.tr("Current file:"));
 
-		cancelButton = new LocalizedButton("Cancel");
+		cancelButton = new JButton(Translator.tr("Cancel"));
 		cancelButton.addActionListener(this);
 
 		panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(7, 7, 7, 7));
 		panel.setLayout(new GridLayout(5, 1));
 		panel.add(currentFileLabel);
-		panel.add(new LocalizedLabel("Current progress:"));
+		panel.add(new JLabel(Translator.tr("Current progress:")));
 		panel.add(currentBar);
-		panel.add(new LocalizedLabel("Total progress:"));
+		panel.add(new JLabel(Translator.tr("Total progress:")));
 		panel.add(totalBar);
 
 		sourceListing = mainWindow.getSource();

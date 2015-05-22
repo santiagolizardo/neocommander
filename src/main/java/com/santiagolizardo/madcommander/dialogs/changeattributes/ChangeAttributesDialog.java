@@ -21,14 +21,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.SpringLayout;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
@@ -56,11 +54,11 @@ public class ChangeAttributesDialog extends AbstractDialog implements
 
 		attributesPanel = new AttributesPanel();
 
-		okButton = new LocalizedButton("Ok");
+		okButton = new JButton(Translator.tr("Ok"));
 		okButton.addActionListener(this);
 		getRootPane().setDefaultButton(okButton);
 
-		cancelButton = new LocalizedButton("Cancel");
+		cancelButton = new JButton(Translator.tr("Cancel"));
 		cancelButton.addActionListener(this);
 
 		defineLayout();

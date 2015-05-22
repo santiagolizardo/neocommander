@@ -24,7 +24,6 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedCheckBoxMenuItem;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class ConfigurationMenu extends JMenu implements ActionListener {
@@ -49,19 +48,19 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 
 		show = new JMenu(Translator.tr("Show"));
 
-		basicToolbar = new LocalizedCheckBoxMenuItem("Basic toolbar");
+		basicToolbar = new JCheckBoxMenuItem(Translator.tr("Basic toolbar"));
 		basicToolbar.addActionListener(this);
 		basicToolbar.setSelected(true);
 
-		drivesToolbar = new LocalizedCheckBoxMenuItem("Drives toolbar");
+		drivesToolbar = new JCheckBoxMenuItem(Translator.tr("Drives toolbar"));
 		drivesToolbar.addActionListener(this);
 		drivesToolbar.setSelected(true);
 
-		executePanel = new LocalizedCheckBoxMenuItem("Execute panel");
+		executePanel = new JCheckBoxMenuItem(Translator.tr("Execute panel"));
 		executePanel.addActionListener(this);
 		executePanel.setSelected(true);
 
-		shortcutsPanel = new LocalizedCheckBoxMenuItem("Shortcuts panel");
+		shortcutsPanel = new JCheckBoxMenuItem(Translator.tr("Shortcuts panel"));
 		shortcutsPanel.addActionListener(this);
 		shortcutsPanel.setSelected(true);
 

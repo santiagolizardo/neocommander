@@ -24,7 +24,6 @@ import javax.swing.JMenuItem;
 
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.GeneralActionFactory;
-import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.bookmarks.ManageBookmarks;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -45,7 +44,7 @@ public class BookmarksMenu extends JMenu implements ActionListener {
 
 		addBookmarkMenuItem = new JMenuItem(
 				GeneralActionFactory.getAddToBookmarksAction(mainWindow));
-		manageBookmarksMenuItem = new LocalizedMenuItem("Manage bookmarks");
+		manageBookmarksMenuItem = new JMenuItem(Translator.tr("Manage bookmarks"));
 		manageBookmarksMenuItem.setIcon(IconFactory.newIcon("manage_bookmarks.png"));
 		manageBookmarksMenuItem.addActionListener(this);
 

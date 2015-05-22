@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 
 public class GeneralTab extends JPanel {
@@ -75,13 +75,13 @@ public class GeneralTab extends JPanel {
 	}
 
 	private void initComponents() {
-		labelSearchFor = new LocalizedLabel("Search for");
+		labelSearchFor = new JLabel(Translator.tr("Search for"));
 		searchFor = new JTextField(20);
-		labelSearchIn = new LocalizedLabel("Search in");
+		labelSearchIn = new JLabel(Translator.tr("Search in"));
 		searchIn = new JTextField(40);
 		searchIn.setText(mainWindow.getSource().getPath());
 
-		labelRecursive = new LocalizedLabel("Recursive");
+		labelRecursive = new JLabel(Translator.tr("Recursive"));
 		recursive = new JCheckBox();
 		recursive.setSelected(true);
 	}

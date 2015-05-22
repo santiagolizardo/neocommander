@@ -1,25 +1,24 @@
 /**
  * This file is part of MadCommander, a file manager with two panels.
  *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * MadCommander is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
  *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MadCommander is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with
+ * MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.config;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.Date;
 import java.util.Properties;
 
 import com.santiagolizardo.madcommander.util.ListsUtils;
@@ -38,7 +37,7 @@ public class ConfigHandler {
 				"bookmarks",
 				String.join(File.pathSeparator,
 						configData.getBookmarks()));
-		
+
 		props.setProperty("language", configData.getLanguage());
 
 		props.setProperty("window.width", String.valueOf(configData.getWindowSize().getWidth()));
@@ -68,8 +67,11 @@ public class ConfigHandler {
 			Properties props = new Properties();
 			props.load(fis);
 
-			configData.setBookmarks(ListsUtils.explode(File.pathSeparator,
-					props.getProperty("bookmarks")));
+			String bookmarksProp = props.getProperty("bookmarks");
+			if (!bookmarksProp.isEmpty()) {
+				configData.setBookmarks(ListsUtils.explode(File.pathSeparator,
+						bookmarksProp));
+			}
 
 			String language = props.getProperty("language");
 			if (null != language) {

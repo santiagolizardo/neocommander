@@ -42,11 +42,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.search.AdvancedTab;
 import com.santiagolizardo.madcommander.dialogs.search.GeneralTab;
 import com.santiagolizardo.madcommander.dialogs.search.SearchParams;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.GlobUtils;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileUtil;
@@ -121,11 +121,11 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 			}
 		});
 
-		searchButton = new LocalizedButton("Search");
+		searchButton = new JButton(Translator.tr("Search"));
 		searchButton.addActionListener(this);
 		getRootPane().setDefaultButton(searchButton);
 
-		closeButton = new LocalizedButton("Close");
+		closeButton = new JButton(Translator.tr("Close"));
 		closeButton.addActionListener(this);
 
 		defineLayout();

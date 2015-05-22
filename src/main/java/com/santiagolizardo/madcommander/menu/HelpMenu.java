@@ -25,7 +25,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.AboutDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
@@ -36,11 +35,9 @@ public class HelpMenu extends JMenu implements ActionListener {
 
 	private static final long serialVersionUID = 8893380914412785609L;
 
-	private LocalizedMenuItem visitJavaCommanderWebSite;
-
-	private LocalizedMenuItem checkForUpdate;
-
-	private LocalizedMenuItem aboutJavaCommander;
+	private JMenuItem visitJavaCommanderWebSite;
+	private JMenuItem checkForUpdate;
+	private JMenuItem aboutJavaCommander;
 
 	private JFrame mainWindow;
 	
@@ -50,16 +47,15 @@ public class HelpMenu extends JMenu implements ActionListener {
 		
 		this.mainWindow = mainWindow;
 
-		visitJavaCommanderWebSite = new LocalizedMenuItem(
-				"Visit project website");
+		visitJavaCommanderWebSite = new JMenuItem(Translator.tr("Visit project website"));
 		visitJavaCommanderWebSite.addActionListener(this);
 		visitJavaCommanderWebSite.setIcon(IconFactory.newIcon("link.png"));
 
-		checkForUpdate = new LocalizedMenuItem("Check for updates...");
+		checkForUpdate = new JMenuItem(Translator.tr("Check for updates..."));
 		checkForUpdate.setIcon(IconFactory.newIcon("check.png"));
 		checkForUpdate.addActionListener(this);
 
-		aboutJavaCommander = new LocalizedMenuItem("About this software");
+		aboutJavaCommander = new JMenuItem(Translator.tr("About this software"));
 		aboutJavaCommander.addActionListener(this);
 
 		add(visitJavaCommanderWebSite);

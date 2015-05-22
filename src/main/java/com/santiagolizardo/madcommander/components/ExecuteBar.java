@@ -26,7 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.madcommander.components.localized.LocalizedLabel;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.SystemUtil;
 
 public class ExecuteBar extends JPanel implements ActionListener {
@@ -51,7 +51,7 @@ public class ExecuteBar extends JPanel implements ActionListener {
 		commands.setEditable(true);
 		commands.addActionListener(this);
 
-		currentPath = new LocalizedLabel("Execute");
+		currentPath = new JLabel(Translator.tr("Execute"));
 
 		defineLayout();
 	}

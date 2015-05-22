@@ -28,7 +28,6 @@ import javax.swing.JDialog;
 import javax.swing.SpringLayout;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.CalendarUtil;
@@ -61,11 +60,11 @@ public class ChangeModificationDateTimeDialog extends AbstractDialog implements
 
 		dateTimePanel = new DateTimePanel();
 
-		okButton = new LocalizedButton("Ok");
+		okButton = new JButton(Translator.tr("Ok"));
 		okButton.addActionListener(this);
 		getRootPane().setDefaultButton(okButton);
 
-		cancelButton = new LocalizedButton("Cancel");
+		cancelButton = new JButton(Translator.tr("Cancel"));
 		cancelButton.addActionListener(this);
 
 		defineLayout();

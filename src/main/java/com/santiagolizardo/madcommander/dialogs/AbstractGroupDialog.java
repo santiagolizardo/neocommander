@@ -29,7 +29,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 
@@ -69,11 +68,11 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 		searchPattern = new JTextField(17);
 		searchPattern.setText(".txt");
 
-		okButton = new LocalizedButton("Ok");
+		okButton = new JButton(Translator.tr("Ok"));
 		okButton.addActionListener(this);
 		getRootPane().setDefaultButton(okButton);
 
-		cancelButton = new LocalizedButton("Cancel");
+		cancelButton = new JButton(Translator.tr("Cancel"));
 		cancelButton.addActionListener(this);
 
 		caseSensitive = new JCheckBox(Translator.tr("Case sensitive"));

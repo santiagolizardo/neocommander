@@ -23,10 +23,6 @@ import java.util.List;
 public class ListsUtils {
 
 	public static List<String> explode(String separator, String string) {
-		if (string.isEmpty()) {
-			return Collections.<String>emptyList();
-		}
-		
 		return Arrays.asList(string.split(separator));
 	}
 }

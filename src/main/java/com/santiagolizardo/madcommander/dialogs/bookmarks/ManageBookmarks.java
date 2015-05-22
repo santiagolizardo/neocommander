@@ -17,18 +17,15 @@
 package com.santiagolizardo.madcommander.dialogs.bookmarks;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.localized.LocalizedButton;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -36,7 +33,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -84,12 +80,12 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 
 		bookmarkTextField = new JTextField(30);
 
-		addButton = new LocalizedButton("Add");
+		addButton = new JButton(Translator.tr("Add"));
 		addButton.addActionListener(this);
 		addButton.setIcon(IconFactory.newIcon("add.png"));
 		getRootPane().setDefaultButton(addButton);
 
-		removeButton = new LocalizedButton("Remove");
+		removeButton = new JButton(Translator.tr("Remove"));
 		removeButton.setEnabled(false);
 		removeButton.addActionListener(this);
 		removeButton.setIcon(IconFactory.newIcon("delete.png"));

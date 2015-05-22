@@ -34,7 +34,6 @@ import com.santiagolizardo.madcommander.actions.FilterNoneAction;
 import com.santiagolizardo.madcommander.actions.FullAction;
 import com.santiagolizardo.madcommander.actions.HorizontalSplitAction;
 import com.santiagolizardo.madcommander.components.filelisting.filters.FilterCustom;
-import com.santiagolizardo.madcommander.components.localized.LocalizedRadioButtonMenuItem;
 import com.santiagolizardo.madcommander.menu.items.ReversedOrderItem;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
@@ -94,7 +93,7 @@ public class ShowMenu extends JMenu implements ActionListener {
 				new FilterDirectoriesAction(mainWindow));
 		filterHiddens = new JRadioButtonMenuItem(new FilterHiddensAction(
 				mainWindow));
-		filterCustom = new LocalizedRadioButtonMenuItem("Filter custom...");
+		filterCustom = new JRadioButtonMenuItem(Translator.tr("Filter custom..."));
 		filterCustom.addActionListener(this);
 
 		ButtonGroup buttonGroup = new ButtonGroup();

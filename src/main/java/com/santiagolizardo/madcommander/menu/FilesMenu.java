@@ -31,7 +31,6 @@ import org.apache.commons.io.FileUtils;
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.fileops.PackAction;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
-import com.santiagolizardo.madcommander.components.localized.LocalizedMenuItem;
 import com.santiagolizardo.madcommander.dialogs.UnpackDialog;
 import com.santiagolizardo.madcommander.dialogs.changeattributes.ChangeAttributesDialog;
 import com.santiagolizardo.madcommander.dialogs.changeattributes.ChangeModificationDateTimeDialog;
@@ -44,13 +43,13 @@ public class FilesMenu extends JMenu implements ActionListener {
 
 	private static final long serialVersionUID = -3242803672077641559L;
 
-	private LocalizedMenuItem changeAttributesMenuItem;
+	private JMenuItem changeAttributesMenuItem;
 	private JMenuItem changeModificationDatetimeMenuItem;
 	private JMenuItem packMenuItem;
-	private LocalizedMenuItem unpackMenuItem;
-	private LocalizedMenuItem compareByContent;
+	private JMenuItem unpackMenuItem;
+	private JMenuItem compareByContent;
 	private JMenuItem printMenuItem;
-	private LocalizedMenuItem quitMenuItem;
+	private JMenuItem quitMenuItem;
 
 	private MainWindow mainWindow;
 
@@ -60,23 +59,23 @@ public class FilesMenu extends JMenu implements ActionListener {
 
 		this.mainWindow = mainWindow;
 
-		changeAttributesMenuItem = new LocalizedMenuItem("Change attributes...");
+		changeAttributesMenuItem = new JMenuItem(Translator.tr("Change attributes..."));
 		changeAttributesMenuItem.addActionListener(this);
 		
 		changeModificationDatetimeMenuItem = new JMenuItem(Translator.tr("Change modification date and time..."));
 		changeModificationDatetimeMenuItem.addActionListener(this);
 		
 		packMenuItem = new JMenuItem(new PackAction(mainWindow));
-		unpackMenuItem = new LocalizedMenuItem("Unpack...");
+		unpackMenuItem = new JMenuItem(Translator.tr("Unpack..."));
 		unpackMenuItem.addActionListener(this);
-		compareByContent = new LocalizedMenuItem("Compare by content...");
+		compareByContent = new JMenuItem(Translator.tr("Compare by content..."));
 		compareByContent.addActionListener(this);
 
 		printMenuItem = new JMenuItem(Translator.tr("Print file list..."));
 		printMenuItem.setIcon(IconFactory.newIcon("print.png"));
 		printMenuItem.addActionListener(this);
 
-		quitMenuItem = new LocalizedMenuItem("Quit");
+		quitMenuItem = new JMenuItem(Translator.tr("Quit"));
 		quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4,
 				KeyEvent.ALT_MASK));
 		quitMenuItem.addActionListener(this);
