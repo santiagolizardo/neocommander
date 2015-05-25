@@ -30,19 +30,18 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 
 	private static final long serialVersionUID = -4098318863664780142L;
 
-	private MainWindow app;
+	private MainWindow mainWindow;
 
 	private JMenu show;
 
 	private JCheckBoxMenuItem basicToolbar;
-	private JCheckBoxMenuItem drivesToolbar;
 	private JCheckBoxMenuItem executePanel;
 	private JCheckBoxMenuItem shortcutsPanel;
 
-	public ConfigurationMenu(MainWindow app) {
+	public ConfigurationMenu(MainWindow mainWindow) {
 		super(Translator.tr("Configuration"));
 
-		this.app = app;
+		this.mainWindow = mainWindow;
 
 		setMnemonic(KeyEvent.VK_C);
 
@@ -51,10 +50,6 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 		basicToolbar = new JCheckBoxMenuItem(Translator.tr("Basic toolbar"));
 		basicToolbar.addActionListener(this);
 		basicToolbar.setSelected(true);
-
-		drivesToolbar = new JCheckBoxMenuItem(Translator.tr("Drives toolbar"));
-		drivesToolbar.addActionListener(this);
-		drivesToolbar.setSelected(true);
 
 		executePanel = new JCheckBoxMenuItem(Translator.tr("Execute panel"));
 		executePanel.addActionListener(this);
@@ -65,7 +60,6 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 		shortcutsPanel.setSelected(true);
 
 		show.add(basicToolbar);
-		show.add(drivesToolbar);
 		show.add(executePanel);
 		show.add(shortcutsPanel);
 
@@ -77,27 +71,21 @@ public class ConfigurationMenu extends JMenu implements ActionListener {
 		Object source = ev.getSource();
 		if (source == basicToolbar) {
 			if (basicToolbar.isSelected()) {
-				app.addBasicToolbar(true);
+				mainWindow.addBasicToolbar(true);
 			} else {
-				app.removeBasicToolbar();
-			}
-		} else if (source == drivesToolbar) {
-			if (drivesToolbar.isSelected()) {
-				app.addDrivesToolbar(true);
-			} else {
-				app.removeDrivesToolbar();
+				mainWindow.removeBasicToolbar();
 			}
 		} else if (source == executePanel) {
 			if (executePanel.isSelected()) {
-				app.addExecutePanel(true);
+				mainWindow.addExecutePanel(true);
 			} else {
-				app.removeExecutePanel();
+				mainWindow.removeExecutePanel();
 			}
 		} else if (source == shortcutsPanel) {
 			if (shortcutsPanel.isSelected()) {
-				app.addShortcutsPanel(true);
+				mainWindow.addShortcutsPanel(true);
 			} else {
-				app.removeShortcutsPanel();
+				mainWindow.removeShortcutsPanel();
 			}
 		}
 	}

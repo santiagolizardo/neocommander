@@ -24,8 +24,6 @@ import com.santiagolizardo.madcommander.MainWindow;
 
 public class DrivesToolbar extends JToolBar {
 
-	private static final long serialVersionUID = 4975350309638036942L;
-
 	public DrivesToolbar(MainWindow mainWindow) {
 		super();
 

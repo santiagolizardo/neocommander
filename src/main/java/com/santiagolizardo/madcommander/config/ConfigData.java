@@ -18,8 +18,8 @@ package com.santiagolizardo.madcommander.config;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class ConfigData {
 
@@ -34,7 +34,7 @@ public class ConfigData {
 	}
 	
 	private String language;
-	private List<String> bookmarks;
+	private Set<String> bookmarks;
 	
 	private Dimension windowSize;
 	private Point windowPosition;
@@ -42,7 +42,7 @@ public class ConfigData {
 	public ConfigData() {
 		language = ConfigData.getDefaultLanguage();
 		
-		bookmarks = new ArrayList<>();
+		bookmarks = new LinkedHashSet<>();
 		
 		windowSize = new Dimension(800, 600);
 		windowPosition = new Point(100, 100);
@@ -56,11 +56,11 @@ public class ConfigData {
 		this.language = language;
 	}
 	
-	public List<String> getBookmarks() {
+	public Set<String> getBookmarks() {
 		return bookmarks;
 	}
 	
-	public void setBookmarks(List<String> bookmarks) {
+	public void setBookmarks(Set<String> bookmarks) {
 		this.bookmarks = bookmarks;
 	}
 

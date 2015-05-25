@@ -25,10 +25,7 @@ import javax.swing.table.TableColumn;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
 import javax.swing.SwingUtilities;
 
-
 public class FileListingHeader extends JTableHeader implements MouseListener {
-
-	private static final long serialVersionUID = -7521856271497035896L;
 
 	private FileListingTable listingTable;
 

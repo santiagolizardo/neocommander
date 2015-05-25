@@ -16,6 +16,7 @@
  */
 package com.santiagolizardo.madcommander.components;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -43,13 +44,15 @@ public class SummaryPanel extends JPanel {
     private JLabel dirs;
 
     public SummaryPanel() {
-        sizes = new JLabel();
+		sizes = new JLabel();
         sizes.setHorizontalAlignment(JLabel.CENTER);
         files = new JLabel();
         files.setHorizontalAlignment(JLabel.CENTER);
         dirs = new JLabel();
         dirs.setHorizontalAlignment(JLabel.CENTER);
         
+		Dimension preferredSize = getPreferredSize();
+		setMaximumSize(new Dimension(Integer.MAX_VALUE, preferredSize.height));
         defineLayout();
     }
     

@@ -31,7 +31,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import com.santiagolizardo.madcommander.components.BasicToolbar;
-import com.santiagolizardo.madcommander.components.DrivesToolbar;
 import com.santiagolizardo.madcommander.components.ExecuteBar;
 import com.santiagolizardo.madcommander.components.MainMenu;
 import com.santiagolizardo.madcommander.components.Panels;
@@ -54,8 +53,6 @@ public class MainWindow extends JFrame {
 			.getName());
 
 	private BasicToolbar basicToolbar;
-
-	private DrivesToolbar driveToolbar;
 
 	private ShortcutsPanel shortcutsPanel;
 	private JPanel executePanel;
@@ -117,7 +114,6 @@ public class MainWindow extends JFrame {
 		container.setLayout(new GridBagLayout());
 
 		addBasicToolbar(false);
-		addDrivesToolbar(false);
 		addPanels();
 		addExecutePanel(false);
 		addShortcutsPanel(false);
@@ -145,20 +141,6 @@ public class MainWindow extends JFrame {
 	public void removeBasicToolbar() {
 		contentPane.remove(basicToolbar);
 		basicToolbar = null;
-		contentPane.validate();
-	}
-
-	public void addDrivesToolbar(boolean validate) {
-		driveToolbar = new DrivesToolbar(this);
-		contentPane.add(driveToolbar, BorderLayout.SOUTH);
-		if (validate) {
-			contentPane.validate();
-		}
-	}
-
-	public void removeDrivesToolbar() {
-		contentPane.remove(driveToolbar);
-		driveToolbar = null;
 		contentPane.validate();
 	}
 

@@ -27,11 +27,6 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 class AddToBookmarksAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6038164265710205238L;
-
 	private MainWindow mainWindow;
 
 	public AddToBookmarksAction(MainWindow mainWindow) {

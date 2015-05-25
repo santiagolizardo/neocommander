@@ -69,7 +69,7 @@ public class ConfigHandler {
 
 			String bookmarksProp = props.getProperty("bookmarks");
 			if (!bookmarksProp.isEmpty()) {
-				configData.setBookmarks(ListsUtils.explode(File.pathSeparator,
+				configData.getBookmarks().addAll(ListsUtils.explode(File.pathSeparator,
 						bookmarksProp));
 			}
 

@@ -35,7 +35,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.PathLabel;
 import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingColumn;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingModel;
@@ -44,10 +43,9 @@ import com.santiagolizardo.madcommander.components.filelisting.renderers.FileLis
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.gui.SwingUtil;
 import java.io.IOException;
+import javax.swing.BoxLayout;
 
 public class FileListing extends JPanel {
-
-	private static final long serialVersionUID = -796592552883729956L;
 
 	private static final Logger LOGGER = Logger.getLogger(FileListing.class
 			.getName());
@@ -66,9 +64,9 @@ public class FileListing extends JPanel {
 
 	public SummaryPanel summaryLabel;
 
-	public PathLabel pathLabel;
+	public PathTextField pathTextField;
 
-	private JScrollPane scroll;
+	private JScrollPane scrollPane;
 
 	private Format format;
 
@@ -101,12 +99,15 @@ public class FileListing extends JPanel {
 
 		updateColumnRenderers();
 
-		pathLabel = new PathLabel();
-
+		pathTextField = new PathTextField(this);
+		
 		summaryLabel = new SummaryPanel();
-
-		scroll = new JScrollPane(table);
-		scroll.getViewport().setBackground(Color.WHITE);
+		
+		scrollPane = new JScrollPane(table);
+		scrollPane.setOpaque(true);
+		scrollPane.setBackground(Color.BLUE);
+		scrollPane.setMinimumSize(scrollPane.getPreferredSize());
+		scrollPane.getViewport().setBackground(Color.WHITE);
 
 		SelectionListener listener = new SelectionListener(mainWindow, table, summaryLabel);
 		table.getSelectionModel().addListSelectionListener(listener);
@@ -124,7 +125,7 @@ public class FileListing extends JPanel {
 	private void updateColumnRenderers() {
 		TableColumnModel columnModel = table.getColumnModel();
 
-		for (byte i = 0; i < (format == Format.Full ? 5 : 3); i++) {
+		for (int i = 0; i < (format == Format.Full ? 5 : 3); i++) {
 			TableColumn tableColumn = columnModel.getColumn(i);
 			tableColumn.setCellRenderer(cellRenderer);
 		}
@@ -249,14 +250,19 @@ public class FileListing extends JPanel {
 	public void selectGroup(String type, String searchPattern,
 			boolean caseSensitive) {
 		StringBuilder reBuffer = new StringBuilder();
-		if ("Contains".equals(type)) {
-			reBuffer.append(".*").append(searchPattern).append(".*");
-		} else if ("Starts with".equals(type)) {
-			reBuffer.append("^").append(searchPattern).append(".*");
-		} else if ("Ends with".equals(type)) {
-			reBuffer.append(".*").append(searchPattern).append("$");
-		} else {
-			reBuffer.append("^").append(searchPattern).append("$");
+		if (null != type) switch (type) {
+			case "Contains":
+				reBuffer.append(".*").append(searchPattern).append(".*");
+				break;
+			case "Starts with":
+				reBuffer.append("^").append(searchPattern).append(".*");
+				break;
+			case "Ends with":
+				reBuffer.append(".*").append(searchPattern).append("$");
+				break;
+			default:
+				reBuffer.append("^").append(searchPattern).append("$");
+				break;
 		}
 		String regexp = reBuffer.toString();
 		Pattern pattern = (caseSensitive ? Pattern.compile(regexp) : Pattern
@@ -276,14 +282,19 @@ public class FileListing extends JPanel {
 	public void unselectGroup(String type, String searchPattern,
 			boolean caseSensitive) {
 		StringBuilder reBuffer = new StringBuilder();
-		if ("Contains".equals(type)) {
-			reBuffer.append(".*").append(searchPattern).append(".*");
-		} else if ("Starts with".equals(type)) {
-			reBuffer.append("^").append(searchPattern).append(".*");
-		} else if ("Ends with".equals(type)) {
-			reBuffer.append(".*").append(searchPattern).append("$");
-		} else {
-			reBuffer.append("^").append(searchPattern).append("$");
+		if (null != type) switch (type) {
+			case "Contains":
+				reBuffer.append(".*").append(searchPattern).append(".*");
+				break;
+			case "Starts with":
+				reBuffer.append("^").append(searchPattern).append(".*");
+				break;
+			case "Ends with":
+				reBuffer.append(".*").append(searchPattern).append("$");
+				break;
+			default:
+				reBuffer.append("^").append(searchPattern).append("$");
+				break;
 		}
 		String regexp = reBuffer.toString();
 		Pattern pattern = (caseSensitive ? Pattern.compile(regexp) : Pattern
@@ -345,29 +356,12 @@ public class FileListing extends JPanel {
 	}
 
 	private void defineLayout() {
-		setLayout(new GridBagLayout());
-
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.weightx = 1.0;
-
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridheight = 1;
-		c.weighty = 0.0;
-		add(pathLabel, c);
-
-		c.fill = GridBagConstraints.BOTH;
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridheight = 2;
-		c.weighty = 1.0;
-		add(scroll, c);
-
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridwidth = GridBagConstraints.REMAINDER;
-		c.gridheight = 3;
-		c.weighty = 0.0;
-		add(summaryLabel, c);
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		add(pathTextField);
+		add(scrollPane);
+		add(summaryLabel);
+		
+		setMinimumSize(getPreferredSize());
 	}
 
 	@Override

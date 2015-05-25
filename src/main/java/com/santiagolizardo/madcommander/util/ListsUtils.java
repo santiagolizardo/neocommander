@@ -17,15 +17,11 @@
 package com.santiagolizardo.madcommander.util;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class ListsUtils {
 
 	public static List<String> explode(String separator, String string) {
-		if(null == string || string.isEmpty()) {
-			return Collections.<String>emptyList();
-		}
-		return Arrays.asList(string.split(separator));
+		return Arrays.<String>asList(string.split(separator));
 	}
 }

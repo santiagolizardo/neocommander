@@ -45,6 +45,7 @@ import com.santiagolizardo.madcommander.components.filelisting.model.FileListing
 import com.santiagolizardo.madcommander.components.filelisting.model.NameComparator;
 import com.santiagolizardo.madcommander.components.filelisting.model.SizeComparator;
 import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
+import java.awt.Color;
 import java.util.logging.Logger;
 
 public class FileListingTable extends JTable implements Runnable {
@@ -102,6 +103,10 @@ public class FileListingTable extends JTable implements Runnable {
 		dropTarget = new DropTarget(this, dropIn);
 
 		defineKeyBindings();
+		setOpaque(true);
+		setBackground(Color.LIGHT_GRAY);
+
+		setMinimumSize(getPreferredSize());
 	}
 
 	private void defineKeyBindings() {
@@ -141,7 +146,7 @@ public class FileListingTable extends JTable implements Runnable {
 		if (dir.exists() == false) {
 			dir = new File(System.getProperty("user.dir"));
 		}
-		fileListing.pathLabel.setText(dir.getAbsolutePath());
+		fileListing.pathTextField.setText(dir.getAbsolutePath());
 
 		fileListing.summaryLabel.clearTotals();
 		File[] files = dir.listFiles(filter);
