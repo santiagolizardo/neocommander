@@ -16,6 +16,7 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
+import com.santiagolizardo.madcommander.AppConstants;
 import javax.swing.JLabel;
 
 import com.santiagolizardo.madcommander.MainWindow;
@@ -61,10 +62,10 @@ public class AboutDialog extends AbstractDialog {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 		String headlineText = String.format("<h1>%s <em>v%s</em></h1>",
-				MainWindow.APP_NAME, MainWindow.APP_VERSION);
+				AppConstants.APP_NAME, AppConstants.APP_VERSION);
 		String infoText = String.format("<p>%s</p>", String.format(
 				Translator.tr("More info about the project at <a href=\"%s\">%s</a>."),
-				MainWindow.APP_URL, MainWindow.APP_URL));
+				AppConstants.APP_URL, AppConstants.APP_URL));
 		String creditsText = ResourcesLoader.readResource(AboutDialog.class,
 				"credits.html");
 

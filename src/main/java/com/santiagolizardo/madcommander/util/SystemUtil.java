@@ -24,44 +24,29 @@ import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-
 public class SystemUtil {
-	
-	public static Os getOs() {
-		String osName = System.getProperty("os.name").toLowerCase();
-		if(osName.contains("windows")) {
-			return Os.Windows;
-		}
-		if(osName.contains("linux")) {
-			return Os.Linux;
-		}
-		if(osName.contains("osx")) {
-			return Os.Osx;
-		}
-		return null;
-	}
-	
-	public static void execute(Component component, String command) {
-		Runtime runtime = Runtime.getRuntime();
-		String[] args = new String[3];
-		args[0] = "cmd.exe";
-		args[1] = "/C";
-		args[2] = command;
 
-		try {
-			runtime.exec(args);
-		} catch (IOException e) {
-			DialogFactory.showErrorMessage(component, e.getMessage());
-		}
-	}
+    public static void execute(Component component, String command) {
+        Runtime runtime = Runtime.getRuntime();
+        String[] args = new String[3];
+        args[0] = "cmd.exe";
+        args[1] = "/C";
+        args[2] = command;
 
-	public static void browse(Component component, String address) {
-		Desktop desktop = Desktop.getDesktop();
+        try {
+            runtime.exec(args);
+        } catch (IOException e) {
+            DialogFactory.showErrorMessage(component, e.getMessage());
+        }
+    }
 
-		try {
-			desktop.browse(new URI(address));
-		} catch (URISyntaxException | IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
+    public static void browse(Component component, String address) {
+        Desktop desktop = Desktop.getDesktop();
+
+        try {
+            desktop.browse(new URI(address));
+        } catch (URISyntaxException | IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }

@@ -22,6 +22,8 @@ import com.santiagolizardo.madcommander.config.ConfigData;
 import com.santiagolizardo.madcommander.config.ConfigHandler;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.services.LoggingServices;
+import com.santiagolizardo.madcommander.util.Os;
+import com.santiagolizardo.madcommander.util.OsDetector;
 import com.santiagolizardo.madcommander.util.gui.SwingUtil;
 import java.io.IOException;
 
@@ -42,15 +44,24 @@ public class Main {
 		final ConfigData configData = configHandler.read();
 
 		Translator.start(configData.getLanguage());
-		
+
 		// LockManager.check();
+		
+		try {
+			if (OsDetector.get().equals(Os.Osx)) {
+				System.setProperty("apple.laf.useScreenMenuBar", "true");
+				System.setProperty("com.apple.mrj.application.apple.menu.about.name", AppConstants.APP_NAME);
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 
 		/*
 		 * We put the main frame in the event-dispatching thread
 		 */
 		SwingUtilities.invokeLater(() -> {
 			SwingUtil.setSystemLookAndFeel();
-			
+
 			MainWindow app = new MainWindow();
 			app.setConfigData(configData);
 			app.init();

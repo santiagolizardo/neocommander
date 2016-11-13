@@ -45,10 +45,6 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
-	public final static String APP_NAME = "NeoCommander";
-	public final static String APP_VERSION = "1.4.8";
-	public final static String APP_URL = "https://github.com/santiagolizardo/neocommander";
-
 	private static final Logger LOGGER = Logger.getLogger(MainWindow.class
 			.getName());
 
@@ -75,7 +71,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() {
 		super();
 
-		setTitle(APP_NAME + " " + APP_VERSION);
+		setTitle(AppConstants.APP_NAME + " " + AppConstants.APP_VERSION);
 		setIconImage(IconFactory.newIcon("icon.png").getImage());
 
 		currentPanel = Position.Left;

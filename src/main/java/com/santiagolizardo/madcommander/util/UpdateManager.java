@@ -16,18 +16,16 @@
  */
 package com.santiagolizardo.madcommander.util;
 
+import com.santiagolizardo.madcommander.AppConstants;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import java.io.IOException;
 
 
 public final class UpdateManager extends Thread {
-
-	public final static String DOWNLOAD_URL = "http://sourceforge.net/projects/madcommander/files/";
 	
 	public static void checkForUpdate() {
 		UpdateManager updateManager = new UpdateManager();
@@ -38,18 +36,17 @@ public final class UpdateManager extends Thread {
 
 	}
 
+	@Override
 	public void run() {
 		try {
 			URL url = new URL("http://madcommander.sourceforge.net/version.html");
-			InputStreamReader reader = new InputStreamReader(url.openStream());
-			BufferedReader buffer = new BufferedReader(reader);
-			String version = buffer.readLine();
-			buffer.close();
-			reader.close();
-			int serverVersion = Integer.valueOf(version.replaceAll("\\.", ""))
-					.intValue();
-			int currentVersion = Integer.valueOf(
-					MainWindow.APP_VERSION.replaceAll("\\.", "")).intValue();
+			String version;
+			try (InputStreamReader reader = new InputStreamReader(url.openStream()); BufferedReader buffer = new BufferedReader(reader)) {
+				version = buffer.readLine();
+			}
+			int serverVersion = Integer
+					.parseInt(version.replaceAll("\\.", ""));
+			int currentVersion = Integer.parseInt(AppConstants.APP_VERSION.replaceAll("\\.", ""));
 			if (serverVersion > currentVersion) {
 				StringBuilder text = new StringBuilder();
 				text.append("New version \"");
@@ -57,7 +54,7 @@ public final class UpdateManager extends Thread {
 				text
 						.append("\" available.\n\nDo you want to go to the download site?\n");
 				if (DialogFactory.showQuestionDialog(null, text.toString())) {
-					SystemUtil.browse(null, DOWNLOAD_URL);
+					SystemUtil.browse(null, AppConstants.DOWNLOAD_URL);
 				}
 			} else if (serverVersion <= currentVersion) {
 				DialogFactory.showInformationMessage(null,

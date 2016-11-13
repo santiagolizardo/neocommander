@@ -16,6 +16,7 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
+import com.santiagolizardo.madcommander.AppConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -69,7 +70,7 @@ public class HelpMenu extends JMenu implements ActionListener {
 		Object source = ev.getSource();
 
 		if (source == visitJavaCommanderWebSite) {
-			SystemUtil.browse(this, MainWindow.APP_URL);
+			SystemUtil.browse(this, AppConstants.APP_URL);
 		} else if (source == checkForUpdate) {
 			UpdateManager.checkForUpdate();
 		} else if (source == aboutJavaCommander) {

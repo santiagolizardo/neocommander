@@ -16,6 +16,7 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
+import com.santiagolizardo.madcommander.AppConstants;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -68,7 +69,7 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 		this.mainWindow = mainWindow;
 
-		setTitle(MainWindow.APP_NAME);
+		setTitle(AppConstants.APP_NAME);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);

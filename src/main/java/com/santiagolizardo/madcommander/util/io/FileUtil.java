@@ -16,7 +16,8 @@
  */
 package com.santiagolizardo.madcommander.util.io;
 
-import com.santiagolizardo.madcommander.util.SystemUtil;
+import com.santiagolizardo.madcommander.util.OsDetector;
+import com.santiagolizardo.madcommander.util.Os;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -76,7 +77,14 @@ public class FileUtil {
 	 * @return
 	 */
 	public static String getHumanizedAttributes(File file) {
-		switch (SystemUtil.getOs()) {
+		Os os = null;
+		try {
+			os = OsDetector.get();
+		} catch(Exception e) { 
+			logger.warning(e.getMessage());
+			return "";
+		}
+		switch (os) {
 			case Osx:
 			case Linux:
 				return getPosixHumanizedAttributes(file);

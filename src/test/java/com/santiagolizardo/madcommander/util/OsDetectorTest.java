@@ -16,29 +16,41 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-public class ListUtilsTest {
+public class OsDetectorTest {
 
+	private String originalOsName;
+	
+	@Before
+	public void setUp() {
+		this.originalOsName = System.getProperty("os.name");
+	}
+	
+	@After
+	public void tearDown() {
+		System.setProperty("os.name", originalOsName);
+		OsDetector.reset();
+	}
+	
 	@Test
-	public void testImplode() {
-		List<String> names = Arrays.asList(new String[]{"Foo", "Bar", "John", "Doe"});
-		Assert.assertEquals("Foo,Bar,John,Doe", String.join(",", names));
-		Assert.assertEquals("FooBarJohnDoe", String.join("", names));
-		Assert.assertEquals("", String.join(",", Collections.emptyList()));
+	public void testWindowsIsDetected() throws Exception {
+		System.setProperty("os.name", "Windows 95");
+		Assert.assertEquals(Os.Windows, OsDetector.get());
 	}
 
 	@Test
-	public void testExplode() {
-		List<String> names = ListsUtils.explode(",", "Foo,Bar,John,Doe");
-		Assert.assertEquals(4, names.size());
-
-		names = ListsUtils.explode(",", "");
-                Assert.assertEquals(1, names.size());
-                Assert.assertEquals("", names.get(0));
+	public void testMacOsIsDetected() throws Exception {
+		System.setProperty("os.name", "Mac OS X");
+		Assert.assertEquals(Os.Osx, OsDetector.get());
+	}
+	
+	@Test(expected = Exception.class)
+	public void testUnknownOsThrowsException() throws Exception {
+		System.setProperty("os.name", "Foo Bar OS");
+		OsDetector.get();
 	}
 }

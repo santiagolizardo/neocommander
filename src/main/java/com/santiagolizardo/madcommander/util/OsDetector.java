@@ -16,29 +16,29 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+public class OsDetector {
 
-public class ListUtilsTest {
-
-	@Test
-	public void testImplode() {
-		List<String> names = Arrays.asList(new String[]{"Foo", "Bar", "John", "Doe"});
-		Assert.assertEquals("Foo,Bar,John,Doe", String.join(",", names));
-		Assert.assertEquals("FooBarJohnDoe", String.join("", names));
-		Assert.assertEquals("", String.join(",", Collections.emptyList()));
+	private static Os currentOs = null;
+	
+	public static void reset() {
+		currentOs = null;
 	}
 
-	@Test
-	public void testExplode() {
-		List<String> names = ListsUtils.explode(",", "Foo,Bar,John,Doe");
-		Assert.assertEquals(4, names.size());
-
-		names = ListsUtils.explode(",", "");
-                Assert.assertEquals(1, names.size());
-                Assert.assertEquals("", names.get(0));
+	public static Os get() throws Exception {
+		if (null != currentOs) {
+			return currentOs;
+		}
+		final String osName = System.getProperty("os.name").toLowerCase();
+		if (osName.contains("windows")) {
+			currentOs = Os.Windows;
+		} else if (osName.contains("linux")) {
+			currentOs = Os.Linux;
+		} else if (osName.contains("osx") || osName.contains("os x")) {
+			currentOs = Os.Osx;
+		}
+		if (currentOs == null) {
+			throw new Exception("Unable to recognize OS with name: " + osName);
+		}
+		return currentOs;
 	}
 }

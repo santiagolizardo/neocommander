@@ -16,6 +16,7 @@
  */
 package com.santiagolizardo.madcommander.util;
 
+import com.santiagolizardo.madcommander.AppConstants;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -25,9 +26,9 @@ import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 /**
  * Controls if the application can run multiple instances at the same time.
- * 
+ *
  * @author Santiago Lizardo
- * 
+ *
  */
 public final class LockManager {
 
@@ -43,7 +44,7 @@ public final class LockManager {
 		if (!allowInstances) {
 			String tempDir = System.getProperty("java.io.tmpdir");
 			String lockPath = tempDir.concat(File.separator)
-					.concat(MainWindow.APP_NAME).concat(".lock");
+					.concat(AppConstants.APP_NAME).concat(".lock");
 			LOGGER.info(lockPath);
 
 			File lock = new File(lockPath);
