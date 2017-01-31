@@ -16,12 +16,16 @@
  */
 package com.santiagolizardo.madcommander.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ListsUtils {
 
 	public static List<String> explode(String separator, String string) {
-		return Arrays.<String>asList(string.split(separator));
+            if(null == string || string.isEmpty()) {
+                return new ArrayList<>(0);
+            }
+            return Arrays.<String>asList(string.split(separator));
 	}
 }
