@@ -36,9 +36,11 @@ public class ListUtilsTest {
 	public void testExplode() {
 		List<String> names = ListsUtils.explode(",", "Foo,Bar,John,Doe");
 		Assert.assertEquals(4, names.size());
+	}
 
-		names = ListsUtils.explode(",", "");
-                Assert.assertEquals(1, names.size());
-                Assert.assertEquals("", names.get(0));
+	@Test
+	public void testExplodeEmptyString() {
+		List<String> names = ListsUtils.explode(",", "");
+		Assert.assertTrue(names.isEmpty());
 	}
 }
