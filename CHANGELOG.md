@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.4.11] - 2020-04-06
+
+### Changed
+
+- Set new minimum required Java version (13)
+- Remove deprecated code
+- Use checked (non-generic) classes everywhere
+
 ## [1.4.9] - 2016-11-13
 
 ### Added

@@ -41,7 +41,7 @@ class SelectAllAction extends AbstractAction {
 		this.mainWindow = mainWindow;
 
 		putValue(ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.ALT_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.ALT_DOWN_MASK));
 	}
 
 	@Override

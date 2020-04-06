@@ -77,7 +77,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 
 		quitMenuItem = new JMenuItem(Translator.tr("Quit"));
 		quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4,
-				KeyEvent.ALT_MASK));
+				KeyEvent.ALT_DOWN_MASK));
 		quitMenuItem.addActionListener(this);
 
 		add(changeAttributesMenuItem);

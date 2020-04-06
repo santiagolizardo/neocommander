@@ -33,7 +33,7 @@ public class FileListingKeyListener extends KeyAdapter {
 
 	@Override
 	public void keyPressed(KeyEvent event) {
-		final int modifiers = event.getModifiers();
+		final int modifiers = event.getModifiersEx();
 		final int keyCode = event.getKeyCode();
 		switch (keyCode) {
 		case KeyEvent.VK_HOME: {
@@ -53,7 +53,7 @@ public class FileListingKeyListener extends KeyAdapter {
 			mainWindow.getSource().execute();
 			break;
 		case KeyEvent.VK_TAB:
-			if (modifiers == KeyEvent.CTRL_MASK) {
+			if (modifiers == KeyEvent.CTRL_DOWN_MASK) {
 
 			} else {
 				mainWindow.currentPanel = (mainWindow.currentPanel == Position.Left ? Position.Right
@@ -63,7 +63,7 @@ public class FileListingKeyListener extends KeyAdapter {
 			break;
 		default:
 			super.keyPressed(event);
-			if (modifiers == KeyEvent.CTRL_MASK) {
+			if (modifiers == KeyEvent.CTRL_DOWN_MASK) {
 				if (keyCode == KeyEvent.VK_D) {
 					BookmarksPopup popup = new BookmarksPopup(mainWindow);
 					popup.show(event.getComponent(), event.getComponent()

@@ -39,7 +39,7 @@ public class InterchangePanelsAction extends AbstractAction {
 		this.mainWindow = mainWindow;
 
 		putValue(AbstractAction.ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_DOWN_MASK));
 		putValue(AbstractAction.SMALL_ICON, IconFactory.newIcon("swap.png"));
 	}
 

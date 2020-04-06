@@ -39,7 +39,7 @@ public class SearchAction extends AbstractAction {
 		this.mainWindow = mainWindow;
 
 		putValue(ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_F7, KeyEvent.ALT_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_F7, KeyEvent.ALT_DOWN_MASK));
 	}
 
 	@Override

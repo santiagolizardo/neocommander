@@ -26,16 +26,11 @@ import javax.swing.ListCellRenderer;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
 
-public class FileRenderer extends JLabel implements ListCellRenderer {
+public class FileRenderer extends JLabel implements ListCellRenderer<File> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1487522844646855287L;
 
-	public Component getListCellRendererComponent(JList list, Object value, int index, boolean selected, boolean cellHasFocus) {
-		String fileName = value.toString();
-		File file = new File(fileName); 
+	public Component getListCellRendererComponent(JList list, File file, int index, boolean selected, boolean cellHasFocus) {
 		setText(file.getName());
 		setOpaque(true);
 		setIcon(IconFactory.getIconForFile(file));

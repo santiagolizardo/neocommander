@@ -41,7 +41,7 @@ public class SelectDriveAction extends AbstractAction {
 		this.mainWindow = mainWindow;
 
 		putValue(ACCELERATOR_KEY,
-				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 	}
 
 	@Override

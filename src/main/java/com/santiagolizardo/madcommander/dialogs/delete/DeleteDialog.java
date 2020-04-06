@@ -19,7 +19,6 @@ package com.santiagolizardo.madcommander.dialogs.delete;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -62,7 +61,7 @@ public class DeleteDialog extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
 		model = new DefaultListModel<>();
-		list = new JList<>(model);
+		list = new JList<File>(model);
 		list.setCellRenderer(new FileRenderer());
 
 		scroll = new JScrollPane(list);
@@ -109,8 +108,8 @@ public class DeleteDialog extends JDialog {
 
 	public List<File> getSelectedFiles() {
 		List<File> selectedFiles = new ArrayList<>();
-		for (File value : list.getSelectedValuesList()) {
-			selectedFiles.add(new File(value.toString()));
+		for (File file : list.getSelectedValuesList()) {
+			selectedFiles.add(file);
 		}
 		return selectedFiles;
 	}
