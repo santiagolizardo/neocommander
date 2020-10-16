@@ -4,7 +4,7 @@
 NeoCommander
 ============
 
-![NeoCommander screenshot](http://a.fsdn.com/con/app/proj/madcommander/screenshots/61501.jpg "NeoCommander running on Windows")
+![NeoCommander screenshot](screenshot.png "NeoCommander running on GNU/Linux")
 
 What is it?
 -----------
@@ -16,10 +16,20 @@ How to run it
 
 ### Requirements
 
-  * Java SE 13
+  * Java SE 11
   * Graphical user interface environment
 
-### Execution
+### How to build
 
-Double click on NeoCommander.jar or run _java -jar NeoCommander.jar_ on the command line.
+```sh
+$ mvn package
+```
+
+### How to run
+
+```sh
+$ java -jar target/NeoCommander-1.4.11-jar-with-dependencies.jar
+```
+
+or double click on the jar file using your default file manager.
 
