@@ -6,15 +6,10 @@ NeoCommander
 
 ![NeoCommander screenshot](screenshot.png "NeoCommander running on GNU/Linux")
 
-What is it?
------------
+**NeoCommander** is an *orthodox file manager* written in Java Swing. Tested on Windows, Mac and Linux.
 
-*NeoCommander* is an orthodox file manager written in Java Swing. Tested on Windows, Mac and Linux.
+### Requirements
 
-How to run it
--------------
-
-### Requirements
 
   * Java SE 11
   * Graphical user interface environment
