@@ -17,13 +17,13 @@ NeoCommander
 ### How to build
 
 ```sh
-$ mvn package
+mvn package
 ```
 
 ### How to run
 
 ```sh
-$ java -jar target/NeoCommander-1.4.11-jar-with-dependencies.jar
+java -jar target/NeoCommander-1.4.11-jar-with-dependencies.jar
 ```
 
 or double click on the jar file using your default file manager.
