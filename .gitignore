@@ -5,7 +5,7 @@ logs
 /bin
 *.*~
 *.mo
-nbactions.xml
 MadCommander.log*
 .idea
 *.iml
+pom.xml.versionsBackup
