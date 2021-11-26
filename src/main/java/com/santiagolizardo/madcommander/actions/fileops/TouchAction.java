@@ -16,12 +16,6 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.util.List;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
@@ -29,14 +23,18 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileOperations;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.util.List;
+
 public class TouchAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2847060359677737655L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public TouchAction(MainWindow mainWindow) {
 		super(Translator.tr("Touch"), IconFactory.newIcon("touch.gif"));

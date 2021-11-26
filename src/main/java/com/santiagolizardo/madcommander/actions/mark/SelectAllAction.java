@@ -16,24 +16,21 @@
  */
 package com.santiagolizardo.madcommander.actions.mark;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 class SelectAllAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4495200194919712150L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SelectAllAction(MainWindow mainWindow) {
 		super(Translator.tr("Select all"));

@@ -16,20 +16,15 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class EqualizePanelsAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5924873313089489091L;
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public EqualizePanelsAction(MainWindow mainWindow) {
 		super(Translator.tr("Target equal to source"));

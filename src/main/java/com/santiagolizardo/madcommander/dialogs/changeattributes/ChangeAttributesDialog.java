@@ -16,31 +16,27 @@
  */
 package com.santiagolizardo.madcommander.dialogs.changeattributes;
 
-import java.awt.Container;
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.SpringLayout;
-
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-
 public class ChangeAttributesDialog extends AbstractDialog implements
 		ActionListener {
 
-	private static final long serialVersionUID = -2519143127010077700L;
 
-	private AttributesPanel attributesPanel;
+	private final AttributesPanel attributesPanel;
 
-	private JButton okButton;
-	private JButton cancelButton;
+	private final JButton okButton;
+	private final JButton cancelButton;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public ChangeAttributesDialog(MainWindow mainWindow) {
 		super();

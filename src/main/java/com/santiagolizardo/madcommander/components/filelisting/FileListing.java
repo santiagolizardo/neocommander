@@ -16,24 +16,6 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import java.awt.Color;
-import java.awt.Desktop;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.io.File;
-import java.io.FileFilter;
-import java.util.List;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ToolTipManager;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingColumn;
@@ -42,8 +24,18 @@ import com.santiagolizardo.madcommander.components.filelisting.model.FileListing
 import com.santiagolizardo.madcommander.components.filelisting.renderers.FileListingCellRenderer;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.gui.SwingUtil;
+
+import javax.swing.*;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import java.awt.*;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
-import javax.swing.BoxLayout;
+import java.util.List;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FileListing extends JPanel {
 
@@ -66,18 +58,18 @@ public class FileListing extends JPanel {
 
 	public PathTextField pathTextField;
 
-	private JScrollPane scrollPane;
+	private final JScrollPane scrollPane;
 
 	private Format format;
 
-	private FileListingHeader header;
+	private final FileListingHeader header;
 
-	private FileListingTable table;
-	private FileListingCellRenderer cellRenderer;
+	private final FileListingTable table;
+	private final FileListingCellRenderer cellRenderer;
 
 	private File currentPath;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FileListing(final MainWindow mainWindow, Position position) {
 		super();
@@ -270,7 +262,7 @@ public class FileListing extends JPanel {
 
 		int i = (table.model.isRoot ? 0 : 1);
 		for (; i < table.getRowCount(); i++) {
-			FileListingRow row = (FileListingRow) table.model.getRow(i);
+			FileListingRow row = table.model.getRow(i);
 			String fileName = row.getName();
 			Matcher matcher = pattern.matcher(fileName);
 			if (matcher.matches()) {
@@ -302,7 +294,7 @@ public class FileListing extends JPanel {
 
 		int i = (table.model.isRoot ? 0 : 1);
 		for (; i < table.getRowCount(); i++) {
-			FileListingRow row = (FileListingRow) table.model.getRow(i);
+			FileListingRow row = table.model.getRow(i);
 			String fileName = row.getName();
 			Matcher matcher = pattern.matcher(fileName);
 			if (matcher.matches()) {

@@ -16,15 +16,13 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting.model;
 
+import javax.swing.*;
 import java.util.List;
-
-import javax.swing.AbstractListModel;
 
 public class BookmarksModel extends AbstractListModel<String> {
 
-	private static final long serialVersionUID = -7176387701702459011L;
 
-	private List<String> bookmarks;
+	private final List<String> bookmarks;
 	
 	public BookmarksModel(List<String> bookmarks) {
 		super();

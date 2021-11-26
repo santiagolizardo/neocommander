@@ -26,6 +26,6 @@ public class ListsUtils {
             if(null == string || string.isEmpty()) {
                 return new ArrayList<>(0);
             }
-            return Arrays.<String>asList(string.split(separator));
+            return Arrays.asList(string.split(separator));
 	}
 }

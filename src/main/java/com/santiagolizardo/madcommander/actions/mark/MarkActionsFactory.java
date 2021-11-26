@@ -16,9 +16,9 @@
  */
 package com.santiagolizardo.madcommander.actions.mark;
 
-import javax.swing.Action;
-
 import com.santiagolizardo.madcommander.MainWindow;
+
+import javax.swing.*;
 
 public class MarkActionsFactory {
 

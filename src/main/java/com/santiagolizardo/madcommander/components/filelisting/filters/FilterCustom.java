@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 public class FilterCustom implements FileFilter {
 
-	private Pattern pattern;
+	private final Pattern pattern;
 
 	public FilterCustom(String pattern) {
 		this.pattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);

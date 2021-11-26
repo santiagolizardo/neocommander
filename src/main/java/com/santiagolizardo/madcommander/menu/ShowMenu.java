@@ -16,52 +16,41 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JMenu;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JSplitPane;
-
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.BriefAction;
-import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
-import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
-import com.santiagolizardo.madcommander.actions.FilterNoneAction;
-import com.santiagolizardo.madcommander.actions.FullAction;
-import com.santiagolizardo.madcommander.actions.HorizontalSplitAction;
+import com.santiagolizardo.madcommander.actions.*;
 import com.santiagolizardo.madcommander.components.filelisting.filters.FilterCustom;
 import com.santiagolizardo.madcommander.menu.items.ReversedOrderItem;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class ShowMenu extends JMenu implements ActionListener {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8123523245285098209L;
 
-	private JRadioButtonMenuItem brief;
+	private final JRadioButtonMenuItem brief;
 
-	private JRadioButtonMenuItem full;
+	private final JRadioButtonMenuItem full;
 
-	private JCheckBoxMenuItem horizontalSplit;
+	private final JCheckBoxMenuItem horizontalSplit;
 
-	private JCheckBoxMenuItem reversedOrder;
+	private final JCheckBoxMenuItem reversedOrder;
 
-	private JRadioButtonMenuItem filterNone;
+	private final JRadioButtonMenuItem filterNone;
 
-	private JRadioButtonMenuItem filterDirectories;
+	private final JRadioButtonMenuItem filterDirectories;
 
-	private JRadioButtonMenuItem filterHiddens;
+	private final JRadioButtonMenuItem filterHiddens;
 
-	private JRadioButtonMenuItem filterCustom;
+	private final JRadioButtonMenuItem filterCustom;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public ShowMenu(MainWindow mainWindow) {
 		super(Translator.tr("Show"));
@@ -81,11 +70,7 @@ public class ShowMenu extends JMenu implements ActionListener {
 				mainWindow));
 		horizontalSplit.addActionListener(this);
 		int panelsOrientation = JSplitPane.HORIZONTAL_SPLIT;
-		if (panelsOrientation == JSplitPane.HORIZONTAL_SPLIT) {
-			horizontalSplit.setSelected(false);
-		} else {
-			horizontalSplit.setSelected(true);
-		}
+        horizontalSplit.setSelected(panelsOrientation != JSplitPane.HORIZONTAL_SPLIT);
 
 		filterNone = new JRadioButtonMenuItem(new FilterNoneAction(mainWindow));
 		filterNone.setSelected(true);

@@ -16,19 +16,12 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JRootPane;
-import javax.swing.KeyStroke;
 
 public abstract class AbstractDialog extends JDialog {
 
-	private static final long serialVersionUID = 1L;
 
 	public AbstractDialog() {
 		super();

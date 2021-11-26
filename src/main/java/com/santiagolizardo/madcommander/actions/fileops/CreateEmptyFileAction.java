@@ -16,15 +16,14 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import java.awt.event.ActionEvent;
-import java.io.File;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 
 public class CreateEmptyFileAction extends AbstractAction {
@@ -32,8 +31,7 @@ public class CreateEmptyFileAction extends AbstractAction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8545331012599545142L;
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public CreateEmptyFileAction(MainWindow mainWindow) {
 		super(Translator.tr("Create empty file..."), IconFactory

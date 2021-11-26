@@ -16,16 +16,16 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
+import com.santiagolizardo.madcommander.MainWindow;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.santiagolizardo.madcommander.MainWindow;
-
 public class FileListingMouseListener extends MouseAdapter {
 
-	private PopupMenu popupMenu;
+	private final PopupMenu popupMenu;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FileListingMouseListener(final MainWindow mainWindow) {
 		super();

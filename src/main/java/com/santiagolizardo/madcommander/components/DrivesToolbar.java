@@ -16,11 +16,10 @@
  */
 package com.santiagolizardo.madcommander.components;
 
-import java.io.File;
-
-import javax.swing.JToolBar;
-
 import com.santiagolizardo.madcommander.MainWindow;
+
+import javax.swing.*;
+import java.io.File;
 
 public class DrivesToolbar extends JToolBar {
 

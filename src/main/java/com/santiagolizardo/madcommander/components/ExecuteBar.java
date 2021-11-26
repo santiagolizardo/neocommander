@@ -16,31 +16,25 @@
  */
 package com.santiagolizardo.madcommander.components;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.SystemUtil;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ExecuteBar extends JPanel implements ActionListener {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2866538203429884941L;
 
-	private JComboBox<String> commands;
+	private final JComboBox<String> commands;
 
-	private JLabel currentPath;
+	private final JLabel currentPath;
 
-	private DefaultComboBoxModel<String> model;
+	private final DefaultComboBoxModel<String> model;
 
 	public ExecuteBar() {
 		super();

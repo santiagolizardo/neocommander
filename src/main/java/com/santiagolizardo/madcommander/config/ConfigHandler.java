@@ -1,35 +1,36 @@
-/**
- * This file is part of MadCommander, a file manager with two panels.
- *
- * MadCommander is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- *
- * MadCommander is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * MadCommander. If not, see <http://www.gnu.org/licenses/>.
+/*
+  This file is part of MadCommander, a file manager with two panels.
+
+  MadCommander is free software: you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  MadCommander is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.config;
 
+import com.santiagolizardo.madcommander.util.ListsUtils;
+
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.Properties;
-
-import com.santiagolizardo.madcommander.util.ListsUtils;
-import java.awt.Dimension;
-import java.awt.Point;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 public class ConfigHandler {
 
 	private final static Logger logger = Logger.getLogger(ConfigHandler.class.getName());
+
+	private static final String DIRECTORY_NAME = ".neocommander";
 
 	public void save(ConfigData configData) {
 		Properties props = new Properties();
@@ -46,7 +47,7 @@ public class ConfigHandler {
 		props.setProperty("window.top", String.valueOf(configData.getWindowPosition().getY()));
 		props.setProperty("window.left", String.valueOf(configData.getWindowPosition().getX()));
 
-		File file = new File(System.getProperty("user.home"), ".madcommander");
+		File file = new File(System.getProperty("user.home"), DIRECTORY_NAME);
 
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
@@ -57,7 +58,7 @@ public class ConfigHandler {
 	}
 
 	public ConfigData read() {
-		File file = new File(System.getProperty("user.home"), ".madcommander");
+		File file = new File(System.getProperty("user.home"), DIRECTORY_NAME);
 
 		ConfigData configData = new ConfigData();
 

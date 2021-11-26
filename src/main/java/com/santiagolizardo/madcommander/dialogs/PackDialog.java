@@ -16,47 +16,35 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.dialogs.progressive.PackProgressDialog;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+import com.santiagolizardo.madcommander.util.PackTypes;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.util.PackTypes;
-import com.santiagolizardo.madcommander.dialogs.progressive.PackProgressDialog;
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-
 public class PackDialog extends AbstractDialog implements ActionListener {
 
-	private static final long serialVersionUID = -3805898808819160470L;
 
-	private JTextField fileName;
+	private final JTextField fileName;
 
-	private JLabel extension;
+	private final JLabel extension;
 
-	private JRadioButton zip;
+	private final JRadioButton zip;
 
-	private JRadioButton jar;
+	private final JRadioButton jar;
 
-	private JRadioButton gzip;
+	private final JRadioButton gzip;
 
 	private JButton compressButton;
 
-	private JPanel panel;
+	private final JPanel panel;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public PackDialog(MainWindow mainWindow) {
 		super();

@@ -16,20 +16,18 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import java.io.File;
-
-import javax.swing.JTabbedPane;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 
+import javax.swing.*;
+import java.io.File;
+
 public class FileListingTabbed extends JTabbedPane {
 	
-	private static final long serialVersionUID = 6010265431790349455L;
 
-	private Position panelPosition;
+	private final Position panelPosition;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FileListingTabbed(MainWindow mainWindow, Position panelPosition) {
 		super();

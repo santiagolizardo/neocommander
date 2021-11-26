@@ -16,19 +16,15 @@
  */
 package com.santiagolizardo.madcommander.dialogs.delete;
 
-import java.awt.Component;
-import java.io.File;
-
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 
 
 public class FileRenderer extends JLabel implements ListCellRenderer<File> {
 
-	private static final long serialVersionUID = -1487522844646855287L;
 
 	public Component getListCellRendererComponent(JList list, File file, int index, boolean selected, boolean cellHasFocus) {
 		setText(file.getName());

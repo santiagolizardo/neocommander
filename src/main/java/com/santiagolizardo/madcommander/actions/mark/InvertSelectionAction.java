@@ -16,22 +16,20 @@
  */
 package com.santiagolizardo.madcommander.actions.mark;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 class InvertSelectionAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2060474525811836981L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public InvertSelectionAction(MainWindow mainWindow) {
 		super(Translator.tr("Invert selection"));

@@ -16,18 +16,17 @@
  */
 package com.santiagolizardo.madcommander.components;
 
-import java.awt.Desktop;
+import javax.swing.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Logger;
-import javax.swing.JEditorPane;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 
 public class HtmlLabel extends JEditorPane implements HyperlinkListener {
 
-	private static final long serialVersionUID = 1L;
 
 	private static final Logger logger = Logger.getLogger(HtmlLabel.class.getName());
 

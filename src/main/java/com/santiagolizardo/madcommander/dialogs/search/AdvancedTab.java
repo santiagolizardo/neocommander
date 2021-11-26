@@ -16,30 +16,24 @@
  */
 package com.santiagolizardo.madcommander.dialogs.search;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
-
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 
 public class AdvancedTab extends JPanel implements ActionListener {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2068980899563559757L;
 
-	private JCheckBox fileSize;
+	private final JCheckBox fileSize;
 
-	private JComboBox<String> conditionList;
+	private final JComboBox<String> conditionList;
 
-	private JTextField size;
+	private final JTextField size;
 
-	private JComboBox<String> measureList;
+	private final JComboBox<String> measureList;
 
 	public AdvancedTab() {
 		super();
@@ -69,8 +63,7 @@ public class AdvancedTab extends JPanel implements ActionListener {
 	}
 
 	public String getCondition() {
-		return conditionList.getItemAt(conditionList.getSelectedIndex())
-				.toString();
+		return conditionList.getItemAt(conditionList.getSelectedIndex());
 	}
 
 	public long getSearchedSize() {
@@ -78,7 +71,7 @@ public class AdvancedTab extends JPanel implements ActionListener {
 	}
 
 	public String getMeasure() {
-		return measureList.getItemAt(measureList.getSelectedIndex()).toString();
+		return measureList.getItemAt(measureList.getSelectedIndex());
 	}
 
 	public void actionPerformed(ActionEvent event) {

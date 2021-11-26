@@ -16,12 +16,12 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
+import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
+
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-
-import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 
 
 

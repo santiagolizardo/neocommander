@@ -16,21 +16,19 @@
  */
 package com.santiagolizardo.madcommander.components;
 
-import java.awt.Dimension;
-import java.awt.event.ComponentEvent;
-
-import javax.swing.JSplitPane;
-
 import com.santiagolizardo.madcommander.MainWindow;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentEvent;
 
 public class Panels extends JSplitPane {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 284991976741039153L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public Panels(MainWindow mainWindow) {
 		super();

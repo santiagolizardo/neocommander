@@ -16,21 +16,15 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class FilterNoneAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1396404929925611587L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FilterNoneAction(MainWindow mainWindow) {
 		super(Translator.tr("Filter none"));

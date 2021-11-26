@@ -16,18 +16,14 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import java.io.File;
-
-import javax.swing.Icon;
-import javax.swing.JPopupMenu;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.DriveButton;
-import com.santiagolizardo.madcommander.resources.images.IconFactory;
+
+import javax.swing.*;
+import java.io.File;
 
 public class SelectDrivePopup extends JPopupMenu {
 
-	private static final long serialVersionUID = -4959814209723911694L;
 
 	public SelectDrivePopup(MainWindow mainWindow) {
 		super();

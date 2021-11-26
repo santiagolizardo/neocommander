@@ -16,21 +16,16 @@
  */
 package com.santiagolizardo.madcommander.dialogs.changeattributes;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class AttributesPanel extends JPanel {
 
-	private static final long serialVersionUID = 1533698409599832575L;
 
-	private JCheckBox readPermissionCheckbox;
-	private JCheckBox writePermissionCheckbox;
-	private JCheckBox executePermissionCheckbox;
+	private final JCheckBox readPermissionCheckbox;
+	private final JCheckBox writePermissionCheckbox;
+	private final JCheckBox executePermissionCheckbox;
 
-	private JCheckBox readOnlyPermissionCheckbox;
+	private final JCheckBox readOnlyPermissionCheckbox;
 
 	public AttributesPanel() {
 		super();

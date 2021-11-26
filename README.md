@@ -11,7 +11,7 @@ NeoCommander
 ### Requirements
 
 
-  * Java SE 11
+  * Java SE 17
   * Graphical user interface environment
 
 ### How to build

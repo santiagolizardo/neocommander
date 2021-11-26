@@ -16,29 +16,16 @@
  */
 package com.santiagolizardo.madcommander.components;
 
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.actions.*;
+import com.santiagolizardo.madcommander.resources.images.IconFactory;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JPopupMenu;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JToolBar;
-
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.BriefAction;
-import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
-import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
-import com.santiagolizardo.madcommander.actions.FilterNoneAction;
-import com.santiagolizardo.madcommander.actions.FullAction;
-import com.santiagolizardo.madcommander.actions.HistoricalActions;
-import com.santiagolizardo.madcommander.actions.RefreshAction;
-import com.santiagolizardo.madcommander.actions.SearchAction;
-import com.santiagolizardo.madcommander.resources.images.IconFactory;
-
 public class BasicToolbar extends JToolBar {
 
-	private static final long serialVersionUID = 2081100107934692827L;
 
 	public BasicToolbar(MainWindow mainWindow) {
 		super();

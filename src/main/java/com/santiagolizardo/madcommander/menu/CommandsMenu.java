@@ -16,31 +16,23 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
-import java.awt.event.KeyEvent;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.EqualizePanelsAction;
-import com.santiagolizardo.madcommander.actions.HistoricalActions;
-import com.santiagolizardo.madcommander.actions.HomeAction;
-import com.santiagolizardo.madcommander.actions.InterchangePanelsAction;
-import com.santiagolizardo.madcommander.actions.RefreshAction;
-import com.santiagolizardo.madcommander.actions.SearchAction;
+import com.santiagolizardo.madcommander.actions.*;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
 
 public class CommandsMenu extends JMenu {
 
-	private static final long serialVersionUID = -9047001930044127824L;
 	
-	private JMenuItem searchMenuItem;
-	private JMenuItem gotoUserDirMenuItem;
-	private JMenuItem gotoPreviousMenuItem;
-	private JMenuItem gotoNextMenuItem;
-	private JMenuItem interchangePanelsMenuItem;
-	private JMenuItem targetEqualSourceMenuItem;
-	private JMenuItem refreshMenuItem;
+	private final JMenuItem searchMenuItem;
+	private final JMenuItem gotoUserDirMenuItem;
+	private final JMenuItem gotoPreviousMenuItem;
+	private final JMenuItem gotoNextMenuItem;
+	private final JMenuItem interchangePanelsMenuItem;
+	private final JMenuItem targetEqualSourceMenuItem;
+	private final JMenuItem refreshMenuItem;
 
 	public CommandsMenu(MainWindow mainWindow) {
 		super(Translator.tr("Commands"));

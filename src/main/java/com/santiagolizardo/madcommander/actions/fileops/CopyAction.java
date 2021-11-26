@@ -16,24 +16,21 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.progressive.CopyProgressDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 class CopyAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 9188948997680927042L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public CopyAction(MainWindow mainWindow) {
 		super(Translator.tr("Copy"), IconFactory.newIcon("F5.gif"));

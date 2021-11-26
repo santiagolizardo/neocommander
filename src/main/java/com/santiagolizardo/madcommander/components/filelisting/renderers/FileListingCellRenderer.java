@@ -16,23 +16,18 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting.renderers;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.io.File;
-
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingColumn;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import java.awt.*;
+import java.io.File;
+
 
 public class FileListingCellRenderer extends DefaultTableCellRenderer {
 
-	private static final long serialVersionUID = 8224673036449358242L;
 
 	private Format format;
 

@@ -16,18 +16,17 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
+import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
+
+import javax.swing.*;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-
-import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
-import javax.swing.SwingUtilities;
-
 public class FileListingHeader extends JTableHeader implements MouseListener {
 
-	private FileListingTable listingTable;
+	private final FileListingTable listingTable;
 
 	public Format format;
 
@@ -35,7 +34,7 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 
 	private boolean reversedOrder;
 
-	private SelectableColumnHeader[] columns = { new SelectableColumnHeader("Name", true),
+	private final SelectableColumnHeader[] columns = { new SelectableColumnHeader("Name", true),
 			new SelectableColumnHeader("Ext"), new SelectableColumnHeader("Size"),
 			new SelectableColumnHeader("Date"), new SelectableColumnHeader("Attr") };
 	
@@ -100,9 +99,9 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 		columnModel.getColumn(currentIndex).setHeaderValue(
 				columns[currentIndex]);
 		repaint();
-	};
+	}
 
-	public int getActiveColumn() {
+    public int getActiveColumn() {
 		return activeColumn;
 	}
 
@@ -142,17 +141,17 @@ public class FileListingHeader extends JTableHeader implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent event) {
-	};
+	}
 
-	@Override
+    @Override
 	public void mouseExited(MouseEvent event) {
-	};
+	}
 
-	@Override
+    @Override
 	public void mousePressed(MouseEvent event) {
-	};
+	}
 
-	@Override
+    @Override
 	public void mouseReleased(MouseEvent event) {
-	};
+	}
 }

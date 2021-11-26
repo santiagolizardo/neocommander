@@ -16,18 +16,15 @@
  */
 package com.santiagolizardo.madcommander.components;
 
-import java.awt.Color;
-import java.awt.Cursor;
+import com.santiagolizardo.madcommander.util.SystemUtil;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JLabel;
-
-import com.santiagolizardo.madcommander.util.SystemUtil;
-
 public class LinkLabel extends JLabel {
 
-	private static final long serialVersionUID = 8488272749111338872L;
 
 	public LinkLabel(String url) {
 		super();

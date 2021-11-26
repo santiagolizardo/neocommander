@@ -16,10 +16,6 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.dialogs.PackDialog;
@@ -27,14 +23,16 @@ import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class PackAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4020899583847293332L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public PackAction(MainWindow mainWindow) {
 		super(Translator.tr("Pack..."), IconFactory.newIcon("box.png"));

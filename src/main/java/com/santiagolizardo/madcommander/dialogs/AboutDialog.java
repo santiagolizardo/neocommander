@@ -17,25 +17,16 @@
 package com.santiagolizardo.madcommander.dialogs;
 
 import com.santiagolizardo.madcommander.AppConstants;
-import javax.swing.JLabel;
-
-import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.HtmlLabel;
 import com.santiagolizardo.madcommander.resources.ResourcesLoader;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
-import java.awt.Container;
-import java.awt.Dimension;
-import javax.swing.BoxLayout;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class AboutDialog extends AbstractDialog {
 
-	private static final long serialVersionUID = -3985858584067350439L;
 
 	public AboutDialog(JFrame parentFrame) {
 		super(parentFrame);

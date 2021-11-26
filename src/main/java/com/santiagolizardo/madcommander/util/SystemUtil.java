@@ -1,27 +1,26 @@
-/**
- * This file is part of MadCommander, a file manager with two panels.
- *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+/*
+  This file is part of MadCommander, a file manager with two panels.
+
+  MadCommander is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  MadCommander is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.util;
 
-import java.awt.Component;
-import java.awt.Desktop;
-import java.net.URI;
-
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 
 public class SystemUtil {
@@ -46,7 +45,7 @@ public class SystemUtil {
         try {
             desktop.browse(new URI(address));
         } catch (URISyntaxException | IOException e) {
-            System.err.println(e.getMessage());
+            DialogFactory.showErrorMessage(component, e.getMessage());
         }
     }
 }

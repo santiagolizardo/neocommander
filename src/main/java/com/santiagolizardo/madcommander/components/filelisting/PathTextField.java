@@ -16,15 +16,15 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import javax.swing.JTextField;
 
 public class PathTextField extends JTextField {
 
-	private FileListing fileListing;
+	private final FileListing fileListing;
 
 	public PathTextField(FileListing fileListing) {
 		super(30);

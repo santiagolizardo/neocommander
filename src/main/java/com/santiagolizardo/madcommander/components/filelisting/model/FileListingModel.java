@@ -16,20 +16,18 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting.model;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.AbstractTableModel;
-
-import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileListingModel extends AbstractTableModel {
 
-	private static final long serialVersionUID = 4319295349667507036L;
 
 	public boolean isRoot;
 

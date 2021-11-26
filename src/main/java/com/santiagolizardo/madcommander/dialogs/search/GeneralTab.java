@@ -16,16 +16,11 @@
  */
 package com.santiagolizardo.madcommander.dialogs.search;
 
-import java.awt.Dimension;
-
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 public class GeneralTab extends JPanel {
@@ -33,7 +28,6 @@ public class GeneralTab extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8599436433134195796L;
 
 	private JLabel labelSearchFor;
 
@@ -47,7 +41,7 @@ public class GeneralTab extends JPanel {
 
 	private JCheckBox recursive;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 	
 	public GeneralTab(MainWindow mainWindow) {
 		super();

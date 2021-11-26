@@ -22,8 +22,8 @@ public class ExtensionComparator implements Comparator<FileListingRow> {
 
 	@Override
 	public int compare(FileListingRow firstRow, FileListingRow secondRow) {
-		FileListingRow rowa = (FileListingRow) firstRow;
-		FileListingRow rowb = (FileListingRow) secondRow;
+		FileListingRow rowa = firstRow;
+		FileListingRow rowb = secondRow;
 
 		return rowa.getExtension().compareTo(rowb.getExtension());
 	}

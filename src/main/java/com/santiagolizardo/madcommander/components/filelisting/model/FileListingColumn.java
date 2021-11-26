@@ -20,11 +20,11 @@ import java.io.File;
 
 public class FileListingColumn {
 
-	private byte index;
+	private final byte index;
 
-	private File file;
+	private final File file;
 
-	private Object value;
+	private final Object value;
 
 	public FileListingColumn(byte index, File file, Object value) {
 		this.index = index;

@@ -16,9 +16,9 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import javax.swing.Action;
-
 import com.santiagolizardo.madcommander.MainWindow;
+
+import javax.swing.*;
 
 public class HistoricalActions {
 

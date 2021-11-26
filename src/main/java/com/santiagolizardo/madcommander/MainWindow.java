@@ -1,40 +1,22 @@
-/**
- * This file is part of MadCommander, a file manager with two panels.
- *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+/*
+  This file is part of MadCommander, a file manager with two panels.
+
+  MadCommander is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  MadCommander is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.File;
-import java.util.List;
-import java.util.logging.Logger;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-
-import com.santiagolizardo.madcommander.components.BasicToolbar;
-import com.santiagolizardo.madcommander.components.ExecuteBar;
-import com.santiagolizardo.madcommander.components.MainMenu;
-import com.santiagolizardo.madcommander.components.Panels;
-import com.santiagolizardo.madcommander.components.ShortcutsPanel;
+import com.santiagolizardo.madcommander.components.*;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 import com.santiagolizardo.madcommander.components.filelisting.FileListingTabbed;
@@ -42,7 +24,14 @@ import com.santiagolizardo.madcommander.config.ConfigData;
 import com.santiagolizardo.madcommander.config.ConfigHandler;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
-@SuppressWarnings("serial")
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.util.List;
+import java.util.logging.Logger;
+
 public class MainWindow extends JFrame {
 
 	private static final Logger LOGGER = Logger.getLogger(MainWindow.class
@@ -53,7 +42,7 @@ public class MainWindow extends JFrame {
 	private ShortcutsPanel shortcutsPanel;
 	private JPanel executePanel;
 
-	private Panels panels;
+	private final Panels panels;
 
 	public Position currentPanel;
 

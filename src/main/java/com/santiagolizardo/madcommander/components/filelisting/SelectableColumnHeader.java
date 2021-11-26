@@ -20,7 +20,7 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class SelectableColumnHeader {
 
-	private String text;
+	private final String text;
 
 	private boolean active;
 

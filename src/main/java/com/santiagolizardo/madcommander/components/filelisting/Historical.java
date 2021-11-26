@@ -16,10 +16,10 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import java.util.ArrayList;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.HistoricalActions;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Historical {
@@ -27,7 +27,7 @@ public class Historical {
 	private int position;
 	private List<String> history;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public Historical(MainWindow mainWindow) {
 		history = new ArrayList<>();

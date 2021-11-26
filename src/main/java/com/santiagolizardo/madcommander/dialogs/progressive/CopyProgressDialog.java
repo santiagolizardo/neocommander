@@ -16,21 +16,19 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
-import java.io.File;
-import java.util.List;
-
-import org.apache.commons.io.FileUtils;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class CopyProgressDialog extends AbstractProgressDialog {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4051353584577931986L;
 
 	public CopyProgressDialog(MainWindow madCommander) {
 		super(madCommander);

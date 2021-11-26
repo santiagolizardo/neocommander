@@ -16,26 +16,23 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.GeneralActionFactory;
 import com.santiagolizardo.madcommander.dialogs.bookmarks.ManageBookmarks;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class BookmarksMenu extends JMenu implements ActionListener {
 
-	private static final long serialVersionUID = -8222925585381513984L;
 
-	private JMenuItem addBookmarkMenuItem;
-	private JMenuItem manageBookmarksMenuItem;
+	private final JMenuItem addBookmarkMenuItem;
+	private final JMenuItem manageBookmarksMenuItem;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public BookmarksMenu(MainWindow mainWindow) {
 		super(Translator.tr("Bookmarks"));

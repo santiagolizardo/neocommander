@@ -16,24 +16,16 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JSplitPane;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class HorizontalSplitAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2941630640706613242L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public HorizontalSplitAction(MainWindow mainWindow) {
 		super(Translator.tr("Horizontal split"), IconFactory

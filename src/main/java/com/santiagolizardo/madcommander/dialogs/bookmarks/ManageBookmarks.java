@@ -21,35 +21,28 @@ import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 public class ManageBookmarks extends AbstractDialog implements ActionListener {
 
-	private static final long serialVersionUID = 2436015514011489788L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
-	private JTextField bookmarkTextField;
+	private final JTextField bookmarkTextField;
 
-	private JButton addButton;
-	private JButton removeButton;
+	private final JButton addButton;
+	private final JButton removeButton;
 
-	private DefaultListModel<String> bookmarksModel;
-	private JList<String> bookmarkList;
-	private JScrollPane scroll;
+	private final DefaultListModel<String> bookmarksModel;
+	private final JList<String> bookmarkList;
+	private final JScrollPane scroll;
 
 	public ManageBookmarks(MainWindow mainWindow) {
 		super();

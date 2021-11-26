@@ -16,23 +16,21 @@
  */
 package com.santiagolizardo.madcommander.actions.mark;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.SelectGroupDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 class SelectGroupAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1662191719198242841L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SelectGroupAction(MainWindow mainWindow) {
 		super(Translator.tr("Select group..."), IconFactory

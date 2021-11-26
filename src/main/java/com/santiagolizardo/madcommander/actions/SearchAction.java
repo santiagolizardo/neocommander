@@ -16,22 +16,18 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.SearchDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
 public class SearchAction extends AbstractAction {
 
-	private static final long serialVersionUID = -1957915845327720772L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SearchAction(MainWindow mainWindow) {
 		super(Translator.tr("Search..."), IconFactory.newIcon("find.gif"));

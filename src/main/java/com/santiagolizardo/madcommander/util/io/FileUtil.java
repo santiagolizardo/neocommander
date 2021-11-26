@@ -16,8 +16,9 @@
  */
 package com.santiagolizardo.madcommander.util.io;
 
-import com.santiagolizardo.madcommander.util.OsDetector;
 import com.santiagolizardo.madcommander.util.Os;
+import com.santiagolizardo.madcommander.util.OsDetector;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

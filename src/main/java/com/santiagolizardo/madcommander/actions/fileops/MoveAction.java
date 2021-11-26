@@ -16,24 +16,21 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.progressive.MoveProgressDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 class MoveAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3679234847107716636L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public MoveAction(MainWindow mainWindow) {
 		super(Translator.tr("Move"), IconFactory.newIcon("F6.gif"));

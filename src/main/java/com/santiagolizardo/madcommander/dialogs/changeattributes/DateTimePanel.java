@@ -16,7 +16,9 @@
  */
 package com.santiagolizardo.madcommander.dialogs.changeattributes;
 
-import java.awt.Dimension;
+import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -24,22 +26,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-import javax.swing.text.MaskFormatter;
-
 public class DateTimePanel extends JPanel implements ActionListener {
 
-	private static final long serialVersionUID = -2651548649686614311L;
 
-	private JButton now;
-	private JLabel dateLabel;
+	private final JButton now;
+	private final JLabel dateLabel;
 	private JFormattedTextField date;
-	private JLabel timeLabel;
+	private final JLabel timeLabel;
 	private JFormattedTextField time;
 	
 	public DateTimePanel() {

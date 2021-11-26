@@ -16,20 +16,12 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import java.awt.BorderLayout;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 
 public abstract class AbstractGroupDialog extends AbstractDialog implements
@@ -38,20 +30,19 @@ public abstract class AbstractGroupDialog extends AbstractDialog implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7833199314557405992L;
 
-	private JComboBox<String> type;
+	private final JComboBox<String> type;
 
-	private JTextField searchPattern;
+	private final JTextField searchPattern;
 
-	private JButton okButton;
-	private JButton cancelButton;
+	private final JButton okButton;
+	private final JButton cancelButton;
 
-	private JCheckBox caseSensitive;
+	private final JCheckBox caseSensitive;
 
-	private JPanel mainPanel;
+	private final JPanel mainPanel;
 
-	private JPanel buttonsPanel;
+	private final JPanel buttonsPanel;
 
 	public AbstractGroupDialog(String title, JFrame mainWindow) {
 		super();

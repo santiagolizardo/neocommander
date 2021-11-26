@@ -16,23 +16,17 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class FullAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5935640263312602725L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FullAction(MainWindow mainWindow) {
 		super(Translator.tr("Full"), IconFactory.newIcon("icon_full.gif"));

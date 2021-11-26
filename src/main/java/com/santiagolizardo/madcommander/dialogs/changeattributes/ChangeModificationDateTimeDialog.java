@@ -16,37 +16,33 @@
  */
 package com.santiagolizardo.madcommander.dialogs.changeattributes;
 
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.List;
-import java.util.logging.Logger;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.SpringLayout;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.AbstractDialog;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.CalendarUtil;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ChangeModificationDateTimeDialog extends AbstractDialog implements
 		ActionListener {
 
-	private static final long serialVersionUID = -2519143127010077700L;
 
 	private static final Logger LOGGER = Logger
 			.getLogger(ChangeModificationDateTimeDialog.class.getName());
 
-	private DateTimePanel dateTimePanel;
+	private final DateTimePanel dateTimePanel;
 
-	private JButton okButton;
-	private JButton cancelButton;
+	private final JButton okButton;
+	private final JButton cancelButton;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public ChangeModificationDateTimeDialog(MainWindow mainWindow) {
 		super();

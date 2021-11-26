@@ -16,11 +16,9 @@
  */
 package com.santiagolizardo.madcommander.util.gui;
 
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.util.logging.Logger;
-
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class SwingUtil {
 	

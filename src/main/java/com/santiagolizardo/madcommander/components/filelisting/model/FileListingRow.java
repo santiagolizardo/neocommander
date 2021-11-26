@@ -16,14 +16,13 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting.model;
 
-import java.io.File;
-import java.util.Date;
-
+import com.santiagolizardo.madcommander.util.FormatSingleton;
+import com.santiagolizardo.madcommander.util.io.FileUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
-import com.santiagolizardo.madcommander.util.FormatSingleton;
-import com.santiagolizardo.madcommander.util.io.FileUtil;
+import java.io.File;
+import java.util.Date;
 import java.util.Objects;
 
 public class FileListingRow {

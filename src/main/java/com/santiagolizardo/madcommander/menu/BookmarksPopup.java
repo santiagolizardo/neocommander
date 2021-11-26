@@ -16,21 +16,18 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
+import com.santiagolizardo.madcommander.MainWindow;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-
-import com.santiagolizardo.madcommander.MainWindow;
-
 public class BookmarksPopup extends JPopupMenu implements ActionListener {
 
-	private static final long serialVersionUID = -3384212187171084919L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public BookmarksPopup(MainWindow mainWindow) {
 		super();

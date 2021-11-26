@@ -16,30 +16,21 @@
  */
 package com.santiagolizardo.madcommander.components;
 
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.menu.*;
+
+import javax.swing.*;
 import java.io.File;
 import java.util.List;
 
-import javax.swing.Box;
-import javax.swing.JMenuBar;
-
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.menu.BookmarksMenu;
-import com.santiagolizardo.madcommander.menu.CommandsMenu;
-import com.santiagolizardo.madcommander.menu.ConfigurationMenu;
-import com.santiagolizardo.madcommander.menu.FilesMenu;
-import com.santiagolizardo.madcommander.menu.HelpMenu;
-import com.santiagolizardo.madcommander.menu.MarkMenu;
-import com.santiagolizardo.madcommander.menu.ShowMenu;
-
 public class MainMenu extends JMenuBar {
 
-	private static final long serialVersionUID = -8070437809650388843L;
 
 	public ConfigurationMenu configurationMenu;
 
-	private BookmarksMenu bookmarksMenu;
+	private final BookmarksMenu bookmarksMenu;
 
-	private FilesMenu filesMenu;
+	private final FilesMenu filesMenu;
 
 	public MainMenu(MainWindow mainWindow) {
 		super();

@@ -16,9 +16,9 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import javax.swing.Action;
-
 import com.santiagolizardo.madcommander.MainWindow;
+
+import javax.swing.*;
 
 public class FileOpsFactory {
 
@@ -42,7 +42,7 @@ public class FileOpsFactory {
 
 	private Action createEmptyFileAction;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FileOpsFactory(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;

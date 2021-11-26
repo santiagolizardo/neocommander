@@ -16,22 +16,16 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 class PreviousAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3600368513651492859L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public PreviousAction(MainWindow mainWindow) {
 		super(Translator.tr("Previous"), IconFactory.newIcon("prev.gif"));

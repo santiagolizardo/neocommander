@@ -16,18 +16,16 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.GeneralActionFactory;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 import com.santiagolizardo.madcommander.actions.fileops.TouchAction;
 
+import javax.swing.*;
+
 
 public class PopupMenu extends JPopupMenu {
 
-	private static final long serialVersionUID = -7953562218031804003L;
 
 	public PopupMenu(MainWindow mainWindow) {
 		super();

@@ -10,22 +10,21 @@ import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.Icon;
-import javax.swing.JButton;
 
 public class DriveButton extends JButton implements ActionListener {
 
-	private static final long serialVersionUID = -8679110634791181972L;
 
 	private static final Icon DRIVE_ICON = IconFactory.newIcon("drive.gif");
 	
-	private File drive;
-	private String absolutePath;
+	private final File drive;
+	private final String absolutePath;
 	
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public DriveButton(File drive, MainWindow mainWindow) {
 		super();

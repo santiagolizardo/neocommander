@@ -16,13 +16,11 @@
  */
 package com.santiagolizardo.madcommander.resources.images;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.net.URL;
 import java.util.logging.Logger;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.filechooser.FileSystemView;
 
 public class IconFactory {
 

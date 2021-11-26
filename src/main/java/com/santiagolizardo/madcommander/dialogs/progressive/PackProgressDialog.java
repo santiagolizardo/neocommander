@@ -16,6 +16,10 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.components.filelisting.FileListing;
+import com.santiagolizardo.madcommander.util.PackTypes;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,19 +29,14 @@ import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.components.filelisting.FileListing;
-import com.santiagolizardo.madcommander.util.PackTypes;
-
 public class PackProgressDialog extends AbstractProgressDialog {
 
-	private static final long serialVersionUID = 4615507200075446020L;
 
-	private String fileName;
+	private final String fileName;
 
-	private PackTypes type;
+	private final PackTypes type;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public PackProgressDialog(MainWindow mainWindow, String fileName,
 			PackTypes type) {

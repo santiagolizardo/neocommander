@@ -16,22 +16,16 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.filters.FilterDirectories;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class FilterDirectoriesAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4224205274635164359L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FilterDirectoriesAction(MainWindow mainWindow) {
 		super(Translator.tr("Filter directories"));

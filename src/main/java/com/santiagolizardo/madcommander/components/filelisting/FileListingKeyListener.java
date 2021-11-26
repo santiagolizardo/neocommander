@@ -16,16 +16,16 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Position;
 import com.santiagolizardo.madcommander.menu.BookmarksPopup;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 public class FileListingKeyListener extends KeyAdapter {
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FileListingKeyListener(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;

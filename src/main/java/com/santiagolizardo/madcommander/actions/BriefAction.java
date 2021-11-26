@@ -16,22 +16,17 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing.Format;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class BriefAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 963345464924990261L;
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public BriefAction(MainWindow mainWindow) {
 		super(Translator.tr("Brief"), IconFactory.newIcon("icon_brief.gif"));

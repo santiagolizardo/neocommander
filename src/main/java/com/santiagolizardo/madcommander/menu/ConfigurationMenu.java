@@ -16,27 +16,24 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JMenu;
-
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-
 public class ConfigurationMenu extends JMenu implements ActionListener {
 
-	private static final long serialVersionUID = -4098318863664780142L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
-	private JMenu show;
+	private final JMenu show;
 
-	private JCheckBoxMenuItem basicToolbar;
-	private JCheckBoxMenuItem executePanel;
-	private JCheckBoxMenuItem shortcutsPanel;
+	private final JCheckBoxMenuItem basicToolbar;
+	private final JCheckBoxMenuItem executePanel;
+	private final JCheckBoxMenuItem shortcutsPanel;
 
 	public ConfigurationMenu(MainWindow mainWindow) {
 		super(Translator.tr("Configuration"));

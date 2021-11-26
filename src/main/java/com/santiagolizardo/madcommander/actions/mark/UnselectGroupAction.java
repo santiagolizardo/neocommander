@@ -16,23 +16,21 @@
  */
 package com.santiagolizardo.madcommander.actions.mark;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.UnselectGroupDialog;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 class UnselectGroupAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4612806607228003645L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public UnselectGroupAction(MainWindow mainWindow) {
 		super(Translator.tr("Unselect group..."), IconFactory

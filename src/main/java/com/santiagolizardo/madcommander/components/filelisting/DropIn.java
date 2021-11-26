@@ -31,7 +31,7 @@ public class DropIn extends DropTargetAdapter {
 	private static final Logger LOGGER = Logger.getLogger(FileListing.class
 			.getName());
 
-	private FileListing fileListing;
+	private final FileListing fileListing;
 
 	public DropIn(FileListing fileListing) {
 		super();

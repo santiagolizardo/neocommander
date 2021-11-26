@@ -16,28 +16,25 @@
  */
 package com.santiagolizardo.madcommander.actions.fileops;
 
-import java.awt.Desktop;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.util.List;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 class EditAction extends AbstractAction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -982849699897975067L;
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public EditAction(MainWindow mainWindow) {
 		super(Translator.tr("Edit"), IconFactory.newIcon("F4.gif"));

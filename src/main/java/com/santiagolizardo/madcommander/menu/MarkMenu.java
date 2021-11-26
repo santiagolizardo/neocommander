@@ -16,21 +16,18 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
-import java.awt.event.KeyEvent;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.mark.MarkActionsFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
 
 public class MarkMenu extends JMenu {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 753419026893214433L;
 
 	public MarkMenu(MainWindow mainWindow) {
 		super(Translator.tr("Mark"));

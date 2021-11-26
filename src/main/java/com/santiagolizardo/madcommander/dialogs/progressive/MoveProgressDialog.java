@@ -16,18 +16,17 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
-import java.io.File;
-import java.util.List;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+
+import java.io.File;
+import java.util.List;
 
 public class MoveProgressDialog extends AbstractProgressDialog {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6456147166253912620L;
 
 	public MoveProgressDialog(MainWindow mainWindow) {
 		super(mainWindow);
@@ -46,7 +45,7 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 		for (int i = 0; i < selectedFiles.size(); i++) {
 			myProcess.currentFile = selectedFiles.get(i).getName();
 			myProcess.currentProgress = 0;
-			myProcess.totalProgress = (int) ((i * 100) / selectedFiles.size());
+			myProcess.totalProgress = (i * 100) / selectedFiles.size();
 			String fullSrc = srcPath + File.separator + myProcess.currentFile;
 			String fullDst = dstPath + File.separator + myProcess.currentFile;
 			File srcFile = new File(fullSrc);

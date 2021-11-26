@@ -17,27 +17,19 @@
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
 import com.santiagolizardo.madcommander.AppConstants;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.logging.Logger;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Logger;
+
 public abstract class AbstractProgressDialog extends JDialog implements
 		Runnable, ActionListener {
 
-	private static final long serialVersionUID = -2258800923807602822L;
 
 	protected static final Logger logger = Logger
 			.getLogger(AbstractProgressDialog.class.getName());
@@ -60,9 +52,9 @@ public abstract class AbstractProgressDialog extends JDialog implements
 
 	protected MyProcess myProcess;
 
-	private JPanel panel;
+	private final JPanel panel;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public AbstractProgressDialog(MainWindow mainWindow) {
 		super();

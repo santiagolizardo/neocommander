@@ -16,18 +16,16 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 class AddToBookmarksAction extends AbstractAction {
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public AddToBookmarksAction(MainWindow mainWindow) {
 		super(Translator.tr("Add to bookmarks"), IconFactory

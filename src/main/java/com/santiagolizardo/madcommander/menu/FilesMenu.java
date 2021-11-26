@@ -16,18 +16,6 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.util.List;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
-
-import org.apache.commons.io.FileUtils;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.fileops.PackAction;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
@@ -37,21 +25,28 @@ import com.santiagolizardo.madcommander.dialogs.changeattributes.ChangeModificat
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import org.apache.commons.io.FileUtils;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class FilesMenu extends JMenu implements ActionListener {
 
-	private static final long serialVersionUID = -3242803672077641559L;
 
-	private JMenuItem changeAttributesMenuItem;
-	private JMenuItem changeModificationDatetimeMenuItem;
-	private JMenuItem packMenuItem;
-	private JMenuItem unpackMenuItem;
-	private JMenuItem compareByContent;
-	private JMenuItem printMenuItem;
-	private JMenuItem quitMenuItem;
+	private final JMenuItem changeAttributesMenuItem;
+	private final JMenuItem changeModificationDatetimeMenuItem;
+	private final JMenuItem packMenuItem;
+	private final JMenuItem unpackMenuItem;
+	private final JMenuItem compareByContent;
+	private final JMenuItem printMenuItem;
+	private final JMenuItem quitMenuItem;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FilesMenu(MainWindow mainWindow) {
 		super(Translator.tr("Files"));

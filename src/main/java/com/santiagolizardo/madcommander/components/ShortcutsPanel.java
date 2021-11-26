@@ -16,35 +16,30 @@
  */
 package com.santiagolizardo.madcommander.components;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.io.File;
-import java.util.List;
-
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.SoftBevelBorder;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
 
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.SoftBevelBorder;
+import java.awt.*;
+import java.io.File;
+import java.util.List;
+
 public class ShortcutsPanel extends JPanel {
 
-	private static final long serialVersionUID = 6490973152006379145L;
 
 	private static final Border BUTTON_BORDER = new SoftBevelBorder(
 			SoftBevelBorder.RAISED);
 
-	private JButton viewButton;
-	private JButton editButton;
-	private JButton copyButton;
-	private JButton moveButton;
-	private JButton createDirButton;
-	private JButton deleteButton;
+	private final JButton viewButton;
+	private final JButton editButton;
+	private final JButton copyButton;
+	private final JButton moveButton;
+	private final JButton createDirButton;
+	private final JButton deleteButton;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public ShortcutsPanel(MainWindow mainWindow) {
 		super();
@@ -81,7 +76,6 @@ public class ShortcutsPanel extends JPanel {
 
 	private class Button extends JButton {
 
-		private static final long serialVersionUID = -409157035363687532L;
 
 		public Button(Action action) {
 			super(action);

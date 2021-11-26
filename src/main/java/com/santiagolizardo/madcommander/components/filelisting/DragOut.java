@@ -5,23 +5,16 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import java.awt.Cursor;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DragGestureEvent;
-import java.awt.dnd.DragGestureListener;
-import java.awt.dnd.DragSource;
-import java.awt.dnd.DragSourceDragEvent;
-import java.awt.dnd.DragSourceDropEvent;
-import java.awt.dnd.DragSourceEvent;
-import java.awt.dnd.DragSourceListener;
+import java.awt.*;
+import java.awt.dnd.*;
 import java.io.File;
 import java.util.List;
 
 public class DragOut implements DragGestureListener, DragSourceListener {
 
-	private DragSource dragSource;
-	private FileListing fileListing;
-	private FileListingTable fileListingTable;
+	private final DragSource dragSource;
+	private final FileListing fileListing;
+	private final FileListingTable fileListingTable;
 	
 	public DragOut(DragSource dragSource, FileListing fileListing, FileListingTable fileListingTable) {
 		super();

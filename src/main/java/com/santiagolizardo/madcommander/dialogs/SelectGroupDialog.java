@@ -21,9 +21,8 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 
 public class SelectGroupDialog extends AbstractGroupDialog {
 
-	private static final long serialVersionUID = -8402206622370638785L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SelectGroupDialog(MainWindow mainWindow) {
 		super(Translator.tr("Select group"), mainWindow);

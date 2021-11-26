@@ -16,23 +16,23 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.SummaryPanel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingModel;
 import com.santiagolizardo.madcommander.components.filelisting.model.FileListingRow;
 
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 
 public class SelectionListener implements ListSelectionListener {
 
-	private JTable table;
+	private final JTable table;
 
-	private SummaryPanel summaryLabel;
+	private final SummaryPanel summaryLabel;
 	
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SelectionListener(MainWindow mainWindow, JTable table, SummaryPanel summaryLabel) {
 		this.table = table;

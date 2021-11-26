@@ -16,31 +16,6 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.ListCellRenderer;
-import javax.swing.ListSelectionModel;
-import javax.swing.SpringLayout;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.dialogs.search.AdvancedTab;
 import com.santiagolizardo.madcommander.dialogs.search.GeneralTab;
@@ -50,24 +25,31 @@ import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.GlobUtils;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileUtil;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.regex.Matcher;
 
 public class SearchDialog extends AbstractDialog implements ActionListener {
 
-	private static final long serialVersionUID = -6936490579285517802L;
 
-	private GeneralTab generalTab;
+	private final GeneralTab generalTab;
 
-	private AdvancedTab advancedTab;
+	private final AdvancedTab advancedTab;
 
-	private JButton searchButton;
-	private JButton closeButton;
+	private final JButton searchButton;
+	private final JButton closeButton;
 
-	private DefaultListModel<String> results;
+	private final DefaultListModel<String> results;
 
-	private JList<String> resultsList;
+	private final JList<String> resultsList;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SearchDialog(MainWindow mainWindow) {
 		super(mainWindow);

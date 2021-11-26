@@ -23,9 +23,8 @@ public class UnselectGroupDialog extends AbstractGroupDialog {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2101906785456634573L;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public UnselectGroupDialog(MainWindow mainWindow) {
 		super("Unselect group", mainWindow);

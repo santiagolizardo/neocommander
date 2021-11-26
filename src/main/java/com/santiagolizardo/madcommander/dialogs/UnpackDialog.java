@@ -16,48 +16,32 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import java.awt.Container;
-import java.awt.Dimension;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import com.santiagolizardo.madcommander.util.io.FileUtil;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-import com.santiagolizardo.madcommander.util.gui.DialogFactory;
-import com.santiagolizardo.madcommander.util.io.FileUtil;
-
 public class UnpackDialog extends AbstractDialog implements ActionListener {
 
-	private static final long serialVersionUID = 5451158938079680268L;
 	
-	private JButton okButton;
-	private JButton browse;
-	private JLabel fileText;
-	private JTextField unpackOn;
-	private DefaultListModel<String> model;
-	private JList<String> list;
-	private JScrollPane scroll;
+	private final JButton okButton;
+	private final JButton browse;
+	private final JLabel fileText;
+	private final JTextField unpackOn;
+	private final DefaultListModel<String> model;
+	private final JList<String> list;
+	private final JScrollPane scroll;
 
-	private String fileName;
+	private final String fileName;
 
 	public UnpackDialog(String fileName) {
 		super();

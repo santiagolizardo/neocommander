@@ -16,47 +16,33 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.actions.SelectDriveAction;
+import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
+import com.santiagolizardo.madcommander.components.filelisting.model.*;
+import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DragSource;
 import java.awt.dnd.DropTarget;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.KeyStroke;
-
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.SelectDriveAction;
-import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
-import com.santiagolizardo.madcommander.components.filelisting.model.AttributesComparator;
-import com.santiagolizardo.madcommander.components.filelisting.model.DateComparator;
-import com.santiagolizardo.madcommander.components.filelisting.model.ExtensionComparator;
-import com.santiagolizardo.madcommander.components.filelisting.model.FileListingModel;
-import com.santiagolizardo.madcommander.components.filelisting.model.FileListingRow;
-import com.santiagolizardo.madcommander.components.filelisting.model.NameComparator;
-import com.santiagolizardo.madcommander.components.filelisting.model.SizeComparator;
-import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
-import java.awt.Color;
 import java.util.logging.Logger;
 
 public class FileListingTable extends JTable implements Runnable {
 
-	private static final long serialVersionUID = 1317659226807828074L;
 
 	private static final Logger logger = Logger.getLogger(FileListingTable.class.getName());
 
-	private FileListing fileListing;
+	private final FileListing fileListing;
 
-	private DragSource dragSource;
+	private final DragSource dragSource;
 
 	public DropTarget dropTarget;
 
@@ -66,7 +52,7 @@ public class FileListingTable extends JTable implements Runnable {
 
 	private boolean first;
 
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public FileListingTable(final MainWindow mainWindow,
 			FileListing fileListing) {

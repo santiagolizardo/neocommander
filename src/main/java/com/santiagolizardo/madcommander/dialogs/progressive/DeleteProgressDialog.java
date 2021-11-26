@@ -16,17 +16,16 @@
  */
 package com.santiagolizardo.madcommander.dialogs.progressive;
 
-import java.io.File;
-import java.util.List;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 import com.santiagolizardo.madcommander.util.io.FileOperations;
 
+import java.io.File;
+import java.util.List;
+
 public class DeleteProgressDialog extends AbstractProgressDialog {
 
-	private static final long serialVersionUID = -1031712739175885827L;
 
 	private List<File> selectedFiles;
 
@@ -44,7 +43,7 @@ public class DeleteProgressDialog extends AbstractProgressDialog {
 			File file = selectedFiles.get(i);
 			myProcess.currentFile = file.getName();
 			myProcess.currentProgress = 0;
-			myProcess.totalProgress = (int) ((i * 100) / selectedFiles.size());
+			myProcess.totalProgress = (i * 100) / selectedFiles.size();
 			
 			logger.info(String.format("Deleting '%s'", file.getName()));
 			if (FileOperations.delete(file) == false) {

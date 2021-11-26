@@ -16,21 +16,16 @@
  */
 package com.santiagolizardo.madcommander.menu.items;
 
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.resources.languages.Translator;
 
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 public class ReversedOrderItem extends JCheckBoxMenuItem {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5744823152452602062L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public ReversedOrderItem(final MainWindow mainWindow) {
 		super(Translator.tr("Reversed order"));

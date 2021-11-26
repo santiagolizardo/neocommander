@@ -17,7 +17,9 @@
 package com.santiagolizardo.madcommander.dialogs.delete;
 
 import com.santiagolizardo.madcommander.resources.languages.Translator;
-import java.awt.Container;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -26,27 +28,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JRootPane;
-import javax.swing.JScrollPane;
-import javax.swing.KeyStroke;
-import javax.swing.SpringLayout;
-
 public class DeleteDialog extends JDialog {
 
-	private static final long serialVersionUID = 384674050228582953L;
 
-	private DefaultListModel<File> model;
-	private JList<File> list;
-	private JScrollPane scroll;
+	private final DefaultListModel<File> model;
+	private final JList<File> list;
+	private final JScrollPane scroll;
 
-	private JButton okButton;
-	private JButton cancelButton;
+	private final JButton okButton;
+	private final JButton cancelButton;
 
 	public static final int OK = 1;
 	public static final int CANCEL = 0;

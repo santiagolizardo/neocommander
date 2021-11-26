@@ -16,24 +16,17 @@
  */
 package com.santiagolizardo.madcommander.actions;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
 import com.santiagolizardo.madcommander.MainWindow;
 import com.santiagolizardo.madcommander.components.filelisting.FileListing;
 import com.santiagolizardo.madcommander.dialogs.SelectDrivePopup;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
 public class SelectDriveAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5388378675835343628L;
-
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	public SelectDriveAction(MainWindow mainWindow) {
 		super("SelectDriveAction");
