@@ -1,18 +1,18 @@
-/**
- * This file is part of MadCommander, a file manager with two panels.
- *
- * MadCommander is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- *
- * MadCommander is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * MadCommander. If not, see <http://www.gnu.org/licenses/>.
+/*
+  This file is part of MadCommander, a file manager with two panels.
+
+  MadCommander is free software: you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  MadCommander is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  MadCommander. If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.menu;
 
@@ -101,11 +101,10 @@ public class FilesMenu extends JMenu implements ActionListener {
 			List<File> list = mainWindow.getSource().getSelectedFiles();
 			if (list.size() == 1) {
 				File file = list.get(0);
-				StringBuilder buffer = new StringBuilder();
-				buffer.append(mainWindow.getSource().getPath());
-				buffer.append(File.separator);
-				buffer.append(file.getName());
-				UnpackDialog unpackDialog = new UnpackDialog(buffer.toString());
+				String buffer = mainWindow.getSource().getPath() +
+						File.separator +
+						file.getName();
+				UnpackDialog unpackDialog = new UnpackDialog(buffer);
 				unpackDialog.setVisible(true);
 			} else {
 				DialogFactory.showErrorMessage(mainWindow,
@@ -128,7 +127,7 @@ public class FilesMenu extends JMenu implements ActionListener {
 			File file1 = files1.get(0);
 			File file2 = files2.get(0);
 			try {
-				if (FileUtils.contentEquals(file1, file2) == true) {
+				if (FileUtils.contentEquals(file1, file2)) {
 					DialogFactory.showInformationMessage(mainWindow,
 							"The content of the files is identical.");
 				} else {

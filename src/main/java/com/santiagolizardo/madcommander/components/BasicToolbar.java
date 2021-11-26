@@ -1,18 +1,18 @@
-/**
- * This file is part of MadCommander, a file manager with two panels.
- *
- * MadCommander is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * MadCommander is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
+/*
+  This file is part of MadCommander, a file manager with two panels.
+
+  MadCommander is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  MadCommander is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.santiagolizardo.madcommander.components;
 
@@ -62,12 +62,7 @@ public class BasicToolbar extends JToolBar {
 
 		final JButton filters = new JButton("Filter",
 				IconFactory.newIcon("filter.gif"));
-		filters.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				popup.show(filters, 0, filters.getY() + filters.getHeight() + 1);
-			}
-		});
+		filters.addActionListener(event -> popup.show(filters, 0, filters.getY() + filters.getHeight() + 1));
 
 		add(prev);
 		add(next);
