@@ -1,6 +1,4 @@
 
-[![Build Status](https://travis-ci.org/santiagolizardo/neocommander.svg?branch=master)](https://travis-ci.org/santiagolizardo/neocommander)
-
 NeoCommander
 ============
 
@@ -9,7 +7,6 @@ NeoCommander
 **NeoCommander** is an *orthodox file manager* written in Java Swing. Tested on Windows, Mac and Linux.
 
 ### Requirements
-
 
   * Java SE 17
   * Graphical user interface environment
