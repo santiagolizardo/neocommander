@@ -25,9 +25,7 @@ import java.awt.event.ActionEvent;
 
 class UnselectAllAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

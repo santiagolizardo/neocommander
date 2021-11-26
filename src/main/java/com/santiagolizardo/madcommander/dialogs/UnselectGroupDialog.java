@@ -20,9 +20,7 @@ import com.santiagolizardo.madcommander.MainWindow;
 
 public class UnselectGroupDialog extends AbstractGroupDialog {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

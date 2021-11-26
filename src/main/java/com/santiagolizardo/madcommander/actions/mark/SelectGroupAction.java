@@ -26,9 +26,7 @@ import java.awt.event.ActionEvent;
 
 class SelectGroupAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

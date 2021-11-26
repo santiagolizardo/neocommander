@@ -24,9 +24,7 @@ import java.awt.event.ComponentEvent;
 
 public class Panels extends JSplitPane {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

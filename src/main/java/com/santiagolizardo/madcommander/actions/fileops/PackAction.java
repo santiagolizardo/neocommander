@@ -28,9 +28,7 @@ import java.awt.event.ActionEvent;
 
 public class PackAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

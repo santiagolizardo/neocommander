@@ -30,9 +30,7 @@ import java.util.List;
 
 public class TouchAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

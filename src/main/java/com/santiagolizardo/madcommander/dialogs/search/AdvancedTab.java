@@ -23,9 +23,7 @@ import java.util.Vector;
 
 public class AdvancedTab extends JPanel implements ActionListener {
 
-	/**
-	 * 
-	 */
+
 
 	private final JCheckBox fileSize;
 

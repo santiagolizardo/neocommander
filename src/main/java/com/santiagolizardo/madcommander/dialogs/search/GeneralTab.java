@@ -25,9 +25,7 @@ import java.awt.*;
 
 public class GeneralTab extends JPanel {
 
-	/**
-	 * 
-	 */
+
 
 	private JLabel labelSearchFor;
 

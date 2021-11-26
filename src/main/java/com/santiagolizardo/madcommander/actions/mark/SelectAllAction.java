@@ -26,9 +26,7 @@ import java.awt.event.KeyEvent;
 
 class SelectAllAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

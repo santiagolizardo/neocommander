@@ -24,9 +24,7 @@ import java.util.List;
 
 public class MoveProgressDialog extends AbstractProgressDialog {
 
-	/**
-	 * 
-	 */
+
 
 	public MoveProgressDialog(MainWindow mainWindow) {
 		super(mainWindow);

@@ -30,9 +30,7 @@ import java.awt.event.KeyEvent;
 
 public class ShowMenu extends JMenu implements ActionListener {
 
-	/**
-	 * 
-	 */
+
 
 	private final JRadioButtonMenuItem brief;
 

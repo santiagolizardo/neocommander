@@ -26,9 +26,7 @@ import java.awt.event.ActionEvent;
 
 class MoveAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 
 	private final MainWindow mainWindow;
 

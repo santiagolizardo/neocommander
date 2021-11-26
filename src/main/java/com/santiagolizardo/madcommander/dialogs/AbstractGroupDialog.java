@@ -27,9 +27,7 @@ import java.awt.event.ActionListener;
 public abstract class AbstractGroupDialog extends AbstractDialog implements
 		ActionListener {
 
-	/**
-	 * 
-	 */
+
 
 	private final JComboBox<String> type;
 

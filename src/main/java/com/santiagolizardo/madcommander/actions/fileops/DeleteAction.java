@@ -1,16 +1,16 @@
 /**
  * This file is part of MadCommander, a file manager with two panels.
- *
+ * <p>
  * MadCommander is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
+ * <p>
  * MadCommander is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU General Public License
  * along with MadCommander.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,35 +30,33 @@ import java.util.List;
 
 class DeleteAction extends AbstractAction {
 
-	/**
-	 *
-	 */
-	private final MainWindow mainWindow;
 
-	public DeleteAction(MainWindow mainWindow) {
-		super(Translator.tr("Delete"), IconFactory.newIcon("F8.gif"));
+    private final MainWindow mainWindow;
 
-		this.mainWindow = mainWindow;
+    public DeleteAction(MainWindow mainWindow) {
+        super(Translator.tr("Delete"), IconFactory.newIcon("F8.gif"));
 
-		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F8"));
-	}
+        this.mainWindow = mainWindow;
 
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		FileListing listing = mainWindow.getSource();
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("F8"));
+    }
 
-		List<File> selectedFiles = listing.getSelectedFiles();
-		DeleteDialog dialog = new DeleteDialog();
-		for (File file : selectedFiles) {
-			dialog.addFile(file);
-		}
-		dialog.setVisible(true);
-		if (dialog.getReturnValue() == DeleteDialog.OK) {
-			selectedFiles = dialog.getSelectedFiles();
-			DeleteProgressDialog progressDialog = new DeleteProgressDialog(
-					mainWindow);
-			progressDialog.setSelectedFiles(selectedFiles);
-			progressDialog.begin();
-		}
-	}
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        FileListing listing = mainWindow.getSource();
+
+        List<File> selectedFiles = listing.getSelectedFiles();
+        DeleteDialog dialog = new DeleteDialog();
+        for (File file : selectedFiles) {
+            dialog.addFile(file);
+        }
+        dialog.setVisible(true);
+        if (dialog.getReturnValue() == DeleteDialog.OK) {
+            selectedFiles = dialog.getSelectedFiles();
+            DeleteProgressDialog progressDialog = new DeleteProgressDialog(
+                    mainWindow);
+            progressDialog.setSelectedFiles(selectedFiles);
+            progressDialog.begin();
+        }
+    }
 }

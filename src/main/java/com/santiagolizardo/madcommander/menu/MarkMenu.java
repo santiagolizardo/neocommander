@@ -25,9 +25,7 @@ import java.awt.event.KeyEvent;
 
 public class MarkMenu extends JMenu {
 
-	/**
-	 * 
-	 */
+
 
 	public MarkMenu(MainWindow mainWindow) {
 		super(Translator.tr("Mark"));

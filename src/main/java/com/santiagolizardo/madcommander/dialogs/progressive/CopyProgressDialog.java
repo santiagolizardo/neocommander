@@ -26,9 +26,7 @@ import java.util.List;
 
 public class CopyProgressDialog extends AbstractProgressDialog {
 
-	/**
-	 * 
-	 */
+
 
 	public CopyProgressDialog(MainWindow madCommander) {
 		super(madCommander);

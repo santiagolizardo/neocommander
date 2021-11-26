@@ -26,9 +26,7 @@ import java.awt.event.ActionListener;
 
 public class ExecuteBar extends JPanel implements ActionListener {
 
-	/**
-	 * 
-	 */
+
 
 	private final JComboBox<String> commands;
 

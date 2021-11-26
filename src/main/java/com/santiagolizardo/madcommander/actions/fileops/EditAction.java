@@ -31,9 +31,7 @@ import java.util.List;
 
 class EditAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 	private final MainWindow mainWindow;
 
 	public EditAction(MainWindow mainWindow) {

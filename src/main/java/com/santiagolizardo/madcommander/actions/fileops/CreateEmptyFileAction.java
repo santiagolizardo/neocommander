@@ -28,9 +28,7 @@ import java.io.IOException;
 
 public class CreateEmptyFileAction extends AbstractAction {
 
-	/**
-	 * 
-	 */
+
 	private final MainWindow mainWindow;
 
 	public CreateEmptyFileAction(MainWindow mainWindow) {
