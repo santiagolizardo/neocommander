@@ -22,5 +22,9 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: maven
+
+    - name: Install gettext
+      run: sudo apt-get install -y gettext
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
