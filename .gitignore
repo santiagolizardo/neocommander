@@ -10,3 +10,4 @@ MadCommander.log*
 *.iml
 pom.xml.versionsBackup
 tags 
+.vscode/

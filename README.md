@@ -8,7 +8,7 @@ NeoCommander
 
 ### Requirements
 
-  * Java SE 17
+  * Java 21
   * Graphical user interface environment
 
 ### How to build
@@ -19,8 +19,8 @@ mvn package
 
 ### How to run
 
-```sh
-java -jar target/NeoCommander-1.4.11-jar-with-dependencies.jar
+```shell
+java -jar target/NeoCommander-1.4.12-jar-with-dependencies.jar
 ```
 
 or double click on the jar file using your default file manager.

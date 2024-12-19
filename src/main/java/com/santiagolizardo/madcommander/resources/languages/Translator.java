@@ -16,13 +16,13 @@
  */
 package com.santiagolizardo.madcommander.resources.languages;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public class Translator {
 
@@ -32,7 +32,7 @@ public class Translator {
 	private static I18n i18n;
 
 	public static void start(String language) {
-		Locale locale = new Locale(language);
+		Locale locale = Locale.forLanguageTag(language);
 
 		try {
 			i18n = I18nFactory.getI18n(Translator.class, locale);
@@ -52,7 +52,7 @@ public class Translator {
 			return text;
 		}
 	}
-	
+
 	public static String trn(String text, String pluralText, long number) {
 		if (null == i18n)
 			return text;
@@ -63,5 +63,5 @@ public class Translator {
 			logger.log(Level.WARNING, "Missing translation: {0}", mre.getKey());
 			return text;
 		}
-	}	
+	}
 }

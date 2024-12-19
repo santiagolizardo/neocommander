@@ -18,13 +18,13 @@ package com.santiagolizardo.madcommander;
 
 public final class AppConstants {
 
-	private AppConstants() {
-		
-	}
-	
-	public final static String APP_NAME = "NeoCommander";
-	public final static String APP_VERSION = "1.4.9";
-	public final static String APP_URL = "https://github.com/santiagolizardo/neocommander";
-	public final static String DOWNLOAD_URL = "https://github.com/santiagolizardo/neocommander/releases";
+  private AppConstants() {
+
+  }
+
+  public final static String APP_NAME = "NeoCommander";
+  public final static String APP_VERSION = "1.4.12";
+  public final static String APP_URL = "https://github.com/santiagolizardo/neocommander";
+  public final static String DOWNLOAD_URL = "https://github.com/santiagolizardo/neocommander/releases";
 
 }

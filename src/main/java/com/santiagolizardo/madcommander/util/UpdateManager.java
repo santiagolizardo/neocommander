@@ -16,17 +16,18 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import com.santiagolizardo.madcommander.AppConstants;
-import com.santiagolizardo.madcommander.util.gui.DialogFactory;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
+import com.santiagolizardo.madcommander.AppConstants;
+import com.santiagolizardo.madcommander.util.gui.DialogFactory;
 
 public final class UpdateManager extends Thread {
-	
+
 	public static void checkForUpdate() {
 		UpdateManager updateManager = new UpdateManager();
 		updateManager.start();
@@ -39,9 +40,10 @@ public final class UpdateManager extends Thread {
 	@Override
 	public void run() {
 		try {
-			URL url = new URL("http://madcommander.sourceforge.net/version.html");
+			URL url = new URI("http://madcommander.sourceforge.net/version.html").toURL();
 			String version;
-			try (InputStreamReader reader = new InputStreamReader(url.openStream()); BufferedReader buffer = new BufferedReader(reader)) {
+			try (InputStreamReader reader = new InputStreamReader(url.openStream());
+					BufferedReader buffer = new BufferedReader(reader)) {
 				version = buffer.readLine();
 			}
 			int serverVersion = Integer
@@ -61,7 +63,7 @@ public final class UpdateManager extends Thread {
 						"There are no updates availables.");
 			}
 
-		} catch (IOException | NumberFormatException e) {
+		} catch (IOException | NumberFormatException | URISyntaxException e) {
 			DialogFactory.showErrorMessage(null, e.getMessage());
 		}
 
