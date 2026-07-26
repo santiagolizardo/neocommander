@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.santiagolizardo.neocommander</groupId>
 	<artifactId>NeoCommander</artifactId>
-	<version>1.4.14</version>
+	<version>1.5.0</version>
 	<packaging>jar</packaging>
 	<name>NeoCommander</name>
 	<url>https://github.com/santiagolizardo/neocommander</url>
