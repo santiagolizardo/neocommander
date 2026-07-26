@@ -16,15 +16,33 @@
  */
 package com.santiagolizardo.madcommander;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public final class AppConstants {
 
   private AppConstants() {
 
   }
 
-  public final static String APP_NAME = "NeoCommander";
-  public final static String APP_VERSION = "1.4.12";
-  public final static String APP_URL = "https://github.com/santiagolizardo/neocommander";
-  public final static String DOWNLOAD_URL = "https://github.com/santiagolizardo/neocommander/releases";
+  private static final Properties PROPS = loadProperties();
+
+  public final static String APP_NAME = PROPS.getProperty("app.name", "NeoCommander");
+  public final static String APP_VERSION = PROPS.getProperty("app.version", "unknown");
+  public final static String APP_URL = PROPS.getProperty("app.url", "https://github.com/santiagolizardo/neocommander");
+  public final static String DOWNLOAD_URL = APP_URL + "/releases";
+
+  private static Properties loadProperties() {
+    Properties props = new Properties();
+    try (InputStream is = AppConstants.class.getResourceAsStream("/version.properties")) {
+      if (is != null) {
+        props.load(is);
+      }
+    } catch (IOException e) {
+      // Fall through to defaults
+    }
+    return props;
+  }
 
 }

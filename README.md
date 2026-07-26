@@ -20,7 +20,7 @@ mvn package
 ### How to run
 
 ```shell
-java -jar target/NeoCommander-1.4.12-jar-with-dependencies.jar
+java -jar target/NeoCommander-*-jar-with-dependencies.jar
 ```
 
 or double click on the jar file using your default file manager.
