@@ -20,11 +20,13 @@
 package com.santiagolizardo.madcommander.services;
 
 import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.util.Os;
+import com.santiagolizardo.madcommander.util.OsDetector;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
 import java.util.logging.LogManager;
 
 public class LoggingServices {
@@ -36,8 +38,49 @@ public class LoggingServices {
 				System.err.println("Unable to find the logging properties file.");
 				return;
 			}
+
+			// Load properties so we can override the log file location
+			var props = new Properties();
+			props.load(fis);
+
+			// Override FileHandler.pattern with an OS-appropriate log path
+			Path logDir = getLogDirectory();
+			Files.createDirectories(logDir);
+			String logFilePath = logDir.resolve("NeoCommander.log").toString();
+			props.setProperty("java.util.logging.FileHandler.pattern", logFilePath);
+
+			// Write the modified properties to a stream and feed it to LogManager
+			var baos = new ByteArrayOutputStream();
+			props.store(baos, null);
 			var logManager = LogManager.getLogManager();
-			logManager.readConfiguration(fis);
+			logManager.readConfiguration(new ByteArrayInputStream(baos.toByteArray()));
 		}
+	}
+
+	private static Path getLogDirectory() {
+		String userHome = System.getProperty("user.home");
+
+		Os os;
+		try {
+			os = OsDetector.get();
+		} catch (Exception e) {
+			return Path.of(userHome, ".neocommander", "logs");
+		}
+
+		return switch (os) {
+			case Linux -> {
+				String xdgState = System.getenv("XDG_STATE_HOME");
+				yield (xdgState != null && !xdgState.isBlank())
+						? Path.of(xdgState, "NeoCommander")
+						: Path.of(userHome, ".local", "state", "NeoCommander");
+			}
+			case Osx -> Path.of(userHome, "Library", "Logs", "NeoCommander");
+			case Windows -> {
+				String localAppData = System.getenv("LOCALAPPDATA");
+				yield (localAppData != null && !localAppData.isBlank())
+						? Path.of(localAppData, "NeoCommander", "logs")
+						: Path.of(userHome, "AppData", "Local", "NeoCommander", "logs");
+			}
+		};
 	}
 }
