@@ -16,39 +16,38 @@
  */
 package com.santiagolizardo.madcommander.menu;
 
-import com.santiagolizardo.madcommander.AppConstants;
-import com.santiagolizardo.madcommander.dialogs.AboutDialog;
-import com.santiagolizardo.madcommander.resources.images.IconFactory;
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-import com.santiagolizardo.madcommander.util.SystemUtil;
-import com.santiagolizardo.madcommander.util.UpdateManager;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class HelpMenu extends JMenu implements ActionListener {
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
+import com.santiagolizardo.madcommander.AppConstants;
+import com.santiagolizardo.madcommander.dialogs.AboutDialog;
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+import com.santiagolizardo.madcommander.util.SystemUtil;
+import com.santiagolizardo.madcommander.util.UpdateManager;
+
+public class HelpMenu extends JMenu implements ActionListener {
 
 	private final JMenuItem visitJavaCommanderWebSite;
 	private final JMenuItem checkForUpdate;
 	private final JMenuItem aboutJavaCommander;
 
 	private final JFrame mainWindow;
-	
+
 	public HelpMenu(JFrame mainWindow) {
 		super(Translator.tr("Help"));
 		setMnemonic(KeyEvent.VK_H);
-		
+
 		this.mainWindow = mainWindow;
 
 		visitJavaCommanderWebSite = new JMenuItem(Translator.tr("Visit project website"));
 		visitJavaCommanderWebSite.addActionListener(this);
-		visitJavaCommanderWebSite.setIcon(IconFactory.newIcon("link.png"));
 
 		checkForUpdate = new JMenuItem(Translator.tr("Check for updates..."));
-		checkForUpdate.setIcon(IconFactory.newIcon("check.png"));
 		checkForUpdate.addActionListener(this);
 
 		aboutJavaCommander = new JMenuItem(Translator.tr("About this software"));
