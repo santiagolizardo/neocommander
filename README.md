@@ -8,7 +8,7 @@ NeoCommander
 
 ### Requirements
 
-  * Java 21
+  * Java 25
   * Graphical user interface environment
 
 ### How to build
