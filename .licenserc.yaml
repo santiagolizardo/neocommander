@@ -1,0 +1,9 @@
+header:
+  license:
+    spdx-id: GPL-3.0-or-later
+    copyright-owner: Santiago Lizardo
+
+  paths-ignore:
+    - 'target'
+    - '**/*.po'
+    - 'LICENSE'
