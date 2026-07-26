@@ -25,13 +25,7 @@ import java.io.IOException;
 
 
 
-public class DndTransport implements Transferable {
-
-	public Position panelID;
-	
-	public DndTransport(Position panelID) {
-		this.panelID = panelID;
-	}
+public record DndTransport(Position panelID) implements Transferable {
 
 	public Object getTransferData(DataFlavor dataFlavor)
 			throws UnsupportedFlavorException, IOException {

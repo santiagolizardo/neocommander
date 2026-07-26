@@ -16,22 +16,22 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
 public class FormatSingleton {
 
-	private static DateFormat dateFormat;
+	private static DateTimeFormatter dateTimeFormatter;
 	private static NumberFormat decimalFormat;
 
-	public static DateFormat getSimpleDateFormat() {
-		if (dateFormat == null) {
-			dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, Locale.getDefault());
+	public static DateTimeFormatter getDateTimeFormatter() {
+		if (dateTimeFormatter == null) {
+			dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(java.time.format.FormatStyle.SHORT, java.time.format.FormatStyle.MEDIUM).withLocale(Locale.getDefault());
 		}
 
-		return dateFormat;
+		return dateTimeFormatter;
 	}
 
 	public static NumberFormat getSimpleDecimalFormat() {

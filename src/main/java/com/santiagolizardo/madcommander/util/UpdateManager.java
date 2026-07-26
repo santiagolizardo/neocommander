@@ -50,12 +50,12 @@ public final class UpdateManager extends Thread {
 					.parseInt(version.replaceAll("\\.", ""));
 			int currentVersion = Integer.parseInt(AppConstants.APP_VERSION.replaceAll("\\.", ""));
 			if (serverVersion > currentVersion) {
-				StringBuilder text = new StringBuilder();
-				text.append("New version \"");
-				text.append(version);
-				text
-						.append("\" available.\n\nDo you want to go to the download site?\n");
-				if (DialogFactory.showQuestionDialog(null, text.toString())) {
+				String text = """
+						New version "%s" available.
+						
+						Do you want to go to the download site?
+						""".formatted(version);
+				if (DialogFactory.showQuestionDialog(null, text)) {
 					SystemUtil.browse(null, AppConstants.DOWNLOAD_URL);
 				}
 			} else {

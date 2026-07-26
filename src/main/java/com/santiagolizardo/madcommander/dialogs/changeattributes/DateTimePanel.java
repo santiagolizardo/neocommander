@@ -22,9 +22,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DateTimePanel extends JPanel implements ActionListener {
 
@@ -81,12 +80,12 @@ public class DateTimePanel extends JPanel implements ActionListener {
 	}
 	
 	private void updateDateTime() {
-		Calendar calendar = new GregorianCalendar();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+		var dateTime = LocalDateTime.now();
+		var dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		var timeFormat = DateTimeFormatter.ofPattern("HH:mm");
 
-		date.setText(dateFormat.format(calendar.getTime()));
-		time.setText(timeFormat.format(calendar.getTime()));		
+		date.setText(dateTime.format(dateFormat));
+		time.setText(dateTime.format(timeFormat));		
 	}
 	
 	private void defineLayout() {

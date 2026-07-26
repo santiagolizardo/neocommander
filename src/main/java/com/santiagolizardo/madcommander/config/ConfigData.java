@@ -18,6 +18,7 @@ package com.santiagolizardo.madcommander.config;
 
 import java.awt.*;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class ConfigData {
@@ -29,7 +30,7 @@ public class ConfigData {
 	 */
 	private static String getDefaultLanguage() {
 		String userLanguage = System.getProperty("user.language");
-		return ( null == userLanguage ? DEFAULT_LANGUAGE : userLanguage );
+		return Objects.requireNonNullElse(userLanguage, DEFAULT_LANGUAGE);
 	}
 	
 	private String language;

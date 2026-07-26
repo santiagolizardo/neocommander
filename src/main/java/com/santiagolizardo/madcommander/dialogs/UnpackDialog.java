@@ -16,23 +16,37 @@
  */
 package com.santiagolizardo.madcommander.dialogs;
 
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-import com.santiagolizardo.madcommander.util.gui.DialogFactory;
-import com.santiagolizardo.madcommander.util.io.FileUtil;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+import com.santiagolizardo.madcommander.util.gui.DialogFactory;
+import com.santiagolizardo.madcommander.util.io.FileUtil;
+
 public class UnpackDialog extends AbstractDialog implements ActionListener {
 
-	
 	private final JButton okButton;
 	private final JButton browse;
 	private final JLabel fileText;
@@ -67,14 +81,12 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
 		unpackOn.setText(dir.getAbsolutePath());
 
 		browse = new JButton("...");
-		browse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				int ret = chooser.showDialog((JComponent) event.getSource(),
-						"Select directory...");
-				if (ret == JFileChooser.APPROVE_OPTION) {
-					File file = chooser.getSelectedFile();
-					unpackOn.setText(file.getAbsolutePath());
-				}
+		browse.addActionListener(event -> {
+			var ret = chooser.showDialog((JComponent) event.getSource(),
+					"Select directory...");
+			if (ret == JFileChooser.APPROVE_OPTION) {
+				var f = chooser.getSelectedFile();
+				unpackOn.setText(f.getAbsolutePath());
 			}
 		});
 
@@ -112,28 +124,25 @@ public class UnpackDialog extends AbstractDialog implements ActionListener {
 					"You must select a correct directory first.");
 			return;
 		}
-		try {
-			ZipInputStream in = new ZipInputStream(
-					new FileInputStream(fileName));
-			ZipEntry entry = in.getNextEntry();
+		try (var in = new ZipInputStream(new FileInputStream(fileName))) {
+			var entry = in.getNextEntry();
 			while (entry != null) {
-				String newFileName = unpackOn.getText() + File.separator
+				var newFileName = unpackOn.getText() + File.separator
 						+ entry.getName();
 				if (entry.isDirectory()) {
-					File dir = new File(newFileName);
+					var dir = new File(newFileName);
 					dir.mkdirs();
 				} else {
-					OutputStream os = new FileOutputStream(newFileName);
-					byte[] buf = new byte[1024];
-					int len = 0;
-					while ((len = in.read(buf)) > 0) {
-						os.write(buf, 0, len);
+					try (var os = new FileOutputStream(newFileName)) {
+						var buf = new byte[1024];
+						int len = 0;
+						while ((len = in.read(buf)) > 0) {
+							os.write(buf, 0, len);
+						}
 					}
-					os.close();
 				}
 				entry = in.getNextEntry();
 			}
-			in.close();
 		} catch (IOException io) {
 			io.printStackTrace();
 		}

@@ -58,15 +58,15 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 		Dimension listDim = new Dimension(320, 140);
 		bookmarkList.setMinimumSize(listDim);
 		bookmarkList.setPreferredSize(listDim);
-		bookmarkList.getSelectionModel().addListSelectionListener(
-				new ListSelectionListener() {
 
-					@Override
-					public void valueChanged(ListSelectionEvent ev) {
-						removeButton.setEnabled(bookmarkList.getSelectedValuesList()
-								.size() == 1);
-					}
-				});
+		removeButton = new JButton(Translator.tr("Remove"));
+		removeButton.setEnabled(false);
+		removeButton.addActionListener(this);
+		removeButton.setIcon(IconFactory.newIcon("delete.png"));
+
+		bookmarkList.getSelectionModel().addListSelectionListener(
+				ev -> removeButton.setEnabled(bookmarkList.getSelectedValuesList()
+						.size() == 1));
 		refreshList();
 
 		scroll = new JScrollPane(bookmarkList);
@@ -77,11 +77,6 @@ public class ManageBookmarks extends AbstractDialog implements ActionListener {
 		addButton.addActionListener(this);
 		addButton.setIcon(IconFactory.newIcon("add.png"));
 		getRootPane().setDefaultButton(addButton);
-
-		removeButton = new JButton(Translator.tr("Remove"));
-		removeButton.setEnabled(false);
-		removeButton.addActionListener(this);
-		removeButton.setIcon(IconFactory.newIcon("delete.png"));
 
 		defineLayout();
 		setLocationRelativeTo(mainWindow);

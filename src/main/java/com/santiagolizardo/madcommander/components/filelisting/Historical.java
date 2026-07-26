@@ -16,11 +16,11 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.HistoricalActions;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.actions.HistoricalActions;
 
 public class Historical {
 
@@ -62,9 +62,9 @@ public class Historical {
 	}
 
 	public String getNext() {
-		String next = null;
+		var next = (String) null;
 		if (position + 1 < history.size()) {
-			history.get(++position);
+			next = history.get(++position);
 			updateActions();
 		}
 		return next;

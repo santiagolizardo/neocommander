@@ -18,31 +18,7 @@ package com.santiagolizardo.madcommander.components.filelisting.model;
 
 import java.io.File;
 
-public class FileListingColumn {
-
-	private final byte index;
-
-	private final File file;
-
-	private final Object value;
-
-	public FileListingColumn(byte index, File file, Object value) {
-		this.index = index;
-		this.file = file;
-		this.value = value;
-	}
-
-	public byte getIndex() {
-		return index;
-	}
-
-	public File getFile() {
-		return file;
-	}
-
-	public Object getValue() {
-		return value;
-	}
+public record FileListingColumn(byte index, File file, Object value) {
 
 	@Override
 	public String toString() {

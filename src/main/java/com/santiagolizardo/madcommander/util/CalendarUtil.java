@@ -16,35 +16,36 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class CalendarUtil {
 
     public static long convertDateTime(String date, String time) {
-        Calendar calendar = GregorianCalendar.getInstance();
+        var now = LocalDateTime.now();
+        int day = now.getDayOfMonth();
+        int month = now.getMonthValue();
+        int year = now.getYear();
+
         if(date != null) {
             String[] dates = date.split("/");
         
-            int day = Integer.parseInt(dates[0]);
-            int month = Integer.parseInt(dates[1])-1;
-            int year = Integer.parseInt(dates[2]);
-        
-            calendar.set(Calendar.DATE, day);
-            calendar.set(Calendar.MONTH, month);
-            calendar.set(Calendar.YEAR, year);
+            day = Integer.parseInt(dates[0]);
+            month = Integer.parseInt(dates[1]);
+            year = Integer.parseInt(dates[2]);
         }
+
+        int hour = now.getHour();
+        int minutes = now.getMinute();
 
         if(time != null) {
             String[] times = time.split(":");
 
-            int hour = Integer.parseInt(times[0]);
-            int minutes = Integer.parseInt(times[1]);
-               
-            calendar.set(Calendar.HOUR_OF_DAY, hour);
-            calendar.set(Calendar.MINUTE, minutes);
+            hour = Integer.parseInt(times[0]);
+            minutes = Integer.parseInt(times[1]);
         }
         
-        return calendar.getTime().getTime();        
+        var localDateTime = LocalDateTime.of(year, month, day, hour, minutes, now.getSecond(), now.getNano());
+        return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();        
     }
 }

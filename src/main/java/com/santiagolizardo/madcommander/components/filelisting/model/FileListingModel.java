@@ -86,29 +86,16 @@ public class FileListingModel extends AbstractTableModel {
 				|| format.equals(Format.Full) & column > 4)
 			throw new IllegalArgumentException("index out of bounds (column)");
 
-		Object value;
+		var value = switch (column) {
+			case 0 -> fileListingRow.getName();
+			case 1 -> fileListingRow.getExtension();
+			case 2 -> format.equals(Format.Brief) ? fileListingRow.getAttributes() : fileListingRow.getSize();
+			case 3 -> fileListingRow.getDate();
+			case 4 -> fileListingRow.getAttributes();
+			default -> null;
+		};
 
-		switch (column) {
-		case 0:
-			value = fileListingRow.getName();
-			break;
-		case 1:
-			value = fileListingRow.getExtension();
-			break;
-		case 2:
-			if (format.equals(Format.Brief)) {
-				value = fileListingRow.getAttributes();
-			} else {
-				value = fileListingRow.getSize();
-			}
-			break;
-		case 3:
-			value = fileListingRow.getDate();
-			break;
-		case 4:
-			value = fileListingRow.getAttributes();
-			break;
-		default:
+		if (value == null) {
 			return null;
 		}
 

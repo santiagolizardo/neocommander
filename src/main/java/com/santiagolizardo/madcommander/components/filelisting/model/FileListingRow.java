@@ -16,14 +16,16 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting.model;
 
-import com.santiagolizardo.madcommander.util.FormatSingleton;
-import com.santiagolizardo.madcommander.util.io.FileUtil;
+import java.io.File;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.Objects;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
-import java.io.File;
-import java.util.Date;
-import java.util.Objects;
+import com.santiagolizardo.madcommander.util.FormatSingleton;
+import com.santiagolizardo.madcommander.util.io.FileUtil;
 
 public class FileListingRow {
 
@@ -63,8 +65,9 @@ public class FileListingRow {
 	}
 
 	public String getDate() {
-		return FormatSingleton.getSimpleDateFormat().format(
-				new Date(file.lastModified()));
+		var instant = Instant.ofEpochMilli(file.lastModified());
+		return FormatSingleton.getDateTimeFormatter().format(
+				instant.atZone(ZoneId.systemDefault()));
 	}
 
 	public String getAttributes() {
@@ -73,8 +76,7 @@ public class FileListingRow {
 
 	@Override
 	public boolean equals(Object o) {
-		if (o instanceof FileListingRow) {
-			FileListingRow row = (FileListingRow) o;
+		if (o instanceof FileListingRow row) {
 			return (file.equals(row.file));
 		}
 		return false;

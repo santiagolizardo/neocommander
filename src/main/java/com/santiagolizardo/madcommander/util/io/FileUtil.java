@@ -86,17 +86,17 @@ public class FileUtil {
 			return "";
 		}
 		switch (os) {
-			case Osx:
-			case Linux:
+			case Osx, Linux -> {
 				return getPosixHumanizedAttributes(file);
-			case Windows:
-				BasicFileAttributes attributes;
+			}
+			case Windows -> {
 				try {
-					attributes = Files.getFileAttributeView(Paths.get(file.getAbsolutePath()), BasicFileAttributeView.class).readAttributes();
+					var attributes = Files.getFileAttributeView(Paths.get(file.getAbsolutePath()), BasicFileAttributeView.class).readAttributes();
 					return attributes.toString();
 				} catch (IOException ex) {
 					Logger.getLogger(FileUtil.class.getName()).log(Level.SEVERE, null, ex);
 				}
+			}
 		}
 		return "";
 	}

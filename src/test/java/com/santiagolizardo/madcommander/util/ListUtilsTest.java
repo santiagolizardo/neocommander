@@ -16,31 +16,31 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ListUtilsTest {
 
 	@Test
 	public void testImplode() {
-		List<String> names = Arrays.asList("Foo", "Bar", "John", "Doe");
-		Assert.assertEquals("Foo,Bar,John,Doe", String.join(",", names));
-		Assert.assertEquals("FooBarJohnDoe", String.join("", names));
-		Assert.assertEquals("", String.join(",", Collections.emptyList()));
+		List<String> names = List.of("Foo", "Bar", "John", "Doe");
+		Assertions.assertEquals("Foo,Bar,John,Doe", String.join(",", names));
+		Assertions.assertEquals("FooBarJohnDoe", String.join("", names));
+		Assertions.assertEquals("", String.join(",", Collections.emptyList()));
 	}
 
 	@Test
 	public void testExplode() {
 		List<String> names = ListsUtils.explode(",", "Foo,Bar,John,Doe");
-		Assert.assertEquals(4, names.size());
+		Assertions.assertEquals(4, names.size());
 	}
 
 	@Test
 	public void testExplodeEmptyString() {
 		List<String> names = ListsUtils.explode(",", "");
-		Assert.assertTrue(names.isEmpty());
+		Assertions.assertTrue(names.isEmpty());
 	}
 }

@@ -168,7 +168,7 @@ public class FileListing extends JPanel {
 		for (int i = 0; i < rowCount; i++) {
 			FileListingColumn column = (FileListingColumn) table.model
 					.getValueAt(i, 0);
-			File file = column.getFile();
+			File file = column.file();
 			if (file.getAbsolutePath().equals(filePath)) {
 				table.scrollRectToVisible(table.getCellRect(i, i, true));
 				table.addRowSelectionInterval(i, i);
@@ -183,7 +183,7 @@ public class FileListing extends JPanel {
 		for (int i = 0; i < rowCount; i++) {
 			FileListingColumn column = (FileListingColumn) table.model
 					.getValueAt(i, 0);
-			File file = column.getFile();
+			File file = column.file();
 			if (file.getName().equals(fileName)) {
 				table.scrollRectToVisible(table.getCellRect(i, i, true));
 				table.addRowSelectionInterval(i, i);
@@ -241,23 +241,17 @@ public class FileListing extends JPanel {
 
 	public void selectGroup(String type, String searchPattern,
 			boolean caseSensitive) {
-		StringBuilder reBuffer = new StringBuilder();
-		if (null != type) switch (type) {
-			case "Contains":
-				reBuffer.append(".*").append(searchPattern).append(".*");
-				break;
-			case "Starts with":
-				reBuffer.append("^").append(searchPattern).append(".*");
-				break;
-			case "Ends with":
-				reBuffer.append(".*").append(searchPattern).append("$");
-				break;
-			default:
-				reBuffer.append("^").append(searchPattern).append("$");
-				break;
+		var reBuffer = new StringBuilder();
+		if (null != type) {
+			switch (type) {
+				case "Contains" -> reBuffer.append(".*").append(searchPattern).append(".*");
+				case "Starts with" -> reBuffer.append("^").append(searchPattern).append(".*");
+				case "Ends with" -> reBuffer.append(".*").append(searchPattern).append("$");
+				default -> reBuffer.append("^").append(searchPattern).append("$");
+			}
 		}
-		String regexp = reBuffer.toString();
-		Pattern pattern = (caseSensitive ? Pattern.compile(regexp) : Pattern
+		var regexp = reBuffer.toString();
+		var pattern = (caseSensitive ? Pattern.compile(regexp) : Pattern
 				.compile(regexp, Pattern.CASE_INSENSITIVE));
 
 		int i = (table.model.isRoot ? 0 : 1);
@@ -273,23 +267,17 @@ public class FileListing extends JPanel {
 
 	public void unselectGroup(String type, String searchPattern,
 			boolean caseSensitive) {
-		StringBuilder reBuffer = new StringBuilder();
-		if (null != type) switch (type) {
-			case "Contains":
-				reBuffer.append(".*").append(searchPattern).append(".*");
-				break;
-			case "Starts with":
-				reBuffer.append("^").append(searchPattern).append(".*");
-				break;
-			case "Ends with":
-				reBuffer.append(".*").append(searchPattern).append("$");
-				break;
-			default:
-				reBuffer.append("^").append(searchPattern).append("$");
-				break;
+		var reBuffer = new StringBuilder();
+		if (null != type) {
+			switch (type) {
+				case "Contains" -> reBuffer.append(".*").append(searchPattern).append(".*");
+				case "Starts with" -> reBuffer.append("^").append(searchPattern).append(".*");
+				case "Ends with" -> reBuffer.append(".*").append(searchPattern).append("$");
+				default -> reBuffer.append("^").append(searchPattern).append("$");
+			}
 		}
-		String regexp = reBuffer.toString();
-		Pattern pattern = (caseSensitive ? Pattern.compile(regexp) : Pattern
+		var regexp = reBuffer.toString();
+		var pattern = (caseSensitive ? Pattern.compile(regexp) : Pattern
 				.compile(regexp, Pattern.CASE_INSENSITIVE));
 
 		int i = (table.model.isRoot ? 0 : 1);

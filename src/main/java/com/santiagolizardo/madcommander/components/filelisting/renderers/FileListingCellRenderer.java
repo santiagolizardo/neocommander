@@ -56,7 +56,7 @@ public class FileListingCellRenderer extends DefaultTableCellRenderer {
 		renderer.setHorizontalAlignment(JLabel.LEFT);
 
 		FileListingColumn colValue = (FileListingColumn) value;
-		File file = colValue.getFile();
+		File file = colValue.file();
 
 		if (column == 0) {
 			Icon icon = IconFactory.getIconForFile(file);
@@ -64,27 +64,14 @@ public class FileListingCellRenderer extends DefaultTableCellRenderer {
 		} else {
 			if (format == Format.Brief) {
 				switch (column) {
-				case 1:
-					renderer.setHorizontalAlignment(JLabel.CENTER);
-					break;
-				case 2:
-					renderer.setHorizontalAlignment(JLabel.RIGHT);
-					break;
-				case 3:
-					renderer.setHorizontalAlignment(JLabel.RIGHT);
-					break;
-				case 4:
-					renderer.setHorizontalAlignment(JLabel.CENTER);
-					break;
+					case 1 -> renderer.setHorizontalAlignment(JLabel.CENTER);
+					case 2, 3 -> renderer.setHorizontalAlignment(JLabel.RIGHT);
+					case 4 -> renderer.setHorizontalAlignment(JLabel.CENTER);
 				}
 			} else {
 				switch (column) {
-				case 1:
-					renderer.setHorizontalAlignment(JLabel.CENTER);
-					break;
-				case 2:
-					renderer.setHorizontalAlignment(JLabel.RIGHT);
-					break;
+					case 1 -> renderer.setHorizontalAlignment(JLabel.CENTER);
+					case 2 -> renderer.setHorizontalAlignment(JLabel.RIGHT);
 				}
 			}
 		}

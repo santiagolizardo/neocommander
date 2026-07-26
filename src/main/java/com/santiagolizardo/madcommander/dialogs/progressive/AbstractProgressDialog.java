@@ -96,29 +96,27 @@ public abstract class AbstractProgressDialog extends JDialog implements
 	}
 
 	public void begin() {
-		Thread thread = new Thread(this);
+		var thread = new Thread(this);
 		thread.start();
 
-		Thread t = new Thread(new Runnable() {
-			public void run() {
-				while (!myProcess.isTotalComplete()) {
-					currentFileLabel.setText("Current file: "
-							+ myProcess.getCurrentFile());
-					currentBar.setValue(myProcess.currentProgress);
-					totalBar.setValue(myProcess.totalProgress);
-					if (myProcess.cancel)
-						break;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-					}
+		var t = new Thread(() -> {
+			while (!myProcess.isTotalComplete()) {
+				currentFileLabel.setText("Current file: "
+						+ myProcess.getCurrentFile());
+				currentBar.setValue(myProcess.currentProgress);
+				totalBar.setValue(myProcess.totalProgress);
+				if (myProcess.cancel)
+					break;
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
 				}
-
-				mainWindow.getSource().refreshFiles();
-				mainWindow.getDestination().refreshFiles();
-
-				dispose();
 			}
+
+			mainWindow.getSource().refreshFiles();
+			mainWindow.getDestination().refreshFiles();
+
+			dispose();
 		});
 		t.start();
 

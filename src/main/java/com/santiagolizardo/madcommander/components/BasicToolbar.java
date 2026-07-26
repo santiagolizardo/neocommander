@@ -16,16 +16,24 @@
  */
 package com.santiagolizardo.madcommander.components;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JPopupMenu;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JToolBar;
+
 import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.*;
+import com.santiagolizardo.madcommander.actions.BriefAction;
+import com.santiagolizardo.madcommander.actions.FilterDirectoriesAction;
+import com.santiagolizardo.madcommander.actions.FilterHiddensAction;
+import com.santiagolizardo.madcommander.actions.FilterNoneAction;
+import com.santiagolizardo.madcommander.actions.FullAction;
+import com.santiagolizardo.madcommander.actions.HistoricalActions;
+import com.santiagolizardo.madcommander.actions.RefreshAction;
+import com.santiagolizardo.madcommander.actions.SearchAction;
 import com.santiagolizardo.madcommander.resources.images.IconFactory;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class BasicToolbar extends JToolBar {
-
 
 	public BasicToolbar(MainWindow mainWindow) {
 		super();
@@ -62,7 +70,7 @@ public class BasicToolbar extends JToolBar {
 
 		final JButton filters = new JButton("Filter",
 				IconFactory.newIcon("filter.gif"));
-		filters.addActionListener(event -> popup.show(filters, 0, filters.getY() + filters.getHeight() + 1));
+		filters.addActionListener(ev -> popup.show(filters, 0, filters.getY() + filters.getHeight() + 1));
 
 		add(prev);
 		add(next);

@@ -27,24 +27,14 @@ import java.util.logging.LogManager;
 public class LoggingServices {
 
 	public static void init() throws IOException {
-
-		InputStream fis;
-
-		File file = new File("logging.properties");
-		if (file.exists()) {
-			fis = new FileInputStream(file);
-		} else {
-			fis = MainWindow.class
-					.getResourceAsStream("default-logging.properties");
+		var file = new File("logging.properties");
+		try (var fis = file.exists() ? new FileInputStream(file) : MainWindow.class.getResourceAsStream("default-logging.properties")) {
+			if (fis == null) {
+				System.err.println("Unable to find the logging properties file.");
+				return;
+			}
+			var logManager = LogManager.getLogManager();
+			logManager.readConfiguration(fis);
 		}
-
-		if (fis == null) {
-			System.err.println("Unable to find the logging properties file.");
-			return;
-		}
-
-		LogManager logManager = LogManager.getLogManager();
-		logManager.readConfiguration(fis);
-		fis.close();
 	}
 }

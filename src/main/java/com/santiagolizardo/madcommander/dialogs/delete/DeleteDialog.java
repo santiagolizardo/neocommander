@@ -16,10 +16,7 @@
  */
 package com.santiagolizardo.madcommander.dialogs.delete;
 
-import com.santiagolizardo.madcommander.resources.languages.Translator;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -28,8 +25,20 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeleteDialog extends JDialog {
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JRootPane;
+import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
+import javax.swing.SpringLayout;
 
+import com.santiagolizardo.madcommander.resources.languages.Translator;
+
+public class DeleteDialog extends JDialog {
 
 	private final DefaultListModel<File> model;
 	private final JList<File> list;
@@ -89,13 +98,13 @@ public class DeleteDialog extends JDialog {
 		superRootPane.setDefaultButton(okButton);
 		return superRootPane;
 	}
-	
+
 	public int getReturnValue() {
 		return returnValue;
 	}
 
 	public List<File> getSelectedFiles() {
-		List<File> selectedFiles = new ArrayList<>();
+		var selectedFiles = new ArrayList<File>();
 		selectedFiles.addAll(list.getSelectedValuesList());
 		return selectedFiles;
 	}
@@ -109,7 +118,7 @@ public class DeleteDialog extends JDialog {
 	private void defineLayout() {
 		JLabel label = new JLabel(Translator.tr(
 				"Do you really want to delete the selected files/directories?"));
-		
+
 		Container contentPane = getContentPane();
 
 		SpringLayout layout = new SpringLayout();

@@ -16,14 +16,17 @@
  */
 package com.santiagolizardo.madcommander.dialogs.search;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
 public class AdvancedTab extends JPanel implements ActionListener {
-
-
 
 	private final JCheckBox fileSize;
 
@@ -38,7 +41,7 @@ public class AdvancedTab extends JPanel implements ActionListener {
 
 		fileSize = new JCheckBox("File size:");
 		fileSize.addActionListener(this);
-		Vector<String> conditions = new Vector<String>();
+		var conditions = new Vector<String>();
 		conditions.add("Equal");
 		conditions.add("Less");
 		conditions.add("More");
@@ -46,7 +49,7 @@ public class AdvancedTab extends JPanel implements ActionListener {
 		conditionList.setEnabled(false);
 		size = new JTextField(20);
 		size.setEnabled(false);
-		Vector<String> measures = new Vector<String>();
+		var measures = new Vector<String>();
 		measures.add("bytes");
 		measures.add("kbytes");
 		measures.add("mbytes");

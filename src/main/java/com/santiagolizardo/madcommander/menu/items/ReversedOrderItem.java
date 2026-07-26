@@ -32,12 +32,6 @@ public class ReversedOrderItem extends JCheckBoxMenuItem {
 
 		this.mainWindow = mainWindow;
 
-		addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				mainWindow.getSource().setReversedOrder(isSelected());
-			}
-		});
+		addChangeListener(e -> mainWindow.getSource().setReversedOrder(isSelected()));
 	}
 }

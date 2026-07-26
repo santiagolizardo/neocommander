@@ -49,13 +49,8 @@ public class MoveProgressDialog extends AbstractProgressDialog {
 			File srcFile = new File(fullSrc);
 			File dstFile = new File(fullDst);
 			
-			StringBuilder buffer = new StringBuilder();
-			buffer.append("Moving [ ");
-			buffer.append(fullSrc);
-			buffer.append(" => ");
-			buffer.append(fullDst);
-			buffer.append(" ]");
-			logger.info(buffer.toString());
+			String logMessage = "Moving [ %s => %s ]".formatted(fullSrc, fullDst);
+			logger.info(logMessage);
 			if (srcFile.renameTo(dstFile) == false) {
 
 			}

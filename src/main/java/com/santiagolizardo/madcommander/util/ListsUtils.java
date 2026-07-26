@@ -24,8 +24,8 @@ public class ListsUtils {
 
 	public static List<String> explode(String separator, String string) {
             if(null == string || string.isEmpty()) {
-                return new ArrayList<>(0);
+                return List.of();
             }
-            return Arrays.asList(string.split(separator));
+            return List.of(string.split(separator));
 	}
 }

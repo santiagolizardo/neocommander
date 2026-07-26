@@ -67,20 +67,16 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 
 		results = new DefaultListModel<>();
 		resultsList = new JList<>(results);
-		resultsList.setCellRenderer(new ListCellRenderer<String>() {
-			@Override
-			public Component getListCellRendererComponent(JList arg0,
-					String fileName, int arg2, boolean selected, boolean arg4) {
-				File file = new File(fileName);
-				Icon icon = IconFactory.getIconForFile(file);
-				JLabel label = new JLabel(fileName);
-				if (selected) {
-					label.setBackground(Color.BLUE);
-					label.setOpaque(true);
-				}
-				label.setIcon(icon);
-				return label;
+		resultsList.setCellRenderer((list, fileName, index, isSelected, cellHasFocus) -> {
+			File file = new File(fileName);
+			Icon icon = IconFactory.getIconForFile(file);
+			JLabel label = new JLabel(fileName);
+			if (isSelected) {
+				label.setBackground(Color.BLUE);
+				label.setOpaque(true);
 			}
+			label.setIcon(icon);
+			return label;
 		});
 		resultsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resultsList.addMouseListener(new MouseAdapter() {
@@ -160,34 +156,27 @@ public class SearchDialog extends AbstractDialog implements ActionListener {
 					String condition = params.getCondition();
 					String measure = params.getMeasure();
 					long length = file.length();
-					switch (measure) {
-						case "kbytes":
-							length /= 1000;
-							break;
-						case "mbytes":
-							length /= 1000;
-							length /= 1000;
-							break;
-					}
+					length = switch (measure) {
+						case "kbytes" -> length / 1000;
+						case "mbytes" -> length / 1000 / 1000;
+						default -> length;
+					};
 					switch (condition) {
-						case "Equal":
+						case "Equal" -> {
 							if (length == params.getSize()) {
-								results.addElement(file
-										.getAbsolutePath());
+								results.addElement(file.getAbsolutePath());
 							}
-							break;
-						case "More":
+						}
+						case "More" -> {
 							if (length > params.getSize()) {
-								results.addElement(file
-										.getAbsolutePath());
+								results.addElement(file.getAbsolutePath());
 							}
-							break;
-						case "Less":
+						}
+						case "Less" -> {
 							if (length < params.getSize()) {
-								results.addElement(file
-										.getAbsolutePath());
+								results.addElement(file.getAbsolutePath());
 							}
-							break;
+						}
 					}
 				} else {
 					results.addElement(file.getAbsolutePath());

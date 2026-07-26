@@ -16,21 +16,21 @@
  */
 package com.santiagolizardo.madcommander.util;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class OsDetectorTest {
 
 	private String originalOsName;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		this.originalOsName = System.getProperty("os.name");
 	}
 	
-	@After
+	@AfterEach
 	public void tearDown() {
 		System.setProperty("os.name", originalOsName);
 		OsDetector.reset();
@@ -39,18 +39,20 @@ public class OsDetectorTest {
 	@Test
 	public void testWindowsIsDetected() throws Exception {
 		System.setProperty("os.name", "Windows 95");
-		Assert.assertEquals(Os.Windows, OsDetector.get());
+		Assertions.assertEquals(Os.Windows, OsDetector.get());
 	}
 
 	@Test
 	public void testMacOsIsDetected() throws Exception {
 		System.setProperty("os.name", "Mac OS X");
-		Assert.assertEquals(Os.Osx, OsDetector.get());
+		Assertions.assertEquals(Os.Osx, OsDetector.get());
 	}
 	
-	@Test(expected = Exception.class)
+	@Test
 	public void testUnknownOsThrowsException() throws Exception {
 		System.setProperty("os.name", "Foo Bar OS");
-		OsDetector.get();
+		Assertions.assertThrows(Exception.class, () -> {
+			OsDetector.get();
+		});
 	}
 }

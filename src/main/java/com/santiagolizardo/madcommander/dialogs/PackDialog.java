@@ -72,21 +72,15 @@ public class PackDialog extends AbstractDialog implements ActionListener {
 
 		zip = new JRadioButton("ZIP");
 		zip.setSelected(true);
-		zip.addActionListener((ActionEvent ev) -> {
-			extension.setText(".zip");
-		});
+		zip.addActionListener(ev -> extension.setText(".zip"));
 		group.add(zip);
 
 		jar = new JRadioButton("JAR");
-		jar.addActionListener((ActionEvent ev) -> {
-			extension.setText(".jar");
-		});
+		jar.addActionListener(ev -> extension.setText(".jar"));
 		group.add(jar);
 		
 		gzip = new JRadioButton("GZIP");
-		gzip.addActionListener((ActionEvent ev) -> {
-			extension.setText(".gzip");
-		});
+		gzip.addActionListener(ev -> extension.setText(".gzip"));
 		group.add(gzip);
 
 		panel.add(zip);

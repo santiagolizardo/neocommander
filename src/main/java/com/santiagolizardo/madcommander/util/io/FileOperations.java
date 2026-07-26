@@ -54,12 +54,8 @@ public class FileOperations {
 	}
 
 	public static boolean copy(InputStream is, File file) {
-		try {
-			try (FileOutputStream fos = new FileOutputStream(file)) {
-				IOUtils.copy(is, fos);
-				is.close();
-			}
-
+		try (is; var fos = new FileOutputStream(file)) {
+			IOUtils.copy(is, fos);
 			return true;
 		} catch (IOException e) {
 			logger.warning(e.getMessage());

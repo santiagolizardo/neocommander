@@ -16,14 +16,7 @@
  */
 package com.santiagolizardo.madcommander.components.filelisting;
 
-import com.santiagolizardo.madcommander.MainWindow;
-import com.santiagolizardo.madcommander.actions.SelectDriveAction;
-import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
-import com.santiagolizardo.madcommander.components.filelisting.model.*;
-import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DragSource;
 import java.awt.dnd.DropTarget;
@@ -35,8 +28,25 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class FileListingTable extends JTable implements Runnable {
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.KeyStroke;
 
+import com.santiagolizardo.madcommander.MainWindow;
+import com.santiagolizardo.madcommander.actions.SelectDriveAction;
+import com.santiagolizardo.madcommander.actions.fileops.FileOpsFactory;
+import com.santiagolizardo.madcommander.components.filelisting.model.AttributesComparator;
+import com.santiagolizardo.madcommander.components.filelisting.model.DateComparator;
+import com.santiagolizardo.madcommander.components.filelisting.model.ExtensionComparator;
+import com.santiagolizardo.madcommander.components.filelisting.model.FileListingModel;
+import com.santiagolizardo.madcommander.components.filelisting.model.FileListingRow;
+import com.santiagolizardo.madcommander.components.filelisting.model.NameComparator;
+import com.santiagolizardo.madcommander.components.filelisting.model.SizeComparator;
+import com.santiagolizardo.madcommander.util.actions.InputMapUtil;
+
+public class FileListingTable extends JTable implements Runnable {
 
 	private static final Logger logger = Logger.getLogger(FileListingTable.class.getName());
 
@@ -163,24 +173,14 @@ public class FileListingTable extends JTable implements Runnable {
 			tabbedPane.validate();
 		}
 
-		Comparator<FileListingRow> comparator = null;
-		switch (fileListing.getHeader().getActiveColumn()) {
-			case 0:
-				comparator = new NameComparator();
-				break;
-			case 1:
-				comparator = new ExtensionComparator();
-				break;
-			case 2:
-				comparator = new SizeComparator();
-				break;
-			case 3:
-				comparator = new DateComparator();
-				break;
-			case 4:
-				comparator = new AttributesComparator();
-				break;
-		}
+		Comparator<FileListingRow> comparator = switch (fileListing.getHeader().getActiveColumn()) {
+			case 0 -> new NameComparator();
+			case 1 -> new ExtensionComparator();
+			case 2 -> new SizeComparator();
+			case 3 -> new DateComparator();
+			case 4 -> new AttributesComparator();
+			default -> null;
+		};
 		Collections.sort(model.data, comparator);
 		if (fileListing.getHeader().isReversedOrder()) {
 			Collections.reverse(model.data);
@@ -197,9 +197,9 @@ public class FileListingTable extends JTable implements Runnable {
 		mainWindow.currentPanel = fileListing.position;
 		mainWindow.getSource().historical.updateActions();
 	}
-	
+
 	public List<File> getSelectedFiles() {
-		List<File> selectedFiles = new ArrayList<>();
+		var selectedFiles = new ArrayList<File>();
 		int[] selectedRows = getSelectedRows();
 		for (int selectedRow : selectedRows) {
 			selectedFiles.add(model.getRow(selectedRow).getFile());

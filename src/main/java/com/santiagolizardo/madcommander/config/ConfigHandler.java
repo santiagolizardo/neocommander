@@ -16,15 +16,16 @@
  */
 package com.santiagolizardo.madcommander.config;
 
-import com.santiagolizardo.madcommander.util.ListsUtils;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Logger;
+
+import com.santiagolizardo.madcommander.util.ListsUtils;
 
 public class ConfigHandler {
 
@@ -33,7 +34,7 @@ public class ConfigHandler {
 	private static final String DIRECTORY_NAME = ".neocommander";
 
 	public void save(ConfigData configData) {
-		Properties props = new Properties();
+		var props = new Properties();
 		props.setProperty(
 				"bookmarks",
 				String.join(File.pathSeparator,
@@ -47,10 +48,9 @@ public class ConfigHandler {
 		props.setProperty("window.top", String.valueOf(configData.getWindowPosition().getY()));
 		props.setProperty("window.left", String.valueOf(configData.getWindowPosition().getX()));
 
-		File file = new File(System.getProperty("user.home"), DIRECTORY_NAME);
+		var file = new File(System.getProperty("user.home"), DIRECTORY_NAME);
 
-		try {
-			FileOutputStream fos = new FileOutputStream(file);
+		try (var fos = new FileOutputStream(file)) {
 			props.store(fos, "MadCommander configuration file");
 		} catch (IOException e) {
 			logger.warning(e.getMessage());
@@ -58,44 +58,41 @@ public class ConfigHandler {
 	}
 
 	public ConfigData read() {
-		File file = new File(System.getProperty("user.home"), DIRECTORY_NAME);
+		var file = new File(System.getProperty("user.home"), DIRECTORY_NAME);
 
-		ConfigData configData = new ConfigData();
+		var configData = new ConfigData();
 
-		try {
-			FileInputStream fis = new FileInputStream(file);
+		try (var fis = new FileInputStream(file)) {
 
-			Properties props = new Properties();
+			var props = new Properties();
 			props.load(fis);
 
-			String bookmarksProp = props.getProperty("bookmarks");
+			var bookmarksProp = props.getProperty("bookmarks");
 			if (!bookmarksProp.isEmpty()) {
 				configData.getBookmarks().addAll(ListsUtils.explode(File.pathSeparator,
 						bookmarksProp));
 			}
 
-			String language = props.getProperty("language");
+			var language = props.getProperty("language");
 			if (null != language) {
 				configData.setLanguage(language);
 			}
 
-			String windowWidth = props.getProperty("window.width");
-			String windowHeight = props.getProperty("window.height");
+			var windowWidth = props.getProperty("window.width");
+			var windowHeight = props.getProperty("window.height");
 			if (null != windowWidth && null != windowHeight) {
-				Dimension windowSize = new Dimension(
-						Float.valueOf(props.getProperty("window.width")).intValue(),
-						Float.valueOf(props.getProperty("window.height")).intValue()
-				);
+				var windowSize = new Dimension(
+						Integer.parseInt(props.getProperty("window.width")),
+						Integer.parseInt(props.getProperty("window.height")));
 				configData.setWindowSize(windowSize);
 			}
 
-			String windowTop = props.getProperty("window.top");
-			String windowLeft = props.getProperty("window.left");
+			var windowTop = props.getProperty("window.top");
+			var windowLeft = props.getProperty("window.left");
 			if (null != windowTop && null != windowLeft) {
-				Point windowPosition = new Point(
-						Float.valueOf(props.getProperty("window.left")).intValue(),
-						Float.valueOf(props.getProperty("window.top")).intValue()
-				);
+				var windowPosition = new Point(
+						Integer.parseInt(props.getProperty("window.left")),
+						Integer.parseInt(props.getProperty("window.top")));
 				configData.setWindowPosition(windowPosition);
 			}
 		} catch (IOException e) {

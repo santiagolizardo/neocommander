@@ -51,13 +51,8 @@ public class CopyProgressDialog extends AbstractProgressDialog {
 			String fullSrc = srcPath + File.separator + myProcess.currentFile;
 			String fullDst = dstPath + File.separator + myProcess.currentFile;
 			
-			StringBuilder buffer = new StringBuilder();
-			buffer.append("Copying [ ");
-			buffer.append(fullSrc);
-			buffer.append(" => ");
-			buffer.append(fullDst);
-			buffer.append(" ]");
-			logger.info(buffer.toString());
+			String logMessage = "Copying [ %s => %s ]".formatted(fullSrc, fullDst);
+			logger.info(logMessage);
 			try {
 				File fileSrc = new File(fullSrc);
 				File fileDst = new File(fullDst);
